@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculadora xG – Premier League</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="grid">
+
+    <div></div>
+    <div>
+        <h1>HI xG</h1>
+        <select id="competition">
+            <option value="premier">Premier League</option>
+        </select>
+    </div>
+    <div></div>
+
+    <div>
+      <h3>Equipo Local</h3>
+      <select id="local"></select>
+      <p id="StatsLocal">Ofensiva/Defensiva</p>
+    </div>
+    <div class="center">
+      <h2>Resultado</h2>
+      <p id="xgLocal">Goles Esperados...</p>
+<!--  <p id="xgLocal">xG Local</p>    
+      <p id="xgVisita">xG Visita: -</p> -->
+    </div>
+    <div>
+      <h3>Equipo Visitante</h3>
+      <select id="visita"></select>
+      <p id="StatsVisita">Ofensiva/Defensiva</p>
+    </div>
+
+    <div></div><div></div><div></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

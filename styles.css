@@ -1,16 +1,25 @@
 body {
-    background-image: url("UCL.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-
-.letras-con-borde {
-    color: rgb(255, 251, 0); /* Color de relleno de las letras (blanco) */
-    font-size: 24px; /* Tamaño de fuente para que el efecto se vea bien */
-    
-    /* Propiedad para el borde (ancho y color) */
-    -webkit-text-stroke-width: .5px; /* Ancho del borde (negro) */
-    -webkit-text-stroke-color: rgb(184, 62, 255); /* Color del borde (negro) */
-
-}
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 20px;
+    padding: 30px;
+  }
+  
+  select {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  .center {
+    text-align: center;
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+  }
