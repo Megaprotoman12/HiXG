@@ -23,3 +23,19 @@ body {
     padding: 20px;
     border-radius: 10px;
   }
+
+  .contenedor {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  
+  .columna {
+    width: 50%;
+    white-space: pre-line;
+    padding: 15px;
+    background: #020617;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+  
