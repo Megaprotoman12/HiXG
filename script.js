@@ -77,15 +77,134 @@ const bases = {
   
     const L = data[localSel.value];
     const V = data[visitaSel.value];
-  
+    const NLocal = localSel.options[localSel.selectedIndex].text;
+    const NVisita = visitaSel.options[visitaSel.selectedIndex].text;  
     
-    const xgL = L.ataque + L.PLUSataque - V.defensa;
-    const xgV = V.ataque - (L.defensa + L.PLUSdefensa);
+    let xgL = L.ataque + L.PLUSataque - V.defensa;
+    if (xgL < 0){
+      xgL = 0;
+    } 
+    xgL += .15;
+
+    let xgV = V.ataque - (L.defensa + L.PLUSdefensa);
+    if (xgV < 0){
+      xgV = 0;
+    } 
+    xgV += .15;
+
+/**/ 
+function poisson(k, lambda) {
+  return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
+}
+
+function factorial(n) {
+  if (n === 0 || n === 1) return 1;
+  let res = 1;
+  for (let i = 2; i <= n; i++) res *= i;
+  return res;
+}
+
+function probMatch(xG_home, xG_away, NLocal, NVisita, maxGoals = 10) {
+
+  // Matriz de probabilidades
+  let probs = [];
+  for (let i = 0; i <= maxGoals; i++) {
+    probs[i] = [];
+    for (let j = 0; j <= maxGoals; j++) {
+      probs[i][j] = poisson(i, xG_home) * poisson(j, xG_away);
+    }
+  }
+
+  let pWin = 0, pDraw = 0, pLoss = 0;
+
+  for (let i = 0; i <= maxGoals; i++) {
+    for (let j = 0; j <= maxGoals; j++) {
+      if (i > j) pWin += probs[i][j];
+      else if (i === j) pDraw += probs[i][j];
+      else pLoss += probs[i][j];
+    }
+  }
+
+  // Ambos anotan
+  let pBTTSyes = 0;
+  for (let i = 1; i <= maxGoals; i++) {
+    for (let j = 1; j <= maxGoals; j++) {
+      pBTTSyes += probs[i][j];
+    }
+  }
+  let pBTTSno = 1 - pBTTSyes;
+
+  // Over / Under
+  let overUnder = {};
+  [0.5, 1.5, 2.5, 3.5, 4.5].forEach(line => {
+    let pOver = 0;
+    for (let i = 0; i <= maxGoals; i++) {
+      for (let j = 0; j <= maxGoals; j++) {
+        if (i + j > line) pOver += probs[i][j];
+      }
+    }
+    overUnder[`Más de ${line} Goles`] = +(pOver * 100).toFixed(1);
+    overUnder[`Menos de ${line} Goles`] = +((1 - pOver) * 100).toFixed(1);
+  });
+
+  // Marcadores más probables
+  let scores = [];
+  for (let i = 0; i <= maxGoals; i++) {
+    for (let j = 0; j <= maxGoals; j++) {
+      scores.push({
+        score: `${i}-${j}`,
+        prob: probs[i][j]
+      });
+    }
+  }
+
+  scores.sort((a, b) => b.prob - a.prob);
+  let topScores = scores.slice(0, 5).map(s => ({
+    marcador: s.score,
+    probabilidad: +(s.prob * 100).toFixed(2)
+  }));
+
+  return {
+    [`Victoria ${NLocal}`]:  +(pWin * 100).toFixed(1) + "%",
+    "Empate":  + (pDraw * 100).toFixed(1) + "%",
+    [`Victoria ${NVisita}`]: +(pLoss * 100).toFixed(1) + "%",
+    "Ambos Anotan (Sí)": +(pBTTSyes * 100).toFixed(1) + "%",
+    "Ambos Anotan (No)": +(pBTTSno * 100).toFixed(1) + ('%') ,
+    "Más/Menos": overUnder,
+    "Marcadores más probables": topScores
+  };
+}
+
+
+/**/
+const res = probMatch(xgL, xgV, NLocal, NVisita);
+
+const formatValue = (val) => {
+  if (Array.isArray(val)) {
+      // Para "Marcadores más probables", une cada marcador con una coma
+      return val.map(obj => `\n ${obj.marcador} (${obj.probabilidad}%)`).join('');
+  } else if (typeof val === 'object' && val !== null) {
+      // Para "Over/Under", une sus propiedades
+      return Object.entries(val).map(([k, v]) => `\n ${k}: ${v}`).join('%');
+  }
+  return val;
+};
+
+// Creamos una lista de líneas "Propiedad: Valor"
+const textoLegible = Object.entries(res)
+    .map(([key, value]) => `\n ${key}: ${formatValue(value)}`)
+    .join('\n');
+
+
+
+
   
-    document.getElementById('StatsLocal').textContent = 'Goles a Favor: ' + (L.ataque + L.PLUSataque).toFixed(2) + '\n Goles en Contra: ' + (L.defensa + L.PLUSdefensa).toFixed(2)
-    document.getElementById('StatsVisita').textContent = 'Goles a Favor: ' + (V.ataque) + '\n Goles en Contra: ' + V.defensa
-    document.getElementById('xgLocal').textContent = 'Local: ' + xgL.toFixed(3) + ' vs ' + xgV.toFixed(3) + ' :Visita';
-    /*document.getElementById('xgVisita').textContent = 'xG Visita: ' + xgV.toFixed(3);*/
+    document.getElementById('StatsLocal').innerHTML = 'Goles a Favor: ' + (L.ataque + L.PLUSataque).toFixed(2) + "<br>Goles en Contra: " + (L.defensa + L.PLUSdefensa).toFixed(2);
+
+    document.getElementById('StatsVisita').innerHTML = 'Goles a Favor: ' + (V.ataque) + '<br>Goles en Contra: ' + V.defensa
+    
+    document.getElementById('xgLocal').textContent = xgL.toFixed(3) + ' vs ' + xgV.toFixed(3);
+    document.getElementById('xgVisita').textContent = textoLegible;
   }
   
   competition.addEventListener('change', loadTeams);
@@ -93,4 +212,48 @@ const bases = {
   visitaSel.addEventListener('change', calcular);
   
   loadTeams();
+
+  const btn = document.getElementById('theme-toggle');
+const body = document.body;
+
+// Al cargar, verificar si ya existía una preferencia
+if (localStorage.getItem('theme') === 'light') {
+  body.classList.add('light-mode');
+  btn.textContent = '🌙 Modo Oscuro';
+}
+
+btn.addEventListener('click', () => {
+  body.classList.toggle('light-mode');
   
+  if (body.classList.contains('light-mode')) {
+    localStorage.setItem('theme', 'light');
+    btn.textContent = '🌙 Modo Oscuro';
+  } else {
+    localStorage.setItem('theme', 'dark');
+    btn.textContent = '☀️ Modo Diurno';
+  }
+});
+
+  
+document.getElementById('btnCopiar').addEventListener('click', async () => {
+  // 1. Seleccionamos el div (excluyendo el propio botón del texto copiado)
+  const contenedor = document.getElementById('miContenedor');
+  
+  // 2. Obtenemos el texto. Usamos innerText porque respeta los saltos de línea visibles
+  const textoACopiar = document.querySelector('.toCopiar').innerText.trim();
+  contenedor.innerText.replace('📋 Copiar Resultados', '');
+
+  try {
+      // 3. Intentamos copiar al portapapeles
+      await navigator.clipboard.writeText(textoACopiar);
+      
+      // 4. Feedback visual (Opcional)
+      const boton = document.getElementById('btnCopiar');
+      const textoOriginal = boton.textContent;
+      boton.textContent = '✅ ¡Copiado!';
+      setTimeout(() => boton.textContent = textoOriginal, 2000);
+      
+  } catch (err) {
+      console.error('Error al copiar: ', err);
+  }
+});

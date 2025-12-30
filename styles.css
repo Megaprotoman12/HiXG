@@ -1,27 +1,40 @@
+:root {
+  --bg-body: #0f172a;
+  --bg-card: #020617;
+  --text-main: #e5e7eb;
+  --border-color: #334155;
+}
+
+.light-mode {
+  --bg-body: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #1e293b;
+  --border-color: #cbd5e1;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #0f172a;
-    color: #e5e7eb;
-  }
+  font-family: Arial, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-main);
+  transition: background 0.3s, color 0.3s; /* Animación suave */
+}
   
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     gap: 20px;
     padding: 30px;
   }
-  
-  select {
-    width: 100%;
-    padding: 8px;
-  }
-  
-  .center {
-    text-align: center;
-    background: #020617;
-    padding: 20px;
-    border-radius: 10px;
+
+  #competition {
+    width: auto;          /* Se ajusta al contenido */
+    min-width: 200px;     /* Evita que sea demasiado pequeño */
+    max-width: 300px;     /* Evita que ocupe toda la pantalla */
+    padding: 8px;         /* Mejora la estética */
+
+  /*  background: var(--bg-card);
+    color: var(--text-main);*/
   }
 
   .contenedor {
@@ -29,7 +42,14 @@ body {
     gap: 20px;
     align-items: flex-start;
   }
-  
+
+  .center {
+    text-align: center;
+    background: #020617;
+    padding: 20px;
+    border-radius: 10px;
+  }
+
   .columna {
     width: 50%;
     white-space: pre-line;
@@ -38,4 +58,39 @@ body {
     border-radius: 10px;
     font-size: 14px;
   }
+
+  .center, .columna {
+    background: var(--bg-card);
+    border: solid var(--border-color);
+  }
   
+  select {
+    width: 100%;
+    padding: 8px;
+  }
+  
+  #xgVisita {
+    white-space: pre-line; /* o pre-wrap */
+    line-height: 1.5;      /* opcional: para que no estén tan pegadas las filas */
+}
+
+.btn-copiar {
+  margin-top: 15px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #3b82f6; /* Color azul llamativo */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 12px;
+  transition: background 0.3s;
+}
+
+.btn-copiar:hover {
+  background-color: #2563eb;
+}
+
+/* En modo claro podrías querer un color distinto */
+.light-mode .btn-copiar {
+  background-color: #1e293b;
+}
