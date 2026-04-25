@@ -2,89 +2,263 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Hidden xG</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
 
-  <button id="theme-toggle" style="padding: 10px; cursor: pointer; margin: 20px;">
-    ☀️ Cambiar Modo
-  </button>  
-  
-<div class="page active" id="page-calc">
-  <div class="hero">
-    <p class="hero-eyebrow">By @MegaBetsMan🤑</p>
-    <div class="hero-title">Hidden<br>xG</div>
-    <p class="hero-sub">Selecciona la competición y los equipos para calcular los goles esperados</p>
+<!-- ── ANIMATED BACKGROUND ── -->
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-gradient"></div>
+  <div class="pitch-lines"></div>
+</div>
+
+<!-- ── TOP ACCENT BAR ── -->
+<div class="top-bar" aria-hidden="true"></div>
+
+<!-- ── NAVBAR ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <span class="brand-icon">⚽</span>
+      <div>
+        <div class="brand-name">Hidden <span>xG</span></div>
+        <div class="brand-sub">Pasión por el análisis 🥵</div>
+      </div>
+    </div>
+
+    <div class="nav-links">
+      <a class="nav-link" target="_blank" rel="noopener">
+        🧮 Calculadora
+      </a>
+      <a class="nav-link" target="_blank" rel="noopener">
+        🗓️ Programación
+      </a>
+      <a class="nav-link" target="_blank" rel="noopener">
+        🤑 Pronósticos Sugeridos
+      </a>
+      <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">
+        💬 Comunidad
+      </a>
+      <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">
+        ▶ YouTube
+      </a>
+      <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">
+        🎵 TikTok
+      </a>
+    </div>
+
+    <button id="theme-toggle" class="theme-btn" aria-label="Cambiar modo">
+      ☀️ <span>Modo Claro</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="hero" role="banner">
+  <p class="hero-eyebrow">By @MegaBetsMan🤑</p>
+  <h1 class="hero-title">Hidden<br><span>xG</span></h1>
+  <p class="hero-sub">Selecciona la competición y los equipos para calcular los goles esperados y probabilidades exactas</p>
+</header>
+
+<!-- ── MAIN CALCULATOR ── -->
+<main class="calculator-wrap">
+
+  <!-- Competition Selector -->
+  <div class="comp-selector-wrap">
+    <label class="selector-label" for="competition">🏆 Competición</label>
+    <div class="select-wrapper">
+      <select id="competition">
+        <option value="ChampionsLeague">👑 Champions League</option>
+        <option value="PremierLeague">🏆 Premier League</option>
+        <option value="LaLiga">🇪🇸 La Liga</option>
+        <option value="SerieA">🇮🇹 Serie A</option>
+        <option value="Bundesliga">🇩🇪 Bundesliga</option>
+        <option value="Ligue1">🇫🇷 Ligue 1</option>
+        <option value="Championship">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship</option>
+        <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
+        <option value="FACup">🏆 FA Cup</option>
+        <option value="Liga1">🇵🇪 Liga 1</option>
+        <option value="J1League">🇯🇵 J1 League</option>
+      </select>
+      <span class="select-arrow" aria-hidden="true">▾</span>
+    </div>
   </div>
 
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body style="text-align: center;">
+  <!-- VS Arena -->
+  <div class="vs-arena">
 
-    <div></div>
-    <div>
-        <select id="competition">
-          <option value="PremierLeague">Premier League</option>
-          <option value="LaLiga">La Liga</option>
-          <option value="SerieA">Serie A</option>    
-          <option value="Bundesliga">Bundesliga</option>
-          <option value="Ligue1">Ligue 1</option>
-          <option value="Championship">Championship</option>       
-          <option value="FACup">FA Cup</option>            
-          <option value="Liga1">Liga 1</option>        
-          <option value="J1League">J1 League</option>
-<!--  
-
-          <option value="LigueOne">Ligue 1</option>          
-          <option value="primeiraLiga">Primeira Liga</option>
-          <option value="championship">Championship</option>
-          <option value="arabiaSaudiPremierLeague">Arabia Saudí Premier League</option>
-          <option value="QSL">Qatar Stars League</option>
-          <option value="LigathaAl">Ligat ha'Al</option>-->
-
-          
-        </select>
-    </div>
-    <div></div>
-
-  <div class="grid">
-    <div>
-      <h3>Equipo Local</h3>
-      <select id="local"></select>
-      <p id="StatsLocal">Ofensiva/Defensiva</p>
-    </div>
-
-    <div class="center">
-      <div class="toCopiar">
-      <h2>Resultado</h2>
-      <p id="xgLocal">Goles Esperados...</p>
-      <p id="xgVisita">Probabilidades...</p>
-      <a href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener" style="color: rgb(0, 255, 0)"> COMUNIDAD VERDE 🤑 (wsp)</a>
-      <br><br>
-      <a href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener" style="color: red"> MegaBetsMan 🤑 (YT)</a>
-      <br><br>
-      <a href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener" style="color: rgb(195, 0, 255)"> MegaBetsMan 🤑 (TikTok)</a>
-      <br><br>
-      <!--  <p id="xgLocal">xG Local</p>    
-      <p id="xgVisita">xG Visita: -</p> -->
+    <!-- LOCAL -->
+    <div class="team-panel home">
+      <div class="team-panel-header">
+        <span class="team-badge home-badge">🏠 LOCAL</span>
+        <h3 class="team-title" id="local-title">Equipo Local</h3>
       </div>
-      <div class="center" id="miContenedor">
-        <!-- Tus datos de goles, marcadores, etc. -->
+      <div class="select-wrapper">
+        <select id="local" aria-label="Equipo local"></select>
+        <span class="select-arrow" aria-hidden="true">▾</span>
+      </div>
+      <div class="stats-card" id="StatsLocal">
+        <div class="stat-row">
+          <span class="stat-lbl">⚽ Goles a Favor</span>
+          <span class="stat-val" id="stat-local-atk">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-lbl">🛡 Goles en Contra</span>
+          <span class="stat-val" id="stat-local-def">—</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTER -->
+    <div class="center-panel">
+      <div class="vs-badge">VS</div>
+      <div class="vs-fire" aria-hidden="true">🔥</div>
+
+      <!-- xG Result -->
+      <div class="xg-display" id="xg-display">
+        <div class="xg-score-row">
+          <div class="xg-team-score home-score">
+            <span class="xg-num" id="xg-num-local">—</span>
+            <span class="xg-lbl">xG Local</span>
+          </div>
+          <div class="xg-divider">:</div>
+          <div class="xg-team-score away-score">
+            <span class="xg-num" id="xg-num-visita">—</span>
+            <span class="xg-lbl">xG Visita</span>
+          </div>
+        </div>
+        <!-- Hidden p kept for script.js compatibility -->
+        <p id="xgLocal" style="display:none"></p>
+      </div>
+
+      <!-- Probabilities -->
+      <div class="toCopiar probs-card" id="probs-card">
+        <div class="probs-placeholder">
+          <span>Selecciona ambos equipos<br>para ver las probabilidades</span>
+        </div>
+        <!-- xgVisita content rendered by script.js — we style it via CSS -->
+        <p id="xgVisita"></p>
+      </div>
+
+      <!-- Copy button -->
+      <div id="miContenedor">
         <button id="btnCopiar" class="btn-copiar">📋 Copiar Probabilidades</button>
       </div>
 
+      <!-- Social links -->
+      <div class="social-links">
+        <a class="social-btn wsp" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">
+          💬 Comunidad Verde
+        </a>
+        <a class="social-btn yt" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">
+          ▶ YouTube
+        </a>
+        <a class="social-btn tt" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">
+          🎵 TikTok
+        </a>
+      </div>
+    </div>
+
+    <!-- VISITA -->
+    <div class="team-panel away">
+      <div class="team-panel-header">
+        <span class="team-badge away-badge">✈️ VISITA</span>
+        <h3 class="team-title" id="visita-title">Equipo Visitante</h3>
+      </div>
+      <div class="select-wrapper">
+        <select id="visita" aria-label="Equipo visitante"></select>
+        <span class="select-arrow" aria-hidden="true">▾</span>
+      </div>
+      <div class="stats-card" id="StatsVisita">
+        <div class="stat-row">
+          <span class="stat-lbl">⚽ Goles a Favor</span>
+          <span class="stat-val" id="stat-visita-atk">—</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-lbl">🛡 Goles en Contra</span>
+          <span class="stat-val" id="stat-visita-def">—</span>
+        </div>
+      </div>
     </div>
 
     
-    <div>
-      <h3>Equipo Visitante</h3>
-      <select id="visita"></select>
-      <p id="StatsVisita">Ofensiva/Defensiva</p>
-    </div>
 
-  <div></div><div></div>
-  </div>
-  
+  </div><!-- /vs-arena -->
 
-  <script src="script.js">  </script>
+</main>
+
+<!-- ── FOOTER ── -->
+<footer class="site-footer">
+  <p>© 2026 <strong>Hidden xG</strong> · By <a href="https://www.youtube.com/@MegaBetsMan" target="_blank">@MegaBetsMan</a> · Pasión por el análisis de datos</p>
+</footer>
+
+<script src="script.js"></script>
+
+<!-- ── PATCH: bridge script.js output to new UI ── -->
+<script>
+(function() {
+
+  /* ── 1. Stats display patch ─────────────────────────
+     script.js writes innerHTML to #StatsLocal / #StatsVisita.
+     We intercept and split into the two stat-val spans.       */
+  function patchStats(id, atkId, defId) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const observer = new MutationObserver(() => {
+      const html = el.innerHTML;
+      const atkMatch = html.match(/Goles a Favor:\s*([\d.\-]+)/);
+      const defMatch = html.match(/Goles en Contra:\s*([\d.\-]+)/);
+      const atkEl = document.getElementById(atkId);
+      const defEl = document.getElementById(defId);
+      if (atkEl && atkMatch) atkEl.textContent = atkMatch[1];
+      if (defEl && defMatch) defEl.textContent = defMatch[1];
+      // hide raw text
+      el.style.display = 'none';
+    });
+    observer.observe(el, { childList: true, subtree: true, characterData: true });
+  }
+  patchStats('StatsLocal',  'stat-local-atk',  'stat-local-def');
+  patchStats('StatsVisita', 'stat-visita-atk', 'stat-visita-def');
+
+  /* ── 2. xG score display patch ──────────────────────
+     script.js writes "1.234 vs 0.987" to #xgLocal.
+     We split and show in the two xg-num spans.               */
+  const xgLocalEl = document.getElementById('xgLocal');
+  const numLocal   = document.getElementById('xg-num-local');
+  const numVisita  = document.getElementById('xg-num-visita');
+
+  const xgObserver = new MutationObserver(() => {
+    const raw = xgLocalEl.textContent.trim();
+    const parts = raw.split(' vs ');
+    if (parts.length === 2) {
+      numLocal.textContent  = parts[0];
+      numVisita.textContent = parts[1];
+      // colour hint
+      const l = parseFloat(parts[0]), v = parseFloat(parts[1]);
+      numLocal.style.color  = l > v ? 'var(--lime)' : l < v ? 'var(--muted-fg)' : 'var(--cyan)';
+      numVisita.style.color = v > l ? 'var(--lime)' : v < l ? 'var(--muted-fg)' : 'var(--cyan)';
+      document.getElementById('xg-display').classList.add('has-result');
+      document.getElementById('probs-card').classList.add('has-result');
+    }
+  });
+  xgObserver.observe(xgLocalEl, { childList: true, subtree: true, characterData: true });
+
+  /* ── 3. Theme toggle label sync ────────────────────── */
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    const span = themeBtn.querySelector('span');
+    themeBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.contains('light-mode');
+      if (span) span.textContent = isLight ? 'Modo Claro' : 'Modo Oscuro';
+      themeBtn.firstChild.textContent = isLight ? '☀️ ' : '🌙 ';
+    });
+  }
+
+})();
+</script>
+
 </body>
 </html>
-
