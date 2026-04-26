@@ -53,6 +53,10 @@
   --glow-cyan: 0 4px 16px rgba(0,107,115,0.18);
 }
 
+/* ── SECTION ───────────────────────────────────── */
+.section { display: none; }
+.section.active { display: block; }
+
 /* ── RESET & BASE ───────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

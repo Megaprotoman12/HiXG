@@ -30,15 +30,18 @@
     </div>
 
     <div class="nav-links">
-      <a class="nav-link" target="_blank" rel="noopener">
+      <button class="nav-tab nav-link active" data-section="calc">
         🧮 Calculadora
-      </a>
-      <a class="nav-link" target="_blank" rel="noopener">
-        🗓️ Programación
-      </a>
-      <a class="nav-link" target="_blank" rel="noopener">
+      </button>
+      <button class="nav-tab nav-link" data-section="matches">
+        📅 Partidos
+      </button>
+      <button class="nav-tab nav-link" data-section="tips">
         🤑 Pronósticos Sugeridos
-      </a>
+      </button>
+      <button class="nav-tab nav-link" data-section="table">
+        📋 Tabla
+      </button>
       <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">
         💬 Comunidad
       </a>
@@ -56,6 +59,7 @@
   </div>
 </nav>
 
+<div class="section active" id="section-calc">
 <!-- ── HERO ── -->
 <header class="hero" role="banner">
   <p class="hero-eyebrow">By @MegaBetsMan🤑</p>
@@ -77,6 +81,9 @@
         <option value="SerieA">🇮🇹 Serie A</option>
         <option value="Bundesliga">🇩🇪 Bundesliga</option>
         <option value="Ligue1">🇫🇷 Ligue 1</option>
+        <option value="PrimeiraLiga">🇵🇹 Primeira Liga</option>  
+        <option value="Eredivise">🇳🇱 Eredivise</option>
+        <option value="SüperLig">🇹🇷 Süper Lig</option>      
         <option value="Championship">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship</option>
         <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
         <option value="FACup">🏆 FA Cup</option>
@@ -183,19 +190,73 @@
         </div>
       </div>
     </div>
-
-    
-
   </div><!-- /vs-arena -->
 
 </main>
+</div>
 
+<!-- ══════════════════════════════════════════════
+     SECCIÓN DE PARTIDOS — completamente separada
+     No interfiere con script.js ni con el calculador
+     ══════════════════════════════════════════════ -->
+<div class="section" id="section-matches">
+  <main>
+    <section class="matches-section" id="matches-section">
+
+    <!-- Header -->
+    <div class="matches-header">
+      <div class="matches-title-row">
+        <h2 class="matches-title">📅 Partidos</h2>
+        <div class="matches-live-dot" id="matches-live-dot" title="Actualizando en tiempo real"></div>
+      </div>
+      <p class="matches-sub">Resultados en vivo · Actualización cada 60 seg</p>
+    </div>
+  
+    <!-- Tabs: Todos / En Vivo / Finalizados / Favoritos -->
+    <div class="matches-tabs" role="tablist" aria-label="Filtro de partidos">
+      <button class="m-tab active" data-filter="all"       role="tab" aria-selected="true">
+        🌐 Todos
+      </button>
+      <button class="m-tab" data-filter="live"      role="tab" aria-selected="false">
+        🔴 En Vivo <span class="live-count" id="live-count"></span>
+      </button>
+      <button class="m-tab" data-filter="finished"  role="tab" aria-selected="false">
+        ✅ Finalizados
+      </button>
+      <button class="m-tab" data-filter="favorites" role="tab" aria-selected="false">
+        ⭐ Favoritos <span class="fav-count" id="fav-count"></span>
+      </button>
+    </div>
+  
+    <!-- API Key notice (shown once, dismissible) -->
+    <div class="api-notice" id="api-notice">
+      <span>🔑</span>
+      <div>
+        <strong>Modo demostración</strong> — Para datos reales añade tu API key de
+        <a href="https://dashboard.api-football.com" target="_blank" rel="noopener">api-football.com</a>
+        (plan gratuito) en <code>matches.js</code> → variable <code>API_KEY</code>.
+      </div>
+      <button class="api-notice-close" onclick="this.parentElement.remove()">✕</button>
+    </div>
+  
+    <!-- Matches list -->
+    <div class="matches-list" id="matches-list">
+      <div class="matches-loading" id="matches-loading">
+        <div class="spinner"></div>
+        <span>Cargando partidos…</span>
+      </div>
+    </div>
+    </section>
+  </main>
+  
+</div>
 <!-- ── FOOTER ── -->
 <footer class="site-footer">
   <p>© 2026 <strong>Hidden xG</strong> · By <a href="https://www.youtube.com/@MegaBetsMan" target="_blank">@MegaBetsMan</a> · Pasión por el análisis de datos</p>
 </footer>
 
 <script src="script.js"></script>
+<script src="matches.js"></script>
 
 <!-- ── PATCH: bridge script.js output to new UI ── -->
 <script>
