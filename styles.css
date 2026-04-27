@@ -35,6 +35,75 @@
 
 
 /* ── MENUCITO ──────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Botón para abrir: asegúrate que sea visible */
+  .menu-toggle {
+    display: block !important;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 1100; /* Por encima de todo */
+    background: #32cd32; /* Tu color lima */
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-weight: bold;
+  }
+
+  /* El Menú Lateral */
+  .nav-links {
+    display: flex !important; /* Forzamos el flex */
+    flex-direction: column !important;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 280px; 
+    height: 100vh;
+    background: #111 !important; /* Fondo sólido para que no sea transparente */
+    z-index: 2000 !important; /* MUY ALTO para estar sobre el overlay */
+    padding: 80px 20px 20px 20px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: translateX(-110%); /* Aseguramos que esté fuera */
+    box-shadow: 10px 0 20px rgba(0,0,0,0.8);
+    overflow-y: auto; /* Por si tienes muchas ligas, que se pueda hacer scroll */
+  }
+
+  /* CLASE ACTIVA: Esta es la que hace que aparezca */
+  .nav-links.active {
+    transform: translateX(0) !important;
+  }
+
+  /* La capa oscura (Overlay) */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1500 !important; /* Debajo del menú (2000), pero sobre el resto */
+    display: none;
+  }
+
+  .sidebar-overlay.active {
+    display: block !important;
+  }
+
+  /* Ajuste de los botones para que ocupen el ancho */
+  .nav-tab, .nav-link {
+    display: flex !important;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 15px !important;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    text-align: left;
+    color: white !important;
+    text-decoration: none;
+  }
+}
+
 /* --- DISEÑO DESKTOP (Tu estilo actual mejorado) --- */
 .nav-links {
   display: flex;
