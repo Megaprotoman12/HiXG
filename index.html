@@ -3,19 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hidden xG</title>
+  <title>⚽Hidden xG🥵</title>
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;900&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- ── ANIMATED BACKGROUND ── -->
 <div class="bg-layer" aria-hidden="true">
   <div class="bg-gradient"></div>
   <div class="pitch-lines"></div>
 </div>
-
-<!-- ── TOP ACCENT BAR ── -->
 <div class="top-bar" aria-hidden="true"></div>
 
 <!-- ── NAVBAR ── -->
@@ -30,27 +27,26 @@
     </div>
 
     <div class="nav-links">
-      <button class="nav-tab nav-link active" data-section="calc">
-        🧮 Calculadora
+      <button class="nav-tab active" data-section="calc">
+        <span class="tab-icon">🧮</span>
+        <span class="tab-label">Calculadora</span>
       </button>
-      <button class="nav-tab nav-link" data-section="matches">
-        📅 Partidos
+      <button class="nav-tab" data-section="matches">
+        <span class="tab-icon">📅</span>
+        <span class="tab-label">Partidos</span>
       </button>
-      <button class="nav-tab nav-link" data-section="tips">
-        🤑 Pronósticos Sugeridos
+      <button class="nav-tab" data-section="pronosticos">
+        <span class="tab-icon">🤑</span>
+        <span class="tab-label">Pronósticos</span>
       </button>
-      <button class="nav-tab nav-link" data-section="table">
-        📋 Tabla
+      <button class="nav-tab" data-section="tabla">
+        <span class="tab-icon">📋</span>
+        <span class="tab-label">Tabla</span>
       </button>
-      <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">
-        💬 Comunidad
-      </a>
-      <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">
-        ▶ YouTube
-      </a>
-      <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">
-        🎵 TikTok
-      </a>
+      <a class="nav-link" target="_blank" rel="noopener">| |</a>
+      <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">💬 Comunidad</a>
+      <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">▶ YouTube</a>
+      <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">🎵 TikTok</a>
     </div>
 
     <button id="theme-toggle" class="theme-btn" aria-label="Cambiar modo">
@@ -59,36 +55,119 @@
   </div>
 </nav>
 
+<!-- ══════════ CALCULADORA ══════════ -->
 <div class="section active" id="section-calc">
-<!-- ── HERO ── -->
-<header class="hero" role="banner">
-  <p class="hero-eyebrow">By @MegaBetsMan🤑</p>
-  <h1 class="hero-title">Hidden<br><span>xG</span></h1>
-  <p class="hero-sub">Selecciona la competición y los equipos para calcular los goles esperados y probabilidades exactas</p>
-</header>
+  <header class="hero" role="banner">
+    <p class="hero-eyebrow">By @MegaBetsMan🤑</p>
+    <h1 class="hero-title">Hidden<br><span>xG</span></h1>
+    <p class="hero-sub">Selecciona la competición y los equipos para calcular los goles esperados y probabilidades exactas</p>
+  </header>
 
-<!-- ── MAIN CALCULATOR ── -->
-<main class="calculator-wrap">
-
-  <!-- Competition Selector -->
+  <main class="calculator-wrap">
+      <!-- Competition Selector -->
   <div class="comp-selector-wrap">
     <label class="selector-label" for="competition">🏆 Competición</label>
     <div class="select-wrapper">
       <select id="competition">
+        <!-- Europa -->        <!-- Europa -->
         <option value="ChampionsLeague">👑 Champions League</option>
-        <option value="PremierLeague">🏆 Premier League</option>
+        <!-- Aún NO
+        <option value="EuropaLeague">👑 Europa League</option>
+        <option value="ConferenceLeague">👑 Conference League</option> -->
+        <option value="PremierLeague">🇽🇪 Premier League</option>
+
         <option value="LaLiga">🇪🇸 La Liga</option>
         <option value="SerieA">🇮🇹 Serie A</option>
         <option value="Bundesliga">🇩🇪 Bundesliga</option>
         <option value="Ligue1">🇫🇷 Ligue 1</option>
         <option value="PrimeiraLiga">🇵🇹 Primeira Liga</option>  
         <option value="Eredivise">🇳🇱 Eredivise</option>
-        <option value="SüperLig">🇹🇷 Süper Lig</option>      
-        <option value="Championship">🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship</option>
+        <option value="SüperLig">🇹🇷 Süper Lig</option>    
+        <option value="JupilerProLeague">🇧🇪 Jupiler Pro League</option>
+        <!-- Aún NO
+        <option value="Superliga">🇩🇰 Superliga</option>
+        <option value="Eliteserien">🇳🇴 Eliteserien</option>
+        <option value="Allsvenskan">🇸🇪 Allsvenskan</option>
+        <option value="Ligatha'Al">🇮🇱 Ligat ha'Al</option>
+        <option value="_Premier League">🇺🇦 Premier League</option> --><!-- Ucrania xd-->
+         
+         
+        <option value="Championship">🇽🇪 Championship</option>
+        <!-- Aún NO
+        <option value="SerieB">🇮🇹 Serie B</option>
+        <option value="LaLigaHypermotion">🇪🇸 LaLiga Hypermotion</option> -->
         <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
-        <option value="FACup">🏆 FA Cup</option>
-        <option value="Liga1">🇵🇪 Liga 1</option>
-        <option value="J1League">🇯🇵 J1 League</option>
+        <!-- Aún NO
+        <option value="_1División">🇩🇰 1. División</option>        
+
+        <option value="EFLCup">🏆🇽🇪 EFL Cup</option> -->
+        <option value="FACup">🏆🇽🇪 FA Cup</option>
+        <option value="CopaDelRey">🏆🇪🇸 Copa del Rey</option><!-- Aún NO
+        <option value="CopaDeItalia">🏆🇮🇹 Copa de Italia</option>
+        <option value="Pokal">🏆🇩🇪 Pokal</option> -->
+        <!-- Aún NO
+        <option value="ChampionsLeagueFemenina">👑 Champions League Femenina</option>
+        <option value="WSL">🇽🇪 WSL</option>
+        <option value="Liga F">🇪🇸 Liga F</option>
+
+        //América
+        <option value="CopaLibertadores">👑 Copa Libertadores</option>        
+        <option value="CopaSudamericana">👑 Copa Sudamericana</option> -->
+
+        <option value="LigaProfesional">🇦🇷 Liga Profesional</option>        
+        <option value="SerieABetano">🇧🇷 Serie A Betano</option>
+        <option value="LigaMX">🇲🇽 Liga MX</option><!-- Aún NO
+        <option value="MLS">🇺🇸 MLS</option>       
+        //<option value="LigaAUF">🇺🇾 Liga AUF</option> 
+        <option value="PrimeraA">🇨🇴 Primera A</option>  -->
+        <option value="Liga1">🇵🇪 Liga 1</option><!-- Aún NO
+        <option value="LigaPro">🇪🇨 LigaPro</option>
+        <option value="PrimeraDivisión">🇵🇾 Primera División</option>
+        <option value="LigaDePrimera">🇨🇱 Liga de Primera</option>  -->
+
+        <option value="BrasileiraoSerieB">🇧🇷 Brasileirao Serie B</option>
+        <!-- Aún NO
+        <option value="CopaFGF">🇧🇷 Copa FGF</option>
+
+        <option value="CopaBetanoDoBrasil">🏆🇧🇷 Copa Betano Do Brasil</option>
+        <option value="CopaArgentina">🏆🇦🇷 Copa Argentina</option>
+        <option value="LeaguesCup">🏆 Leagues Cup</option>
+
+        //Asia
+        <option value="LigaDeCampeonesAFC">👑 Liga de Campeones AFC</option>
+        <option value="AFCChampionsLeague2">👑 AFC Champions League 2</option>
+      -->
+        <option value="J1League">🇯🇵 J1 League</option><!-- Aún NO
+        <option value="UAELeague">🇦🇪 UAE League</option>
+        <option value="SaudiProLeague">🇸🇦 Saudi Pro League</option>-->
+        <option value="QatarStarsLeague">🇶🇦 Qatar Stars League</option><!-- Aún NO
+        <option value="ChineseSuperLeague">🇨🇳 Chinese Super League</option>
+        //África
+        <option value="EgyptianPremierLeague">🇪🇬 Egyptian Premier League</option>
+        <option value="BetwayPremiership">🇸🇩 Betway Premiership</option>
+        //FIFA
+        <option value="Mundial">🏆👑 Mundial</option>
+        <option value="MundialDeClubes">🏆👑 Mundial de Clubes</option>
+        <option value="Eurocopa">🏆 Eurocopa</option>
+        <option value="CopaAmerica">🏆 Copa América</option>
+        <option value="CopaOro">🏆 Copa Oro</option>
+        <option value="CopaDeÁfricaDeNaciones">🏆 Copa de África de Naciones</option>
+        <option value="CampeonatoAfricanoDeNaciones">🏆 Campeonato Africano de Naciones</option>
+
+        <option value="NationsLeague">🏆 Nations League</option>
+        <option value="NationsLeagueFemenina">🏆 Nations League Femenina</option>
+
+        <option value="EurocopaFemenina">🏆 Eurocopa Femenina</option>
+        <option value="CopaAmericaFemenina">🏆 Copa América Femenina</option>
+
+        <option value="ClasificacionCONMEBOL">🌎 Clasificacion CONMEBOL</option>
+        <option value="ClasificacionUEFA">🌎 Clasificacion UEFA</option>
+        <option value="ClasificacionCONCACAF">🌎 Clasificacion CONCACAF</option>
+        <option value="ClasificacionAFC">🌎 Clasificacion AFC</option>
+
+        <option value="JuegosOlímpicos">🏆 Juegos Olímpicos</option>
+        <option value="MundialSub20">🏆 Mundial Sub20</option>
+        <option value="Mundial Femenino">🏆 Mundial Femenino</option>-->
       </select>
       <span class="select-arrow" aria-hidden="true">▾</span>
     </div>
@@ -121,6 +200,8 @@
 
     <!-- CENTER -->
     <div class="center-panel">
+      
+      <button id="swapBtn" class="btn-copiar" type="button">🔄 Invertir Equipos</button>
       <div class="vs-badge">VS</div>
       <div class="vs-fire" aria-hidden="true">🔥</div>
 
@@ -140,117 +221,235 @@
         <!-- Hidden p kept for script.js compatibility -->
         <p id="xgLocal" style="display:none"></p>
       </div>
-
+      
       <!-- Probabilities -->
-      <div class="toCopiar probs-card" id="probs-card">
-        <div class="probs-placeholder">
-          <span>Selecciona ambos equipos<br>para ver las probabilidades</span>
+        <div class="toCopiar probs-card" id="probs-card">
+          <div class="probs-placeholder"><span>Selecciona ambos equipos<br>para ver las probabilidades</span></div>
+          <p id="xgVisita"></p>
         </div>
-        <!-- xgVisita content rendered by script.js — we style it via CSS -->
-        <p id="xgVisita"></p>
-      </div>
-
-      <!-- Copy button -->
-      <div id="miContenedor">
-        <button id="btnCopiar" class="btn-copiar">📋 Copiar Probabilidades</button>
-      </div>
-
-      <!-- Social links -->
-      <div class="social-links">
-        <a class="social-btn wsp" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">
-          💬 Comunidad Verde
-        </a>
-        <a class="social-btn yt" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">
-          ▶ YouTube
-        </a>
-        <a class="social-btn tt" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">
-          🎵 TikTok
-        </a>
-      </div>
-    </div>
-
-    <!-- VISITA -->
-    <div class="team-panel away">
-      <div class="team-panel-header">
-        <span class="team-badge away-badge">✈️ VISITA</span>
-        <h3 class="team-title" id="visita-title">Equipo Visitante</h3>
-      </div>
-      <div class="select-wrapper">
-        <select id="visita" aria-label="Equipo visitante"></select>
-        <span class="select-arrow" aria-hidden="true">▾</span>
-      </div>
-      <div class="stats-card" id="StatsVisita">
-        <div class="stat-row">
-          <span class="stat-lbl">⚽ Goles a Favor</span>
-          <span class="stat-val" id="stat-visita-atk">—</span>
+        <div id="miContenedor">
+          <button id="btnCopiar" class="btn-copiar">📋 Copiar Probabilidades</button>
         </div>
-        <div class="stat-row">
-          <span class="stat-lbl">🛡 Goles en Contra</span>
-          <span class="stat-val" id="stat-visita-def">—</span>
+        <div class="social-links">
+          <a class="social-btn wsp" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">💬 Comunidad Verde</a>
+          <a class="social-btn yt" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">▶ YouTube</a>
+          <a class="social-btn tt" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">🎵 TikTok</a>
+        </div>
+      </div>
+      <div class="team-panel away">
+        <div class="team-panel-header">
+          <span class="team-badge away-badge">✈️ VISITA</span>
+          <h3 class="team-title" id="visita-title">Equipo Visitante</h3>
+        </div>
+        <div class="select-wrapper">
+          <select id="visita" aria-label="Equipo visitante"></select>
+          <span class="select-arrow" aria-hidden="true">▾</span>
+        </div>
+        <div class="stats-card" id="StatsVisita">
+          <div class="stat-row">
+            <span class="stat-lbl">⚽ Goles a Favor</span>
+            <span class="stat-val" id="stat-visita-atk">—</span>
+          </div>
+          <div class="stat-row">
+            <span class="stat-lbl">🛡 Goles en Contra</span>
+            <span class="stat-val" id="stat-visita-def">—</span>
+          </div>
         </div>
       </div>
     </div>
-  </div><!-- /vs-arena -->
-
-</main>
+  </main>
 </div>
 
-<!-- ══════════════════════════════════════════════
-     SECCIÓN DE PARTIDOS — completamente separada
-     No interfiere con script.js ni con el calculador
-     ══════════════════════════════════════════════ -->
+<!-- ══════════ PARTIDOS ══════════ -->
 <div class="section" id="section-matches">
   <main>
     <section class="matches-section" id="matches-section">
+      <div class="matches-header">
+        <div class="matches-title-row">
+          <h2 class="matches-title">📅 Partidos</h2>
+          <div class="matches-live-dot" id="matches-live-dot"></div>
+        </div>
+        <!-- ══════════ ERROR ══════════ 
+        <p class="matches-sub">Resultados en vivo · Actualización cada 60 seg</p>-->
+      </div>
+      <div class="matches-tabs" role="tablist">
+        <button class="m-tab active" data-filter="all" role="tab" aria-selected="true">🌐 Todos</button>
+        
+<!-- ══════════ ERROR ══════════ 
+        <button class="m-tab" data-filter="live" role="tab" aria-selected="false">🔴 En Vivo <span class="live-count" id="live-count"></span></button>
+-->
+        <button class="m-tab" data-filter="finished" role="tab" aria-selected="false">✅ Finalizados</button>
+        <button class="m-tab" data-filter="favorites" role="tab" aria-selected="false">⭐ Favoritos <span class="fav-count" id="fav-count"></span></button>
+      </div>
 
-    <!-- Header -->
-    <div class="matches-header">
-      <div class="matches-title-row">
-        <h2 class="matches-title">📅 Partidos</h2>
-        <div class="matches-live-dot" id="matches-live-dot" title="Actualizando en tiempo real"></div>
+<!-- ══════════ ERROR ══════════ 
+      <div class="api-notice" id="api-notice">
+        <span>🔑</span>
+        <div><strong>Modo demostración</strong> — Para datos reales añade tu API key de <a href="https://dashboard.api-football.com" target="_blank" rel="noopener">api-football.com</a> en <code>matches.js</code>.</div>
+        <button class="api-notice-close" onclick="this.parentElement.remove()">✕</button>
       </div>
-      <p class="matches-sub">Resultados en vivo · Actualización cada 60 seg</p>
-    </div>
-  
-    <!-- Tabs: Todos / En Vivo / Finalizados / Favoritos -->
-    <div class="matches-tabs" role="tablist" aria-label="Filtro de partidos">
-      <button class="m-tab active" data-filter="all"       role="tab" aria-selected="true">
-        🌐 Todos
-      </button>
-      <button class="m-tab" data-filter="live"      role="tab" aria-selected="false">
-        🔴 En Vivo <span class="live-count" id="live-count"></span>
-      </button>
-      <button class="m-tab" data-filter="finished"  role="tab" aria-selected="false">
-        ✅ Finalizados
-      </button>
-      <button class="m-tab" data-filter="favorites" role="tab" aria-selected="false">
-        ⭐ Favoritos <span class="fav-count" id="fav-count"></span>
-      </button>
-    </div>
-  
-    <!-- API Key notice (shown once, dismissible) -->
-    <div class="api-notice" id="api-notice">
-      <span>🔑</span>
-      <div>
-        <strong>Modo demostración</strong> — Para datos reales añade tu API key de
-        <a href="https://dashboard.api-football.com" target="_blank" rel="noopener">api-football.com</a>
-        (plan gratuito) en <code>matches.js</code> → variable <code>API_KEY</code>.
+-->
+      <p class="matches-click-tip">👇🏻 Haz clic en cualquier partido para ver las probabilidades xG</p>
+      <div class="matches-list" id="matches-list">
+
+        <div class="matches-loading" id="matches-loading">
+          <div class="spinner"></div>
+          <span>Cargando partidos…</span>
+        </div>
+        
       </div>
-      <button class="api-notice-close" onclick="this.parentElement.remove()">✕</button>
-    </div>
-  
-    <!-- Matches list -->
-    <div class="matches-list" id="matches-list">
-      <div class="matches-loading" id="matches-loading">
-        <div class="spinner"></div>
-        <span>Cargando partidos…</span>
-      </div>
-    </div>
     </section>
   </main>
-  
 </div>
-<!-- ── FOOTER ── -->
+
+<!-- ══════════ PRONÓSTICOS ══════════ -->
+<div class="section" id="section-pronosticos">
+  <main class="section-inner">
+    <div class="pron-header">
+      <h2 class="pron-title">🤑 Pronósticos Sugeridos</h2>
+      <p class="pron-sub">Picks ordenados por la mayor diferencia de probabilidad entre un equipo y su rival</p>
+    </div>
+    <div id="pron-list" class="pron-list">
+      <div class="pron-loading">
+        <div class="spinner"></div>
+        <span>Esperando partidos…</span>
+      </div>
+    </div>
+  </main>`;
+  <!--
+  <main class="section-inner">
+    <div class="section-placeholder">
+      <div class="placeholder-icon">🤑</div>
+      <h2>Pronósticos Sugeridos</h2>
+      <p>Próximamente — análisis automático de los mejores picks del día.</p>
+    </div>
+  </main>
+-->
+</div>
+
+<!-- ══════════ TABLA ══════════ -->
+<div class="section" id="section-tabla">
+  <main class="section-inner">
+    <div class="tabla-header">
+      <h2 class="tabla-title">📋 Tabla de Equipos</h2>
+      <p class="tabla-sub">Ordenados por <strong>Índice xG</strong> (Ataque + Defensa [EN CAMPO NEUTRAL]), de mayor a menor</p>
+    </div>
+    <div class="tabla-league-selector">
+      <label class="selector-label" for="tabla-liga">🏆 Selecciona una Liga</label>
+      <div class="select-wrapper tabla-select-wrap">
+        <select id="tabla-liga">
+            <!-- Europa -->        <!-- Europa -->
+            <option value="ChampionsLeague">👑 Champions League</option>
+            <!-- Aún NO
+            <option value="EuropaLeague">👑 Europa League</option>
+            <option value="ConferenceLeague">👑 Conference League</option> -->
+            <option value="PremierLeague">🇽🇪 Premier League</option>
+    
+            <option value="LaLiga">🇪🇸 La Liga</option>
+            <option value="SerieA">🇮🇹 Serie A</option>
+            <option value="Bundesliga">🇩🇪 Bundesliga</option>
+            <option value="Ligue1">🇫🇷 Ligue 1</option>
+            <option value="PrimeiraLiga">🇵🇹 Primeira Liga</option>  
+            <option value="Eredivise">🇳🇱 Eredivise</option>
+            <option value="SüperLig">🇹🇷 Süper Lig</option>    
+            <option value="JupilerProLeague">🇧🇪 Jupiler Pro League</option>
+            <!-- Aún NO
+            <option value="Superliga">🇩🇰 Superliga</option>
+            <option value="Eliteserien">🇳🇴 Eliteserien</option>
+            <option value="Allsvenskan">🇸🇪 Allsvenskan</option>
+            <option value="Ligatha'Al">🇮🇱 Ligat ha'Al</option>
+            <option value="_Premier League">🇺🇦 Premier League</option> --><!-- Ucrania xd-->
+             
+             
+            <option value="Championship">🇽🇪 Championship</option>
+            <!-- Aún NO
+            <option value="SerieB">🇮🇹 Serie B</option>
+            <option value="LaLigaHypermotion">🇪🇸 LaLiga Hypermotion</option> -->
+            <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
+            <!-- Aún NO
+            <option value="_1División">🇩🇰 1. División</option>        
+    
+            <option value="EFLCup">🏆🇽🇪 EFL Cup</option> -->
+            <option value="FACup">🏆🇽🇪 FA Cup</option>
+            <option value="CopaDelRey">🏆🇪🇸 Copa del Rey</option><!-- Aún NO
+            <option value="CopaDeItalia">🏆🇮🇹 Copa de Italia</option>
+            <option value="Pokal">🏆🇩🇪 Pokal</option> -->
+            <!-- Aún NO
+            <option value="ChampionsLeagueFemenina">👑 Champions League Femenina</option>
+            <option value="WSL">🇽🇪 WSL</option>
+            <option value="Liga F">🇪🇸 Liga F</option>
+    
+            //América
+            <option value="CopaLibertadores">👑 Copa Libertadores</option>        
+            <option value="CopaSudamericana">👑 Copa Sudamericana</option> -->
+    
+            <option value="LigaProfesional">🇦🇷 Liga Profesional</option>        
+            <option value="SerieABetano">🇧🇷 Serie A Betano</option>
+            <option value="LigaMX">🇲🇽 Liga MX</option><!-- Aún NO
+            <option value="MLS">🇺🇸 MLS</option>       
+            //<option value="LigaAUF">🇺🇾 Liga AUF</option> 
+            <option value="PrimeraA">🇨🇴 Primera A</option>  -->
+            <option value="Liga1">🇵🇪 Liga 1</option><!-- Aún NO
+            <option value="LigaPro">🇪🇨 LigaPro</option>
+            <option value="PrimeraDivisión">🇵🇾 Primera División</option>
+            <option value="LigaDePrimera">🇨🇱 Liga de Primera</option>  -->
+    
+            <option value="BrasileiraoSerieB">🇧🇷 Brasileirao Serie B</option>
+            <!-- Aún NO
+            <option value="CopaFGF">🇧🇷 Copa FGF</option>
+    
+            <option value="CopaBetanoDoBrasil">🏆🇧🇷 Copa Betano Do Brasil</option>
+            <option value="CopaArgentina">🏆🇦🇷 Copa Argentina</option>
+            <option value="LeaguesCup">🏆 Leagues Cup</option>
+    
+            //Asia
+            <option value="LigaDeCampeonesAFC">👑 Liga de Campeones AFC</option>
+            <option value="AFCChampionsLeague2">👑 AFC Champions League 2</option>
+          -->
+            <option value="J1League">🇯🇵 J1 League</option><!-- Aún NO
+            <option value="UAELeague">🇦🇪 UAE League</option>
+            <option value="SaudiProLeague">🇸🇦 Saudi Pro League</option>-->
+            <option value="QatarStarsLeague">🇶🇦 Qatar Stars League</option><!-- Aún NO
+            <option value="ChineseSuperLeague">🇨🇳 Chinese Super League</option>
+            //África
+            <option value="EgyptianPremierLeague">🇪🇬 Egyptian Premier League</option>
+            <option value="BetwayPremiership">🇸🇩 Betway Premiership</option>
+            //FIFA
+            <option value="Mundial">🏆👑 Mundial</option>
+            <option value="MundialDeClubes">🏆👑 Mundial de Clubes</option>
+            <option value="Eurocopa">🏆 Eurocopa</option>
+            <option value="CopaAmerica">🏆 Copa América</option>
+            <option value="CopaOro">🏆 Copa Oro</option>
+            <option value="CopaDeÁfricaDeNaciones">🏆 Copa de África de Naciones</option>
+            <option value="CampeonatoAfricanoDeNaciones">🏆 Campeonato Africano de Naciones</option>
+    
+            <option value="NationsLeague">🏆 Nations League</option>
+            <option value="NationsLeagueFemenina">🏆 Nations League Femenina</option>
+    
+            <option value="EurocopaFemenina">🏆 Eurocopa Femenina</option>
+            <option value="CopaAmericaFemenina">🏆 Copa América Femenina</option>
+    
+            <option value="ClasificacionCONMEBOL">🌎 Clasificacion CONMEBOL</option>
+            <option value="ClasificacionUEFA">🌎 Clasificacion UEFA</option>
+            <option value="ClasificacionCONCACAF">🌎 Clasificacion CONCACAF</option>
+            <option value="ClasificacionAFC">🌎 Clasificacion AFC</option>
+    
+            <option value="JuegosOlímpicos">🏆 Juegos Olímpicos</option>
+            <option value="MundialSub20">🏆 Mundial Sub20</option>
+            <option value="Mundial Femenino">🏆 Mundial Femenino</option>-->
+        </select>
+        <span class="select-arrow" aria-hidden="true">▾</span>
+      </div>
+    </div>
+    <div id="tabla-container" class="tabla-container">
+      <div class="tabla-empty-state">
+        <span class="tabla-empty-icon">👆</span>
+        <p>Selecciona una liga para ver la tabla</p>
+      </div>
+    </div>
+  </main>
+</div>
+
 <footer class="site-footer">
   <p>© 2026 <strong>Hidden xG</strong> · By <a href="https://www.youtube.com/@MegaBetsMan" target="_blank">@MegaBetsMan</a> · Pasión por el análisis de datos</p>
 </footer>
@@ -258,66 +457,54 @@
 <script src="script.js"></script>
 <script src="matches.js"></script>
 
-<!-- ── PATCH: bridge script.js output to new UI ── -->
 <script>
 (function() {
-
-  /* ── 1. Stats display patch ─────────────────────────
-     script.js writes innerHTML to #StatsLocal / #StatsVisita.
-     We intercept and split into the two stat-val spans.       */
+  /* ── Stats patch ── */
   function patchStats(id, atkId, defId) {
     const el = document.getElementById(id);
     if (!el) return;
-    const observer = new MutationObserver(() => {
+    const obs = new MutationObserver(() => {
       const html = el.innerHTML;
-      const atkMatch = html.match(/Goles a Favor:\s*([\d.\-]+)/);
-      const defMatch = html.match(/Goles en Contra:\s*([\d.\-]+)/);
-      const atkEl = document.getElementById(atkId);
-      const defEl = document.getElementById(defId);
-      if (atkEl && atkMatch) atkEl.textContent = atkMatch[1];
-      if (defEl && defMatch) defEl.textContent = defMatch[1];
-      // hide raw text
+      const atkM = html.match(/Goles a Favor:\s*([\d.\-]+)/);
+      const defM = html.match(/Goles en Contra:\s*([\d.\-]+)/);
+      const aEl = document.getElementById(atkId);
+      const dEl = document.getElementById(defId);
+      if (aEl && atkM) aEl.textContent = atkM[1];
+      if (dEl && defM) dEl.textContent = defM[1];
       el.style.display = 'none';
     });
-    observer.observe(el, { childList: true, subtree: true, characterData: true });
+    obs.observe(el, { childList: true, subtree: true, characterData: true });
   }
   patchStats('StatsLocal',  'stat-local-atk',  'stat-local-def');
   patchStats('StatsVisita', 'stat-visita-atk', 'stat-visita-def');
 
-  /* ── 2. xG score display patch ──────────────────────
-     script.js writes "1.234 vs 0.987" to #xgLocal.
-     We split and show in the two xg-num spans.               */
+  /* ── xG score patch ── */
   const xgLocalEl = document.getElementById('xgLocal');
-  const numLocal   = document.getElementById('xg-num-local');
-  const numVisita  = document.getElementById('xg-num-visita');
-
-  const xgObserver = new MutationObserver(() => {
-    const raw = xgLocalEl.textContent.trim();
+  const numLocal  = document.getElementById('xg-num-local');
+  const numVisita = document.getElementById('xg-num-visita');
+  new MutationObserver(() => {
+    const raw   = xgLocalEl.textContent.trim();
     const parts = raw.split(' vs ');
     if (parts.length === 2) {
       numLocal.textContent  = parts[0];
       numVisita.textContent = parts[1];
-      // colour hint
       const l = parseFloat(parts[0]), v = parseFloat(parts[1]);
       numLocal.style.color  = l > v ? 'var(--lime)' : l < v ? 'var(--muted-fg)' : 'var(--cyan)';
       numVisita.style.color = v > l ? 'var(--lime)' : v < l ? 'var(--muted-fg)' : 'var(--cyan)';
       document.getElementById('xg-display').classList.add('has-result');
       document.getElementById('probs-card').classList.add('has-result');
     }
-  });
-  xgObserver.observe(xgLocalEl, { childList: true, subtree: true, characterData: true });
+  }).observe(xgLocalEl, { childList: true, subtree: true, characterData: true });
 
-  /* ── 3. Theme toggle label sync ────────────────────── */
+  /* ── Theme label sync ── */
   const themeBtn = document.getElementById('theme-toggle');
   if (themeBtn) {
-    const span = themeBtn.querySelector('span');
     themeBtn.addEventListener('click', () => {
       const isLight = document.body.classList.contains('light-mode');
+      const span = themeBtn.querySelector('span');
       if (span) span.textContent = isLight ? 'Modo Claro' : 'Modo Oscuro';
-      themeBtn.firstChild.textContent = isLight ? '☀️ ' : '🌙 ';
     });
   }
-
 })();
 </script>
 
