@@ -1437,3 +1437,25 @@ document.getElementById('swapBtn').addEventListener('click', function() {
   // calcularProbabilidades(); 
   calcular();
 });
+
+const navLinks = document.getElementById('navLinks');
+const overlay = document.getElementById('overlay');
+const btnOpen = document.getElementById('menuOpen');
+const btnClose = document.getElementById('menuClose');
+
+// Función para abrir/cerrar
+function toggleMenu() {
+  navLinks.classList.toggle('active');
+  overlay.classList.toggle('active');
+}
+
+btnOpen.addEventListener('click', toggleMenu);
+btnClose.addEventListener('click', toggleMenu);
+overlay.addEventListener('click', toggleMenu); // Cerrar al tocar fuera
+
+// Cerrar menú automáticamente al hacer clic en una opción (opcional)
+document.querySelectorAll('.nav-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    if(window.innerWidth <= 768) toggleMenu();
+  });
+});

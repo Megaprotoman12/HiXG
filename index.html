@@ -26,27 +26,36 @@
       </div>
     </div>
 
-    <div class="nav-links">
-      <button class="nav-tab active" data-section="calc">
-        <span class="tab-icon">🧮</span>
-        <span class="tab-label">Calculadora</span>
-      </button>
-      <button class="nav-tab" data-section="matches">
-        <span class="tab-icon">📅</span>
-        <span class="tab-label">Partidos</span>
-      </button>
-      <button class="nav-tab" data-section="pronosticos">
-        <span class="tab-icon">🤑</span>
-        <span class="tab-label">Pronósticos</span>
-      </button>
-      <button class="nav-tab" data-section="tabla">
-        <span class="tab-icon">📋</span>
-        <span class="tab-label">Tabla</span>
-      </button>
-      <a class="nav-link" target="_blank" rel="noopener">| |</a>
-      <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">💬 Comunidad</a>
-      <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">▶ YouTube</a>
-      <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">🎵 TikTok</a>
+    <button class="menu-toggle" id="menuOpen">
+      <span class="tab-icon">☰</span>
+    </button>
+
+    <div class="sidebar-overlay" id="overlay"></div>
+
+    <div class="nav-links" id="navLinks">
+      <button class="menu-close" id="menuClose">×</button>
+      
+        <button class="nav-tab active" data-section="calc">
+          <span class="tab-icon">🧮</span>
+          <span class="tab-label">Calculadora</span>
+        </button>
+        <button class="nav-tab" data-section="matches">
+          <span class="tab-icon">📅</span>
+          <span class="tab-label">Partidos</span>
+        </button>
+        <button class="nav-tab" data-section="pronosticos">
+          <span class="tab-icon">🤑</span>
+          <span class="tab-label">Pronósticos</span>
+        </button>
+        <button class="nav-tab" data-section="tabla">
+          <span class="tab-icon">📋</span>
+          <span class="tab-label">Tabla</span>
+        </button>
+        <a class="nav-link" target="_blank" rel="noopener">| |</a>
+        <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">💬 Comunidad</a>
+        <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">▶ YouTube</a>
+        <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">🎵 TikTok</a>
+
     </div>
 
     <button id="theme-toggle" class="theme-btn" aria-label="Cambiar modo">

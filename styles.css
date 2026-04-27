@@ -33,6 +33,87 @@
   --glow-hot:    0 0 24px rgba(255,45,107,0.45);
 }
 
+
+/* ── MENUCITO ──────────────────────────────────── */
+/* --- DISEÑO DESKTOP (Tu estilo actual mejorado) --- */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #111;
+  padding: 10px;
+}
+.menu-toggle, .menu-close { display: none; } /* Escondidos en PC */
+
+/* --- DISEÑO MÓVIL (Menú Lateral) --- */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
+    background: var(--lime, #32cd32);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px; /* Ancho del menú */
+    height: 100vh;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #0f121a; /* Color oscuro profesional */
+    z-index: 1000;
+    padding: 60px 20px;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(-100%); /* Escondido a la izquierda */
+    box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+  }
+
+  .nav-links.active {
+    transform: translateX(0); /* Se desliza hacia adentro */
+  }
+
+  .menu-close {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 30px;
+    color: white;
+    background: none;
+    border: none;
+  }
+
+  .sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+  }
+
+  .sidebar-overlay.active { display: block; }
+
+  /* Ajuste de botones dentro del menú */
+  .nav-tab, .nav-link {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 12px;
+    border-bottom: 1px solid #222;
+  }
+}
+
 /* ── TOKENS LIGHT ──────────────────────────────────── */
 .light-mode {
   --lime:   #5a8000;
