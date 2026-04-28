@@ -11,7 +11,8 @@
   /* Brand palette — idénticas a las originales */
   --lime:   #C8FF00;
   --cyan:   #00F0FF;
-  --hot:    #FF2D6B;
+  --reallyhot: #FF2D6B; 
+  --hot:    #2dfff4; /*--hot:    #FF2D6B;*/
   --purple: #7B2FFF;
   --orange: #FF6B00;
   --dark:   #050A0E;
@@ -30,7 +31,8 @@
   /* Glow shortcuts */
   --glow-lime:   0 0 24px rgba(200,255,0,0.35);
   --glow-cyan:   0 0 24px rgba(0,240,255,0.35);
-  --glow-hot:    0 0 24px rgba(255,45,107,0.45);
+  --glow-hot:    0 0 24px rgba(45, 223, 255, 0.45);
+  --glow-reallyhot:    0 0 24px rgba(255,45,107,0.45);
 }
 
 
@@ -256,7 +258,7 @@ body {
   position: relative;
   z-index: 10;
   height: 4px;
-  background: linear-gradient(90deg, var(--hot), var(--purple), var(--cyan), var(--lime), var(--cyan), var(--hot));
+  background: linear-gradient(90deg, var(--reallyhot), var(--purple), var(--cyan), var(--lime), var(--cyan), var(--reallyhot));
   background-size: 300% 100%;
   animation: barSlide 5s linear infinite;
 }
@@ -592,8 +594,8 @@ select option { background: var(--bg-card); color: var(--text-main); }
   font-family: 'Bebas Neue', sans-serif;
   font-size: 48px;
   letter-spacing: 4px;
-  color: var(--hot);
-  text-shadow: var(--glow-hot);
+  color: var(--reallyhot);
+  text-shadow: var(--glow-reallyhot);
   line-height: 1;
 }
 .vs-fire {
@@ -1118,8 +1120,8 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .matches-live-dot {
   width: 10px; height: 10px; border-radius: 50%;
-  background: var(--hot);
-  box-shadow: 0 0 8px var(--hot);
+  background: var(--reallyhot);
+  box-shadow: 0 0 8px var(--reallyhot);
   animation: pulseDot 1.4s ease-in-out infinite;
 }
 @keyframes pulseDot {
@@ -1150,7 +1152,7 @@ select option { background: var(--bg-card); color: var(--text-main); }
 .live-count, .fav-count {
   display: inline-flex; align-items: center; justify-content: center;
   width: 18px; height: 18px; border-radius: 50%;
-  background: var(--hot); color: #fff;
+  background: var(--reallyhot); color: #fff;
   font-size: 10px; font-weight: 900;
   vertical-align: middle; margin-left: 4px;
 }
@@ -1251,7 +1253,7 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .match-kickoff {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 22px; letter-spacing: 1px; color: var(--cyan);
+  font-size: 22px; letter-spacing: 1px; color: var(--reallyhot); /*cyan dice*/
 }
 .match-vs-label {
   font-family: 'Barlow Condensed', sans-serif;
@@ -1423,7 +1425,7 @@ select option { background: var(--bg-card); color: var(--text-main); }
   font-family: 'Bebas Neue', sans-serif;
   font-size: 20px;
   letter-spacing: 2px;
-  color: var(--hot);
+  color: var(--reallyhot);
   line-height: 1;
 }
 .xgp-score {
@@ -1751,16 +1753,20 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .pron-card.pick-win:hover  { box-shadow: 0 8px 28px rgba(200,255,0,0.18); border-color: rgba(200,255,0,0.35); }
 .pron-card.pick-draw:hover { box-shadow: 0 8px 28px rgba(245,158,11,0.18); border-color: rgba(245,158,11,0.35); }
+.pron-card.pick-loss:hover { box-shadow: 0 8px 28px rgba(45, 255, 244, 0.18); border-color: rgba(45, 255, 244, 0.35); }
+/*
 .pron-card.pick-loss:hover { box-shadow: 0 8px 28px rgba(255,45,107,0.18); border-color: rgba(255,45,107,0.35); }
-
+*/
 /* Top 3 especial */
 .pron-card.pron-top {
   background: linear-gradient(135deg, var(--bg-card), var(--bg-card2));
 }
 .pron-card.pron-top.pick-win  { border-color: rgba(200,255,0,0.3); }
 .pron-card.pron-top.pick-draw { border-color: rgba(245,158,11,0.3); }
+.pron-card.pron-top.pick-loss { border-color: rgba(45, 248, 255, 0.3); }
+/*
 .pron-card.pron-top.pick-loss { border-color: rgba(255,45,107,0.3); }
-
+*/
 /* Rank medal */
 .pron-card-rank {
   font-size: 24px;
@@ -1866,8 +1872,10 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .pick-win  .pron-cell.dom { border-color: rgba(200,255,0,0.4); background: rgba(200,255,0,0.07); }
 .pick-draw .pron-cell.dom { border-color: rgba(245,158,11,0.4); background: rgba(245,158,11,0.07); }
+.pick-loss .pron-cell.dom { border-color: rgba(45, 230, 255, 0.4); background: rgba(45, 230, 255, 0.07); }
+/*
 .pick-loss .pron-cell.dom { border-color: rgba(255,45,107,0.4); background: rgba(255,45,107,0.07); }
-
+*/
 .pron-cell-pct {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 18px; line-height: 1; color: var(--text-main);
@@ -1912,7 +1920,7 @@ select option { background: var(--bg-card); color: var(--text-main); }
   font-size: 11px; font-weight: 600;
   color: var(--text-muted); letter-spacing: .3px;
 }
-.pron-dom strong { color: var(--cyan); }
+.pron-dom strong { color: var(--reallyhot); }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 600px) {

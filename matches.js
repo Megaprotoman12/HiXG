@@ -550,13 +550,13 @@ HXG.computeXG = function(m) {
         <button class="xgp-close" aria-label="Cerrar">✕</button>
       </div>
       <div class="xgp-matchup">
-        <div class="xgp-team home">${m.home}</div>
+        <div class="xgp-team home">🔥${m.home}</div>
         <div class="xgp-mid">
           <span class="xgp-kickoff-date">${dia}</span>
           <span class="xgp-kickoff-time">${hora}</span>
           <span class="xgp-vs">VS</span>
         </div>
-        <div class="xgp-team away">${m.away}</div>
+        <div class="xgp-team away">${m.away}🔥</div>
       </div>
       ${content}
     </div>`;
@@ -597,7 +597,7 @@ HXG.computeXG = function(m) {
         <div class="xgp-bar-seg loss" style="width:${loss}%"></div>
       </div>
       <div class="xgp-bar-legend">
-        <span class="leg-w">🟢 Local</span><span class="leg-d">🟡 Empate</span><span class="leg-l">🔴 Visita</span>
+        <span class="leg-w">🟢 Local</span><span class="leg-d">🟡 Empate</span><span class="leg-l">🔵 Visita</span>
       </div>
       <div class="xgp-section-title">Ambos Anotan</div>
       <div class="xgp-btts">
@@ -800,13 +800,13 @@ HXG.computeXG = function(m) {
       ];
       const sorted = [...candidates].sort((a, b) => b.pct - a.pct);
       const best = sorted[0];
-      const second = sorted[1];
+      const last = sorted[2];
       /* Diferencia dominante: pct_1 - pct_2 */
-      const dominance = best.pct - second.pct;
+      const dominance = best.pct - last.pct;
 
       picks.push({
         m, p, xgH, xgA,
-        best, second,
+        best, last,
         dominance,
         win: p.win, draw: p.draw, loss: p.loss,
       });
@@ -831,7 +831,7 @@ HXG.computeXG = function(m) {
 
     /* Clases de color según tipo dominante */
     const typeClass = best.type === 'win' ? 'pick-win' : best.type === 'draw' ? 'pick-draw' : 'pick-loss';
-    const typeIcon  = best.type === 'win' ? '🟢' : best.type === 'draw' ? '🟡' : '🔴';
+    const typeIcon  = best.type === 'win' ? '🟢' : best.type === 'draw' ? '🟡' : '🔵';
 
     /* Barra de dominancia (0-50 → 0-100%) */
     const domBar = Math.min(100, Math.round(dominance * 2));
@@ -888,7 +888,10 @@ HXG.computeXG = function(m) {
 
           <!-- xG + dominancia -->
           <div class="pron-footer">
+          <!-- xG + dominancia 
             <span class="pron-xg">xG ${xgH.toFixed(2)} — ${xgA.toFixed(2)}</span>
+          -->
+            <span class="pron-xg">Cuotas mínimas: ${(101/win).toFixed(2)} — ${(101/draw).toFixed(2)} — ${(101/loss).toFixed(2)}}</span>
             <span class="pron-dom">Diferencia: <strong>+${dominance.toFixed(1)}pp</strong></span>
           </div>
 
