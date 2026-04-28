@@ -60,7 +60,92 @@ HXG.LEAGUE_MAP = {
   'FA Cup':           'FACup',
   'Liga 1':           'Liga1',
   'J1 League':        'J1League',
-  'Champions League': 'ChampionsLeague',
+  'UEFA Champions League': 'ChampionsLeague',
+  'CONMEBOL Libertadores': 'CopaLibertadores',
+  'CONMEBOL Sudamericana': 'CopaSudamericana',
+  "Ligat Ha'al": 'LigathaAl',
+  'J1 League': 'J1League',
+  'Pro League': 'SaudiProLeague',
+  'Premier League': 'EgyptianPremierLeague',
+};
+
+HXG.TEAM_ALIASES = {
+  //Champions
+  'Paris Saint Germain': 'PSG',
+  'Bayern München': 'Bayern Múnich',
+
+  //Libertadores
+  'Cruzeiro': 'Cruzeiro (Bra)',
+  'Boca Juniors': 'Boca Jrs. (Arg)',
+
+  'Sporting Cristal': 'Sporting Cristal (Per)',
+  'Junior': 'Junior (Col)',
+
+  'Lanus': 'Lanús (Arg)',
+  'LDU de Quito': 'LDU Quito (Ecu)',
+
+  'Libertad Asuncion': 'Libertad (Par)',
+  'Independiente del Valle': 'Ind. del Valle (Ecu)',
+//No existe Venezuela xd
+  'UCV': 'Universidad Central (Ven)',
+  'Rosario Central': 'Rosario Central (Arg)',
+
+  'Deportes Tolima': 'Tolima (Col)',
+  'Coquimbo Unido': 'Coquimbo (Chi)',
+
+  //Sudamericana
+  'Botafogo': 'Botafogo (Bra)',
+  'Independiente Petrolero': 'Independiente (Bol)',
+
+  'San Lorenzo': 'San Lorenzo (Arg)',
+  'Santos': 'Santos (Bra)',
+  
+  'Barracas Central': 'Barracas Central (Arg)',
+  'A. Italiano': 'Audax (Chi)',
+  
+  'Millonarios': 'Millonarios (Col)',
+  'Sao Paulo': 'Sao Paulo (Bra)',
+  
+  'Deportivo Recoleta': 'Recoleta (Par)',
+  'Deportivo Cuenca': 'Dep. Cuenca (Ecu)',
+  
+  "O'Higgins": "O'Higgins (Chi)",
+  'Boston River': 'Boston River (Uru)',
+
+  'Al-Shabab': 'Al Shabab',
+  'Al-Fateh': 'Al Fateh',
+
+  'NEOM': 'Neom SC',
+  'Al-Hazm': 'Al Hazem',
+
+  'Al Khaleej Saihat': 'Al Khaleej',
+  'Al Najma': 'Al Najma',
+
+  'Al-Hilal Saudi FC': 'Al-Hilal',
+  'Damac': 'Damac',
+
+  'Petrojet': 'Petrojet',
+  'Ismaily SC': 'Ismaily',
+
+  'Masr': 'ZED',
+  'Pharco': 'Pharco',
+
+  'El Mokawloon': 'Arab Contractors',
+  'Ghazl El Mehalla': 'Ghazl El Mahallah',
+
+  'Kahraba Ismailia': 'Kahrabaa Ismailia',
+  'National Bank of Egypt': 'National Bank Egypt',
+  
+  'Maccabi Tel Aviv': 'Maccabi Tel Aviv',
+  'Hapoel Beer Sheva': 'H. Beer Sheva',
+
+  'Beitar Jerusalem': 'B. Jerusalem',
+  'Hapoel Petah Tikva': 'H. Petah Tikva',
+  // agrega los que necesites
+  /* Para facilitarte mi querido YO del futuro
+    'Independiente': 'Independiente',
+    'Independiente': 'Independiente',
+  */
 };
 
 /* Busca un equipo SÓLO en la liga indicada por el partido */
@@ -68,7 +153,8 @@ HXG.findTeam = function(teamName, leagueKey) {
   if (typeof bases === 'undefined') return null;
   const leagueData = bases[leagueKey];
   if (!leagueData) return null;
-  return leagueData[teamName] || null;
+  const name = HXG.TEAM_ALIASES[teamName] || teamName;
+  return leagueData[name] || null;
 };
 
 /* Calcula xG para un partido dado su objeto m (con m.leagueKey) */
@@ -97,7 +183,7 @@ HXG.computeXG = function(m) {
     LaLiga:'🇪🇸 La Liga', SerieA:'🇮🇹 Serie A', Bundesliga:'🇩🇪 Bundesliga',
     Ligue1:'🇫🇷 Ligue 1', Championship:'🏴󠁧󠁢󠁥󠁮󠁧󠁿 Championship',
     _2Bundesliga:'🇩🇪 2. Bundesliga', FACup:'🏆 FA Cup',
-    Liga1:'🇵🇪 Liga 1', J1League:'🇯🇵 J1 League',
+    Liga1:'🇵🇪 Liga 1', J1League:'🇯🇵 J1 League',  CopaLibertadores:'👑 Copa Libertadores',
   };
 
   function renderTabla(ligaKey) {
@@ -158,72 +244,257 @@ HXG.computeXG = function(m) {
 
 
 /* ════════════════════════════════════════════════════════
-   MÓDULO 2 — PARTIDOS + PANEL xG
+   MÓDULO 2 — PARTIDOS DESDE API (1 request/día a las 00:01)
    ════════════════════════════════════════════════════════ */
 (function MatchesModule() {
 
-  const API_KEY       = 'TU_API_KEY_AQUI'/*'7657ca8f8011c6cbc615b2c74ccb75da';*/
-  const USE_DEMO_DATA = true;
-  /* IDs de ligas — edita aquí para agregar/quitar */
-  const LEAGUE_IDS    = [39, 140, 135, 78, 61, 40, 45, 268, 98, 2, 3];
+  /* ╔═══════════════════════════════════════════════════════╗
+     ║         ⚙️  CONFIGURACIÓN — EDITA AQUÍ               ║
+     ╠═══════════════════════════════════════════════════════╣
+     ║                                                       ║
+     ║  API_KEY → tu clave de api-sports.io                 ║
+     ║                                                       ║
+     ║  MY_LEAGUE_IDS → IDs de las ligas que quieres ver.   ║
+     ║  SOLO aparecerán partidos de estas ligas, y SOLO si  ║
+     ║  ambos equipos existen en tu bases[].                 ║
+     ║                                                       ║
+     ║  IDs comunes:                                         ║
+     ║   2   → Champions League                             ║
+     ║   3   → Europa League                                ║
+     ║   39  → Premier League                               ║
+     ║   61  → Ligue 1                                      ║
+     ║   71  → Brasileirao Serie A                          ║
+     ║   78  → Bundesliga                                   ║
+     ║   135 → Serie A                                      ║
+     ║   140 → La Liga                                      ║
+     ║   253 → Liga 1 Perú                                  ║
+     ║   292 → Liga Profesional Argentina                   ║
+     ║   40  → Championship                                 ║
+     ║   45  → FA Cup                                       ║
+     ║   188 → Copa Libertadores                            ║
+     ║                                                       ║
+     ║  Busca cualquier liga en:                            ║
+     ║  https://v3.football.api-sports.io/leagues           ║
+     ╚═══════════════════════════════════════════════════════╝ */
 
-  /* ── ESTRATEGIA DE REQUESTS ────────────────────────────────
-     El plan free tiene 100 requests/día.
-     En lugar de refrescar cada 1 min (1440 req/día!), usamos
-     un intervalo dinámico según si hay partidos en vivo o no.
+  const API_KEY = '7657ca8f8011c6cbc615b2c74ccb75da';
 
-     • Con partidos EN VIVO   → refresca cada 3 min  (~20 req)
-     • Sin partidos en vivo   → refresca cada 30 min  (~4 req)
-     • Al cargar la página    → 1 request inicial
-     Total estimado por sesión activa: ~25-30 req/día ─────── */
-  const REFRESH_LIVE_MS = 3 * 60 * 1000;   /* 3 min — hay partidos en vivo */
-  const REFRESH_IDLE_MS = 30 * 60 * 1000;  /* 30 min — sin partidos en vivo */
+  const MY_LEAGUE_IDS = [
+    2,    // Champions League
+    39,   // Premier League
+    78,   // Bundesliga
+    135,  // Serie A
+    140,  // La Liga
+    61,   // Ligue 1
+    40,   // Championship
+    45,   // FA Cup
+    253,  // Liga 1 Perú
+                         
+    3   ,// Europa League    
+                                                    
+    71  ,// Brasileirao Serie A                            
+    292 ,// Liga Profesional Argentina               
+    13 ,// Copa Libertadores           
+    11 ,// Copa Sudamericana 
+    252, //J1League
+    233,//Premier League - Egipto
+    383, // Israel
+    307, //Arabia Saudí
+  ];
+  /* ═══════════════════════════════════════════════════════
+     PARTIDOS DE RESPALDO — se muestran si:
+       • La API falla
+       • No hay partidos hoy en tus ligas
+       • El usuario no tiene conexión
+     Edítalos libremente, mismo formato que siempre.
+     ═══════════════════════════════════════════════════════ */
+  const FALLBACK_MATCHES = [
+    {
+      id: 1,
+      league:    'Premier League',
+      leagueKey: 'PremierLeague',
+      country:   'England',
+      home:      'Arsenal',
+      away:      'Liverpool',
+      time:      '2025-05-03T15:00:00',
+    },
+    {
+      id: 2,
+      league:    'La Liga',
+      leagueKey: 'LaLiga',
+      country:   'Spain',
+      home:      'Barcelona',
+      away:      'Real Madrid',
+      time:      '2025-05-03T18:00:00',
+    },
+  ];
+  /* ═══ FIN CONFIGURACIÓN ═══════════════════════════════ */
 
-  let allMatches    = [];
+  /* ── Clave de caché por día ── */
+  const todayKey = () => 'hxg_matches_' + new Date().toISOString().slice(0, 10);
+
+  /* ── Leer / guardar caché ── */
+  function readCache() {
+    try {
+      const raw = localStorage.getItem(todayKey());
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  }
+  function writeCache(data) {
+    try {
+      /* Limpiar cachés de días anteriores */
+      Object.keys(localStorage)
+        .filter(k => k.startsWith('hxg_matches_') && k !== todayKey())
+        .forEach(k => localStorage.removeItem(k));
+      localStorage.setItem(todayKey(), JSON.stringify(data));
+    } catch { /* storage lleno → ignorar */ }
+  }
+
+  /* ── Llamada a la API (solo 1 vez por día) ── */
+  async function fetchTodayFromAPI() {
+    const cached = readCache();
+    if (cached) {
+      console.log('[HXG] Partidos desde caché local (0 requests gastados)');
+      return cached;
+    }
+
+    const today = new Date().toISOString().slice(0, 10);
+    console.log(`[HXG] Consultando API para ${today}…`);
+
+    const res = await fetch(
+      `https://v3.football.api-sports.io/fixtures?date=${today}&timezone=America/Lima`,
+      { headers: { 'x-apisports-key': API_KEY } }
+    );
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const json = await res.json();
+
+    if (json.errors && Object.keys(json.errors).length) {
+      const msg = Object.values(json.errors)[0];
+      throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg));
+    }
+
+    const raw = (json.response || [])
+      /* 1. Solo las ligas que decidiste */
+      //.filter(f => { console.log(f.league.id, f.league.name); return MY_LEAGUE_IDS.includes(f.league.id); })
+      .filter(f => MY_LEAGUE_IDS.includes(f.league.id))
+      /* 2. Normalizar */
+      .map((f, i) => {
+        const leagueKey = HXG.LEAGUE_MAP[f.league.name] || null;
+        return {
+          id:        f.fixture.id || (9000 + i),
+          league:    f.league.name,
+          leagueKey,
+          country:   f.league.country,
+          home:      f.teams.home.name,
+          away:      f.teams.away.name,
+          time:      f.fixture.date,
+        };
+      })
+      /* 3. Solo los que tienen AMBOS equipos en bases[] */
+      
+      .filter(m => {
+        if (!m.leagueKey || typeof bases === 'undefined') return false;
+        const leagueData = bases[m.leagueKey];
+        if (!leagueData) return false;
+        const homeName = HXG.TEAM_ALIASES[m.home] || m.home;
+        const awayName = HXG.TEAM_ALIASES[m.away] || m.away;
+        const hasHome = !!leagueData[homeName];
+        const hasAway = !!leagueData[awayName];
+        if (!hasHome || !hasAway) {
+          console.log(`[HXG] Omitido "${m.home} vs ${m.away}" — equipo sin datos en bases[]`);
+        }
+        return hasHome && hasAway;
+      });
+
+    writeCache(raw);
+    console.log(`[HXG] ${raw.length} partidos guardados en caché. 1 request gastado hoy.`);
+    updateRequestBadge();
+    return raw;
+  }
+
+  /* ── Contador visual de requests ── */
+  function updateRequestBadge() {
+    const key   = 'hxg_req_' + new Date().toISOString().slice(0, 10);
+    const count = parseInt(localStorage.getItem(key) || '0') + 1;
+    localStorage.setItem(key, count);
+    const el = document.getElementById('req-counter');
+    if (el) el.textContent = `${count} req hoy`;
+  }
+
+  /* ── Programar la llamada de 00:01 ── */
+  function scheduleDaily() {
+    const now   = new Date();
+    const next  = new Date(now);
+    next.setHours(3, 24, 0, 0);
+    if (next <= now) next.setDate(next.getDate() + 1);   // ya pasó → mañana
+    const msUntil = next - now;
+    const hh = Math.floor(msUntil / 3600000);
+    const mm = Math.floor((msUntil % 3600000) / 60000);
+    console.log(`[HXG] Próxima actualización automática en ${hh}h ${mm}m (a las 00:01)`);
+    setTimeout(async () => {
+      /* Borrar caché del día anterior para forzar fetch fresco */
+      localStorage.removeItem(todayKey());
+      try {
+        const matches = await fetchTodayFromAPI();
+        allMatchesRef.length = 0;
+        matches.forEach(m => allMatchesRef.push(m));
+        renderMatches();
+        updateCounts();
+        notifyPronosticos();
+      } catch (e) {
+        console.warn('[HXG] Fetch automático de 00:01 falló:', e.message);
+      }
+      scheduleDaily(); // reprogramar para mañana
+    }, msUntil);
+  }
+
+  /* ── Estado ── */
+  let allMatchesRef = [];
   let favorites     = loadFavs();
   let activeTab     = 'all';
-  let refreshTimer  = null;
   let selectedMatch = null;
 
   const listEl      = document.getElementById('matches-list');
-  const loadingEl   = document.getElementById('matches-loading');
   const liveCountEl = document.getElementById('live-count');
   const favCountEl  = document.getElementById('fav-count');
-  const liveDotEl   = document.getElementById('matches-live-dot');
   if (!listEl) return;
 
   /* ── Split layout ── */
   const splitWrap = document.createElement('div');
   splitWrap.id = 'matches-split';
   splitWrap.className = 'matches-split';
-
   const listPane = document.createElement('div');
   listPane.id = 'matches-list-pane';
   listPane.className = 'matches-list-pane';
-
   const xgPane = document.createElement('div');
   xgPane.id = 'matches-xg-pane';
   xgPane.className = 'matches-xg-pane';
   xgPane.setAttribute('aria-hidden', 'true');
-
   listEl.parentNode.insertBefore(splitWrap, listEl);
   splitWrap.appendChild(listPane);
   splitWrap.appendChild(xgPane);
   listPane.appendChild(listEl);
 
-  /* ── Tabs ── */
+  /* ── Tabs (Todos y Favoritos) ── */
   document.querySelectorAll('.m-tab').forEach(btn => {
+    const f = btn.dataset.filter;
+    if (f === 'live' || f === 'finished') btn.style.display = 'none';
     btn.addEventListener('click', () => {
-      document.querySelectorAll('.m-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-      btn.classList.add('active'); btn.setAttribute('aria-selected', 'true');
-      activeTab = btn.dataset.filter;
+      document.querySelectorAll('.m-tab').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      activeTab = f;
       renderMatches();
     });
   });
 
   /* ── Favoritos ── */
   function loadFavs() {
-    try { return new Set(JSON.parse(localStorage.getItem('hxg_favs') || '[]')); } catch { return new Set(); }
+    try { return new Set(JSON.parse(localStorage.getItem('hxg_favs') || '[]')); }
+    catch { return new Set(); }
   }
   function saveFavs() { localStorage.setItem('hxg_favs', JSON.stringify([...favorites])); }
   function toggleFav(id) {
@@ -231,29 +502,31 @@ HXG.computeXG = function(m) {
     saveFavs(); updateCounts();
     if (activeTab === 'favorites') { renderMatches(); return; }
     const btn = listEl.querySelector(`.fav-btn[data-id="${id}"]`);
-    if (btn) { const on = favorites.has(id); btn.classList.toggle('active', on); btn.textContent = on ? '★' : '☆'; }
+    if (btn) {
+      const on = favorites.has(id);
+      btn.classList.toggle('active', on);
+      btn.textContent = on ? '★' : '☆';
+    }
   }
 
   /* ── Panel xG ── */
   function openXGPanel(m) {
     selectedMatch = m.id;
     listEl.querySelectorAll('.match-row').forEach(r => r.classList.remove('match-selected'));
-    const activeRow = listEl.querySelector(`.match-row[data-id="${m.id}"]`);
-    if (activeRow) activeRow.classList.add('match-selected');
+    const row = listEl.querySelector(`.match-row[data-id="${m.id}"]`);
+    if (row) row.classList.add('match-selected');
     splitWrap.classList.add('panel-open');
     xgPane.setAttribute('aria-hidden', 'false');
-
     const xgData = HXG.computeXG(m);
     if (!xgData) {
       xgPane.innerHTML = buildShell(m, `<div class="xgp-no-data">
         <span>📊</span>
-        <p>No hay datos xG para <strong>${m.home}</strong> o <strong>${m.away}</strong> en <em>${m.league}</em>.</p>
-        <p class="xgp-hint">Verifica que ambos equipos estén en la base de datos de esa liga.</p>
+        <p>Sin datos xG para <strong>${m.home}</strong> o <strong>${m.away}</strong> en <em>${m.league}</em>.</p>
+        <p class="xgp-hint">Verifica que los nombres coincidan con bases[].</p>
       </div>`);
     } else {
       const { xgH, xgA } = xgData;
-      const probs = HXG.calcProbs(xgH, xgA, m.home, m.away);
-      xgPane.innerHTML = buildShell(m, buildProbsHTML(xgH, xgA, probs, m));
+      xgPane.innerHTML = buildShell(m, buildProbsHTML(xgH, xgA, HXG.calcProbs(xgH, xgA, m.home, m.away), m));
     }
     xgPane.querySelector('.xgp-close').addEventListener('click', closeXGPanel);
     xgPane.scrollTop = 0;
@@ -268,12 +541,9 @@ HXG.computeXG = function(m) {
   }
 
   function buildShell(m, content) {
-    const isLive = m.status === 'live', isDone = m.status === 'finished';
-    const statusBadge = isLive
-      ? `<span class="xgp-live-badge"><span class="live-pip"></span>${m.minute}'</span>`
-      : isDone ? `<span class="xgp-done-badge">FT</span>` : '';
-    const score = (m.scoreHome !== null && m.scoreAway !== null)
-      ? `<div class="xgp-score">${m.scoreHome} <span class="xgp-score-sep">—</span> ${m.scoreAway}</div>` : '';
+    const d    = new Date(m.time);
+    const dia  = d.toLocaleDateString('es-PE', { weekday:'long', day:'numeric', month:'long' });
+    const hora = d.toLocaleTimeString('es-PE', { hour:'2-digit', minute:'2-digit' });
     return `<div class="xgp-inner">
       <div class="xgp-topbar">
         <span class="xgp-league">${m.league}</span>
@@ -281,7 +551,11 @@ HXG.computeXG = function(m) {
       </div>
       <div class="xgp-matchup">
         <div class="xgp-team home">${m.home}</div>
-        <div class="xgp-mid">${statusBadge}${score}<span class="xgp-vs">VS</span></div>
+        <div class="xgp-mid">
+          <span class="xgp-kickoff-date">${dia}</span>
+          <span class="xgp-kickoff-time">${hora}</span>
+          <span class="xgp-vs">VS</span>
+        </div>
         <div class="xgp-team away">${m.away}</div>
       </div>
       ${content}
@@ -357,169 +631,55 @@ HXG.computeXG = function(m) {
     </div>`;
   }
 
-  /* ── API real ── */
-  async function fetchFromAPI() {
-    const today = new Date().toISOString().slice(0, 10);
-    const res = await fetch(
-      `https://v3.football.api-sports.io/fixtures?date=${today}&timezone=America/Lima`,
-      { headers: { 'x-apisports-key': API_KEY } }
-    );
-    if (!res.ok) throw new Error(`HTTP ${res.status} — verifica tu conexión`);
-    const json = await res.json();
-    if (json.errors && Object.keys(json.errors).length) {
-      const msg = Object.values(json.errors)[0];
-      throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg));
-    }
-    if (!json.response || !json.response.length) return [];
-    return json.response
-      .filter(f => LEAGUE_IDS.includes(f.league.id))
-      .map(normalizeAPIMatch);
-  }
-  function normalizeAPIMatch(f) {
-    const st = f.fixture.status; let status = 'scheduled';
-    if (['1H','2H','HT','ET','P','BT','SUSP','INT','LIVE'].includes(st.short)) status = 'live';
-    else if (['FT','AET','PEN'].includes(st.short)) status = 'finished';
-    else if (['PST','CANC','ABD'].includes(st.short)) status = 'cancelled';
-    return {
-      id: f.fixture.id, league: f.league.name, leagueKey: HXG.LEAGUE_MAP[f.league.name] || null,
-      country: f.league.country, home: f.teams.home.name, away: f.teams.away.name,
-      homeLogo: f.teams.home.logo, awayLogo: f.teams.away.logo,
-      scoreHome: f.goals.home ?? null, scoreAway: f.goals.away ?? null,
-      minute: st.elapsed ?? null, statusShort: st.short, status, time: f.fixture.date,
-    };
-  }
-
-  /* ── Demo data — leagueKey mapeado correctamente ── */
-  function getDemoData() {
-    const n = new Date(), ago = m => new Date(n - m * 60000).toISOString(), fwd = m => new Date(n + m * 60000).toISOString();
-    return [
-      { id:1, league:'🇹🇷 Süper Lig', leagueKey:'SüperLig', country:'', 
-      home:'Alanyaspor', away:'Samsunspor', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.4]*60*60*10000).toISOString()},
-      
-      { id:2, league:'🇮🇹 Serie A', leagueKey:'SerieA', country:'', 
-      home:'Cagliari', away:'Atalanta', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.65]*60*60*10000).toISOString()},
-      
-      { id:3, league:'🇹🇷 Süper Lig', leagueKey:'SüperLig', country:'', 
-      home:'Beşiktaş', away:'Karagumruk', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.7]*60*60*10000).toISOString()},
-      { id:4, league:'🇹🇷 Süper Lig', leagueKey:'SüperLig', country:'', 
-      home:'Konyaspor', away:'Trabzonspor', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.7]*60*60*10000).toISOString()},
-      
-      { id:5, league:'🇮🇹 Serie A', leagueKey:'SerieA', country:'', 
-      home:'Lazio', away:'Udinese', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.875]*60*60*10000).toISOString()},
-      { id:6, league:'🇪🇸 La Liga', leagueKey:'LaLiga', country:'', 
-      home:'Espanyol', away:'Levante', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.9]*60*60*10000).toISOString()},
-      { id:7, league:'🇽🇪 Premier League', leagueKey:'PremierLeague', country:'', 
-      home:'Manchester Utd', away:'Brentford', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.9]*60*60*10000).toISOString()},
-      { id:8, league:'🇵🇪 Liga 1', leagueKey:'Liga1', country:'', 
-      home:'AD Tarma', away:'Los Chankas', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([2]*60*60*10000).toISOString()},
-      
-      { id:9, league:'🇦🇷 Liga Profesional', leagueKey:'LigaProfesional', country:'', 
-      home:'Vélez Sarsfield', away:'Unión Santa Fe', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1+1.175]*60*60*10000).toISOString()},
-      { id:10, league:'🇧🇷 Brasileirao Serie B', leagueKey:'🇧BrasileiraoSerieB', country:'', 
-      home:'Athletic Club', away:'Náutico', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([2.2]*60*60*10000).toISOString()},
-      { id:11, league:'🇦🇷 Liga Profesional', leagueKey:'LigaProfesional', country:'', 
-      home:'Huracán', away:'Argentinos Jrs.', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([2.4]*60*60*10000).toISOString()},
-
-      { id:12, league:'🇵🇪 Liga 1', leagueKey:'Liga1', country:'', 
-      home:'Deportivo Garcilaso', away:'Melgar', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([2.4]*60*60*10000).toISOString()},
-      
-      { id:13, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Al-Gharafa', away:'Al-Shahaniya', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.425]*60*60*10000).toISOString()},
-      { id:14, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Al-Rayyan', away:'Al Arabi', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.425]*60*60*10000).toISOString()},
-      { id:15, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Al-Wakra', away:'Al Sailiya', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.425]*60*60*10000).toISOString()},
-      { id:16, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Qatar SC', away:'Al-Duhail', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.425]*60*60*10000).toISOString()},
-      { id:17, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Umm-Salal', away:'Al Ahli Doha', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.425]*60*60*10000).toISOString()},
-      { id:18, league:'🇶🇦 Qatar Stars League', leagueKey:'QatarStarsLeague', country:'', 
-      home:'Al-Sadd', away:'Shamal', scoreHome:null, scoreAway:null, minute:null, 
-      status:'scheduled', statusShort:'NS', time: new Date([1.65]*60*60*10000).toISOString()},
-      
-      
-      
-      
-      /*      HORA = 1 + .4 (Este último es 5h + u*h)
-      { id:4,  league:'Champions League', leagueKey:'ChampionsLeague', country:'Europe',  home:'PSG',                away:'Bayern Múnich',    scoreHome:1,  scoreAway:1,  minute:55,  status:'live',      statusShort:'2H', time:ago(55)  },
-      { id:5,  league:'Bundesliga',       leagueKey:'Bundesliga',      country:'Germany', home:'Bayern Múnich',      away:'Borussia Dortmund',scoreHome:3,  scoreAway:1,  minute:90,  status:'finished',  statusShort:'FT', time:ago(120) },
-      { id:6,  league:'Liga 1',           leagueKey:'Liga1',           country:'Perú',    home:'Universitario',      away:'Alianza Lima',     scoreHome:1,  scoreAway:2,  minute:90,  status:'finished',  statusShort:'FT', time:ago(90)  },
-      { id:7,  league:'Ligue 1',          leagueKey:'Ligue1',          country:'France',  home:'PSG',                away:'Marsella',         scoreHome:2,  scoreAway:0,  minute:90,  status:'finished',  statusShort:'FT', time:ago(100) },
-      { id:9,  league:'Premier League',   leagueKey:'PremierLeague',   country:'England', home:'Chelsea',            away:'Manchester City',  scoreHome:null,scoreAway:null,minute:null,status:'scheduled',statusShort:'NS', time:fwd(90)  },
-      */];
-  }
-
-  /* ── Load & Refresh ── */
-  async function loadMatches() {
-    showLoading(true);
-    try {
-      if (USE_DEMO_DATA) { await new Promise(r => setTimeout(r, 500)); allMatches = getDemoData(); }
-      else               { allMatches = await fetchFromAPI(); }
-      updateCounts();
-      renderMatches();
-      flashLiveDot();
-      updateRequestCounter();
-      /* Notificar al módulo de Pronósticos que hay datos nuevos */
-      if (typeof window.HXG_onMatchesReady === 'function') window.HXG_onMatchesReady(allMatches);
-    } catch (err) { showError(err.message); }
-    finally       { showLoading(false); }
-  }
-  /* Refresca según si hay partidos en vivo o no */
-  function scheduleNextRefresh() {
-    if (refreshTimer) clearInterval(refreshTimer);
-    const hasLive = allMatches.some(m => m.status === 'live');
-    const delay   = hasLive ? REFRESH_LIVE_MS : REFRESH_IDLE_MS;
-    const label   = hasLive ? '3 min (en vivo)' : '30 min (sin partidos en vivo)';
-    console.log(`[HXG] Próximo refresh en ${label}`);
-    refreshTimer = setTimeout(async () => {
-      await loadMatches();
-      scheduleNextRefresh(); /* reprograma después de cada carga */
-    }, delay);
-  }
-
-  /* ── Render lista ── */
+  /* ── Render ── */
   function renderMatches() {
-    let filtered = allMatches;
-    if (activeTab === 'live')      filtered = allMatches.filter(m => m.status === 'live');
-    if (activeTab === 'finished')  filtered = allMatches.filter(m => m.status === 'finished');
-    if (activeTab === 'favorites') filtered = allMatches.filter(m => favorites.has(m.id));
-    const order = { live:0, scheduled:1, finished:2, cancelled:3 };
-    filtered = [...filtered].sort((a, b) => (order[a.status] ?? 9) - (order[b.status] ?? 9));
-    if (!filtered.length) { listEl.innerHTML = emptyState(); return; }
+    let filtered = activeTab === 'favorites'
+      ? allMatchesRef.filter(m => favorites.has(m.id))
+      : [...allMatchesRef];
+
+    filtered.sort((a, b) => new Date(a.time) - new Date(b.time));
+
+    if (!filtered.length) {
+      listEl.innerHTML = `<div class="matches-empty"><p>${
+        activeTab === 'favorites'
+          ? 'Dale ★ a un partido ⭐'
+          : 'No hay partidos programados para hoy 📭'
+      }</p></div>`;
+      return;
+    }
+
     const byLeague = {};
-    filtered.forEach(m => { if (!byLeague[m.league]) byLeague[m.league] = { country: m.country, matches: [] }; byLeague[m.league].matches.push(m); });
-    listEl.innerHTML = Object.entries(byLeague).map(([lg, g]) => renderLeagueGroup(lg, g)).join('');
+    filtered.forEach(m => {
+      if (!byLeague[m.league]) byLeague[m.league] = { country: m.country, matches: [] };
+      byLeague[m.league].matches.push(m);
+    });
+
+    listEl.innerHTML = Object.entries(byLeague).map(([lg, g]) => `
+      <div class="league-group">
+        <div class="league-group-header">
+          <span class="league-flag">${countryFlag(g.country)}</span>
+          <span class="league-group-name">${lg}</span>
+          <div class="league-group-line"></div>
+        </div>
+        ${g.matches.map(renderRow).join('')}
+      </div>`).join('');
 
     listEl.querySelectorAll('.match-row').forEach(row => {
       row.style.cursor = 'pointer';
       row.addEventListener('click', e => {
         if (e.target.closest('.fav-btn')) return;
         const id = Number(row.dataset.id);
-        const m  = allMatches.find(x => x.id === id);
+        const m  = allMatchesRef.find(x => x.id === id);
         if (!m) return;
         if (selectedMatch === id) { closeXGPanel(); return; }
         openXGPanel(m);
       });
     });
     listEl.querySelectorAll('.fav-btn').forEach(btn => {
-      btn.addEventListener('click', e => { e.stopPropagation(); toggleFav(Number(btn.dataset.id)); });
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        toggleFav(Number(btn.dataset.id));
+      });
     });
     if (selectedMatch !== null) {
       const row = listEl.querySelector(`.match-row[data-id="${selectedMatch}"]`);
@@ -527,89 +687,64 @@ HXG.computeXG = function(m) {
     }
   }
 
-  function renderLeagueGroup(leagueName, group) {
-    return `<div class="league-group">
-      <div class="league-group-header">
-        <span class="league-flag">${countryFlag(group.country)}</span>
-        <span class="league-group-name">${leagueName}</span>
-        <div class="league-group-line"></div>
-      </div>
-      ${group.matches.map(renderMatchRow).join('')}
-    </div>`;
-  }
-
-  function renderMatchRow(m) {
-    const isFav = favorites.has(m.id), isLive = m.status === 'live', isDone = m.status === 'finished';
-    let centerHTML;
-    if (isLive) {
-      centerHTML = `<div class="match-center live-center">
-        <div class="match-score live-score">${m.scoreHome}<span class="score-sep">—</span>${m.scoreAway}</div>
-        <div class="match-minute"><span class="live-pip"></span>${m.minute}'</div>
-      </div>`;
-    } else if (isDone) {
-      centerHTML = `<div class="match-center done-center">
-        <div class="match-score done-score">${m.scoreHome}<span class="score-sep">—</span>${m.scoreAway}</div>
-        <div class="match-ft-label">FT</div>
-      </div>`;
-    } else {
-      const d = new Date(m.time);
-      const hhmm = d.getHours().toString().padStart(2,'0') + ':' + d.getMinutes().toString().padStart(2,'0');
-      centerHTML = `<div class="match-center sched-center">
+  function renderRow(m) {
+    const isFav = favorites.has(m.id);
+    const d     = new Date(m.time);
+    const hhmm  = d.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
+    const fecha = d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
+    return `<div class="match-row" data-id="${m.id}">
+      <div class="match-team home-team"><span class="team-name-match">${m.home}</span></div>
+      <div class="match-center sched-center">
         <div class="match-kickoff">${hhmm}</div>
-        <div class="match-vs-label">VS</div>
-      </div>`;
-    }
-    const logo = (src, alt) => src ? `<img class="team-logo" src="${src}" alt="${alt}" loading="lazy" onerror="this.style.display='none'">` : `<span class="team-logo-placeholder">⚽</span>`;
-    return `<div class="match-row ${isLive ? 'is-live' : ''} ${isDone ? 'is-done' : ''}" data-id="${m.id}">
-      <div class="match-team home-team">${logo(m.homeLogo, m.home)}<span class="team-name-match">${m.home}</span></div>
-      ${centerHTML}
-      <div class="match-team away-team"><span class="team-name-match">${m.away}</span>${logo(m.awayLogo, m.away)}</div>
-      <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${m.id}">${isFav ? '★' : '☆'}</button>
+        <div class="match-date-label">${fecha}</div>
+      </div>
+      <div class="match-team away-team"><span class="team-name-match">${m.away}</span></div>
+      <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${m.id}" title="Favorito">${isFav ? '★' : '☆'}</button>
     </div>`;
   }
 
   /* ── Helpers ── */
   function updateCounts() {
-    const lN = allMatches.filter(m => m.status === 'live').length;
-    const fN = allMatches.filter(m => favorites.has(m.id)).length;
-    if (liveCountEl) liveCountEl.textContent = lN || '';
+    const fN = allMatchesRef.filter(m => favorites.has(m.id)).length;
+    if (liveCountEl) liveCountEl.textContent = '';
     if (favCountEl)  favCountEl.textContent  = fN || '';
   }
-  function showLoading(show) {
-    if (!loadingEl) return;
-    loadingEl.style.display = show ? 'flex' : 'none';
-    if (!show && listEl.contains(loadingEl)) listEl.removeChild(loadingEl);
-  }
-  function showError(msg) {
-    listEl.innerHTML = `<div class="matches-error"><span>⚠️</span><p>${msg}</p><button onclick="location.reload()" class="retry-btn">↻ Reintentar</button></div>`;
-  }
-  function emptyState() {
-    const msgs = { all:'No hay partidos hoy 📭', live:'No hay partidos en vivo 📺', finished:'Sin partidos finalizados 🏁', favorites:'Dale ★ a un partido ⭐' };
-    return `<div class="matches-empty"><p>${msgs[activeTab] || msgs.all}</p></div>`;
-  }
-  function flashLiveDot() {
-    if (!liveDotEl) return;
-    liveDotEl.classList.add('flash');
-    setTimeout(() => liveDotEl.classList.remove('flash'), 800);
-  }
-  const FLAGS = { England:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',Spain:'🇪🇸',Italy:'🇮🇹',Germany:'🇩🇪',France:'🇫🇷',Peru:'🇵🇪','Perú':'🇵🇪',Japan:'🇯🇵',Europe:'🌍',World:'🌐' };
+  const FLAGS = {
+    England:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', Spain:'🇪🇸', Italy:'🇮🇹', Germany:'🇩🇪',
+    France:'🇫🇷', Peru:'🇵🇪', Perú:'🇵🇪', Japan:'🇯🇵',
+    Europe:'🌍', World:'🌐', Brazil:'🇧🇷', Argentina:'🇦🇷',
+    Mexico:'🇲🇽', Colombia:'🇨🇴', Saudi:'🇸🇦',
+  };
   function countryFlag(c) { return FLAGS[c] || '🏆'; }
 
-  /* Contador visual de requests gastados hoy */
-  function updateRequestCounter() {
-    if (USE_DEMO_DATA) return;
-    const today = new Date().toISOString().slice(0, 10);
-    const key   = 'hxg_req_' + today;
-    const count = (parseInt(localStorage.getItem(key) || '0')) + 1;
-    localStorage.setItem(key, count);
-    const el = document.getElementById('req-counter');
-    if (el) el.textContent = `${count} req hoy`;
-    console.log(`[HXG] Requests usados hoy: ${count}/100`);
+  function notifyPronosticos() {
+    window.HXG_currentMatches = allMatchesRef;
+    if (typeof window.HXG_onMatchesReady === 'function') window.HXG_onMatchesReady(allMatchesRef);
   }
 
-  loadMatches().then(() => scheduleNextRefresh());
-})();
+  /* ── INIT ── */
+  async function init() {
+    /* Mostrar loading */
+    listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando partidos…</span></div>';
+    try {
+      const matches = await fetchTodayFromAPI();
+      allMatchesRef.push(...(matches.length ? matches : FALLBACK_MATCHES.map(m => ({ ...m }))));
+      if (!matches.length) {
+        console.log('[HXG] Sin partidos de API hoy → mostrando fallback');
+      }
+    } catch (err) {
+      console.warn('[HXG] Error API:', err.message, '→ usando fallback');
+      allMatchesRef.push(...FALLBACK_MATCHES.map(m => ({ ...m })));
+    }
+    renderMatches();
+    updateCounts();
+    notifyPronosticos();
+    scheduleDaily();
+  }
 
+  init();
+
+})();
 
 /* ════════════════════════════════════════════════════════
    MÓDULO 3 — PRONÓSTICOS
@@ -622,7 +757,6 @@ HXG.computeXG = function(m) {
   if (!container) return;
 
   /* Crear estructura interna */
-  /*
   container.innerHTML = `
     <main class="section-inner">
       <div class="pron-header">
@@ -636,7 +770,7 @@ HXG.computeXG = function(m) {
         </div>
       </div>
     </main>`;
-*/
+
   const pronList = document.getElementById('pron-list');
 
   /* Callback que llama el módulo de Partidos cuando carga datos */
