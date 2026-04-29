@@ -910,6 +910,17 @@ HXG.computeXG = function(m) {
 
   /* ── INIT ── */
   async function init() {
+    const CACHE_VERSION = '2';
+    const versionKey = 'hxg_cache_v';
+    
+    if (localStorage.getItem(versionKey) !== CACHE_VERSION) {
+      // Borrar todos los cachés viejos
+      Object.keys(localStorage)
+        .filter(k => k.startsWith('hxg_matches_'))
+        .forEach(k => localStorage.removeItem(k));
+      localStorage.setItem(versionKey, CACHE_VERSION);
+    }
+    
     /* Mostrar loading */
     listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando partidos…</span></div>';
     try {
