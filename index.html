@@ -51,7 +51,9 @@
           <span class="tab-icon">📋</span>
           <span class="tab-label">Tabla</span>
         </button>
-        <a class="nav-link" target="_blank" rel="noopener">| |</a>
+        <button class="nav-tab" data-section="tutorial">
+          <span class="tab-icon">❓</span>
+        </button>
         <a class="nav-link" href="https://chat.whatsapp.com/HLJLZfOYvfi7d8kvTk5khV" target="_blank" rel="noopener">💬 Comunidad</a>
         <a class="nav-link" href="https://www.youtube.com/@MegaBetsMan" target="_blank" rel="noopener">▶ YouTube</a>
         <a class="nav-link" href="https://www.tiktok.com/@megabetsman" target="_blank" rel="noopener">🎵 TikTok</a>
@@ -269,7 +271,10 @@
   </main>
 </div>
 
-<!-- ══════════ PARTIDOS ══════════ -->
+
+<!--  ════════════════════════════════════════════════════════
+   MÓDULO 2 — PARTIDOS
+   ════════════════════════════════════════════════════════ -->
 <div class="section" id="section-matches">
   <main>
     <section class="matches-section" id="matches-section">
@@ -297,7 +302,12 @@
         <div><strong>Modo demostración</strong> — Para datos reales añade tu API key de <a href="https://dashboard.api-football.com" target="_blank" rel="noopener">api-football.com</a> en <code>matches.js</code>.</div>
         <button class="api-notice-close" onclick="this.parentElement.remove()">✕</button>
       </div>
--->
+--><!--NEW-->
+<div class="date-nav" id="date-nav">
+  <button class="date-btn" id="date-prev">‹</button>
+  <span class="date-label" id="date-label"></span>
+  <button class="date-btn" id="date-next">›</button>
+</div>
       <p class="matches-click-tip">👇🏻 Haz clic en cualquier partido para ver las probabilidades xG</p>
       <div class="matches-list" id="matches-list">
 
@@ -311,7 +321,9 @@
   </main>
 </div>
 
-<!-- ══════════ PRONÓSTICOS ══════════ -->
+<!--  ════════════════════════════════════════════════════════
+   MÓDULO 3 — ══════════ PRONÓSTICOS ══════════
+   ════════════════════════════════════════════════════════ -->
 <div class="section" id="section-pronosticos">
   <main class="section-inner">
     <div class="pron-header">
@@ -348,113 +360,157 @@
       <div class="select-wrapper tabla-select-wrap">
         <select id="tabla-liga">
             <!-- Europa -->        <!-- Europa -->
-            <option value="ChampionsLeague">👑 Champions League</option>
-            <!-- Aún NO
-            <option value="EuropaLeague">👑 Europa League</option>
-            <option value="ConferenceLeague">👑 Conference League</option> -->
-            <option value="PremierLeague">🇽🇪 Premier League</option>
-    
-            <option value="LaLiga">🇪🇸 La Liga</option>
-            <option value="SerieA">🇮🇹 Serie A</option>
-            <option value="Bundesliga">🇩🇪 Bundesliga</option>
-            <option value="Ligue1">🇫🇷 Ligue 1</option>
-            <option value="PrimeiraLiga">🇵🇹 Primeira Liga</option>  
-            <option value="Eredivise">🇳🇱 Eredivise</option>
-            <option value="SüperLig">🇹🇷 Süper Lig</option>    
-            <option value="JupilerProLeague">🇧🇪 Jupiler Pro League</option>
-            <!-- Aún NO
-            <option value="Superliga">🇩🇰 Superliga</option>
-            <option value="Eliteserien">🇳🇴 Eliteserien</option>
-            <option value="Allsvenskan">🇸🇪 Allsvenskan</option>
-            <option value="Ligatha'Al">🇮🇱 Ligat ha'Al</option>
-            <option value="_Premier League">🇺🇦 Premier League</option> --><!-- Ucrania xd-->
-             
-             
-            <option value="Championship">🇽🇪 Championship</option>
-            <!-- Aún NO
-            <option value="SerieB">🇮🇹 Serie B</option>
-            <option value="LaLigaHypermotion">🇪🇸 LaLiga Hypermotion</option> -->
-            <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
-            <!-- Aún NO
-            <option value="_1División">🇩🇰 1. División</option>        
-    
-            <option value="EFLCup">🏆🇽🇪 EFL Cup</option> -->
-            <option value="FACup">🏆🇽🇪 FA Cup</option>
-            <option value="CopaDelRey">🏆🇪🇸 Copa del Rey</option><!-- Aún NO
-            <option value="CopaDeItalia">🏆🇮🇹 Copa de Italia</option>
-            <option value="Pokal">🏆🇩🇪 Pokal</option> -->
-            <!-- Aún NO
-            <option value="ChampionsLeagueFemenina">👑 Champions League Femenina</option>
-            <option value="WSL">🇽🇪 WSL</option>
-            <option value="Liga F">🇪🇸 Liga F</option>
-    
-            //América
-            <option value="CopaLibertadores">👑 Copa Libertadores</option>        
-            <option value="CopaSudamericana">👑 Copa Sudamericana</option> -->
-    
-            <option value="LigaProfesional">🇦🇷 Liga Profesional</option>        
-            <option value="SerieABetano">🇧🇷 Serie A Betano</option>
-            <option value="LigaMX">🇲🇽 Liga MX</option><!-- Aún NO
-            <option value="MLS">🇺🇸 MLS</option>       
-            //<option value="LigaAUF">🇺🇾 Liga AUF</option> 
-            <option value="PrimeraA">🇨🇴 Primera A</option>  -->
-            <option value="Liga1">🇵🇪 Liga 1</option><!-- Aún NO
-            <option value="LigaPro">🇪🇨 LigaPro</option>
-            <option value="PrimeraDivisión">🇵🇾 Primera División</option>
-            <option value="LigaDePrimera">🇨🇱 Liga de Primera</option>  -->
-    
-            <option value="BrasileiraoSerieB">🇧🇷 Brasileirao Serie B</option>
-            <!-- Aún NO
-            <option value="CopaFGF">🇧🇷 Copa FGF</option>
-    
-            <option value="CopaBetanoDoBrasil">🏆🇧🇷 Copa Betano Do Brasil</option>
-            <option value="CopaArgentina">🏆🇦🇷 Copa Argentina</option>
-            <option value="LeaguesCup">🏆 Leagues Cup</option>
-    
-            //Asia
-            <option value="LigaDeCampeonesAFC">👑 Liga de Campeones AFC</option>
-            <option value="AFCChampionsLeague2">👑 AFC Champions League 2</option>
-          -->
-            <option value="J1League">🇯🇵 J1 League</option><!-- Aún NO
-            <option value="UAELeague">🇦🇪 UAE League</option>
-            <option value="SaudiProLeague">🇸🇦 Saudi Pro League</option>-->
-            <option value="QatarStarsLeague">🇶🇦 Qatar Stars League</option><!-- Aún NO
-            <option value="ChineseSuperLeague">🇨🇳 Chinese Super League</option>
-            //África
-            <option value="EgyptianPremierLeague">🇪🇬 Egyptian Premier League</option>
-            <option value="BetwayPremiership">🇸🇩 Betway Premiership</option>
-            //FIFA
-            <option value="Mundial">🏆👑 Mundial</option>
-            <option value="MundialDeClubes">🏆👑 Mundial de Clubes</option>
-            <option value="Eurocopa">🏆 Eurocopa</option>
-            <option value="CopaAmerica">🏆 Copa América</option>
-            <option value="CopaOro">🏆 Copa Oro</option>
-            <option value="CopaDeÁfricaDeNaciones">🏆 Copa de África de Naciones</option>
-            <option value="CampeonatoAfricanoDeNaciones">🏆 Campeonato Africano de Naciones</option>
-    
-            <option value="NationsLeague">🏆 Nations League</option>
-            <option value="NationsLeagueFemenina">🏆 Nations League Femenina</option>
-    
-            <option value="EurocopaFemenina">🏆 Eurocopa Femenina</option>
-            <option value="CopaAmericaFemenina">🏆 Copa América Femenina</option>
-    
-            <option value="ClasificacionCONMEBOL">🌎 Clasificacion CONMEBOL</option>
-            <option value="ClasificacionUEFA">🌎 Clasificacion UEFA</option>
-            <option value="ClasificacionCONCACAF">🌎 Clasificacion CONCACAF</option>
-            <option value="ClasificacionAFC">🌎 Clasificacion AFC</option>
-    
-            <option value="JuegosOlímpicos">🏆 Juegos Olímpicos</option>
-            <option value="MundialSub20">🏆 Mundial Sub20</option>
-            <option value="Mundial Femenino">🏆 Mundial Femenino</option>-->
-        </select>
+        <option value="ChampionsLeague">👑 Champions League</option>
+        <!-- Aún NO
+        <option value="EuropaLeague">👑 Europa League</option>
+        <option value="ConferenceLeague">👑 Conference League</option> -->
+        <option value="PremierLeague">🇽🇪 Premier League</option>
+
+        <option value="LaLiga">🇪🇸 La Liga</option>
+        <option value="SerieA">🇮🇹 Serie A</option>
+        <option value="Bundesliga">🇩🇪 Bundesliga</option>
+        <option value="Ligue1">🇫🇷 Ligue 1</option>
+        <option value="PrimeiraLiga">🇵🇹 Primeira Liga</option>  
+        <option value="Eredivise">🇳🇱 Eredivise</option>
+        <option value="SüperLig">🇹🇷 Süper Lig</option>    
+        <option value="JupilerProLeague">🇧🇪 Jupiler Pro League</option>
+        <!-- Aún NO
+        <option value="Superliga">🇩🇰 Superliga</option>
+        <option value="Eliteserien">🇳🇴 Eliteserien</option>
+        <option value="Allsvenskan">🇸🇪 Allsvenskan</option>-->
+        <option value="LigathaAl">🇮🇱 Ligat ha'Al</option><!--
+        <option value="_Premier League">🇺🇦 Premier League</option> --><!-- Ucrania xd-->
+         
+         
+        <option value="Championship">🇽🇪 Championship</option>
+        <!-- Aún NO
+        <option value="SerieB">🇮🇹 Serie B</option>
+        <option value="LaLigaHypermotion">🇪🇸 LaLiga Hypermotion</option> -->
+        <option value="_2Bundesliga">🇩🇪 2. Bundesliga</option>
+        <!-- Aún NO
+        <option value="_1División">🇩🇰 1. División</option>        
+
+        <option value="EFLCup">🏆🇽🇪 EFL Cup</option> -->
+        <option value="FACup">🏆🇽🇪 FA Cup</option>
+        <option value="CopaDelRey">🏆🇪🇸 Copa del Rey</option><!-- Aún NO
+        <option value="CopaDeItalia">🏆🇮🇹 Copa de Italia</option>
+        <option value="Pokal">🏆🇩🇪 Pokal</option> -->
+        <!-- Aún NO
+        <option value="ChampionsLeagueFemenina">👑 Champions League Femenina</option>
+        <option value="WSL">🇽🇪 WSL</option>
+        <option value="Liga F">🇪🇸 Liga F</option> -->
+
+        <!-- América-->
+        <option value="CopaLibertadores">👑 Copa Libertadores</option>         
+        <option value="CopaSudamericana">👑 Copa Sudamericana</option>
+
+        <option value="LigaProfesional">🇦🇷 Liga Profesional</option>        
+        <option value="SerieABetano">🇧🇷 Serie A Betano</option>
+        <option value="LigaMX">🇲🇽 Liga MX</option><!-- Aún NO
+        <option value="MLS">🇺🇸 MLS</option>       
+        //<option value="LigaAUF">🇺🇾 Liga AUF</option> 
+        <option value="PrimeraA">🇨🇴 Primera A</option>  -->
+        <option value="Liga1">🇵🇪 Liga 1</option><!-- Aún NO
+        <option value="LigaPro">🇪🇨 LigaPro</option>
+        <option value="PrimeraDivisión">🇵🇾 Primera División</option>
+        <option value="LigaDePrimera">🇨🇱 Liga de Primera</option>  -->
+
+        <option value="BrasileiraoSerieB">🇧🇷 Brasileirao Serie B</option>
+        <!-- Aún NO
+        <option value="CopaFGF">🇧🇷 Copa FGF</option>
+
+        <option value="CopaBetanoDoBrasil">🏆🇧🇷 Copa Betano Do Brasil</option>
+        <option value="CopaArgentina">🏆🇦🇷 Copa Argentina</option>
+        <option value="LeaguesCup">🏆 Leagues Cup</option>
+
+        //Asia
+        <option value="LigaDeCampeonesAFC">👑 Liga de Campeones AFC</option>
+        <option value="AFCChampionsLeague2">👑 AFC Champions League 2</option>
+      -->
+        <option value="J1League">🇯🇵 J1 League</option><!-- Aún NO
+        <option value="UAELeague">🇦🇪 UAE League</option>-->
+        <option value="SaudiProLeague">🇸🇦 Saudi Pro League</option>
+        <option value="QatarStarsLeague">🇶🇦 Qatar Stars League</option><!-- Aún NO
+        <option value="ChineseSuperLeague">🇨🇳 Chinese Super League</option>
+        //África-->
+        <option value="EgyptianPremierLeague">🇪🇬 Egyptian Premier League</option><!-- Aún NO
+        <option value="BetwayPremiership">🇸🇩 Betway Premiership</option>
+        //FIFA
+        <option value="Mundial">🏆👑 Mundial</option>
+        <option value="MundialDeClubes">🏆👑 Mundial de Clubes</option>
+        <option value="Eurocopa">🏆 Eurocopa</option>
+        <option value="CopaAmerica">🏆 Copa América</option>
+        <option value="CopaOro">🏆 Copa Oro</option>
+        <option value="CopaDeÁfricaDeNaciones">🏆 Copa de África de Naciones</option>
+        <option value="CampeonatoAfricanoDeNaciones">🏆 Campeonato Africano de Naciones</option>
+
+        <option value="NationsLeague">🏆 Nations League</option>
+        <option value="NationsLeagueFemenina">🏆 Nations League Femenina</option>
+
+        <option value="EurocopaFemenina">🏆 Eurocopa Femenina</option>
+        <option value="CopaAmericaFemenina">🏆 Copa América Femenina</option>
+
+        <option value="ClasificacionCONMEBOL">🌎 Clasificacion CONMEBOL</option>
+        <option value="ClasificacionUEFA">🌎 Clasificacion UEFA</option>
+        <option value="ClasificacionCONCACAF">🌎 Clasificacion CONCACAF</option>
+        <option value="ClasificacionAFC">🌎 Clasificacion AFC</option>
+
+        <option value="JuegosOlímpicos">🏆 Juegos Olímpicos</option>
+        <option value="MundialSub20">🏆 Mundial Sub20</option>
+        <option value="Mundial Femenino">🏆 Mundial Femenino</option>-->
+      </select>
         <span class="select-arrow" aria-hidden="true">▾</span>
       </div>
     </div>
+
     <div id="tabla-container" class="tabla-container">
       <div class="tabla-empty-state">
         <span class="tabla-empty-icon">👆</span>
         <p>Selecciona una liga para ver la tabla</p>
       </div>
+    </div>
+
+  </main>
+</div>
+
+<!--SECTION little AYUDA-->
+<div class="section" id="section-tutorial">
+  <main class="section-inner">
+    <div class="ayuda-container">
+      <header class="ayuda-header">
+        <h2>Tutorial de cómo GANAR 🤑</h2>
+        <p>Añadamos más emoción a cada partido.</p>
+      </header>
+  
+      <div class="ayuda-grid">
+        <div class="ayuda-card"><br><br>
+          <div class="icon">🌞</div>
+          <h3>1. Usar sólo dinero que no duela perder</h3>
+        <!--
+          <p>Pero con las estadísticas avanzadas como <strong>xG</strong> y <strong>xGOT</strong> podremos hallar tendencias ofensivas para cada equipo.</p>
+    -->    
+        </div>
+  
+        <div class="ayuda-card"><br><br>
+          <div class="icon">🆓</div>
+          <h3>2. Hacer caso a los picks GRATUITOS</h3>
+<!--
+          <p>Utiliza plataformas como SofaScore u Opta. Automatiza la extracción de datos con scripts para identificar patrones antes que nadie.</p>
+    -->    
+        </div>
+  
+        <div class="ayuda-card warning"><br><br>
+          <div class="icon">🥺</div>
+          <h3>3. Unirse a la comunidad para ajustar juntos</h3>
+    <!--
+          <p>La estadística es un apoyo, no una garantía. El fútbol es maravillosamente impredecible y nunca se tendrá una certeza absoluta sobre un resultado.</p>
+        -->
+        </div>
+      </div>
+  
+      <footer class="ayuda-footer"><br><br>
+        <h1><strong>Nota de Salud:</strong> El análisis deportivo es un hobby apasionante, pero el exceso puede ser dañino. Mantén el equilibrio. La mejor jugada es tener buena salud. 🛡️</h1>
+      </footer>
     </div>
   </main>
 </div>

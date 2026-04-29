@@ -49,6 +49,7 @@ HXG.calcProbs = function(xgH, xgA, nameH, nameA, maxG = 10) {
 };
 
 /* Mapa: nombre de liga en partidos → clave de bases[] */
+//MAPA LEAGUES LIGAS KEYS LLAVES NOMBRES REALES Y EN BASE BD
 HXG.LEAGUE_MAP = {
   'Premier League':   'PremierLeague',
   'La Liga':          'LaLiga',
@@ -67,6 +68,7 @@ HXG.LEAGUE_MAP = {
   'J1 League': 'J1League',
   'Pro League': 'SaudiProLeague',
   'Premier League': 'EgyptianPremierLeague',
+  'Primeira Liga': 'PrimeiraLiga',
 };
 
 HXG.TEAM_ALIASES = {
@@ -141,6 +143,96 @@ HXG.TEAM_ALIASES = {
 
   'Beitar Jerusalem': 'B. Jerusalem',
   'Hapoel Petah Tikva': 'H. Petah Tikva',
+
+
+  'El Gouna FC': 'El Gounah',
+  'Haras': 'Haras El Hodood',
+  
+  'Future FC': 'Modern Sport',
+  'El Geish': 'El Gaish',
+  
+//  'Al Taawon': 'Wadi Degla',
+//  'Al-Ittihad FC': 'Al Ittihad',
+
+  'Al Taawon': 'Al-Taawon',
+  'Al-Ittihad FC': 'Al-Ittihad FC',
+  
+  'Al Riyadh': 'Al Riyadh',
+  'Al-Qadisiyah FC': 'Al Qadsiah',
+
+  'Hapoel Tel Aviv': 'H. Tel-Aviv',
+  'Maccabi Haifa': 'Maccabi Haifa',
+  
+  'Al-Nassr': 'Al Nassr Riyadh',
+  'Al-Ahli Jeddah': 'Al Ahli SC',
+  
+  'Atletico Madrid': 'Atlético de Madrid',
+  'Arsenal': 'Arsenal',
+  
+  'Caracas FC': 'Caracas (Ven)',
+  'Racing Club': 'Racing Club (Arg)',
+  
+  'Deportivo Riestra': 'Deportivo Riestra (Arg)',
+  'Atletico Torque': 'Montevideo City (Uru)',
+  
+  'Juventud': 'Juventud (Uru)',
+  'Puerto Cabello': 'Puerto Cabello (Ven)',
+  
+  'Mirassol': 'Mirassol (Bra)',
+  'Always Ready': 'Always Ready (Bol)',
+
+  'Platense': 'Platense (Arg)',
+  'Santa Fe': 'Ind. Santa Fe (Col)',
+  
+  'Barcelona SC': 'Barcelona SC (Ecu)',
+  'U. Catolica': 'U. Católica (Chi)',
+  
+  'Cienciano': 'Cienciano (Per)',
+  'Atletico-MG': 'Atlético-MG (Bra)',
+  
+  'Palestino': 'Palestino (Chi)',
+  'Gremio': 'Grêmio (Bra)',
+  
+  'Cerro Porteno': 'Cerro Porteño (Par)',
+  'Palmeiras': 'Palmeiras (Bra)',
+  
+  'Estudiantes L.P.': 'Estudiantes L.P. (Arg)',
+  'Flamengo': 'Flamengo (Bra)',
+  
+  'Universitario': 'Universitario (Per)',
+  'Club Nacional': 'Nacional (Uru)',
+
+  'Avispa Fukuoka': 'Avispa Fukuoka',
+  'Sanfrecce Hiroshima': 'Hiroshima',
+  
+  'JEF United Chiba': 'Chiba',
+  'Yokohama F. Marinos': 'Yokohama M.',
+  
+  'Vissel Kobe': 'Vissel Kobe',
+  'Cerezo Osaka': 'C-Osaka',
+  
+  'Kyoto Sanga': 'Kyoto',
+  'Gamba Osaka': 'G-Osaka',
+  
+  'Nagoya Grampus': 'Nagoya',
+  'Fagiano Okayama': 'Okayama',
+  
+  'Urawa': 'Urawa',
+  'Kawasaki Frontale': 'Kawasaki',
+  
+  'Kashiwa Reysol': 'Kashiwa',
+  'FC Tokyo': 'Tokyo',
+  
+  'Mito Hollyhock': 'Mito',
+  'Machida Zelvia': 'Machida',
+  
+  'Ironi Kiryat Shmona': 'Independiente',
+  'Maccabi Netanya': 'Independiente',
+  
+  'Maccabi Bnei Raina': 'Independiente',
+  'Hapoel Katamon': 'Independiente',
+
+  
   // agrega los que necesites
   /* Para facilitarte mi querido YO del futuro
     'Independiente': 'Independiente',
@@ -249,34 +341,34 @@ HXG.computeXG = function(m) {
 (function MatchesModule() {
 
   /* ╔═══════════════════════════════════════════════════════╗
-     ║         ⚙️  CONFIGURACIÓN — EDITA AQUÍ               ║
+     ║         ⚙️  CONFIGURACIÓN — EDITA AQUÍ                ║
      ╠═══════════════════════════════════════════════════════╣
      ║                                                       ║
-     ║  API_KEY → tu clave de api-sports.io                 ║
+     ║  API_KEY → tu clave de api-sports.io                  ║
      ║                                                       ║
-     ║  MY_LEAGUE_IDS → IDs de las ligas que quieres ver.   ║
-     ║  SOLO aparecerán partidos de estas ligas, y SOLO si  ║
+     ║  MY_LEAGUE_IDS → IDs de las ligas que quieres ver.    ║
+     ║  SOLO aparecerán partidos de estas ligas, y SOLO si   ║
      ║  ambos equipos existen en tu bases[].                 ║
      ║                                                       ║
      ║  IDs comunes:                                         ║
-     ║   2   → Champions League                             ║
-     ║   3   → Europa League                                ║
-     ║   39  → Premier League                               ║
-     ║   61  → Ligue 1                                      ║
-     ║   71  → Brasileirao Serie A                          ║
-     ║   78  → Bundesliga                                   ║
-     ║   135 → Serie A                                      ║
-     ║   140 → La Liga                                      ║
-     ║   253 → Liga 1 Perú                                  ║
-     ║   292 → Liga Profesional Argentina                   ║
-     ║   40  → Championship                                 ║
-     ║   45  → FA Cup                                       ║
-     ║   188 → Copa Libertadores                            ║
+     ║   2   → Champions League                              ║
+     ║   3   → Europa League                                 ║
+     ║   39  → Premier League                                ║
+     ║   61  → Ligue 1                                       ║
+     ║   71  → Brasileirao Serie A                           ║ 
+     ║   78  → Bundesliga                                    ║ 
+     ║   135 → Serie A                                       ║
+     ║   140 → La Liga                                       ║
+     ║   253 → Liga 1 Perú                                   ║
+     ║   292 → Liga Profesional Argentina                    ║
+     ║   40  → Championship                                  ║
+     ║   45  → FA Cup                                        ║
+     ║   188 → Copa Libertadores                             ║
      ║                                                       ║
-     ║  Busca cualquier liga en:                            ║
-     ║  https://v3.football.api-sports.io/leagues           ║
+     ║  Busca cualquier liga en:                             ║
+     ║  https://v3.football.api-sports.io/leagues            ║
      ╚═══════════════════════════════════════════════════════╝ */
-
+//IDS LEAGUES
   const API_KEY = '7657ca8f8011c6cbc615b2c74ccb75da';
 
   const MY_LEAGUE_IDS = [
@@ -300,6 +392,8 @@ HXG.computeXG = function(m) {
     233,//Premier League - Egipto
     383, // Israel
     307, //Arabia Saudí
+    94, //PrimeiraLiga
+    98, //J1 League
   ];
   /* ═══════════════════════════════════════════════════════
      PARTIDOS DE RESPALDO — se muestran si:
@@ -329,9 +423,79 @@ HXG.computeXG = function(m) {
     },
   ];
   /* ═══ FIN CONFIGURACIÓN ═══════════════════════════════ */
-
+  const limaToday = getLimaDate();
   /* ── Clave de caché por día ── */
-  const todayKey = () => 'hxg_matches_' + new Date().toISOString().slice(0, 10);
+  function getLimaDate(d = new Date()) {
+    const lima = new Date(d.getTime() - 5 * 3600000);
+    return lima.toISOString().slice(0, 10);
+  }
+
+  let selectedDate = getLimaDate(); // fecha activa
+
+  
+  const todayKey = () => 'hxg_matches_' + selectedDate;
+ /* ── NEW Tras selectedDate ── */
+  function initDateNav() {
+    const label   = document.getElementById('date-label');
+    const btnPrev = document.getElementById('date-prev');
+    const btnNext = document.getElementById('date-next');
+    const today   = getLimaDate();
+  
+    function updateLabel() {
+      const d = new Date(selectedDate + 'T12:00:00');
+      label.textContent = selectedDate === today
+        ? '📅 Hoy'
+        : d.toLocaleDateString('es-PE', { weekday:'short', day:'numeric', month:'short' });
+    }
+  
+    const maxFuture = new Date(limaToday + 'T12:00:00');
+    maxFuture.setDate(maxFuture.getDate() + 1); // máximo 3 días adelante
+    let maxStr = `${maxFuture.getFullYear()}-${String(maxFuture.getMonth()+1).padStart(2,'0')}-${String(maxFuture.getDate()).padStart(2,'0')}`;
+
+    const maxpast = new Date(limaToday + 'T12:00:00');
+    maxpast.setDate(maxpast.getDate() - 1); // máximo 3 días adelante
+    let minStr = `${maxpast.getFullYear()}-${String(maxpast.getMonth()+1).padStart(2,'0')}-${String(maxpast.getDate()).padStart(2,'0')}`;
+
+    btnNext.addEventListener('click', () => {
+      if (selectedDate < maxStr) {
+          changeDate(+1);
+        }
+      });
+      btnPrev.addEventListener('click', () => {
+      if (selectedDate > minStr) {
+        changeDate(-1);
+      }
+      });
+
+    async function changeDate(offset) {
+
+      const parts = selectedDate.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      d.setDate(d.getDate() + offset);
+      const yyyy = d.getFullYear();
+      const mm   = String(d.getMonth() + 1).padStart(2, '0');
+      const dd   = String(d.getDate()).padStart(2, '0');
+      selectedDate = `${yyyy}-${mm}-${dd}`;
+      // ... resto igual
+      updateLabel();
+      closeXGPanel();
+      allMatchesRef.length = 0;
+      listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando…</span></div>';
+      try {
+        const matches = await fetchTodayFromAPI();
+        allMatchesRef.push(...matches);
+      } catch(e) {
+        allMatchesRef.push(...FALLBACK_MATCHES);
+      }
+      renderMatches();
+      updateCounts();
+      notifyPronosticos();
+    }
+
+
+
+    updateLabel();
+  }
 
   /* ── Leer / guardar caché ── */
   function readCache() {
@@ -340,14 +504,20 @@ HXG.computeXG = function(m) {
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   }
+
+  
   function writeCache(data) {
     try {
-      /* Limpiar cachés de días anteriores */
+      const keep = Array.from({length: 7}, (_, i) => {
+        const d = new Date();
+        d.setDate(d.getDate() - i);
+        return 'hxg_matches_' + d.toISOString().slice(0, 10);
+      });
       Object.keys(localStorage)
-        .filter(k => k.startsWith('hxg_matches_') && k !== todayKey())
+        .filter(k => k.startsWith('hxg_matches_') && !keep.includes(k))
         .forEach(k => localStorage.removeItem(k));
       localStorage.setItem(todayKey(), JSON.stringify(data));
-    } catch { /* storage lleno → ignorar */ }
+    } catch { }
   }
 
   /* ── Llamada a la API (solo 1 vez por día) ── */
@@ -358,11 +528,13 @@ HXG.computeXG = function(m) {
       return cached;
     }
 
-    const today = new Date().toISOString().slice(0, 10);
+    const now = new Date();
+    now.setHours(now.getHours() - 5); // ajuste UTC → Lima
+    const today = selectedDate;//now.toISOString().slice(0, 10);
     console.log(`[HXG] Consultando API para ${today}…`);
 
     const res = await fetch(
-      `https://v3.football.api-sports.io/fixtures?date=${today}&timezone=America/Lima`,
+      `https://v3.football.api-sports.io/fixtures?date=${selectedDate}&timezone=America/Lima`,
       { headers: { 'x-apisports-key': API_KEY } }
     );
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -387,6 +559,8 @@ HXG.computeXG = function(m) {
           country:   f.league.country,
           home:      f.teams.home.name,
           away:      f.teams.away.name,
+          scoreHome: f.goals.home,   // añade estas dos
+          scoreAway: f.goals.away,   // líneas si no están
           time:      f.fixture.date,
         };
       })
@@ -692,7 +866,19 @@ HXG.computeXG = function(m) {
     const d     = new Date(m.time);
     const hhmm  = d.toLocaleTimeString('es-PE', { hour: '2-digit', minute: '2-digit' });
     const fecha = d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
-    return `<div class="match-row" data-id="${m.id}">
+    const center = (m.scoreHome !== null && m.scoreAway !== null);
+    if (center)
+      return `<div class="match-row" data-id="${m.id}">
+      <div class="match-team home-team"><span class="team-name-match">${m.home}</span></div>
+      <div class="match-center sched-center">
+      <div class="match-score done-score">${m.scoreHome}<span class="score-sep">—</span>${m.scoreAway}</div>
+      <div class="match-ft-label">FT</div>
+      </div>
+      <div class="match-team away-team"><span class="team-name-match">${m.away}</span></div>
+      <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${m.id}" title="Favorito">${isFav ? '★' : '☆'}</button>
+      </div>`;    
+    else
+      return `<div class="match-row" data-id="${m.id}">
       <div class="match-team home-team"><span class="team-name-match">${m.home}</span></div>
       <div class="match-center sched-center">
         <div class="match-kickoff">${hhmm}</div>
@@ -700,7 +886,7 @@ HXG.computeXG = function(m) {
       </div>
       <div class="match-team away-team"><span class="team-name-match">${m.away}</span></div>
       <button class="fav-btn ${isFav ? 'active' : ''}" data-id="${m.id}" title="Favorito">${isFav ? '★' : '☆'}</button>
-    </div>`;
+      </div>`;
   }
 
   /* ── Helpers ── */
@@ -739,6 +925,9 @@ HXG.computeXG = function(m) {
     renderMatches();
     updateCounts();
     notifyPronosticos();
+
+    initDateNav(); //NEW
+
     scheduleDaily();
   }
 
@@ -752,16 +941,16 @@ HXG.computeXG = function(m) {
    diferencia entre el resultado dominante y los demás.
    ════════════════════════════════════════════════════════ */
 (function PronosticosModule() {
-
+/*
   const container = document.getElementById('section-pronosticos');
   if (!container) return;
 
-  /* Crear estructura interna */
+  // Crear estructura interna
   container.innerHTML = `
     <main class="section-inner">
       <div class="pron-header">
         <h2 class="pron-title">🤑 Pronósticos Sugeridos</h2>
-        <p class="pron-sub">Picks ordenados por la mayor diferencia de probabilidad entre el resultado dominante y los demás · Modelo Poisson Hidden xG</p>
+        <p class="pron-sub">Picks ordenados por la mayor probabilidad en doble oportunidad · Ninguna probabilidad es del 0%, por el redondeo se muestra así</p>
       </div>
       <div id="pron-list" class="pron-list">
         <div class="pron-loading">
@@ -770,7 +959,7 @@ HXG.computeXG = function(m) {
         </div>
       </div>
     </main>`;
-
+*/
   const pronList = document.getElementById('pron-list');
 
   /* Callback que llama el módulo de Partidos cuando carga datos */
@@ -800,13 +989,14 @@ HXG.computeXG = function(m) {
       ];
       const sorted = [...candidates].sort((a, b) => b.pct - a.pct);
       const best = sorted[0];
-      const last = sorted[2];
+      const second = sorted[1];
       /* Diferencia dominante: pct_1 - pct_2 */
-      const dominance = best.pct - last.pct;
+      const dominance = best.pct + second.pct;
+      const dominance100 = dominance*100
 
       picks.push({
         m, p, xgH, xgA,
-        best, last,
+        best, second,
         dominance,
         win: p.win, draw: p.draw, loss: p.loss,
       });
@@ -825,7 +1015,7 @@ HXG.computeXG = function(m) {
   }
 
   function renderPickCard(pk, idx) {
-    const { m, win, draw, loss, best, dominance, xgH, xgA } = pk;
+    const { m, win, draw, loss, best, dominance, dominance100, xgH, xgA } = pk;
     const rank = idx + 1;
     const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
 
@@ -891,8 +1081,8 @@ HXG.computeXG = function(m) {
           <!-- xG + dominancia 
             <span class="pron-xg">xG ${xgH.toFixed(2)} — ${xgA.toFixed(2)}</span>
           -->
-            <span class="pron-xg">Cuotas mínimas: ${(101/win).toFixed(2)} — ${(101/draw).toFixed(2)} — ${(101/loss).toFixed(2)}}</span>
-            <span class="pron-dom">Diferencia: <strong>+${dominance.toFixed(1)}pp</strong></span>
+            <span class="pron-xg">Cuotas mínimas:<br>x${(101/win).toFixed(2)} — x${(101/draw).toFixed(2)} — x${(101/loss).toFixed(2)}</span>
+            <span class="pron-dom">Doble Oportunidad:${dominance.toFixed(1)}%<br>Cuota mínima:x${(101/dominance).toFixed(2)}</span>
           </div>
 
         </div>

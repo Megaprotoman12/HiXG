@@ -35,6 +35,23 @@
   --glow-reallyhot:    0 0 24px rgba(255,45,107,0.45);
 }
 
+/*CSS rápido: NEW*/
+.date-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 1rem;
+}
+.date-btn {
+  background: var(--bg-card2); border: 1.5px solid var(--border-color);
+  border-radius: 8px; color: var(--text-main);
+  font-size: 20px; width: 36px; height: 36px;
+  cursor: pointer; transition: all 0.2s;
+}
+.date-btn:hover { border-color: var(--lime); color: var(--lime); }
+.date-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px; letter-spacing: 1px; color: var(--text-main);
+  min-width: 120px; text-align: center;
+}
 
 /* ── MENUCITO ──────────────────────────────────── */
 @media (max-width: 768px) {
@@ -1915,6 +1932,7 @@ select option { background: var(--bg-card); color: var(--text-main); }
   font-size: 11px; font-weight: 600;
   color: var(--text-muted); letter-spacing: .3px;
 }
+.pron-xg strong { color: var(--reallyhot); }
 .pron-dom {
   font-family: 'Barlow Condensed', sans-serif;
   font-size: 11px; font-weight: 600;
