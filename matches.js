@@ -684,7 +684,7 @@ HXG.computeXG = function(m) {
   function scheduleDaily() {
     const now   = new Date();
     const next  = new Date(now);
-    next.setHours(3, 47, 0, 0);
+    next.setHours(8, 50, 0, 0);
     if (next <= now) next.setDate(next.getDate() + 1);   // ya pasó → mañana
     const msUntil = next - now;
     const hh = Math.floor(msUntil / 3600000);
