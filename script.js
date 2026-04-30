@@ -1805,3 +1805,41 @@ document.querySelectorAll('.nav-tab').forEach(tab => {
     if(window.innerWidth <= 768) toggleMenu();
   });
 });
+
+function fmt(n) { return n.toFixed(2); }
+
+//// Calculadora de Montos
+function calc() {
+  const qG = parseFloat(document.getElementById('q_gana').value);
+  const qE = parseFloat(document.getElementById('q_empate').value);
+  const M  = parseFloat(document.getElementById('monto').value);
+
+  if (!qG || !qE || !M || qG <= 1 || qE <= 1 || M <= 0) return;
+
+  const sum = qG + qE;
+
+  const sG = M * (qE / sum);
+  const sE = M * (qG / sum);
+
+  const retG = sG * qG;
+  const retE = sE * qE;
+  const netNormal = retG - M;
+
+  const bonusTotal = retG + retE;
+  const bonusNet   = bonusTotal - M;
+
+  document.getElementById('stake_gana').textContent    = 'S/ ' + fmt(sG);
+  document.getElementById('stake_empate').textContent  = 'S/ ' + fmt(sE);
+  document.getElementById('pct_gana').textContent      = ((sG/M)*100).toFixed(1) + '% del total';
+  document.getElementById('pct_empate').textContent    = ((sE/M)*100).toFixed(1) + '% del total';
+
+  document.getElementById('ret_bruto').textContent      = 'S/ ' + fmt(retG);
+  document.getElementById('net_normal').textContent     = 'ganancia neta: S/ ' + fmt(netNormal);
+  document.getElementById('ret_empate_check').textContent = 'S/ ' + fmt(retE);
+  document.getElementById('net_check').textContent      = 'ganancia neta: S/ ' + fmt(retE - M);
+
+  document.getElementById('bonus_total').textContent   = 'S/ ' + fmt(bonusTotal);
+  document.getElementById('bonus_badge').innerHTML     = 'Ganancia neta<br>S/ ' + fmt(bonusNet);
+}
+
+calc();

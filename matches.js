@@ -61,7 +61,13 @@ HXG.LEAGUE_MAP = {
   'FA Cup':           'FACup',
   'Liga 1':           'Liga1',
   'J1 League':        'J1League',
+  'UEFA Europa League': 'EuropaLeague',
+  'UEFA Europa Conference League': 'ConferenceLeague',
+
   'UEFA Champions League': 'ChampionsLeague',
+
+
+
   'CONMEBOL Libertadores': 'CopaLibertadores',
   'CONMEBOL Sudamericana': 'CopaSudamericana',
   "Ligat Ha'al": 'LigathaAl',
@@ -69,6 +75,9 @@ HXG.LEAGUE_MAP = {
   'Pro League': 'SaudiProLeague',
   'Premier League': 'EgyptianPremierLeague',
   'Primeira Liga': 'PrimeiraLiga',
+
+  'Superliga': 'Superliga',
+  'Eliteserien': 'Eliteserien',
 };
 
 HXG.TEAM_ALIASES = {
@@ -231,8 +240,79 @@ HXG.TEAM_ALIASES = {
   
   'Maccabi Bnei Raina': 'Independiente',
   'Hapoel Katamon': 'Independiente',
-
   
+  //HERE
+  'Al Kholood': 'Independiente',
+  'Al-Fayha': 'Independiente',
+
+  'Carabobo FC': 'Blooming',
+  'Blooming': 'Independiente',
+  
+  'Vasco DA Gama': 'Independiente',
+  'Olimpia': 'Independiente',
+
+  'Al Kholood': 'Independiente',
+  'Al-Fayha': 'Independiente',
+
+  'Bolívar': 'Fluminense',
+  'Blooming': 'Independiente',
+  
+  'Independ. Rivadavia': 'Independiente',
+  'Deportivo La Guaira': 'Independiente',
+
+  'Tigre ': 'Independiente',
+  'Al-Fayha': 'Independiente',
+
+  'Corinthians ': 'America de Cali',
+  'Penarol': 'Independiente',
+  
+  'RB Bragantino': 'Independiente',
+  'River Plate': 'Independiente',
+
+  'Alianza Atletico': 'Independiente',
+  'Macara': 'Independiente',
+  
+  'Independiente Medellin': 'Independiente',
+  'Cusco': 'Independiente',
+  
+  'Al Kholood': 'Al Kholood',
+  'Al-Fayha': 'Al Fayha',
+  
+  'Bolívar': 'Bolívar (Bol)',
+  'Fluminense': 'Fluminense (Bra)',
+  
+  'Carabobo FC': 'Carabobo (Ven)',
+  'Blooming': 'Blooming (Bol)',
+  
+  'Vasco DA Gama': 'Vasco (Bra)',
+  'Olimpia': 'Olimpia (Par)',
+  
+  'Independ. Rivadavia': 'Independiente Rivadavia (Arg)',
+  'Deportivo La Guaira': 'La Guaira (Ven)',
+  
+  'Tigre': 'Tigre (Arg)',
+  'America de Cali': 'América de Cali (Col)',
+  
+  'Corinthians': 'Corinthians (Bra)',
+  'Penarol': 'Peñarol (Uru)',
+  
+  'RB Bragantino': 'Bragantino (Bra)',
+  'River Plate': 'River Plate (Arg)',
+
+  'Alianza Atletico': 'Alianza Atl. (Per)',
+  'Macara': 'Macará (Ecu)',
+  
+  'Independiente Medellin': 'Ind. Medellín (Col)',
+  'Cusco': 'Cusco (Per)',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
   // agrega los que necesites
   /* Para facilitarte mi querido YO del futuro
     'Independiente': 'Independiente',
@@ -372,18 +452,21 @@ HXG.computeXG = function(m) {
   const API_KEY = '7657ca8f8011c6cbc615b2c74ccb75da';
 
   const MY_LEAGUE_IDS = [
-    2,    // Champions League
+    2,    //UEFA Champions League   
+    3   ,//UEFA Europa League
+    848, //UEFA Europa Conference League
+
     39,   // Premier League
     78,   // Bundesliga
     135,  // Serie A
+
     140,  // La Liga
     61,   // Ligue 1
     40,   // Championship
     45,   // FA Cup
     253,  // Liga 1 Perú
-                         
-    3   ,// Europa League    
-                                                    
+                      
+    79,   // 2Bundesliga
     71  ,// Brasileirao Serie A                            
     292 ,// Liga Profesional Argentina               
     13 ,// Copa Libertadores           
@@ -394,6 +477,8 @@ HXG.computeXG = function(m) {
     307, //Arabia Saudí
     94, //PrimeiraLiga
     98, //J1 League
+    120, //Superliga
+    103, //Eliteserien
   ];
   /* ═══════════════════════════════════════════════════════
      PARTIDOS DE RESPALDO — se muestran si:
@@ -599,7 +684,7 @@ HXG.computeXG = function(m) {
   function scheduleDaily() {
     const now   = new Date();
     const next  = new Date(now);
-    next.setHours(4, 0, 0, 0);
+    next.setHours(3, 47, 0, 0);
     if (next <= now) next.setDate(next.getDate() + 1);   // ya pasó → mañana
     const msUntil = next - now;
     const hh = Math.floor(msUntil / 3600000);
