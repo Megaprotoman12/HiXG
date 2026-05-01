@@ -128,53 +128,45 @@ const bases = {
 
   },
   LaLiga: {
-    'Real Madrid':{'ataque': 1.25, 'defensa': -0.53, 'PLUSLOCALataque': 0.53, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': 0.08, 'History': ['0.56;-0.49', '0.73;-0.44', '0.79;-0.43', '0.82;-0.47', '0.79;-0.43', '0.94;-0.49', '0.83;-0.44', '0.99;-0.44', '1.07;-0.41', '1.16;-0.35', 
-    '1.34;-0.33', '1.17;-0.36', '1.38;-0.43', '1.4;-0.4', '1.48;-0.3', '1.44;-0.41', '1.41;-0.46', '1.34;-0.38', '1.4;-0.35', '1.49;-0.34', '1.44;-0.22', '1.31;-0.3', '1.32;-0.17', '1.43;-0.27', '1.32;-0.45', '1.25;-0.41', '1.24;-0.38', '1.38;-0.44', '1.49;-0.6', '1.34;-0.64', '1.33;-0.53', '1.25;-0.53']},   
+    'Real Madrid':{'ataque': 1.21, 'defensa': -0.53, 'PLUSLOCALataque': 0.53, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': 0.08, 'History': []},
 
-    'Osasuna':{'ataque': 0.49, 'defensa': -0.52, 'PLUSLOCALataque': 0.39, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': -0.50, 'PLUSVISITAdefensa': -0.10, 'History': ['0.49;-0.56', '0.47;-0.45', '0.35;-0.44', '0.48;-0.44', '0.54;-0.6', '0.52;-0.6', '0.41;-0.65', '0.55;-0.67', '0.49;-0.54', '0.58;-0.67', '0.46;-0.69', '0.5;-0.77', '0.45;-0.93', '0.49;-0.91', '0.4;-0.75', '0.33;-0.56', '0.45;-0.51', '0.28;-0.59', '0.22;-0.59', '0.41;-0.71', '0.53;-0.64', '0.58;-0.59', '0.72;-0.58', '0.47;-0.63', '0.65;-0.52', '0.66;-0.59', '0.66;-0.67', '0.68;-0.83', '0.67;-0.6', '0.7;-0.59', '0.54;-0.54', '0.49;-0.52']},      
+  'Osasuna':{'ataque': 0.51, 'defensa': -0.57, 'PLUSLOCALataque': 0.41, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': -0.50, 'PLUSVISITAdefensa': -0.10, 'History': []},
 
-    'Elche':{'ataque': 0.53, 'defensa': -0.77, 'PLUSLOCALataque': 0.25, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.23, 'History': ['0.53;-0.68', '0.46;-0.74', '0.47;-0.65', '0.45;-0.54', '0.4;-0.46', '0.4;-0.45', '0.67;-0.45', '0.61;-0.59', '0.62;-0.55', '0.57;-0.56', '0.53;-0.56', '0.45;-0.57', '0.52;-0.78', '0.5;-0.81', '0.59;-0.74', '0.48;-0.89', '0.63;-0.83', '0.64;-0.85', '0.59;-0.86', '0.56;-1.14', '0.48;-1.22', '0.44;-1.62', '0.54;-1.58', '0.59;-1.34', '0.62;-1.41', '0.52;-1.18', '0.56;-1.06', '0.62;-1.19', '0.54;-1.09', '0.48;-0.94', '0.44;-0.77', '0.53;-0.77']},     
+  'Elche':{'ataque': 0.72, 'defensa': -0.78, 'PLUSLOCALataque': 0.25, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.24, 'History': []},
 
-    'Real Betis':{'ataque': 0.56, 'defensa': -0.33, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': 0.11, 'History': ['0.68;-0.53', '0.77;-0.53', '0.63;-0.52', '0.56;-0.52', '0.67;-0.48', '0.76;-0.49', '0.82;-0.38', '0.88;-0.35', '0.85;-0.28', '0.81;-0.27', '0.84;-0.23', '0.82;-0.43', '0.8;-0.53', '0.8;-0.4', '0.97;-0.74', '0.9;-0.84', '1.09;-0.87', '1.06;-0.92', '1.12;-0.93', '1.01;-0.79', '0.93;-0.8', '0.86;-0.72', '0.85;-0.59', '0.9;-0.53', '0.87;-0.49', '0.83;-0.5', '0.72;-0.72', '0.71;-0.61', '0.68;-0.66', '0.54;-0.55', '0.48;-0.39', '0.56;-0.33']},     
+  'Real Betis':{'ataque': 0.56, 'defensa': -0.28, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.21, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': 0.11, 'History': []},
 
-    'Espanyol':{'ataque': 0.34, 'defensa': -0.97, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.29, 'History': ['0.61;-0.59', '0.67;-0.58', '0.66;-0.46', '0.86;-0.62', '0.82;-0.59', '0.88;-0.56', '0.71;-0.63', '0.68;-0.69', '0.97;-0.69', '0.98;-0.65', 
-    '0.94;-0.7', '0.76;-0.7', '0.81;-0.69', '0.71;-0.52', '0.69;-0.41', '0.68;-0.37', '0.76;-0.45', '0.55;-0.34', '0.5;-0.37', '0.52;-0.52', '0.61;-0.66', '0.53;-0.77', '0.56;-1.05', '0.48;-1.15', '0.54;-1.25', '0.31;-1.16', '0.37;-1.04', '0.4;-1.09', '0.46;-1.14', '0.35;-1.0', '0.43;-1.08', '0.34;-0.97']},  
+  'Espanyol':{'ataque': 0.32, 'defensa': -0.93, 'PLUSLOCALataque': -0.15, 'PLUSLOCALdefensa': -0.05, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.29, 'History': []},
 
-    'Atlético de Madrid':{'ataque': 0.59, 'defensa': -0.55, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': 0.34, 'PLUSVISITAataque': -0.28, 'PLUSVISITAdefensa': -0.29, 'History': ['0.59;-0.61', '0.65;-0.54', '0.62;-0.41', '0.74;-0.26', '0.71;-0.27', '0.99;-0.37', '0.94;-0.26', '0.79;-0.42', '0.67;-0.36', '0.66;-0.32', '0.84;-0.33', '0.97;-0.37', '0.94;-0.3', '0.85;-0.32', '0.85;-0.48', '0.76;-0.53', '0.71;-0.59', '0.69;-0.57', '0.7;-0.6', '0.53;-0.49', '0.64;-0.39', '0.59;-0.28', '0.45;-0.28', '0.47;-0.36', '0.58;-0.41', '0.61;-0.32', '0.72;-0.28', '0.64;-0.21', '0.81;-0.32', '0.69;-0.4', '0.59;-0.46', '0.59;-0.55']},
+  'Atlético de Madrid':{'ataque': 0.71, 'defensa': -0.73, 'PLUSLOCALataque': 0.39, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.28, 'PLUSVISITAdefensa': -0.29, 'History': []},
 
-    'Athletic Club':{'ataque': 0.48, 'defensa': -0.68, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.44, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.52, 'History': ['0.71;-0.57', '0.64;-0.42', '0.64;-0.36', '0.46;-0.4', '0.38;-0.52', '0.38;-0.55', '0.29;-0.44', '0.26;-0.36', '0.22;-0.37', '0.17;-0.42', '0.39;-0.64', '0.44;-0.61', '0.34;-0.83', '0.52;-0.78', '0.42;-0.85', '0.47;-0.77', '0.32;-0.84', '0.4;-0.92', '0.48;-0.74', '0.58;-0.89', '0.61;-0.96', '0.62;-0.94', '0.76;-0.81', '0.72;-0.64', '0.79;-0.67', '0.69;-0.64', '0.47;-0.41', '0.33;-0.6', '0.38;-0.57', '0.44;-0.64', '0.49;-0.73', '0.48;-0.68']},
+  'Athletic Club':{'ataque': 0.65, 'defensa': -0.80, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.44, 'PLUSVISITAataque': 0.08, 'PLUSVISITAdefensa': -0.63, 'History': []},
 
-    'Sevilla':{'ataque': 0.32, 'defensa': -0.84, 'PLUSLOCALataque': -0.27, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': -0.12, 'History': ['0.57;-0.71', '0.57;-0.79', '0.62;-0.63', '0.5;-0.62', '0.45;-0.51', '0.44;-0.6', '0.42;-0.43', '0.56;-0.36', '0.49;-0.49', '0.41;-0.59', '0.42;-0.77', '0.5;-0.81', '0.48;-0.86', '0.36;-0.86', '0.31;-0.81', '0.43;-0.78', '0.36;-0.71', '0.22;-0.93', '0.14;-0.87', '0.42;-0.84', '0.5;-0.87', '0.44;-1.0', '0.41;-1.08', '0.31;-0.96', '0.29;-0.85', 
-    '0.3;-0.81', '0.33;-0.64', '0.54;-0.96', '0.45;-1.0', '0.37;-0.93', '0.43;-0.83', '0.32;-0.84']},     
+  'Sevilla':{'ataque': 0.36, 'defensa': -0.86, 'PLUSLOCALataque': -0.27, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.14, 'History': []},
 
-    'Celta de Vigo':{'ataque': 0.42, 'defensa': -0.46, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': -0.20, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': 0.34, 'History': ['0.54;-0.63', '0.46;-0.59', '0.46;-0.45', '0.48;-0.43', '0.52;-0.45', '0.5;-0.43', '0.5;-0.7', '0.66;-0.55', '0.59;-0.67', '0.72;-0.76', '0.74;-0.69', '0.58;-0.89', '0.64;-0.82', '0.48;-0.72', '0.59;-0.68', '0.66;-0.53', '0.5;-0.54', '0.67;-0.7', '0.61;-0.62', '0.66;-0.63', '0.67;-0.79', '0.55;-0.75', '0.55;-0.88', '0.65;-0.8', '0.71;-0.65', '0.79;-0.56', '0.76;-0.56', '0.65;-0.55', '0.66;-0.69', '0.7;-0.58', '0.53;-0.68', '0.42;-0.46']},
-    'Getafe':{'ataque': 0.42, 'defensa': -0.19, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': 0.03, 'History': ['0.63;-0.54', '0.71;-0.53', '0.64;-0.52', 
-    '0.7;-0.43', '0.59;-0.45', '0.5;-0.42', '0.4;-0.44', '0.42;-0.58', '0.39;-0.66', '0.44;-0.6', '0.4;-0.55', '0.33;-0.54', '0.27;-0.52', '0.29;-0.49', '0.26;-0.53', '0.21;-0.52', '0.24;-0.71', '0.26;-0.64', '0.2;-0.69', '0.13;-0.65', '0.16;-0.56', '0.12;-0.44', '0.27;-0.56', '0.45;-0.51', '0.35;-0.49', '0.3;-0.42', '0.52;-0.3', '0.45;-0.22', '0.51;-0.29', '0.58;-0.35', '0.41;-0.4', '0.42;-0.19']},
+  'Celta de Vigo':{'ataque': 0.45, 'defensa': -0.51, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': -0.20, 'PLUSVISITAataque': -0.05, 'PLUSVISITAdefensa': 0.29, 'History': []},
 
-    'Alavés':{'ataque': 0.55, 'defensa': -0.60, 'PLUSLOCALataque': 0.03, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': 0.06, 'History': ['0.61;-0.56', '0.61;-0.65', '0.48;-0.63', 
-    '0.52;-0.45', '0.42;-0.4', '0.39;-0.31', '0.31;-0.34', '0.45;-0.29', '0.33;-0.32', '0.34;-0.39', '0.39;-0.35', '0.22;-0.39', '0.16;-0.45', '0.27;-0.54', '0.38;-0.5', '0.43;-0.47', '0.38;-0.59', '0.45;-0.87', '0.53;-0.97', '0.42;-0.8', '0.43;-0.72', '0.54;-0.63', '0.66;-0.78', '0.53;-0.68', '0.62;-0.74', '0.6;-0.92', '0.6;-1.05', '0.42;-0.87', '0.56;-0.87', '0.56;-0.9', '0.56;-0.69', '0.55;-0.6']},        
+  'Getafe':{'ataque': 0.41, 'defensa': -0.20, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': 0.36, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': 0.03, 'History': []},
 
-    'Levante':{'ataque': 0.51, 'defensa': -0.56, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.10, 'History': ['0.56;-0.61', '0.61;-0.67', '0.53;-0.68', '0.49;-0.79', '0.66;-0.74', '0.72;-0.9', '0.75;-0.8', '0.79;-0.68', '0.7;-0.67', '0.76;-0.76', '0.69;-0.78', '0.72;-0.91', '0.6;-0.9', '0.54;-1.07', '0.38;-0.98', '0.43;-0.86', '0.64;-0.72', '0.68;-0.68', '0.66;-0.76', '0.73;-0.69', '0.62;-0.63', '0.49;-0.78', '0.38;-0.68', '0.4;-0.81', '0.4;-0.82', '0.59;-0.8', '0.5;-0.79', '0.54;-0.85', '0.61;-0.75', '0.45;-0.83', '0.5;-0.66', '0.51;-0.56']},
+  'Alavés':{'ataque': 0.49, 'defensa': -0.53, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': 0.06, 'History': []},
 
-    'Valencia':{'ataque': 0.56, 'defensa': -0.45, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': 0.34, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.18, 'History': ['0.7;-0.55', '0.6;-0.52', '0.59;-0.46', 
-    '0.47;-0.81', '0.59;-0.73', '0.56;-0.79', '0.43;-0.82', '0.38;-0.9', '0.41;-0.77', '0.34;-0.79', '0.31;-0.97', '0.51;-0.96', '0.5;-0.83', '0.51;-0.78', '0.47;-0.73', '0.53;-0.67', '0.48;-0.59', '0.64;-0.76', '0.65;-0.7', '0.62;-0.64', '0.75;-0.73', '0.67;-0.66', '0.54;-0.66', '0.44;-0.55', '0.5;-0.5', '0.57;-0.51', '0.69;-0.51', '0.61;-0.53', '0.66;-0.43', '0.55;-0.48', '0.38;-0.43', '0.56;-0.45']},      
+  'Levante':{'ataque': 0.47, 'defensa': -0.54, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.09, 'History': []},
 
-    'Real Sociedad':{'ataque': 0.58, 'defensa': -0.76, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.11, 
-    'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.27, 'History': ['0.55;-0.7', '0.55;-0.77', '0.35;-0.74', '0.38;-0.77', '0.39;-0.86', '0.54;-0.74', '0.6;-0.68', '0.47;-0.6', '0.59;-0.53', '0.69;-0.45', 
-    '0.91;-0.67', '0.92;-0.6', '1.09;-0.55', '0.98;-0.57', '0.94;-0.67', '0.8;-0.7', '0.67;-0.75', '0.7;-0.75', '0.76;-0.69', '0.84;-0.43', '1.0;-0.43', '0.97;-0.44', '0.93;-0.54', '1.03;-0.65', '0.97;-0.75', '0.83;-0.54', '0.78;-0.66', '0.95;-0.67', '0.92;-0.92', '1.0;-0.75', '0.79;-0.75', '0.58;-0.76']},   
+  'Valencia':{'ataque': 0.65, 'defensa': -0.52, 'PLUSLOCALataque': 0.29, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.18, 'History': []},
 
-    'Mallorca':{'ataque': 0.62, 'defensa': -0.81, 'PLUSLOCALataque': 0.50, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.48, 'PLUSVISITAdefensa': -0.35, 'History': ['0.47;-0.72', '0.44;-0.64', '0.43;-0.7', '0.59;-0.9', '0.59;-0.88', '0.48;-1.03', '0.51;-0.94', '0.44;-0.91', '0.57;-0.83', '0.65;-0.9', '0.62;-0.93', '0.61;-0.86', '0.64;-0.79', '0.62;-0.84', '0.47;-0.85', '0.62;-0.74', '0.53;-0.69', '0.55;-0.75', '0.54;-0.87', '0.69;-0.97', '0.59;-1.08', '0.73;-1.02', '0.67;-0.93', '0.62;-0.97', '0.47;-1.03', '0.26;-0.9', '0.34;-0.9', '0.38;-0.92', '0.28;-0.84', '0.32;-0.69', '0.61;-0.64', '0.62;-0.81']},    
+  'Real Sociedad':{'ataque': 0.68, 'defensa': -0.91, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.42, 'History': []},
 
-    'Barcelona':{'ataque': 1.45, 'defensa': -0.35, 'PLUSLOCALataque': 0.32, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': 0.54, 'PLUSVISITAdefensa': -0.02, 'History': ['0.72;-0.47', '0.78;-0.53', '0.73;-0.63', '1.09;-0.51', '1.11;-0.4', '1.24;-0.46', '1.18;-0.52', '1.11;-0.65', '1.05;-0.67', '0.99;-0.76', '0.99;-0.72', '1.19;-0.56', '1.41;-0.46', '1.5;-0.57', '1.66;-0.57', '1.99;-0.74', '1.8;-0.66', '1.83;-0.59', '1.72;-0.38', '1.46;-0.46', '1.39;-0.36', '1.8;-0.32', '1.7;-0.27', '1.66;-0.53', '1.67;-0.53', '1.73;-0.58', '1.5;-0.37', '1.82;-0.58', '1.52;-0.49', '1.6;-0.38', '1.68;-0.46', '1.45;-0.35']},      
+  'Mallorca':{'ataque': 0.55, 'defensa': -0.75, 'PLUSLOCALataque': 0.50, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.55, 'PLUSVISITAdefensa': -0.28, 'History': []},
 
-    'Villarreal':{'ataque': 0.85, 'defensa': -0.55, 'PLUSLOCALataque': 0.60, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.05, 'History': ['0.76;-0.47', '0.83;-0.38', '0.81;-0.4', '0.67;-0.51', '0.83;-0.57', '0.92;-0.56', '0.8;-0.48', '0.8;-0.64', '0.72;-0.61', '0.74;-0.54', '0.93;-0.55', '0.93;-0.37', '0.87;-0.4', '0.88;-0.29', '0.91;-0.26', '0.84;-0.29', '0.86;-0.3', '0.96;-0.38', '0.82;-0.27', '0.7;-0.23', '0.64;-0.28', '0.92;-0.32', '0.87;-0.5', '0.99;-0.53', '0.94;-0.58', '0.99;-0.64', '0.86;-0.68', '0.68;-0.5', '0.93;-0.48', '0.79;-0.43', '0.89;-0.48', '0.85;-0.55']},     
+  'Barcelona':{'ataque': 1.46, 'defensa': -0.34, 'PLUSLOCALataque': 0.32, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': 0.55, 'PLUSVISITAdefensa': -0.01, 'History': []},
 
-    'Real Oviedo':{'ataque': 0.27, 'defensa': -0.62, 'PLUSLOCALataque': -0.32, 'PLUSLOCALdefensa': 0.36, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': -0.38, 'History': ['0.47;-0.76', '0.41;-0.93', '0.38;-0.73', '0.29;-0.79', '0.21;-0.74', '0.27;-0.87', '0.29;-0.73', '0.18;-0.78', '0.18;-1.06', '0.19;-1.14', '0.21;-1.01', '0.18;-1.06', '0.13;-1.02', '0.14;-0.93', '0.15;-0.78', '0.12;-0.91', '0.12;-0.75', '0.4;-0.82', '0.41;-0.87', '0.53;-1.06', '0.43;-1.0', '0.5;-0.85', '0.33;-0.81', '0.43;-0.75', '0.34;-0.77', '0.37;-0.86', '0.26;-0.93', '0.28;-0.85', '0.18;-0.92', '0.11;-0.84', '0.2;-0.67', '0.27;-0.62']},
+  'Villarreal':{'ataque': 0.90, 'defensa': -0.58, 'PLUSLOCALataque': 0.66, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.05, 'History': []},
 
-    'Girona':{'ataque': 0.52, 'defensa': -0.45, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.01, 'History': ['0.52;-0.78', '0.43;-0.86', '0.27;-0.91', 
-    '0.29;-0.95', '0.25;-1.11', '0.27;-1.11', '0.35;-0.95', '0.43;-0.9', '0.44;-0.85', '0.52;-0.86', '0.47;-0.82', '0.51;-0.65', '0.6;-0.62', '0.56;-0.64', '0.5;-0.73', '0.53;-0.59', '0.51;-0.58', '0.57;-0.59', '0.57;-0.54', '0.72;-0.56', '0.63;-0.58', '0.48;-0.65', '0.56;-0.63', '0.82;-0.58', '0.88;-0.66', '0.79;-0.75', '0.78;-0.66', '0.98;-0.52', '0.74;-0.51', '0.69;-0.38', '0.58;-0.37', '0.52;-0.45']},    
+  'Real Oviedo':{'ataque': 0.27, 'defensa': -0.82, 'PLUSLOCALataque': -0.32, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': -0.38, 'History': []},
 
-    'Rayo Vallecano':{'ataque': 0.17, 'defensa': -0.48, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': 0.32, 'PLUSVISITAataque': -0.41, 'PLUSVISITAdefensa': -0.19, 'History': ['0.78;-0.52', '0.63;-0.45', '0.72;-0.4', '0.72;-0.53', '0.71;-0.52', '0.81;-0.8', '0.64;-0.78', '0.56;-0.65', '0.55;-0.56', '0.62;-0.57', '0.63;-0.75', '0.67;-0.58', '0.62;-0.53', '0.57;-0.54', '0.46;-0.52', '0.57;-0.45', '0.51;-0.6', '0.44;-0.63', '0.56;-0.62', '0.57;-0.67', '0.5;-0.78', '0.59;-0.65', '0.67;-0.67', '0.63;-0.64', '0.59;-0.53', '0.68;-0.57', '0.51;-0.6', '0.56;-0.64', '0.47;-0.33', '0.33;-0.28', '0.28;-0.57', '0.17;-0.48']},
+  'Girona':{'ataque': 0.58, 'defensa': -0.55, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': -0.11, 'History': []},
+
+  'Rayo Vallecano':{'ataque': 0.32, 'defensa': -0.58, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': 0.21, 'PLUSVISITAataque': -0.41, 'PLUSVISITAdefensa': -0.19, 'History': []},
 
   },
   SerieA: {
@@ -1843,3 +1835,67 @@ function calc() {
 }
 
 calc();
+
+(function() {
+  /* ── Stats patch ── */
+  function patchStats(id, atkId, defId) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const obs = new MutationObserver(() => {
+      const html = el.innerHTML;
+      const atkM = html.match(/Goles a Favor:\s*([\d.\-]+)/);
+      const defM = html.match(/Goles en Contra:\s*([\d.\-]+)/);
+      const aEl = document.getElementById(atkId);
+      const dEl = document.getElementById(defId);
+      if (aEl && atkM) aEl.textContent = atkM[1];
+      if (dEl && defM) dEl.textContent = defM[1];
+      el.style.display = 'none';
+    });
+    obs.observe(el, { childList: true, subtree: true, characterData: true });
+  }
+  patchStats('StatsLocal',  'stat-local-atk',  'stat-local-def');
+  patchStats('StatsVisita', 'stat-visita-atk', 'stat-visita-def');
+
+  /* ── xG score patch ── */
+  const xgLocalEl = document.getElementById('xgLocal');
+  const numLocal  = document.getElementById('xg-num-local');
+  const numVisita = document.getElementById('xg-num-visita');
+  new MutationObserver(() => {
+    const raw   = xgLocalEl.textContent.trim();
+    const parts = raw.split(' vs ');
+    if (parts.length === 2) {
+      numLocal.textContent  = parts[0];
+      numVisita.textContent = parts[1];
+      const l = parseFloat(parts[0]), v = parseFloat(parts[1]);
+      numLocal.style.color  = l > v ? 'var(--lime)' : l < v ? 'var(--muted-fg)' : 'var(--cyan)';
+      numVisita.style.color = v > l ? 'var(--lime)' : v < l ? 'var(--muted-fg)' : 'var(--cyan)';
+      document.getElementById('xg-display').classList.add('has-result');
+      document.getElementById('probs-card').classList.add('has-result');
+    }
+  }).observe(xgLocalEl, { childList: true, subtree: true, characterData: true });
+
+  /* ── Theme label sync ── */
+  const themeBtn = document.getElementById('theme-toggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const isLight = document.body.classList.contains('light-mode');
+      const span = themeBtn.querySelector('span');
+      if (span) span.textContent = isLight ? 'Modo Claro' : 'Modo Oscuro';
+    });
+  }
+
+
+  /* ── Ordenar competiciones alfabéticamente ── */
+  document.querySelectorAll('select#competition, select#tabla-liga').forEach(sel => {
+    const placeholder = sel.querySelector('option[value=""]');
+    const opts = Array.from(sel.querySelectorAll('option:not([value=""])'));
+    opts.sort((a, b) =>
+      a.textContent.replace(/[^\p{L}\p{N} ]/gu, '').trim()
+        .localeCompare(b.textContent.replace(/[^\p{L}\p{N} ]/gu, '').trim(), 'es', { sensitivity: 'base' })
+    );
+    sel.innerHTML = '';
+    if (placeholder) sel.appendChild(placeholder);
+    opts.forEach(o => sel.appendChild(o));
+  });
+  
+})();
