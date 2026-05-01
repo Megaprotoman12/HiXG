@@ -39,7 +39,7 @@
           <span class="tab-icon">🧮</span>
           <span class="tab-label">Calculadora</span>
         </button>
-        <button class="nav-tab" data-section="matches">
+        <button class="nav-tab " data-section="matches">
           <span class="tab-icon">📅</span>
           <span class="tab-label">Partidos</span>
         </button>
@@ -296,13 +296,7 @@
         <button class="m-tab" data-filter="favorites" role="tab" aria-selected="false">⭐ Favoritos <span class="fav-count" id="fav-count"></span></button>
       </div>
 
-<!-- ══════════ ERROR ══════════ 
-      <div class="api-notice" id="api-notice">
-        <span>🔑</span>
-        <div><strong>Modo demostración</strong> — Para datos reales añade tu API key de <a href="https://dashboard.api-football.com" target="_blank" rel="noopener">api-football.com</a> en <code>matches.js</code>.</div>
-        <button class="api-notice-close" onclick="this.parentElement.remove()">✕</button>
-      </div>
---><!--NEW-->
+<!--NEW-->
 <div class="date-nav" id="date-nav">
   <button class="date-btn" id="date-prev">‹</button>
   <span class="date-label" id="date-label"></span>
@@ -330,22 +324,32 @@
       <h2 class="pron-title">🤑 Pronósticos Sugeridos</h2>
       <p class="pron-sub">Picks ordenados por la mayor diferencia de probabilidad entre un equipo y su rival</p>
     </div>
+
+    <div class = "pron-controls">
+      <div class="pron-ctrl-group">
+        <label class="pron-ctrl-label">Ordenar por</label>
+        <select id="pron-sort-key" style="background: #05080f; border: 1px solid #00f3ff; border-radius: 16px; padding: 28px 24px 32px; position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);">
+          <option value="double">Doble Oportunidad</option>
+          <option value="single">Única Oportunidad</option>
+        </select>
+      </div>
+      <div class="pron-ctrl-group">
+        <label class="pron-ctrl-label">Orden</label>
+        <select id="pron-sort-dir" style="background: #05080f; border: 1px solid #00f3ff; border-radius: 16px; padding: 28px 24px 32px; position: relative; overflow: hidden; box-shadow: 0 0 15px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);">
+          <option value="desc">Mayor → menor</option>
+          <option value="asc">Menor → mayor</option>
+        </select>
+      </div>
+    </div>
+
     <div id="pron-list" class="pron-list">
       <div class="pron-loading">
         <div class="spinner"></div>
         <span>Esperando partidos…</span>
       </div>
     </div>
-  </main>`;
-  <!--
-  <main class="section-inner">
-    <div class="section-placeholder">
-      <div class="placeholder-icon">🤑</div>
-      <h2>Pronósticos Sugeridos</h2>
-      <p>Próximamente — análisis automático de los mejores picks del día.</p>
-    </div>
-  </main>
--->
+
+  </main>;
 </div>
 
 <!-- ══════════ TABLA ══════════ -->
@@ -585,75 +589,13 @@
   <p>© 2026 <strong>Hidden xG</strong> · By <a href="https://www.youtube.com/@MegaBetsMan" target="_blank">@MegaBetsMan</a> · Pasión por el análisis de datos</p>
 </footer>
 
+
+<script src="hxg-core.js"></script>
 <script src="script.js"></script>
-<script src="matches.js"></script>
-
-<script>
-(function() {
-  /* ── Stats patch ── */
-  function patchStats(id, atkId, defId) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const obs = new MutationObserver(() => {
-      const html = el.innerHTML;
-      const atkM = html.match(/Goles a Favor:\s*([\d.\-]+)/);
-      const defM = html.match(/Goles en Contra:\s*([\d.\-]+)/);
-      const aEl = document.getElementById(atkId);
-      const dEl = document.getElementById(defId);
-      if (aEl && atkM) aEl.textContent = atkM[1];
-      if (dEl && defM) dEl.textContent = defM[1];
-      el.style.display = 'none';
-    });
-    obs.observe(el, { childList: true, subtree: true, characterData: true });
-  }
-  patchStats('StatsLocal',  'stat-local-atk',  'stat-local-def');
-  patchStats('StatsVisita', 'stat-visita-atk', 'stat-visita-def');
-
-  /* ── xG score patch ── */
-  const xgLocalEl = document.getElementById('xgLocal');
-  const numLocal  = document.getElementById('xg-num-local');
-  const numVisita = document.getElementById('xg-num-visita');
-  new MutationObserver(() => {
-    const raw   = xgLocalEl.textContent.trim();
-    const parts = raw.split(' vs ');
-    if (parts.length === 2) {
-      numLocal.textContent  = parts[0];
-      numVisita.textContent = parts[1];
-      const l = parseFloat(parts[0]), v = parseFloat(parts[1]);
-      numLocal.style.color  = l > v ? 'var(--lime)' : l < v ? 'var(--muted-fg)' : 'var(--cyan)';
-      numVisita.style.color = v > l ? 'var(--lime)' : v < l ? 'var(--muted-fg)' : 'var(--cyan)';
-      document.getElementById('xg-display').classList.add('has-result');
-      document.getElementById('probs-card').classList.add('has-result');
-    }
-  }).observe(xgLocalEl, { childList: true, subtree: true, characterData: true });
-
-  /* ── Theme label sync ── */
-  const themeBtn = document.getElementById('theme-toggle');
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const isLight = document.body.classList.contains('light-mode');
-      const span = themeBtn.querySelector('span');
-      if (span) span.textContent = isLight ? 'Modo Claro' : 'Modo Oscuro';
-    });
-  }
-
-
-  /* ── Ordenar competiciones alfabéticamente ── */
-  document.querySelectorAll('select#competition, select#tabla-liga').forEach(sel => {
-    const placeholder = sel.querySelector('option[value=""]');
-    const opts = Array.from(sel.querySelectorAll('option:not([value=""])'));
-    opts.sort((a, b) =>
-      a.textContent.replace(/[^\p{L}\p{N} ]/gu, '').trim()
-        .localeCompare(b.textContent.replace(/[^\p{L}\p{N} ]/gu, '').trim(), 'es', { sensitivity: 'base' })
-    );
-    sel.innerHTML = '';
-    if (placeholder) sel.appendChild(placeholder);
-    opts.forEach(o => sel.appendChild(o));
-  });
-  
-})();
-
-</script>
+<script src="bases.js"></script>
+<script src="hxg-pronosticos.js"></script>
+<script src="hxg-partidos.js"></script>
+<script src="hxg-tabla.js"></script>
 
 </body>
 </html>

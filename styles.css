@@ -1,214 +1,82 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap');
 
+:root {
+  --neon-cyan: #00f3ff;
+  --neon-green: #00ff9d;
+  --neon-gold: #ffb800;
+  --bg-dark: #05080f;  
+}
+
 .bet-wrap {
-  background: #080c14;
-  border-radius: 16px;
-  padding: 28px 24px 32px;
-  font-family: 'Rajdhani', sans-serif;
-  color: #e0eaff;
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(0,200,255,0.12);
-  box-shadow: inset 0 0 60px rgba(0,180,255,0.03);
+  background: var(--bg-dark); /* Más oscuro para que el neón resalte */
+  border: 1px solid rgba(0, 243, 255, 0.3);
+  /* Resplandor exterior e interior */
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.1), 
+              inset 0 0 20px rgba(0, 243, 255, 0.05);
 }
-.bet-wrap::before {
-  content: '';
-  position: absolute;
-  top: -40px; right: -40px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(0,220,120,0.06) 0%, transparent 70%);
-  pointer-events: none;
-}
-.bet-wrap::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: -40px;
-  width: 200px; height: 200px;
-  background: radial-gradient(circle, rgba(0,140,255,0.07) 0%, transparent 70%);
-  pointer-events: none;
-}
+
 .bet-title {
-  font-size: 11px;
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 3px;
-  color: #00c8ff;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-  opacity: 0.8;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 5px rgba(0, 200, 255, 0.7);
+  opacity: 1; /* Neón siempre brillante */
 }
-.bet-heading {
-  font-size: 22px;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: 1px;
-  margin-bottom: 24px;
-  line-height: 1.2;
-}
-.bet-heading span { color: #00ff9d; }
 
-.grid-inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
+.bet-heading span {
+  color: var(--neon-green);
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.5),
+               0 0 20px rgba(0, 255, 157, 0.2);
 }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field label {
-  font-size: 11px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #6b8aad;
-  font-family: 'Share Tech Mono', monospace;
-}
+
 .field input {
-  background: rgba(0,180,255,0.05);
-  border: 1px solid rgba(0,180,255,0.2);
-  border-radius: 8px;
-  padding: 10px 14px;
-  color: #e0f4ff;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 18px;
-  font-weight: 600;
-  outline: none;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border-color 0.2s, box-shadow 0.2s;
-}
-.field input:focus {
-  border-color: rgba(0,200,255,0.6);
-  box-shadow: 0 0 0 3px rgba(0,200,255,0.08);
-}
-.field input.green { border-color: rgba(0,200,120,0.25); }
-.field input.green:focus {
-  border-color: rgba(0,255,140,0.6);
-  box-shadow: 0 0 0 3px rgba(0,255,140,0.08);
-}
-.field .sublabel {
-  font-size: 10px;
-  color: #3d5a7a;
-  letter-spacing: 1px;
-  font-family: 'Share Tech Mono', monospace;
+  background: rgba(0, 20, 40, 0.6);
+  border: 1px solid rgba(0, 180, 255, 0.3);
 }
 
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(0,180,255,0.15), transparent);
-  margin: 4px 0 20px;
+.field input:focus {
+  border-color: var(--neon-cyan);
+  background: rgba(0, 40, 60, 0.8);
+  box-shadow: 0 0 12px rgba(0, 243, 255, 0.4), 
+              inset 0 0 8px rgba(0, 243, 255, 0.2);
+  color: rgb(123, 139, 161);
 }
-.results-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 16px;
+
+.res-card.cyan {
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 212, 255, 0.1);
 }
-.res-card {
-  background: rgba(0,0,0,0.35);
-  border-radius: 10px;
-  padding: 14px 16px;
-  border: 1px solid rgba(0,200,255,0.1);
-  position: relative;
-  overflow: hidden;
+
+.res-card.cyan .res-amount {
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.8),
+               0 0 15px rgba(0, 212, 255, 0.3);
 }
-.res-card.cyan { border-color: rgba(0,200,255,0.2); }
-.res-card.green { border-color: rgba(0,220,120,0.2); }
-.res-card.cyan::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00c8ff, transparent);
+
+.res-card.green .res-amount {
+  color: var(--neon-green);
+  text-shadow: 0 0 8px rgba(0, 255, 157, 0.8),
+               0 0 15px rgba(0, 255, 157, 0.3);
 }
-.res-card.green::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #00ff9d, transparent);
-}
-.res-label {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: #4a7090;
-  font-family: 'Share Tech Mono', monospace;
-  margin-bottom: 6px;
-}
-.res-amount {
-  font-size: 26px;
-  font-weight: 700;
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 1px;
-}
-.res-card.cyan .res-amount { color: #00d4ff; }
-.res-card.green .res-amount { color: #00ff9d; }
-.res-subtitle {
-  font-size: 11px;
-  color: #4a7090;
-  margin-top: 4px;
-  font-family: 'Share Tech Mono', monospace;
-}
+
 .bonus-card {
-  background: rgba(255,180,0,0.04);
-  border: 1px solid rgba(255,180,0,0.2);
-  border-radius: 10px;
-  padding: 14px 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
+  background: rgba(255, 184, 0, 0.05);
+  border: 1px solid rgba(255, 184, 0, 0.5);
+  box-shadow: 0 0 15px rgba(255, 184, 0, 0.15);
 }
-.bonus-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, #ffb800, transparent);
-}
-.bonus-left .res-label span { color: #ffb800; }
+
 .bonus-amount {
-  font-size: 28px;
-  font-weight: 700;
-  color: #ffb800;
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 1px;
+  color: var(--neon-gold);
+  text-shadow: 0 0 10px rgba(255, 184, 0, 0.7);
 }
-.bonus-badge {
-  background: rgba(255,180,0,0.12);
-  border: 1px solid rgba(255,180,0,0.25);
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 11px;
-  font-family: 'Share Tech Mono', monospace;
-  color: #ffb800;
-  letter-spacing: 1px;
-  text-align: center;
-  line-height: 1.5;
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0.7; }
 }
-.note {
-  margin-top: 16px;
-  padding: 12px 14px;
-  background: rgba(0,0,0,0.2);
-  border-left: 2px solid rgba(0,200,255,0.3);
-  border-radius: 0 8px 8px 0;
-  font-size: 12px;
-  color: #4a7090;
-  font-family: 'Share Tech Mono', monospace;
-  line-height: 1.6;
+
+.bet-title {
+  animation: flicker 4s infinite;
 }
-.note span { color: #00c8ff; }
-.section-tag {
-  display: inline-block;
-  font-size: 10px;
-  font-family: 'Share Tech Mono', monospace;
-  letter-spacing: 2px;
-  color: #4a7090;
-  border: 1px solid rgba(0,180,255,0.1);
-  border-radius: 4px;
-  padding: 2px 8px;
-  margin-bottom: 8px;
-  text-transform: uppercase;
-}
+
   
   /* ═══════════════════════════════════════════════════
    HIDDEN xG — PREMIUM REDESIGN
@@ -245,6 +113,35 @@
   --glow-cyan:   0 0 24px rgba(0,240,255,0.35);
   --glow-hot:    0 0 24px rgba(45, 223, 255, 0.45);
   --glow-reallyhot:    0 0 24px rgba(255,45,107,0.45);
+}
+
+.pron-controls {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.pron-ctrl-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pron-ctrl-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+}
+
+.pron-ctrl-group select {
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
 }
 
 /*CSS rápido: NEW*/
