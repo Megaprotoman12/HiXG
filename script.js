@@ -1,131 +1,118 @@
 const bases = {
   ChampionsLeague: {
-    'Eintracht Fráncfort':{'ataque': 0.09, 'defensa': -1.12, 'PLUSLOCALataque': -0.26, 'PLUSLOCALdefensa': -0.25, 'PLUSVISITAataque': -0.25, 'PLUSVISITAdefensa': -0.27, 'History': ['0.6;-0.59', '0.5;-0.9', '0.42;-1.14', '0.34;-1.13', '0.37;-1.25', '0.4;-1.22', '0.29;-1.21', '0.09;-1.12']},
+    'Eintracht Fráncfort':{'ataque': 0.28, 'defensa': -1.17, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': -0.28, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': -0.29, 'History': []},
 
-    'Galatasaray':{'ataque': 0.72, 'defensa': -0.87, 'PLUSLOCALataque': 0.25, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.54, 'History': ['0.59;-0.6', '0.57;-0.43', '0.82;-0.47', '0.97;-0.38', '0.82;-0.45', '0.79;-0.68', '0.64;-0.66', '0.5;-0.71', '0.75;-0.67', '0.74;-0.93', '0.81;-0.78', '0.72;-0.87']},
-    
-    'Manchester City':{'ataque': 0.60, 'defensa': -0.50, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': 0.12, 'History': ['0.71;-0.47', '0.71;-0.42', '0.8;-0.29', '0.86;-0.34', '0.66;-0.49', '0.72;-0.45', '0.58;-0.58', '0.64;-0.43', '0.54;-0.41', '0.6;-0.5']},
-    
-    'Nápoles':{'ataque': 0.51, 'defensa': -0.61, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.24, 'History': ['0.47;-0.71', '0.45;-0.58', '0.44;-0.75', '0.43;-0.68', '0.56;-0.62', '0.52;-0.76', '0.54;-0.58', '0.51;-0.61']},
-    
-    'Newcastle':{'ataque': 0.94, 'defensa': -0.79, 'PLUSLOCALataque': -0.05, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': 0.40, 'PLUSVISITAdefensa': -0.24, 'History': ['0.57;-0.7', '0.65;-0.63', '0.83;-0.51', '0.79;-0.43', '0.79;-0.61', '0.78;-0.58', '0.84;-0.48', '0.76;-0.41', '1.23;-0.38', '1.1;-0.58', '1.0;-0.53', '0.94;-0.79']},
-    
-    'Barcelona':{'ataque': 1.00, 'defensa': -0.56, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': 0.39, 'PLUSVISITAdefensa': -0.05, 'History': ['0.7;-0.57', '0.71;-0.61', '0.72;-0.5', 
-    '0.79;-0.6', '0.7;-0.64', '0.67;-0.67', '0.91;-0.76', '0.93;-0.73', '0.88;-0.63', '1.14;-0.57', '0.89;-0.62', '1.0;-0.56']},
-    
-    'Sporting CP':{'ataque': 0.67, 'defensa': -0.07, 'PLUSLOCALataque': 0.39, 'PLUSLOCALdefensa': 0.41, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': 0.12, 'History': ['0.93;-0.54', '0.79;-0.52', '0.78;-0.53', '0.64;-0.56', '0.71;-0.43', '0.64;-0.44', '0.71;-0.33', '0.83;-0.26', '0.72;-0.37', '0.73;-0.25', 
-    '0.66;-0.26', '0.67;-0.07']},
-    
-    'Kairat Almaty':{'ataque': 0.22, 'defensa': -1.32, 'PLUSLOCALataque': -0.47, 'PLUSLOCALdefensa': -0.34, 'PLUSVISITAataque': 0.10, 'PLUSVISITAdefensa': -0.38, 'History': ['0.54;-0.93', '0.46;-1.05', '0.43;-1.09', '0.49;-0.97', '0.57;-1.07', '0.39;-1.15', '0.2;-1.25', '0.22;-1.32']},
-    
-    'Club Brujas':{'ataque': 0.90, 'defensa': -1.14, 'PLUSLOCALataque': 0.55, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': -0.25, 'PLUSVISITAdefensa': -0.49, 'History': ['0.84;-0.63', '0.75;-0.76', '0.65;-1.02', '0.74;-1.09', '0.61;-1.16', '0.66;-1.21', '0.76;-1.02', '0.88;-0.83', '0.92;-0.92', '0.9;-1.14']},
-    
-    'Mónaco':{'ataque': 0.71, 'defensa': -0.60, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.22, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.22, 'History': ['0.63;-0.84', '0.58;-0.84', '0.74;-0.78', 
-    '0.62;-0.55', '0.62;-0.58', '0.85;-0.56', '0.83;-0.78', '0.73;-0.56', '0.7;-0.65', '0.71;-0.6']},     
-    
-    'Copenhague':{'ataque': 0.54, 'defensa': -1.02, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': 0.01, 'PLUSVISITAdefensa': -0.36, 'History': ['0.69;-0.6', '0.65;-0.68', '0.56;-0.64', '0.46;-0.82', '0.57;-0.9', '0.76;-0.97', '0.57;-1.0', '0.54;-1.02']},
-    
-    'Bayer Leverkusen':{'ataque': 0.57, 'defensa': -0.14, 'PLUSLOCALataque': -0.05, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': 0.25, 'History': ['0.6;-0.69', '0.65;-0.57', '0.61;-0.76', '0.55;-0.59', '0.71;-0.4', '0.68;-0.39', '0.47;-0.51', '0.49;-0.47', '0.62;-0.37', '0.52;-0.27', '0.57;-0.14', '0.57;-0.14']},
-    
-    'Ajax':{'ataque': 0.35, 'defensa': -0.97, 'PLUSLOCALataque': -0.30, 'PLUSLOCALdefensa': -0.32, 'PLUSVISITAataque': 0.06, 'PLUSVISITAdefensa': -0.05, 'History': ['0.45;-0.7', '0.39;-0.69', '0.41;-0.9', '0.32;-1.05', '0.2;-1.12', '0.26;-1.03', '0.3;-0.97', '0.35;-0.97']},
-    
-    'Inter':{'ataque': 0.86, 'defensa': -0.32, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': 0.24, 'History': ['0.7;-0.45', '1.03;-0.29', '1.24;-0.32', '1.12;-0.38', '1.05;-0.33', '0.91;-0.24', '0.98;-0.32', '0.99;-0.18', '0.89;-0.26', '0.86;-0.32']},       
-    
-    'Bayern Múnich':{'ataque': 1.71, 'defensa': -0.54, 'PLUSLOCALataque': 0.57, 'PLUSLOCALdefensa': 0.10, 
-    'PLUSVISITAataque': 0.55, 'PLUSVISITAdefensa': -0.04, 'History': ['0.71;-0.54', '1.11;-0.46', '1.37;-0.36', '1.35;-0.3', '1.21;-0.51', '1.22;-0.45', '1.16;-0.32', '1.06;-0.22', '1.44;-0.27', '1.57;-0.35', '1.6;-0.36', '1.71;-0.54']},
-    
-    'Chelsea':{'ataque': 0.64, 'defensa': -0.87, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.42, 'History': ['0.54;-0.71', '0.51;-0.65', '0.72;-0.66', 
-    '0.69;-0.59', '0.73;-0.5', '0.74;-0.56', '0.72;-0.46', '0.76;-0.43', '0.84;-0.79', '0.64;-0.87']},    
-    
-    'Liverpool':{'ataque': 0.98, 'defensa': -0.16, 'PLUSLOCALataque': 0.60, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': 0.23, 'History': ['0.79;-0.53', '0.62;-0.51', '0.85;-0.43', '1.0;-0.29', '1.05;-0.4', '0.96;-0.26', '1.16;-0.19', '1.53;-0.17', '1.38;-0.24', '1.47;-0.15', '1.23;-0.16', '0.98;-0.16']},
-    
-    'Atlético de Madrid':{'ataque': 1.07, 'defensa': -0.40, 'PLUSLOCALataque': 0.34, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': 0.16, 'History': ['0.53;-0.79', '0.84;-0.69', '0.79;-0.72', '0.79;-0.67', '0.74;-0.61', '0.92;-0.61', '0.9;-0.46', '0.8;-0.57', '0.89;-0.6', '1.11;-0.58', '1.12;-0.55', '1.08;-0.54', '1.13;-0.28', '1.07;-0.4']},
-    
-    'PSG':{'ataque': 1.68, 'defensa': 0.04, 'PLUSLOCALataque': 0.75, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': 0.33, 'PLUSVISITAdefensa': 0.56, 'History': ['0.79;-0.52', '0.82;-0.53', '1.02;-0.49', '0.96;-0.46', '1.34;-0.72', '1.38;-0.6', '1.27;-0.66', '1.19;-0.58', '1.28;-0.55', '1.23;-0.56', '1.59;-0.64', '1.66;-0.45', '1.67;-0.21', '1.68;0.04']},
-    
-    'Atalanta':{'ataque': 0.82, 'defensa': -1.19, 'PLUSLOCALataque': 0.40, 'PLUSLOCALdefensa': -0.32, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.27, 'History': ['0.52;-0.79', '0.65;-0.69', '0.71;-0.63', '0.67;-0.46', '0.79;-0.49', '0.85;-0.49', '0.92;-0.63', '0.78;-0.63', '0.67;-0.72', '0.69;-0.68', '0.74;-1.06', '0.82;-1.19']},
-    
-    'Olympiacos':{'ataque': 0.64, 'defensa': -0.65, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': -0.02, 'History': ['0.64;-0.49', '0.56;-0.71', '0.45;-0.73', '0.4;-0.61', '0.65;-0.95', '0.72;-0.77', '0.84;-0.56', '0.84;-0.62', '0.74;-0.75', '0.64;-0.65']},
-    
-    'Pafos':{'ataque': 0.65, 'defensa': -0.86, 'PLUSLOCALataque': 0.18, 'PLUSLOCALdefensa': -0.16, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.10, 'History': ['0.49;-0.64', '0.41;-1.04', '0.44;-1.01', 
-    '0.45;-0.79', '0.49;-0.8', '0.53;-0.9', '0.44;-0.88', '0.65;-0.86']},
-    
-    'Slavia Praga':{'ataque': 0.42, 'defensa': -1.63, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': -0.36, 
-    'PLUSVISITAataque': -0.38, 'PLUSVISITAdefensa': -0.67, 'History': ['0.95;-0.67', '0.79;-0.99', '0.73;-1.06', '0.56;-1.18', '0.48;-1.1', '0.35;-1.17', '0.44;-1.41', '0.42;-1.63']},
-    
-    'Bodo/Glimt':{'ataque': 0.89, 'defensa': -0.88, 'PLUSLOCALataque': 0.12, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': 0.17, 'PLUSVISITAdefensa': -0.50, 'History': ['0.67;-0.95', '0.74;-0.95', '0.78;-1.2', '0.55;-1.08', '0.52;-1.31', '0.53;-1.33', '0.66;-1.2', '0.77;-1.1', '0.85;-1.0', '0.91;-0.97', '1.01;-0.87', '0.89;-0.88']},
-    
-    'Benfica':{'ataque': 0.33, 'defensa': -0.35, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.03, 'History': ['0.62;-0.64', '0.56;-0.61', '0.45;-0.79', '0.29;-0.73', '0.36;-0.61', '0.5;-0.57', '0.38;-0.59', '0.47;-0.49', '0.3;-0.36', '0.33;-0.35']},   
-    
-    'Qarabag':{'ataque': 0.54, 'defensa': -1.66, 'PLUSLOCALataque': -0.12, 'PLUSLOCALdefensa': -0.35, 'PLUSVISITAataque': 0.06, 'PLUSVISITAdefensa': -0.71, 'History': ['0.64;-0.62', '0.72;-0.58', '0.62;-0.89', '0.54;-0.86', '0.48;-0.99', '0.39;-1.06', '0.39;-0.95', '0.37;-1.32', '0.34;-1.79', '0.54;-1.66']}, 
-    
-    'Juventus':{'ataque': 1.04, 'defensa': -0.66, 'PLUSLOCALataque': 0.50, 'PLUSLOCALdefensa': 0.25, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.31, 'History': ['0.69;-0.56', '0.74;-0.64', '0.66;-0.75', '0.7;-0.6', '0.92;-0.58', '1.02;-0.62', '1.04;-0.51', '0.82;-0.41', '0.78;-0.67', '1.04;-0.66']},   
-    
-    'Borussia Dortmund':{'ataque': 0.64, 'defensa': -0.61, 'PLUSLOCALataque': 0.23, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.10, 'History': ['0.56;-0.69', '0.56;-0.66', '0.52;-0.58', '0.57;-0.64', '0.83;-0.67', '0.86;-0.68', '0.73;-0.69', '0.59;-0.7', '0.67;-0.59', '0.64;-0.61']},
-    
-    'Real Madrid':{'ataque': 1.45, 'defensa': -0.88, 'PLUSLOCALataque': 0.47, 'PLUSLOCALdefensa': 0.12, 'PLUSVISITAataque': 0.38, 'PLUSVISITAdefensa': -0.40, 'History': ['0.82;-0.54', '0.94;-0.46', '1.05;-0.39', '0.91;-0.53', '1.25;-0.78', '1.2;-0.84', '1.43;-0.82', '1.33;-0.91', '1.2;-0.73', '1.19;-0.77', '1.17;-0.67', '1.26;-0.73', '1.27;-0.77', '1.45;-0.88']},
-    
-    'Marsella':{'ataque': 0.26, 'defensa': -0.91, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.27, 'PLUSVISITAdefensa': -0.21, 'History': ['0.54;-0.82', '0.53;-0.76', '0.54;-0.75', '0.37;-0.71', '0.55;-0.71', '0.52;-0.59', '0.45;-0.78', '0.26;-0.91']},
-    
-    'Tottenham':{'ataque': 0.84, 'defensa': -0.53, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': 0.50, 'PLUSVISITAataque': 0.08, 'PLUSVISITAdefensa': -0.43, 'History': ['0.52;-0.51', '0.52;-0.58', '0.46;-0.74', '0.64;-0.64', '0.89;-1.02', '0.96;-0.88', '0.97;-0.76', '0.88;-0.56', '0.85;-0.57', '0.84;-0.53']}, 
-    
-    'Villarreal':{'ataque': 0.25, 'defensa': -1.16, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': -0.36, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.20, 'History': ['0.51;-0.52', '0.59;-0.57', '0.46;-0.65', '0.24;-0.66', '0.28;-0.92', '0.35;-1.11', '0.29;-1.14', '0.25;-1.16']},
-    
-    'Athletic Club':{'ataque': 0.57, 'defensa': -0.63, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.05, 'PLUSVISITAdefensa': 0.04, 'History': ['0.49;-0.61', '0.46;-0.61', '0.78;-0.5', '0.69;-0.47', '0.61;-0.39', '0.49;-0.44', '0.63;-0.51', '0.57;-0.63']},
-    
-    'Arsenal':{'ataque': 1.10, 'defensa': -0.16, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': 0.25, 'PLUSVISITAataque': 0.15, 'PLUSVISITAdefensa': 0.19, 'History': ['0.61;-0.49', '0.84;-0.41', '0.87;-0.36', '0.99;-0.19', '1.21;-0.05', '1.25;-0.1', '1.34;-0.16', '1.41;-0.18', '1.28;-0.23', '1.28;-0.23', '1.29;-0.15', '1.1;-0.16']},
-    
-    'PSV':{'ataque': 0.60, 'defensa': -0.94, 'PLUSLOCALataque': 0.24, 'PLUSLOCALdefensa': -0.23, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.11, 'History': ['0.77;-0.77', '0.64;-0.81', '0.82;-0.8', '0.7;-0.75', '0.8;-0.8', '0.81;-0.98', '0.7;-1.04', '0.6;-0.94']},
-    
-    'Royale Union SG':{'ataque': 0.49, 'defensa': -0.66, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': 0.06, 'PLUSVISITAdefensa': 0.05, 'History': ['0.77;-0.77', '0.7;-0.84', '0.72;-1.06', '0.67;-1.05', '0.75;-0.9', '0.63;-0.87', '0.5;-0.81', '0.49;-0.66']},
+  'Galatasaray':{'ataque': 0.60, 'defensa': -0.84, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': 0.32, 'PLUSVISITAataque': -0.31, 'PLUSVISITAdefensa': -0.56, 'History': []},
+
+  'Manchester City':{'ataque': 0.58, 'defensa': -0.60, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.09, 'History': []},
+
+  'Nápoles':{'ataque': 0.51, 'defensa': -0.74, 'PLUSLOCALataque': 0.14, 'PLUSLOCALdefensa': 0.22, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.36, 'History': []},
+
+  'Newcastle':{'ataque': 0.97, 'defensa': -0.90, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': 0.40, 'PLUSVISITAdefensa': -0.46, 'History': []},
+
+  'Barcelona':{'ataque': 1.15, 'defensa': -0.42, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': 0.04, 'History': []},
+
+  'Sporting CP':{'ataque': 0.69, 'defensa': -0.12, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': 0.47, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': 0.01, 'History': []},
+
+  'Kairat Almaty':{'ataque': 0.32, 'defensa': -1.35, 'PLUSLOCALataque': -0.44, 'PLUSLOCALdefensa': -0.42, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.33, 'History': []},
+
+  'Club Brujas':{'ataque': 0.89, 'defensa': -1.04, 'PLUSLOCALataque': 0.40, 'PLUSLOCALdefensa': -0.08, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': -0.36, 'History': []},
+
+  'Mónaco':{'ataque': 0.71, 'defensa': -0.77, 'PLUSLOCALataque': 0.18, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.45, 'History': []},
+
+  'Copenhague':{'ataque': 0.46, 'defensa': -1.22, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': -0.18, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': -0.44, 'History': []},
+
+  'Bayer Leverkusen':{'ataque': 0.60, 'defensa': -0.27, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': 0.22, 'History': []},
+
+  'Ajax':{'ataque': 0.43, 'defensa': -0.98, 'PLUSLOCALataque': -0.27, 'PLUSLOCALdefensa': -0.07, 'PLUSVISITAataque': 0.10, 'PLUSVISITAdefensa': -0.31, 'History': []},
+
+  'Inter':{'ataque': 0.72, 'defensa': -0.43, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': 0.08, 'PLUSVISITAdefensa': 0.13, 'History': []},
+
+  'Bayern Múnich':{'ataque': 1.76, 'defensa': -0.62, 'PLUSLOCALataque': 0.47, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.69, 'PLUSVISITAdefensa': -0.01, 'History': []},
+
+  'Chelsea':{'ataque': 0.81, 'defensa': -0.59, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.30, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.29, 'History': []},
+
+  'Liverpool':{'ataque': 1.01, 'defensa': -0.22, 'PLUSLOCALataque': 0.62, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': 0.24, 'History': []},
+
+  'Atlético de Madrid':{'ataque': 1.05, 'defensa': -0.41, 'PLUSLOCALataque': 0.46, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': 0.04, 'History': []},
+
+  'PSG':{'ataque': 1.46, 'defensa': -0.24, 'PLUSLOCALataque': 0.49, 'PLUSLOCALdefensa': 0.08, 'PLUSVISITAataque': 0.37, 'PLUSVISITAdefensa': 0.28, 'History': []},
+
+  'Atalanta':{'ataque': 0.83, 'defensa': -1.11, 'PLUSLOCALataque': 0.45, 'PLUSLOCALdefensa': -0.43, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.08, 'History': []},
+
+  'Olympiacos':{'ataque': 0.39, 'defensa': -0.65, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.07, 'History': []},
+
+  'Pafos':{'ataque': 0.49, 'defensa': -0.85, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': -0.28, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': 0.03, 'History': []},
+
+  'Slavia Praga':{'ataque': 0.45, 'defensa': -1.20, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': -0.16, 
+  'PLUSVISITAataque': -0.27, 'PLUSVISITAdefensa': -0.44, 'History': []},
+
+  'Bodo/Glimt':{'ataque': 0.99, 'defensa': -0.75, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.41, 'History': []},
+
+  'Benfica':{'ataque': 0.46, 'defensa': -0.33, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': 0.24, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': 0.02, 'History': []},
+
+  'Qarabag':{'ataque': 0.53, 'defensa': -1.75, 'PLUSLOCALataque': -0.00, 'PLUSLOCALdefensa': -0.50, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.65, 'History': []},
+
+  'Juventus':{'ataque': 0.94, 'defensa': -0.78, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': 0.30, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': -0.48, 'History': []},
+
+  'Borussia Dortmund':{'ataque': 0.75, 'defensa': -0.79, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': 0.21, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': -0.40, 'History': []},
+
+  'Real Madrid':{'ataque': 1.30, 'defensa': -0.61, 'PLUSLOCALataque': 0.41, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': 0.29, 'PLUSVISITAdefensa': -0.17, 'History': []},
+
+  'Marsella':{'ataque': 0.48, 'defensa': -0.68, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': -0.18, 'History': []},
+
+  'Tottenham':{'ataque': 0.82, 'defensa': -0.63, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': 0.43, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.46, 'History': []},
+
+  'Villarreal':{'ataque': 0.17, 'defensa': -1.02, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': -0.15, 'PLUSVISITAataque': -0.40, 'PLUSVISITAdefensa': -0.27, 'History': []},
+
+  'Athletic Club':{'ataque': 0.71, 'defensa': -0.75, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': 0.06, 'PLUSVISITAdefensa': -0.05, 'History': []},
+
+  'Arsenal':{'ataque': 0.91, 'defensa': -0.09, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': 0.24, 'PLUSVISITAataque': 0.00, 'PLUSVISITAdefensa': 0.26, 'History': []},
+
+  'PSV':{'ataque': 0.75, 'defensa': -0.88, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': -0.22, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': -0.06, 'History': []},
+
+  'Royale Union SG':{'ataque': 0.53, 'defensa': -0.69, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': -0.25, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': 0.16, 'History': []},
   },
   PremierLeague: {
-    'Leeds Utd':{'ataque': 0.83, 'defensa': -0.39, 'PLUSLOCALataque': -0.00, 'PLUSLOCALdefensa': 0.40, 'PLUSVISITAataque': 0.23, 'PLUSVISITAdefensa': -0.19, 'History': ['0.72;-0.55', '0.59;-0.77', '0.52;-0.64', '0.36;-0.57', '0.6;-0.57', '0.72;-0.53', '0.69;-0.67', '0.5;-0.82', '0.5;-0.74', '0.42;-0.84', '0.37;-0.99', '0.36;-1.1', '0.59;-1.16', '0.85;-0.97', '0.8;-1.02', '0.83;-0.78', '0.98;-0.84', '1.1;-0.69', '1.0;-0.73', '0.82;-0.76', '1.05;-0.97', '0.93;-0.8', '0.88;-0.68', '0.76;-0.72', '0.9;-0.81', '0.85;-0.87', '0.88;-0.88', '0.71;-0.73', '0.63;-0.73', '0.59;-0.63', '0.44;-0.52', '0.64;-0.39', '0.83;-0.39']},
+    'Leeds Utd':{'ataque': 0.66, 'defensa': -0.51, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.09, 'History': []},
 
-    'Everton':{'ataque': 0.58, 'defensa': -0.46, 'PLUSLOCALataque': -0.24, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': -0.04, 'History': ['0.55;-0.72', '0.66;-0.55', '0.72;-0.56', '0.78;-0.55', '0.75;-0.59', '0.66;-0.61', '0.75;-0.59', '0.71;-0.7', '0.54;-0.91', '0.56;-0.84', '0.54;-0.73', '0.51;-0.45', '0.45;-0.6', '0.51;-0.4', '0.72;-0.34', '0.71;-0.48', '0.58;-0.52', '0.5;-0.61', '0.55;-0.65', '0.48;-0.86', '0.46;-0.77', '0.44;-0.52', '0.32;-0.47', '0.37;-0.57', '0.51;-0.65', '0.46;-0.62', '0.41;-0.56', '0.44;-0.47', '0.47;-0.39', '0.57;-0.54', '0.57;-0.38', '0.57;-0.43', '0.58;-0.46']},
+  'Everton':{'ataque': 0.66, 'defensa': -0.53, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': -0.06, 'History': []},
 
-    'Manchester Utd':{'ataque': 0.80, 'defensa': -0.45, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': 0.18, 'History': ['0.45;-0.57', '0.52;-0.66', '0.82;-0.66', '0.79;-0.84', '0.84;-0.66', '0.81;-0.84', '0.87;-0.83', '0.93;-0.67', '1.2;-0.79', '1.01;-0.92', '0.82;-0.82', '0.53;-0.79', '0.66;-0.74', '0.62;-0.72', '0.94;-0.68', '1.04;-0.73', '0.97;-0.66', '0.87;-0.55', '0.69;-0.64', '0.72;-0.46', '0.81;-0.39', '0.95;-0.22', '0.92;-0.16', '1.05;-0.35', '1.03;-0.25', '0.83;-0.3', '0.76;-0.25', '0.85;-0.24', '0.76;-0.4', '0.9;-0.45', '1.01;-0.48', '0.88;-0.68', '0.8;-0.45']},
+  'Manchester Utd':{'ataque': 0.64, 'defensa': -0.59, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': 0.05, 'History': []},
 
-    'Arsenal':{'ataque': 0.93, 'defensa': -0.33, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': 0.01, 'History': ['0.57;-0.45', '0.79;-0.33', '0.66;-0.23', '0.68;-0.18', '0.57;-0.16', '0.7;-0.17', '0.9;-0.15', '0.95;-0.16', '0.81;0.03', '0.93;0.01', '1.0;-0.01', '1.07;0.06', '1.03;0.1', '1.05;0.11', '1.08;-0.14', '0.99;-0.37', '1.03;-0.24', '1.15;-0.3', '1.4;-0.24', '1.5;-0.34', '1.26;-0.24', '1.24;-0.16', '1.17;-0.13', '1.21;-0.01', '1.28;-0.03', '1.05;-0.07', '0.93;-0.17', '1.13;-0.23', '1.08;-0.18', '0.97;-0.09', '1.12;-0.19', '0.95;-0.24', '0.93;-0.33']},
-    'Chelsea':{'ataque': 0.81, 'defensa': -0.69, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': 0.00, 'PLUSVISITAataque': 0.39, 'PLUSVISITAdefensa': -0.09, 'History': ['0.65;-0.53', '0.85;-0.49', '0.94;-0.5', 
-    '0.89;-0.54', '0.71;-0.59', '0.73;-0.75', '0.77;-0.59', '0.91;-0.5', '0.83;-0.57', '1.08;-0.44', '1.21;-0.4', '1.14;-0.31', '1.09;-0.27', '0.9;-0.53', '0.8;-0.5', '0.94;-0.48', '0.89;-0.59', '0.76;-0.62', '0.68;-0.78', '0.81;-0.61', '0.76;-0.73', '0.79;-0.52', '0.97;-0.53', '1.05;-0.69', '1.21;-0.8', '1.28;-0.75', '1.12;-0.79', '1.08;-0.74', '1.31;-0.73', '1.18;-0.73', '1.02;-0.73', '1.04;-0.77', '0.81;-0.69']},
+  'Arsenal':{'ataque': 0.69, 'defensa': -0.32, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': 0.08, 'PLUSVISITAdefensa': 0.10, 'History': []},
 
-    'Crystal Palace':{'ataque': 0.41, 'defensa': -0.51, 'PLUSLOCALataque': -0.25, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.06, 'PLUSVISITAdefensa': 0.06, 'History': ['0.53;-0.65', '0.52;-0.6', '0.72;-0.64', '0.79;-0.55', '0.87;-0.49', '1.07;-0.55', '1.04;-0.64', '1.36;-0.71', '1.18;-0.57', '1.14;-0.38', '0.89;-0.29', '0.81;-0.23', '0.76;-0.36', '0.69;-0.28', '0.77;-0.28', '0.57;-0.48', '0.63;-0.63', '0.46;-0.61', '0.54;-0.66', '0.49;-0.68', '0.49;-0.63', '0.42;-0.7', '0.43;-0.88', '0.56;-0.75', '0.55;-0.67', '0.49;-0.66', '0.46;-0.57', '0.45;-0.65', '0.53;-0.64', '0.42;-0.6', '0.52;-0.59', '0.41;-0.51']},
+  'Chelsea':{'ataque': 0.61, 'defensa': -0.85, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': -0.30, 'History': []},
 
-    'Nottingham Forest':{'ataque': 0.71, 'defensa': -0.65, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.12, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.17, 'History': ['0.68;-0.64', '0.63;-0.63', '0.55;-0.8', '0.5;-0.82', '0.45;-0.79', '0.31;-0.76', '0.22;-1.01', '0.13;-1.15', '0.06;-1.1', '0.19;-0.9', '0.34;-0.85', '0.46;-0.88', '0.44;-0.91', '0.35;-0.77', '0.28;-0.98', '0.49;-0.8', '0.38;-0.68', '0.42;-0.63', '0.45;-0.68', '0.49;-0.83', '0.47;-0.77', '0.39;-0.75', '0.37;-0.7', '0.24;-0.83', '0.33;-0.97', '0.51;-0.91', '0.38;-0.79', '0.44;-0.84', '0.55;-0.81', '0.43;-0.78', '0.54;-0.57', '0.5;-0.58', '0.71;-0.65']},
+  'Crystal Palace':{'ataque': 0.50, 'defensa': -0.73, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.12, 'History': []},
 
-    'Brentford':{'ataque': 0.82, 'defensa': -0.70, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.10, 'History': ['0.64;-0.68', '0.6;-0.53', '0.62;-0.6', '0.67;-0.56', '0.58;-0.52', '0.77;-0.5', '0.67;-0.45', '0.76;-0.37', '0.91;-0.49', '0.72;-0.45', '0.8;-0.44', '0.79;-0.47', '0.83;-0.5', '0.81;-0.52', '0.62;-0.73', '0.39;-0.76', '0.4;-0.65', '0.59;-0.8', '0.55;-0.75', '0.77;-0.68', '0.95;-0.8', '0.74;-0.83', '0.69;-0.82', '0.72;-0.61', '0.92;-0.68', '0.96;-0.45', '0.85;-0.51', '1.1;-0.84', '0.92;-0.79', '0.98;-0.88', '0.88;-0.74', '0.93;-0.73', '0.82;-0.7']},
+  'Nottingham Forest':{'ataque': 0.80, 'defensa': -0.51, 'PLUSLOCALataque': 0.03, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': 0.03, 'History': []},
 
-    'Wolves':{'ataque': 0.24, 'defensa': -1.13, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': -0.23, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': -0.30, 'History': ['0.52;-0.76', '0.42;-0.74', '0.44;-0.79', '0.35;-0.81', '0.35;-1.04', '0.41;-0.96', '0.33;-0.8', '0.25;-0.92', '0.35;-1.12', '0.28;-1.09', '0.24;-1.22', '0.19;-1.15', '0.13;-1.06', '-0.02;-0.97', '-0.06;-1.28', '0.16;-1.19', '0.05;-1.21', '0.17;-1.21', '0.25;-1.04', '0.34;-0.83', '0.24;-0.81', '0.21;-0.68', '0.11;-0.75', '-0.04;-0.66', '0.07;-0.82', '0.01;-1.01', '0.1;-0.89', '0.01;-0.85', '0.11;-0.76', '0.16;-0.8', '0.26;-0.87', '0.24;-0.95', 
-    '0.24;-1.13']},
+  'Brentford':{'ataque': 0.74, 'defensa': -0.68, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.12, 'History': []},
 
-    'Manchester City':{'ataque': 1.11, 'defensa': -0.21, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': 0.12, 'PLUSVISITAataque': 0.29, 'PLUSVISITAdefensa': 0.27, 'History': ['0.76;-0.52', '0.59;-0.61', '0.65;-0.77', '0.83;-0.74', '0.8;-0.63', '0.77;-0.55', '0.72;-0.45', '0.84;-0.41', '0.78;-0.43', '0.8;-0.35', '0.74;-0.26', '0.82;-0.41', '0.88;-0.64', '0.98;-0.57', '1.05;-0.56', '1.25;-0.37', '1.31;-0.27', '1.27;-0.31', '1.27;-0.36', '1.1;-0.48', '1.12;-0.47', '0.95;-0.61', '1.02;-0.51', '0.94;-0.54', '1.12;-0.47', '1.18;-0.29', '1.12;-0.35', '0.97;-0.18', '0.94;-0.29', '0.99;-0.21', '1.02;-0.23', '1.11;-0.21']},
+  'Wolves':{'ataque': 0.20, 'defensa': -1.03, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.02, 'PLUSVISITAataque': -0.30, 'PLUSVISITAdefensa': -0.42, 'History': []},
 
-    'Brighton':{'ataque': 0.41, 'defensa': -0.43, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': -0.29, 'PLUSVISITAdefensa': -0.09, 'History': ['0.63;-0.54', '0.46;-0.66', '0.62;-0.72', '0.6;-0.71', '0.64;-0.69', '0.8;-0.71', '0.65;-0.63', '0.76;-0.6', '0.88;-0.87', '0.98;-0.8', '0.89;-0.54', '0.92;-0.53', '0.96;-0.5', '1.0;-0.7', '0.9;-0.71', '0.75;-0.79', '0.65;-0.83', '0.71;-0.95', 
-    '0.89;-1.02', '0.74;-0.87', '0.74;-0.89', '0.5;-0.71', '0.53;-0.76', '0.63;-0.81', '0.55;-0.8', '0.42;-0.76', '0.48;-0.64', '0.53;-0.71', '0.45;-0.6', '0.52;-0.52', '0.71;-0.46', '0.64;-0.33', '0.41;-0.43']},
+  'Manchester City':{'ataque': 1.01, 'defensa': -0.28, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': 0.23, 'History': []},
 
-    'Fulham':{'ataque': 0.47, 'defensa': -0.58, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.12, 'History': ['0.54;-0.63', '0.62;-0.7', '0.63;-0.79', '0.56;-0.63', '0.52;-0.55', '0.45;-0.57', '0.5;-0.8', '0.51;-0.84', '0.48;-0.8', '0.45;-0.73', '0.35;-0.7', '0.54;-0.62', '0.63;-0.61', '0.56;-0.71', '0.56;-0.78', '0.8;-0.88', '0.68;-0.76', '0.64;-0.67', 
-    '0.69;-0.75', '0.64;-0.73', '0.76;-0.69', '0.58;-0.56', '0.63;-0.59', '0.82;-0.73', '0.91;-0.86', '0.73;-0.92', '0.77;-0.9', '0.8;-0.85', '0.61;-0.77', '0.58;-0.65', '0.7;-0.76', '0.51;-0.69', '0.47;-0.58']},
+  'Brighton':{'ataque': 0.64, 'defensa': -0.29, 'PLUSLOCALataque': 0.17, 'PLUSLOCALdefensa': 0.30, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': 0.01, 'History': []},
 
-    'Sunderland':{'ataque': 0.60, 'defensa': -0.81, 'PLUSLOCALataque': -0.01, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': 0.01, 'PLUSVISITAdefensa': -0.28, 'History': ['0.54;-0.52', '0.47;-0.51', '0.54;-0.52', '0.45;-0.59', '0.41;-0.6', '0.38;-0.46', '0.36;-0.52', '0.49;-0.43', '0.56;-0.36', '0.48;-0.38', '0.5;-0.46', '0.41;-0.64', '0.59;-0.67', '0.51;-0.68', '0.5;-0.75', '0.45;-0.59', '0.5;-0.49', '0.36;-0.61', '0.4;-0.61', '0.34;-0.65', '0.47;-0.83', '0.54;-0.75', '0.4;-0.76', '0.52;-0.66', '0.54;-0.74', 
-    '0.47;-0.89', '0.45;-0.94', '0.57;-0.81', '0.57;-0.73', '0.49;-0.81', '0.61;-0.67', '0.53;-0.55', '0.6;-0.81']},
+  'Fulham':{'ataque': 0.46, 'defensa': -0.47, 'PLUSLOCALataque': 0.00, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.14, 'PLUSVISITAdefensa': -0.01, 'History': []},
 
-    'West Ham':{'ataque': 0.66, 'defensa': -0.71, 'PLUSLOCALataque': 0.23, 'PLUSLOCALdefensa': 0.19, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.30, 'History': ['0.52;-0.54', '0.48;-0.73', '0.65;-0.65', '0.61;-0.61', '0.55;-0.69', '0.57;-0.6', '0.55;-0.8', '0.47;-0.88', '0.39;-0.89', '0.53;-0.74', '0.68;-0.68', '0.6;-1.0', '0.41;-0.89', '0.39;-0.86', '0.4;-0.76', '0.54;-0.91', '0.44;-0.97', '0.35;-0.93', '0.43;-1.11', '0.22;-1.19', '0.16;-1.17', '0.44;-1.12', '0.45;-0.98', '0.61;-1.06', '0.59;-0.85', '0.65;-0.66', '0.85;-0.49', '0.95;-0.9', '0.87;-0.71', '0.79;-0.76', '0.67;-0.83', '0.75;-0.81', '0.66;-0.71']},
+  'Sunderland':{'ataque': 0.54, 'defensa': -1.02, 'PLUSLOCALataque': -0.19, 'PLUSLOCALdefensa': -0.18, 'PLUSVISITAataque': 0.12, 'PLUSVISITAdefensa': -0.24, 'History': []},
 
-    'Tottenham':{'ataque': 0.29, 'defensa': -0.93, 'PLUSLOCALataque': -0.12, 'PLUSLOCALdefensa': -0.65, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': 0.32, 'History': ['0.74;-0.57', '0.83;-0.4', '0.64;-0.47', '0.6;-0.43', '0.59;-0.46', '0.5;-0.53', '0.64;-0.5', '0.62;-0.65', '0.83;-0.48', '0.7;-0.74', '0.59;-0.55', '0.53;-0.62', '0.52;-0.71', '0.38;-0.75', '0.58;-0.56', '0.39;-0.77', '0.44;-0.78', '0.43;-0.6', '0.38;-0.55', '0.41;-0.49', '0.53;-0.68', '0.47;-0.96', '0.5;-0.99', '0.52;-0.91', '0.42;-0.89', '0.5;-1.01', '0.56;-1.21', '0.51;-1.24', '0.49;-1.32', '0.52;-1.13', '0.31;-1.24', '0.19;-1.15', '0.29;-0.93']},
+  'West Ham':{'ataque': 0.66, 'defensa': -0.57, 'PLUSLOCALataque': 0.33, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.27, 'PLUSVISITAdefensa': -0.13, 'History': []},
 
-    'Burnley':{'ataque': 0.36, 'defensa': -1.59, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': -0.36, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.63, 'History': ['0.57;-0.74', '0.56;-0.68', '0.56;-0.98', '0.42;-1.06', '0.39;-1.02', '0.31;-0.98', '0.22;-0.92', '0.36;-0.72', '0.57;-0.83', '0.59;-0.95', '0.53;-1.1', '0.44;-1.03', '0.47;-1.07', '0.39;-0.99', '0.37;-0.86', '0.46;-1.1', '0.38;-0.94', '0.47;-0.86', '0.51;-1.04', '0.35;-0.9', '0.28;-0.99', '0.34;-1.14', '0.37;-1.17', '0.28;-1.29', '0.07;-1.27', '0.06;-1.21', '0.1;-1.06', '0.43;-1.31', '0.35;-1.34', '0.31;-1.33', '0.42;-1.45', '0.28;-1.37', '0.36;-1.59']},
+  'Tottenham':{'ataque': 0.34, 'defensa': -0.68, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.30, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': 0.23, 'History': []},
 
-    'Aston Villa':{'ataque': 0.73, 'defensa': -0.78, 'PLUSLOCALataque': -0.01, 'PLUSLOCALdefensa': -0.05, 
-    'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': -0.13, 'History': ['0.47;-0.63', '0.33;-0.6', '0.37;-0.79', '0.36;-0.85', '0.36;-0.82', '0.38;-0.74', '0.31;-0.66', '0.47;-0.64', '0.5;-0.57', '0.38;-0.56', 
-    '0.41;-0.59', '0.51;-0.58', '0.43;-0.52', '0.63;-0.56', '0.88;-0.58', '1.03;-0.72', '0.96;-0.66', '0.98;-0.53', '0.93;-0.78', '1.08;-0.82', '1.03;-0.81', '0.78;-0.79', '0.79;-0.46', '0.59;-0.49', '0.49;-0.5', '0.44;-0.37', '0.45;-0.4', '0.36;-0.5', '0.35;-0.73', '0.4;-0.87', '0.46;-0.75', '0.47;-0.71', '0.73;-0.78']},
+  'Burnley':{'ataque': 0.39, 'defensa': -1.21, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.17, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': -0.44, 'History': []},
 
-    'Newcastle':{'ataque': 0.68, 'defensa': -1.09, 'PLUSLOCALataque': 0.32, 'PLUSLOCALdefensa': -0.53, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': 0.04, 'History': ['0.63;-0.47', '0.72;-0.7', '0.59;-0.63', '0.61;-0.54', '0.52;-0.47', '0.53;-0.6', '0.79;-0.51', '0.76;-0.62', '0.72;-0.59', '0.57;-0.73', '0.56;-0.82', '0.71;-0.9', '0.86;-0.84', '0.89;-0.7', '0.77;-0.68', '0.61;-0.63', '0.71;-0.58', '0.6;-0.48', '0.78;-0.51', '0.8;-0.47', '1.01;-0.7', '0.88;-0.67', '0.55;-0.68', '0.56;-0.77', '0.63;-0.97', '0.76;-1.05', '0.83;-0.99', '0.73;-1.02', '0.89;-0.93', '0.89;-0.8', '0.75;-0.93', '0.75;-1.03', '0.68;-1.09']},
+  'Aston Villa':{'ataque': 0.73, 'defensa': -0.78, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.13, 'History': []},
 
-    'Liverpool':{'ataque': 1.01, 'defensa': -0.49, 'PLUSLOCALataque': 0.39, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': 0.06, 'History': ['0.73;-0.66', '0.95;-0.75', '0.86;-0.61', '0.94;-0.47', '0.98;-0.45', '1.05;-0.65', '0.89;-0.69', '0.73;-0.76', '0.85;-0.91', '0.84;-0.78', '0.74;-0.72', '0.77;-0.84', '0.66;-0.66', '0.67;-0.58', '0.72;-0.53', '0.79;-0.38', '0.8;-0.43', '0.8;-0.54', '0.84;-0.44', '0.82;-0.39', '0.73;-0.15', '0.88;-0.21', '0.78;-0.32', '0.88;-0.33', '0.81;-0.51', '0.96;-0.44', '0.85;-0.31', '1.26;-0.41', '1.3;-0.46', '1.11;-0.49', '1.06;-0.68', '0.98;-0.49', '1.01;-0.49']},
+  'Newcastle':{'ataque': 0.60, 'defensa': -0.78, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': -0.38, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': 0.20, 'History': []},
 
-    'Bournemouth':{'ataque': 0.99, 'defensa': -0.54, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': -0.31, 'History': ['0.66;-0.73', '0.65;-0.63', '0.71;-0.44', '0.7;-0.42', '0.63;-0.33', '0.59;-0.45', '0.81;-0.5', '0.88;-0.83', '0.83;-0.75', '0.75;-0.78', '0.78;-0.81', '1.1;-0.73', '1.12;-0.91', '0.93;-0.96', '0.9;-0.86', '0.95;-0.96', '0.78;-0.88', '0.93;-1.07', '1.1;-0.99', '1.19;-1.09', '1.38;-1.2', '1.2;-0.96', '1.3;-0.87', '1.22;-0.72', '1.22;-0.61', '1.2;-0.57', '1.03;-0.78', '0.9;-0.89', '0.85;-0.71', '0.84;-0.66', '0.87;-0.77', '0.93;-0.61', '0.99;-0.54']},
+  'Liverpool':{'ataque': 1.10, 'defensa': -0.56, 'PLUSLOCALataque': 0.48, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': 0.01, 'History': []},
 
+  'Bournemouth':{'ataque': 0.96, 'defensa': -0.55, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.40, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.34, 'History': []},
   },
   LaLiga: {
     'Real Madrid':{'ataque': 1.21, 'defensa': -0.53, 'PLUSLOCALataque': 0.53, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': 0.08, 'History': []},
@@ -226,96 +213,81 @@ const bases = {
   },
 
   Bundesliga: {
-        "Borussia M'gladbach":{'ataque': 0.32, 'defensa': -0.54, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 
-        0.11, 'PLUSVISITAataque': -0.29, 'PLUSVISITAdefensa': -0.05, 'History': ['0.59;-0.5', '0.43;-0.49', '0.43;-0.63', '0.41;-0.63', '0.47;-0.83', '0.38;-0.68', '0.27;-0.65', '0.37;-0.81', '0.56;-0.79', '0.75;-0.85', '0.83;-0.74', '0.71;-0.6', '0.62;-0.51', '0.54;-0.53', '0.55;-0.56', '0.76;-0.66', '0.72;-0.9', '0.59;-0.88', '0.38;-0.94', '0.39;-0.96', '0.37;-0.74', '0.38;-0.79', '0.39;-0.82', '0.59;-0.61', '0.56;-0.66', '0.54;-0.55', '0.58;-0.63', '0.42;-0.71', '0.35;-0.54', '0.32;-0.54']},
-        
-        'Hamburgo':{'ataque': 0.37, 'defensa': -0.97, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.31, 'History': ['0.5;-0.59', '0.4;-0.62', '0.39;-0.74', '0.47;-0.72', '0.39;-0.66', '0.52;-0.57', '0.55;-0.58', '0.38;-0.62', '0.39;-0.96', '0.42;-0.89', '0.4;-0.88', '0.32;-0.75', '0.54;-0.92', '0.53;-1.16', '0.42;-1.16', '0.45;-0.98', '0.43;-0.85', '0.32;-0.69', '0.51;-0.57', '0.52;-0.4', '0.71;-0.57', '0.7;-0.53', '0.56;-0.77', '0.59;-0.83', '0.59;-0.77', '0.36;-0.75', '0.47;-0.92', '0.41;-0.85', '0.44;-0.92', '0.37;-0.97']},
-        
-        'Mainz':{'ataque': 0.91, 'defensa': -0.36, 'PLUSLOCALataque': 0.12, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': 0.19, 'PLUSVISITAdefensa': -0.04, 'History': ['0.45;-0.57', '0.57;-0.48', '0.54;-0.58', '0.61;-0.6', '0.58;-0.57', '0.48;-0.7', '0.58;-0.94', '0.61;-0.98', '0.53;-0.89', '0.4;-0.82', '0.51;-0.64', '0.36;-1.06', '0.27;-0.97', '0.31;-1.12', '0.29;-1.01', '0.37;-1.14', '0.4;-1.11', '0.41;-1.04', 
-        '0.64;-0.95', '0.78;-0.75', '0.93;-0.71', '0.88;-0.67', '0.84;-0.66', '0.82;-0.55', '0.91;-0.52', '0.98;-0.34', '1.03;-0.46', '1.13;-0.38', '0.91;-0.39', '0.91;-0.36']},
-        
-        'Colonia':{'ataque': 0.74, 'defensa': -0.86, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': 0.05, 'PLUSVISITAdefensa': -0.43, 'History': ['0.57;-0.45', '0.66;-0.44', '0.69;-0.51', 
-        '0.75;-0.76', '0.69;-0.85', '0.6;-0.74', '0.48;-0.71', '0.45;-0.75', '0.78;-0.76', '0.84;-0.95', '0.79;-0.99', '0.74;-0.91', '0.7;-0.77', '0.61;-0.75', '0.48;-0.8', '0.66;-0.84', '0.68;-0.71', '0.61;-0.72', '0.63;-0.74', '0.41;-0.61', '0.44;-0.74', '0.47;-0.88', '0.45;-0.84', '0.36;-0.83', '0.41;-0.88', '0.39;-0.66', '0.47;-0.7', '0.76;-0.88', '0.95;-0.77', '0.74;-0.86']},
-        
-        'St. Pauli':{'ataque': 0.31, 'defensa': -0.89, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.29, 'PLUSVISITAataque': -0.36, 'PLUSVISITAdefensa': -0.58, 'History': ['0.61;-0.65', '0.64;-0.55', '0.68;-0.45', '0.66;-0.62', '0.56;-0.53', '0.42;-0.59', '0.41;-0.66', '0.33;-0.76', '0.31;-0.95', '0.34;-1.01', '0.22;-0.95', '0.35;-0.95', '0.2;-0.92', '0.33;-0.88', '0.22;-0.86', '0.08;-0.84', '0.39;-0.92', '0.23;-0.82', '0.39;-0.73', '0.41;-0.83', '0.58;-0.69', '0.49;-0.97', '0.58;-1.04', '0.59;-0.95', '0.48;-0.84', '0.37;-0.82', '0.4;-1.0', '0.34;-1.03', '0.22;-1.11', '0.31;-0.89']},
-        
-        'Borussia Dortmund':{'ataque': 0.86, 'defensa': -0.30, 'PLUSLOCALataque': 0.46, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': 0.26, 'History': ['0.65;-0.61', '0.81;-0.59', '0.92;-0.51', '0.83;-0.33', '0.8;-0.31', '0.76;-0.33', '0.78;-0.34', '0.82;-0.31', '0.65;-0.21', '0.59;-0.24', '0.77;-0.32', '0.78;-0.21', '0.76;-0.02', '0.71;-0.08', '0.73;-0.09', '0.89;-0.23', '0.96;-0.22', '1.04;-0.52', '1.09;-0.49', '1.11;-0.7', '1.02;-0.71', '0.98;-0.66', '0.96;-0.65', '0.94;-0.58', '1.0;-0.63', '1.07;-0.56', '1.24;-0.67', '1.1;-0.51', '0.94;-0.35', '0.86;-0.3']},
-        
-        'Bayer Leverkusen':{'ataque': 0.95, 'defensa': -0.68, 'PLUSLOCALataque': 0.58, 'PLUSLOCALdefensa': -0.07, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.01, 'History': ['0.57;-0.7', '0.67;-0.87', '0.78;-0.73', '0.78;-0.71', '0.69;-0.61', '0.81;-0.54', '1.05;-0.64', '1.05;-0.61', '0.9;-0.53', '1.06;-0.46', '1.18;-0.47', '1.06;-0.48', '0.96;-0.52', '0.94;-0.42', '1.12;-0.37', '1.1;-0.59', '0.98;-0.51', 
-        '0.78;-0.43', '0.94;-0.42', '0.71;-0.4', '0.99;-0.32', '0.78;-0.28', '0.67;-0.26', '0.73;-0.29', '0.85;-0.51', '1.04;-0.32', '0.9;-0.29', '1.33;-0.7', '1.17;-0.54', '0.95;-0.68']},
-        
-        'Hoffenheim':{'ataque': 0.69, 'defensa': -0.64, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': 0.30, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.34, 'History': ['0.7;-0.57', '0.72;-0.6', '1.03;-0.68', '0.95;-0.78', '1.01;-0.75', '0.9;-0.66', '0.97;-0.65', '1.06;-0.65', '1.15;-0.81', '1.21;-0.78', '1.03;-0.88', '1.03;-0.81', '0.84;-0.79', '1.07;-0.78', '0.81;-0.67', '1.06;-0.63', '0.98;-0.52', '0.91;-0.41', '0.99;-0.31', '1.1;-0.35', '1.14;-0.73', '1.25;-0.63', '1.2;-0.62', '1.11;-0.63', '1.27;-0.7', 
-        '1.04;-0.66', '0.92;-0.62', '0.84;-0.72', '0.74;-0.72', '0.69;-0.64']},
-        
-        'Eintracht Fráncfort':{'ataque': 0.58, 'defensa': -0.88, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 
-        -0.37, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': 0.09, 'History': ['0.79;-0.52', '0.82;-0.53', '0.67;-0.65', '0.65;-0.69', '0.85;-0.75', '0.71;-0.81', '0.63;-0.76', '0.73;-0.68', '0.65;-0.6', '0.58;-0.48', '0.62;-0.43', '0.64;-0.6', '0.63;-0.83', '0.55;-0.74', '0.55;-0.63', '0.7;-0.79', '0.7;-0.82', '0.64;-0.91', '0.53;-0.84', '0.53;-1.0', '0.42;-0.9', '0.47;-0.91', '0.62;-0.73', '0.57;-0.68', '0.47;-0.57', '0.32;-0.45', '0.43;-0.5', '0.6;-0.79', '0.57;-0.76', '0.58;-0.88']},
-        
-        'Werder Bremen':{'ataque': 0.32, 'defensa': -0.70, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.12, 'History': ['0.52;-0.79', '0.69;-0.89', '0.83;-0.88', '0.75;-0.99', '0.67;-1.1', '0.73;-0.96', '0.69;-1.19', '0.55;-1.03', '0.46;-0.95', '0.53;-0.86', '0.42;-0.74', '0.34;-0.69', '0.52;-0.91', '0.42;-1.01', '0.33;-0.9', '0.32;-0.96', '0.42;-0.9', '0.34;-0.7', '0.24;-0.79', '0.26;-0.8', '0.2;-0.66', '0.08;-0.59', '0.15;-0.67', '0.35;-0.77', '0.56;-0.6', '0.39;-0.67', '0.28;-0.53', '0.37;-0.58', '0.27;-0.77', '0.32;-0.7']},
-        
-        'Friburgo':{'ataque': 0.67, 'defensa': -0.51, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': -0.00, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': 0.10, 'History': ['0.57;-0.82', '0.56;-0.91', '0.61;-0.77', '0.71;-0.69', '0.68;-0.74', '0.54;-0.66', '0.49;-0.57', '0.46;-0.56', '0.44;-0.58', '0.5;-0.61', '0.54;-0.73', '0.97;-0.58', '0.86;-0.75', '0.92;-0.69', '1.14;-0.65', '0.96;-0.68', '0.78;-0.7', '0.77;-0.68', '0.8;-0.7', '0.67;-0.55', '0.53;-0.49', '0.43;-0.59', '0.46;-0.61', '0.41;-0.57', '0.63;-0.69', 
-        '0.44;-0.63', '0.62;-0.67', '0.64;-0.67', '0.65;-0.46', '0.67;-0.51']},
-        
-        'Augsburgo':{'ataque': 0.50, 'defensa': -0.48, 'PLUSLOCALataque': -0.26, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.15, 'PLUSVISITAdefensa': 0.13, 'History': ['0.82;-0.57', '0.72;-0.95', '0.63;-0.99', '0.64;-1.05', '0.48;-1.04', '0.6;-0.95', '0.57;-0.83', '0.54;-0.92', '0.45;-0.75', '0.61;-0.96', '0.6;-0.94', '0.52;-0.94', '0.55;-0.84', '0.46;-0.76', '0.34;-0.68', '0.44;-0.89', '0.39;-0.89', '0.38;-0.88', '0.43;-0.48', '0.53;-0.5', '0.48;-0.66', '0.39;-0.55', '0.55;-0.7', '0.54;-0.61', '0.49;-0.57', '0.42;-0.63', '0.42;-0.85', '0.35;-0.79', '0.35;-0.69', '0.5;-0.48']},
-        
-        'Heidenheim':{'ataque': 0.49, 'defensa': -0.94, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': -0.34, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': 0.00, 'History': ['0.54;-0.76', '0.52;-0.87', '0.43;-0.98', '0.41;-1.06', '0.4;-0.9', '0.32;-0.78', '0.55;-0.75', '0.55;-0.84', '0.47;-0.76', '0.4;-0.91', '0.29;-0.99', '0.31;-0.87', '0.47;-0.76', '0.44;-0.89', '0.5;-1.06', '0.54;-1.24', '0.5;-1.27', '0.37;-1.07', '0.25;-1.18', '0.46;-1.2', '0.29;-1.22', '0.18;-1.12', '0.36;-1.06', '0.46;-1.26', '0.53;-1.42', 
-        '0.4;-1.27', '0.38;-1.12', '0.46;-0.96', '0.44;-0.92', '0.49;-0.94']},
-        
-        'Wolfsburgo':{'ataque': 0.68, 'defensa': -1.28, 'PLUSLOCALataque': -0.13, 'PLUSLOCALdefensa': -0.18, 'PLUSVISITAataque': 0.21, 'PLUSVISITAdefensa': -0.50, 'History': ['0.76;-0.54', '0.67;-0.66', '0.74;-0.69', '0.57;-0.6', '0.42;-0.51', '0.33;-0.63', '0.28;-0.72', '0.33;-0.55', '0.48;-0.64', '0.39;-0.71', 
-        '0.41;-0.82', '0.58;-0.85', '0.82;-0.81', '0.85;-0.73', '0.81;-0.94', '0.79;-1.56', '0.77;-1.42', '0.57;-1.29', '0.48;-1.52', '0.35;-1.3', '0.37;-1.2', '0.3;-1.18', '0.46;-1.34', '0.46;-1.39', '0.4;-1.38', '0.36;-1.15', '0.22;-1.05', '0.63;-1.48', '0.59;-1.45', '0.68;-1.28']},
-        
-        'Union Berlin':{'ataque': 0.07, 'defensa': -0.95, 'PLUSLOCALataque': -0.18, 'PLUSLOCALdefensa': 0.19, 
-        'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.54, 'History': ['0.7;-0.57', '0.68;-0.74', '0.76;-1.04', '0.8;-1.02', '0.75;-0.95', '0.67;-1.08', '0.64;-0.97', '0.49;-0.83', '0.5;-0.81', '0.54;-0.6', '0.49;-0.48', '0.36;-0.5', '0.33;-0.74', '0.46;-0.61', '0.51;-0.47', '0.64;-0.55', '0.64;-0.5', '0.76;-0.55', '0.73;-0.6', '0.77;-0.71', '0.67;-0.61', '0.84;-0.79', '0.8;-0.58', '0.59;-0.78', '0.42;-0.99', '0.37;-0.81', '0.25;-0.93', '0.28;-0.87', '0.24;-0.86', '0.07;-0.95']},
-        
-        'Stuttgart':{'ataque': 0.98, 'defensa': -0.67, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': -0.44, 'History': ['0.57;-0.7', '0.57;-0.54', '0.42;-0.59', '0.59;-0.56', '0.68;-0.5', '0.56;-0.42', '0.65;-0.38', '0.69;-0.4', '0.67;-0.55', '0.87;-0.71', '0.95;-0.89', '0.82;-0.81', '0.78;-0.92', '0.87;-0.82', '0.76;-0.57', '0.98;-0.55', '1.02;-0.55', '1.06;-0.67', '1.13;-0.46', '0.98;-0.33', '0.84;-0.5', '0.97;-0.53', '0.91;-0.71', '0.97;-0.71', '0.93;-0.8', '0.93;-0.71', '1.15;-0.71', '0.99;-0.58', '1.06;-0.61', '0.98;-0.67']},
-        
-        'Bayern Múnich':{'ataque': 2.15, 'defensa': -0.59, 'PLUSLOCALataque': 1.13, 'PLUSLOCALdefensa': 0.10, 
-        'PLUSVISITAataque': 0.42, 'PLUSVISITAdefensa': -0.08, 'History': ['0.66;-0.52', '1.03;-0.41', '1.15;-0.4', '1.25;-0.33', '1.36;-0.25', '1.42;-0.11', '1.43;-0.14', '1.58;-0.23', '1.51;-0.09', '1.3;-0.13', 
-        '1.42;-0.17', '1.42;-0.3', '1.53;-0.25', '1.68;-0.3', '1.85;-0.36', '2.46;-0.34', '2.33;-0.36', '2.5;-0.45', '2.09;-0.5', '1.97;-0.69', '2.35;-0.73', '2.28;-0.6', '2.1;-0.75', '2.04;-0.74', '2.08;-0.71', 
-        '1.88;-0.89', '2.01;-0.77', '2.02;-0.79', '2.09;-0.67', '2.15;-0.59']},
-        
-        'RB Leipzig':{'ataque': 1.02, 'defensa': -0.38, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': 0.09, 'History': ['0.52;-0.66', '0.64;-0.63', '0.73;-0.61', '0.98;-0.66', '0.89;-0.5', '0.91;-0.46', '0.92;-0.48', '1.01;-0.46', '1.16;-0.43', '1.13;-0.49', '1.01;-0.38', '0.87;-0.27', '1.1;-0.25', '0.97;-0.39', '0.92;-0.56', '0.93;-0.38', '1.02;-0.54', '1.13;-0.42', '1.05;-0.58', '0.84;-0.72', '0.97;-0.75', '0.95;-0.69', '0.94;-0.67', '1.18;-0.53', '1.13;-0.48', '1.04;-0.48', '1.01;-0.36', '1.06;-0.45', '0.89;-0.37', '1.02;-0.38']},
+    "Borussia M'gladbach":{'ataque': 0.28, 'defensa': -0.62, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': -0.16, 'History': []},
 
+    'Hamburgo':{'ataque': 0.26, 'defensa': -1.11, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': -0.48, 'History': []},
+    
+    'Mainz':{'ataque': 0.96, 'defensa': -0.47, 'PLUSLOCALataque': 0.23, 'PLUSLOCALdefensa': 0.22, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': -0.10, 'History': []},
+    
+    'Colonia':{'ataque': 0.85, 'defensa': -0.87, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.41, 'History': []},
+    
+    'St. Pauli':{'ataque': 0.20, 'defensa': -0.80, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': -0.34, 'PLUSVISITAdefensa': -0.26, 'History': []},
+    
+    'Borussia Dortmund':{'ataque': 1.08, 'defensa': -0.36, 'PLUSLOCALataque': 0.59, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': 0.17, 'History': []},
+    
+    'Bayer Leverkusen':{'ataque': 0.98, 'defensa': -0.56, 'PLUSLOCALataque': 0.65, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': 0.02, 'History': []},
+    
+    'Hoffenheim':{'ataque': 0.62, 'defensa': -0.65, 'PLUSLOCALataque': 0.18, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.33, 'History': []},
+    
+    'Eintracht Fráncfort':{'ataque': 0.59, 'defensa': -0.98, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 
+    -0.18, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.20, 'History': []},
+    
+    'Werder Bremen':{'ataque': 0.52, 'defensa': -0.67, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.16, 'History': []},
+    
+    'Friburgo':{'ataque': 0.62, 'defensa': -0.81, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.20, 'History': []},
+    
+    'Augsburgo':{'ataque': 0.55, 'defensa': -0.73, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': 0.01, 'PLUSVISITAdefensa': -0.04, 'History': []},
+    
+    'Heidenheim':{'ataque': 0.63, 'defensa': -0.79, 'PLUSLOCALataque': 0.12, 'PLUSLOCALdefensa': -0.19, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': 0.00, 'History': []},
+    
+    'Wolfsburgo':{'ataque': 0.57, 'defensa': -0.95, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.47, 'History': []},
+    
+    'Union Berlin':{'ataque': 0.28, 'defensa': -0.99, 'PLUSLOCALataque': -0.00, 'PLUSLOCALdefensa': 0.09, 
+    'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.48, 'History': []},
+    
+    'Stuttgart':{'ataque': 1.07, 'defensa': -0.71, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.30, 'PLUSVISITAataque': 0.39, 'PLUSVISITAdefensa': -0.41, 'History': []},
+    
+    'Bayern Múnich':{'ataque': 2.10, 'defensa': -0.74, 'PLUSLOCALataque': 0.95, 'PLUSLOCALdefensa': 0.05, 
+    'PLUSVISITAataque': 0.55, 'PLUSVISITAdefensa': -0.19, 'History': []},
+    
+    'RB Leipzig':{'ataque': 1.22, 'defensa': -0.56, 'PLUSLOCALataque': 0.57, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': 0.05, 'PLUSVISITAdefensa': 0.03, 'History': []},
   },
   Ligue1: {
-        'Nantes':{'ataque': 0.37, 'defensa': -0.79, 'PLUSLOCALataque': -0.23, 'PLUSLOCALdefensa': -0.13, 'PLUSVISITAataque': 0.01, 'PLUSVISITAdefensa': -0.06, 'History': ['0.47;-0.63', '0.4;-0.71', '0.32;-0.61', 
-        '0.27;-0.63', '0.41;-0.66', '0.45;-0.74', '0.32;-0.67', '0.22;-0.77', '0.27;-0.7', '0.33;-1.03', '0.1;-0.93', '0.08;-0.84', '0.06;-0.78', '0.14;-0.89', '0.17;-0.84', '0.18;-0.98', '0.63;-0.8', '0.52;-0.71', '0.46;-0.72', '0.45;-0.78', '0.37;-0.71', '0.38;-0.75', '0.46;-0.68', '0.29;-0.56', '0.33;-0.61', '0.52;-0.83', '0.29;-0.92', '0.41;-0.82', '0.43;-0.71', '0.37;-0.79']},
-        
-        'PSG':{'ataque': 1.33, 'defensa': -0.20, 'PLUSLOCALataque': 0.49, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': 0.24, 'PLUSVISITAdefensa': 0.03, 'History': ['0.63;-0.47', '0.71;-0.37', '0.89;-0.54', '0.95;-0.35', '0.84;-0.31', '0.9;-0.26', '0.89;-0.19', '1.02;-0.32', '1.07;-0.36', '0.99;-0.29', '0.8;-0.23', '0.86;-0.2', '1.09;-0.34', '0.94;-0.19', '1.02;-0.13', '1.18;-0.36', '1.09;-0.41', '1.15;-0.21', '1.14;-0.14', '1.17;-0.14', '1.42;-0.11', '1.25;-0.34', '1.18;-0.34', '1.37;-0.29', '1.3;-0.39', '1.35;-0.28', '1.25;-0.17', '1.25;-0.26', '1.33;-0.2']},
-        
-        'Angers':{'ataque': 0.17, 'defensa': -1.04, 'PLUSLOCALataque': -0.32, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': -0.32, 'History': ['0.57;-0.56', '0.47;-0.65', '0.45;-0.72', '0.58;-0.78', '0.43;-0.61', '0.29;-0.63', '0.22;-1.04', '0.32;-1.06', '0.42;-0.91', '0.51;-0.7', '0.43;-0.65', '0.48;-0.57', '0.45;-0.39', '0.41;-0.49', '0.39;-0.33', '0.53;-0.34', '0.47;-0.36', '0.46;-0.63', '0.39;-0.64', '0.31;-0.55', '0.36;-0.41', '0.32;-0.51', '0.22;-0.67', '0.19;-0.72', '0.24;-0.76', '0.1;-0.91', '0.24;-1.25', '0.13;-1.1', '0.25;-1.04', '0.17;-1.04']},
-        
-        'Paris FC':{'ataque': 0.77, 'defensa': -0.75, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': -0.36, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': 0.21, 'History': ['0.56;-0.57', '0.56;-0.8', '0.78;-0.89', '0.81;-0.78', '0.82;-0.89', '0.82;-0.83', '0.81;-0.64', '0.71;-0.55', '0.63;-0.59', '0.53;-0.58', '0.48;-0.35', '0.29;-0.33', '0.43;-0.68', '0.45;-0.71', '0.48;-0.77', '0.43;-0.97', '0.48;-0.88', '0.4;-0.77', '0.41;-0.7', '0.53;-0.81', '0.47;-0.76', '0.41;-1.0', '0.39;-1.16', '0.26;-0.91', '0.44;-0.85', 
-        '0.41;-0.79', '0.6;-0.88', '0.61;-0.82', '0.83;-0.82', '0.77;-0.75']},
-        
-        'Auxerre':{'ataque': 0.39, 'defensa': -0.56, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': -0.17, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': 0.21, 'History': ['0.63;-0.62', '0.67;-0.75', '0.57;-0.67', '0.46;-0.66', '0.47;-0.5', '0.41;-0.56', '0.42;-0.66', '0.51;-0.73', '0.4;-0.73', '0.32;-0.93', '0.24;-0.83', '0.15;-0.88', '0.36;-0.93', '0.39;-0.95', '0.36;-0.87', '0.64;-1.16', '0.58;-1.12', '0.53;-0.88', '0.46;-0.87', '0.5;-0.67', '0.45;-0.6', '0.67;-0.62', '0.55;-0.57', '0.6;-0.49', '0.53;-0.48', '0.37;-0.43', '0.45;-0.49', '0.51;-0.48', '0.41;-0.6', '0.39;-0.56']},
-        
-        'Lorient':{'ataque': 0.51, 'defensa': -0.48, 'PLUSLOCALataque': 0.32, 'PLUSLOCALdefensa': 0.46, 'PLUSVISITAataque': -0.41, 'PLUSVISITAdefensa': -0.34, 'History': ['0.62;-0.63', '0.87;-0.49', '0.82;-0.77', '0.64;-0.84', '0.65;-0.93', '0.68;-0.8', '0.48;-0.8', '0.44;-0.8', '0.29;-0.9', '0.21;-0.82', '0.19;-0.89', '0.22;-0.92', '0.16;-0.9', '0.29;-0.87', '0.41;-0.74', '0.48;-0.57', '0.31;-0.52', '0.42;-0.53', '0.57;-0.5', '0.63;-0.49', '0.65;-0.58', '0.75;-0.54', '0.85;-0.77', '0.77;-0.82', '0.71;-0.63', '0.71;-0.56', '0.6;-0.55', '0.53;-0.56', '0.43;-0.63', '0.51;-0.48']},
-        
-        'Metz':{'ataque': 0.47, 'defensa': -1.11, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.38, 'PLUSVISITAdefensa': -0.38, 'History': ['0.49;-0.53', '0.42;-0.73', '0.51;-0.94', '0.57;-1.07', '0.68;-1.21', '0.57;-1.01', '0.47;-1.14', '0.3;-1.12', '0.33;-1.56', '0.71;-1.42', '0.61;-1.19', '0.61;-1.15', '0.61;-1.17', '0.45;-1.06', '0.37;-1.04', '0.6;-1.19', '0.55;-1.02', '0.57;-0.99', '0.53;-1.13', '0.44;-1.05', '0.32;-1.05', '0.33;-1.26', '0.33;-1.19', '0.23;-1.09', '0.21;-1.11', '0.53;-1.4', '0.53;-1.2', '0.61;-0.96', '0.54;-1.17', '0.47;-1.11']},
-        
-        'Estrasburgo':{'ataque': 0.83, 'defensa': -1.02, 'PLUSLOCALataque': 0.05, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': 0.19, 'PLUSVISITAdefensa': -0.30, 'History': ['0.53;-0.49', '0.61;-0.42', '0.66;-0.54', '0.65;-0.48', '0.76;-0.49', '0.75;-0.63', '1.16;-0.57', '1.29;-0.7', '1.1;-0.69', '1.3;-0.61', '1.27;-0.73', '1.18;-0.49', '1.03;-0.43', '0.81;-0.48', '0.64;-0.41', '0.47;-0.48', '0.52;-0.7', '0.48;-0.72', '0.78;-0.67', '0.79;-0.7', '0.69;-0.64', '0.73;-0.6', '0.83;-0.53', '0.71;-0.56', '0.69;-0.49', '0.63;-0.46', '0.85;-0.65', '0.9;-0.66', '0.83;-1.02']},
-        
-        'Brest':{'ataque': 0.25, 'defensa': -0.60, 'PLUSLOCALataque': 0.03, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': -0.38, 'PLUSVISITAdefensa': -0.21, 'History': ['0.7;-0.65', '0.68;-0.66', '0.65;-0.98', '0.55;-1.01', '0.86;-0.95', '0.88;-0.8', '0.8;-0.67', '0.8;-0.63', '0.84;-0.68', '0.72;-0.61', '0.72;-0.48', '0.72;-0.69', '0.75;-0.7', '0.8;-0.47', '0.59;-0.3', '0.62;-0.39', '0.58;-0.33', '0.54;-0.38', '0.41;-0.53', '0.42;-0.47', '0.52;-0.49', '0.45;-0.49', '0.51;-0.34', '0.41;-0.23', '0.46;-0.22', '0.4;-0.29', '0.45;-0.37', '0.51;-0.43', '0.4;-0.45', '0.25;-0.6']},
-        
-        'Lille':{'ataque': 0.96, 'defensa': -0.11, 'PLUSLOCALataque': -0.15, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.51, 'PLUSVISITAdefensa': 0.23, 'History': ['0.65;-0.7', '0.87;-0.69', '1.15;-0.64', '1.2;-0.57', '1.17;-0.79', '0.9;-0.71', '0.84;-0.7', '0.94;-0.61', '1.37;-0.65', '1.15;-0.66', '1.1;-0.58', '0.86;-0.5', '1.21;-0.63', '1.19;-0.61', '1.04;-0.39', '1.33;-0.67', '1.15;-0.74', '0.95;-0.8', '0.89;-1.1', '0.73;-0.87', '0.73;-0.74', '0.73;-0.68', '0.89;-0.58', '0.77;-0.4', '0.58;-0.35', '0.73;-0.24', '0.79;-0.26', '0.98;-0.13', '1.27;-0.03', '0.96;-0.11']},
-        
-        'Niza':{'ataque': 0.38, 'defensa': -0.95, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': -0.30, 'PLUSVISITAataque': -0.36, 'PLUSVISITAdefensa': -0.05, 'History': ['0.45;-0.57', '0.58;-0.62', '0.48;-0.8', '0.5;-0.75', '0.44;-1.06', '0.38;-1.06', '0.38;-1.11', '0.68;-1.13', '0.62;-1.03', '0.63;-0.81', '0.57;-0.61', '0.52;-0.61', '0.54;-0.81', '0.5;-0.94', '0.35;-0.92', '0.33;-0.81', '0.55;-0.87', '0.6;-1.32', '0.6;-1.25', '0.54;-1.27', '0.47;-1.13', '0.45;-1.06', '0.68;-1.15', '0.43;-1.02', '0.26;-1.32', '0.4;-1.19', '0.29;-1.24', '0.3;-1.29', '0.3;-1.26', '0.38;-0.95']},
-        
-        'Toulouse':{'ataque': 0.52, 'defensa': -0.98, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': -0.18, 'PLUSVISITAataque': -0.05, 'PLUSVISITAdefensa': -0.20, 'History': ['0.57;-0.45', '0.58;-0.43', '0.76;-0.61', '0.69;-0.66', '0.53;-0.67', '0.61;-0.71', '0.72;-0.65', '0.7;-0.48', '0.59;-0.68', '0.54;-0.72', '0.5;-0.76', '0.53;-0.79', '0.35;-0.76', '0.4;-0.66', '0.33;-0.49', '0.53;-0.45', '0.43;-0.47', '0.89;-0.52', '1.03;-0.39', '0.82;-0.43', '0.68;-0.49', '0.7;-0.66', '0.86;-0.65', '0.71;-0.49', '0.56;-0.46', '0.85;-0.78', '0.84;-0.67', '0.73;-0.57', '0.63;-0.87', '0.52;-0.98']},
-        
-        'Mónaco':{'ataque': 1.00, 'defensa': -0.58, 'PLUSLOCALataque': 0.29, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.12, 'History': ['0.67;-0.53', '0.65;-0.74', '0.77;-0.8', '0.77;-0.68', '0.9;-0.79', '0.77;-0.82', '0.81;-0.82', '0.83;-0.92', '1.02;-0.81', '1.36;-0.87', '1.13;-0.82', '1.16;-1.04', '1.12;-1.22', '0.98;-1.06', '0.8;-0.86', '0.68;-0.67', '0.49;-0.7', '0.5;-0.81', 
-        '0.44;-0.63', '0.63;-0.49', '0.49;-0.41', '0.52;-0.42', '0.72;-0.45', '0.77;-0.41', '0.87;-0.34', '0.94;-0.28', '1.08;-0.4', '1.05;-0.39', '1.05;-0.61', '1.0;-0.58']},
-        
-        'Le Havre':{'ataque': 0.40, 'defensa': -1.04, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': -0.49, 'History': ['0.53;-0.67', '0.51;-0.76', '0.69;-0.66', '0.63;-0.65', '0.72;-0.66', '0.53;-0.55', '0.5;-0.54', '0.53;-0.83', '0.54;-0.72', '0.46;-0.6', '0.51;-0.55', '0.42;-0.53', '0.56;-0.77', '0.54;-0.75', '0.59;-0.78', '0.62;-0.85', '0.63;-0.79', '0.66;-0.77', '0.48;-0.71', '0.45;-0.6', '0.39;-0.5', '0.56;-0.52', '0.49;-0.61', '0.45;-0.81', '0.44;-0.85', '0.33;-0.86', '0.43;-1.06', '0.43;-1.13', '0.41;-1.12', '0.4;-1.04']},
-        
-        'Lens':{'ataque': 1.54, 'defensa': -0.47, 'PLUSLOCALataque': 0.74, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': 0.20, 'PLUSVISITAdefensa': -0.10, 'History': ['0.62;-0.63', '0.71;-0.61', '1.03;-0.58', '0.84;-0.64', '1.06;-0.61', '0.98;-0.57', '1.08;-0.58', '0.99;-0.48', '0.98;-0.35', '0.84;-0.73', '0.91;-0.7', '1.13;-0.74', '1.07;-0.59', '1.17;-0.55', '1.12;-0.58', '1.01;-0.57', '1.03;-0.47', '0.79;-0.42', '0.71;-0.34', '0.6;-0.31', '0.82;-0.4', '1.06;-0.34', '1.09;-0.54', '1.12;-0.42', '1.14;-0.41', '1.07;-0.4', '1.4;-0.54', '1.27;-0.74', '1.39;-0.62', '1.54;-0.47']},
-        
-        'Lyon':{'ataque': 0.59, 'defensa': -0.57, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.14, 'History': ['0.63;-0.62', '0.83;-0.55', '1.01;-0.52', '1.03;-0.67', '0.86;-0.52', '0.78;-0.26', '0.73;-0.36', '0.76;-0.66', '0.75;-0.47', '0.73;-0.37', '0.6;-0.37', '0.57;-0.43', '0.62;-0.64', '0.73;-0.72', '0.61;-0.84', '0.69;-0.86', '0.72;-0.67', '0.78;-0.63', '0.92;-0.59', '0.7;-0.43', '0.63;-0.36', '0.56;-0.34', '0.49;-0.44', '0.5;-0.57', '0.44;-0.75', '0.45;-0.65', '0.58;-0.79', '0.43;-0.68', '0.5;-0.58', '0.59;-0.57']},
-        
-        'Stade Rennais':{'ataque': 1.17, 'defensa': -0.45, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.11, 
-        'PLUSVISITAataque': 0.50, 'PLUSVISITAdefensa': 0.05, 'History': ['0.57;-0.45', '0.43;-0.7', '0.5;-0.68', '0.65;-0.7', '0.68;-0.84', '0.64;-0.76', '0.64;-0.74', '0.71;-0.82', '0.61;-0.76', '0.65;-0.71', '0.76;-0.68', '0.74;-0.49', '0.93;-0.45', '0.82;-0.29', '0.75;-0.38', '0.85;-0.4', '0.91;-0.23', '0.89;-0.25', '0.86;-0.41', '0.72;-0.59', '0.82;-0.81', '1.04;-0.64', '0.99;-0.52', '0.83;-0.37', '1.13;-0.2', '1.02;-0.35', '0.81;-0.35', '0.88;-0.4', '0.82;-0.51', '1.17;-0.45']},
-        
-        'Marsella':{'ataque': 0.75, 'defensa': -0.71, 'PLUSLOCALataque': 0.28, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.12, 'History': ['0.45;-0.57', '0.68;-0.57', '0.65;-0.76', '0.72;-0.57', '0.69;-0.46', '0.83;-0.45', '0.96;-0.35', '1.25;-0.38', '1.12;-0.37', '0.91;-0.45', '0.82;-0.38', '1.04;-0.37', '1.23;-0.38', '1.13;-0.43', '0.91;-0.27', '0.72;-0.16', '0.55;-0.61', '0.82;-0.6', '0.73;-0.52', '0.85;-0.64', '0.82;-0.89', '0.77;-0.92', '0.62;-0.98', '0.76;-0.98', '0.73;-0.83', '0.68;-0.67', '0.71;-0.72', '0.7;-0.69', '0.91;-0.62', '0.75;-0.71']},
+    'Nantes':{'ataque': 0.46, 'defensa': -0.60, 'PLUSLOCALataque': -0.26, 'PLUSLOCALdefensa': -0.13, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': 0.13, 'History': []},
+
+    'PSG':{'ataque': 1.28, 'defensa': -0.36, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': 0.12, 'PLUSVISITAataque': 0.34, 'PLUSVISITAdefensa': 0.12, 'History': []},
+    
+    'Angers':{'ataque': 0.18, 'defensa': -0.89, 'PLUSLOCALataque': -0.24, 'PLUSLOCALdefensa': -0.15, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.14, 'History': []},
+    
+    'Paris FC':{'ataque': 0.81, 'defensa': -0.56, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': -0.14, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': 0.18, 'History': []},
+    
+    'Auxerre':{'ataque': 0.44, 'defensa': -0.73, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': -0.05, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': -0.08, 'History': []},
+    
+    'Lorient':{'ataque': 0.53, 'defensa': -0.65, 'PLUSLOCALataque': 0.14, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.22, 'History': []},
+    
+    'Metz':{'ataque': 0.46, 'defensa': -1.00, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.40, 'PLUSVISITAdefensa': -0.28, 'History': []},
+    
+    'Estrasburgo':{'ataque': 0.88, 'defensa': -0.88, 'PLUSLOCALataque': -0.01, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.28, 'PLUSVISITAdefensa': -0.31, 'History': []},
+    
+    'Brest':{'ataque': 0.26, 'defensa': -0.87, 'PLUSLOCALataque': 0.05, 'PLUSLOCALdefensa': 0.00, 'PLUSVISITAataque': -0.39, 'PLUSVISITAdefensa': -0.27, 'History': []},
+    
+    'Lille':{'ataque': 0.61, 'defensa': 0.02, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': 0.34, 'History': []},
+    
+    'Niza':{'ataque': 0.48, 'defensa': -0.96, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': -0.31, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.05, 'History': []},
+    
+    'Toulouse':{'ataque': 0.60, 'defensa': -0.66, 'PLUSLOCALataque': 0.00, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': -0.00, 'PLUSVISITAdefensa': -0.12, 'History': []},
+    
+    'Mónaco':{'ataque': 0.79, 'defensa': -0.79, 'PLUSLOCALataque': 0.25, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.20, 'History': []},
+    
+    'Le Havre':{'ataque': 0.36, 'defensa': -0.94, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.43, 'History': []},
+    
+    'Lens':{'ataque': 1.38, 'defensa': -0.65, 'PLUSLOCALataque': 0.63, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.08, 'History': []},
+    
+    'Lyon':{'ataque': 0.81, 'defensa': -0.63, 'PLUSLOCALataque': 0.23, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.04, 'History': []},
+    
+    'Stade Rennais':{'ataque': 1.08, 'defensa': -0.60, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.46, 'PLUSVISITAdefensa': 0.01, 'History': []},
+    
+    'Marsella':{'ataque': 0.91, 'defensa': -0.60, 'PLUSLOCALataque': 0.28, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': 0.04, 'PLUSVISITAdefensa': -0.06, 'History': []},
   },
   PrimeiraLiga: {
     'Oporto':{'ataque': 1.07, 'defensa': -0.33, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': 0.20, 'PLUSVISITAdefensa': 0.17, 'History': ['0.73;-0.52', '0.62;-0.62', '0.56;-0.63', '0.53;-0.55', '0.59;-0.5', '0.83;-0.39', '1.0;-0.31', '1.0;-0.26', '0.98;-0.17', '0.8;-0.38', '0.87;-0.31', '0.96;-0.29', '1.07;-0.33']},
@@ -445,105 +417,91 @@ const bases = {
 
   },
   Championship: {
-    'Leicester':{'ataque': 0.51, 'defensa': -0.64, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': -0.11, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': 0.07, 'History': ['0.77;-0.53', '0.72;-0.7', '0.71;-0.52', '0.81;-0.39', '0.75;-0.56', '0.73;-0.36', '0.71;-0.52', '0.58;-0.49', '0.66;-0.46', '0.69;-0.51', '0.64;-0.54', '0.49;-0.48', '0.51;-0.63', '0.43;-0.73', '0.49;-0.67', '0.59;-0.66', '0.53;-0.66', '0.62;-0.89', '0.73;-0.86', '0.71;-0.96', '0.65;-0.88', '0.57;-0.86', '0.46;-0.87', '0.38;-0.79', '0.29;-0.77', '0.42;-0.76', '0.49;-0.76', '0.47;-0.61', '0.38;-0.78', '0.32;-0.8', '0.4;-0.73', '0.33;-0.77', '0.41;-0.9', '0.46;-0.81', '0.4;-0.77', '0.41;-0.72', '0.46;-0.59', '0.34;-0.72', '0.44;-0.54', '0.55;-0.44', '0.61;-0.54', '0.42;-0.55', '0.29;-0.58', '0.51;-0.64']},
+    'Leicester':{'ataque': 0.61, 'defensa': -0.64, 'PLUSLOCALataque': 0.05, 'PLUSLOCALdefensa': -0.11, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': 0.07, 'History': []},
 
-    'Sheffield Wed':{'ataque': 0.27, 'defensa': -0.94, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': -0.27, 'PLUSVISITAataque': -0.25, 'PLUSVISITAdefensa': -0.07, 'History': ['0.53;-0.77', '0.59;-0.86', '0.69;-0.79', '0.62;-0.81', '0.47;-0.93', '0.59;-0.72', '0.52;-0.67', '0.41;-0.66', '0.46;-0.97', '0.45;-1.07', '0.38;-0.93', '0.41;-0.99', '0.35;-0.96', '0.5;-1.02', '0.47;-1.16', '0.34;-1.18', '0.36;-1.35', 
-    '0.5;-1.4', '0.44;-1.3', '0.33;-1.38', '0.46;-1.44', '0.55;-1.24', '0.5;-1.03', '0.39;-1.06', '0.29;-1.03', '0.12;-1.09', '0.04;-1.21', '0.0;-1.16', '-0.06;-0.98', '-0.12;-0.92', '-0.12;-0.94', '0.06;-0.91', '0.16;-0.87', '0.18;-0.93', '0.23;-1.07', '0.23;-1.2', '0.39;-1.24', '0.3;-1.19', '0.22;-1.17', '0.25;-1.23', '0.35;-1.29', '0.36;-1.17', '0.33;-1.08', '0.27;-0.94']},
-    
-    'Sheffield Utd':{'ataque': 0.51, 'defensa': -0.59, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': -0.21, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': 0.21, 'History': ['0.57;-0.95', '0.51;-0.94', '0.38;-0.81', '0.39;-0.84', '0.36;-0.93', '0.26;-0.89', '0.26;-0.81', '0.31;-0.88', '0.14;-0.77', '0.33;-0.68', '0.42;-0.64', '0.56;-0.87', '0.55;-1.1', '0.59;-1.06', '0.53;-0.92', '0.54;-0.78', '0.59;-0.6', '0.83;-0.69', '0.89;-0.53', '0.94;-0.54', '0.88;-0.67', '1.0;-0.67', '1.17;-1.12', '1.28;-0.92', '1.26;-0.83', '1.01;-0.74', '0.76;-0.62', '0.81;-0.58', '0.84;-0.51', '1.0;-0.57', '0.92;-0.67', '0.9;-0.47', 
-    '0.87;-0.57', '0.76;-0.65', '0.81;-0.49', '0.73;-0.53', '0.69;-0.64', '0.69;-0.69', '0.66;-0.79', '0.59;-0.75', '0.34;-0.76', '0.41;-0.7', '0.52;-0.56', '0.51;-0.59']},
-    
-    'Bristol City':{'ataque': 0.71, 'defensa': -0.96, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': -0.40, 'PLUSVISITAataque': 0.14, 'PLUSVISITAdefensa': 0.03, 'History': ['0.95;-0.57', '0.85;-0.55', '0.68;-0.49', '0.93;-0.71', '1.05;-0.55', '0.96;-0.61', '1.04;-0.53', '1.04;-0.43', '0.89;-0.33', '0.73;-0.29', '0.95;-0.27', '0.83;-0.2', '0.81;-0.45', '0.72;-0.49', '0.66;-0.42', '0.7;-0.43', '0.66;-0.48', '0.63;-0.39', '0.48;-0.37', '0.58;-0.35', '0.46;-0.23', '0.63;-0.16', '0.78;-0.21', '0.74;-0.25', '1.19;-0.24', '0.94;-0.29', '0.79;-0.42', '0.66;-0.45', '0.61;-0.42', '0.46;-0.53', '0.62;-0.56', '0.47;-0.58', '0.36;-0.49', '0.54;-0.54', '0.58;-0.68', '0.45;-0.72', '0.32;-0.77', '0.3;-0.95', '0.24;-1.06', '0.53;-1.09', '0.53;-0.84', '0.46;-0.6', '0.65;-0.92', '0.71;-0.96']},
-    
-    'Middlesbrough':{'ataque': 0.75, 'defensa': -0.36, 'PLUSLOCALataque': -0.19, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.34, 'PLUSVISITAdefensa': 0.11, 'History': ['0.49;-0.46', '0.48;-0.39', '0.51;-0.41', '0.55;-0.42', '0.63;-0.37', '0.76;-0.38', '0.6;-0.34', '0.55;-0.43', '0.49;-0.41', '0.67;-0.49', '0.53;-0.41', '0.48;-0.35', '0.37;-0.57', '0.47;-0.49', '0.6;-0.52', '0.54;-0.48', '0.49;-0.48', '0.56;-0.47', '0.58;-0.36', '0.63;-0.45', '0.59;-0.41', '0.53;-0.58', '0.46;-0.56', '0.29;-0.53', '0.25;-0.54', '0.39;-0.51', '0.46;-0.47', '0.56;-0.49', '0.76;-0.41', '0.66;-0.3', '0.77;-0.23', '0.76;-0.43', '0.78;-0.5', '0.68;-0.54', '0.68;-0.39', '0.86;-0.38', '0.62;-0.45', '0.8;-0.44', '0.81;-0.34', '0.79;-0.4', '0.85;-0.38', '0.72;-0.38', '0.89;-0.42', '0.75;-0.36']},
-    
-    'Swansea':{'ataque': 0.59, 'defensa': -0.62, 'PLUSLOCALataque': 0.03, 'PLUSLOCALdefensa': -0.05, 'PLUSVISITAataque': -0.05, 'PLUSVISITAdefensa': 0.03, 'History': ['0.46;-0.49', '0.45;-0.43', '0.42;-0.36', '0.44;-0.29', '0.34;-0.37', '0.44;-0.59', '0.52;-0.59', '0.61;-0.61', '0.57;-0.69', '0.46;-0.87', '0.33;-0.94', '0.48;-0.91', '0.45;-0.79', '0.44;-0.78', '0.46;-1.01', '0.48;-1.05', '0.53;-1.07', '0.44;-1.07', '0.49;-0.87', '0.45;-0.74', '0.54;-0.84', '0.64;-0.74', '0.56;-0.57', '0.54;-0.48', '0.5;-0.36', '0.57;-0.49', '0.53;-0.55', '0.76;-0.59', '0.75;-0.66', '0.95;-0.58', '0.96;-0.58', '0.92;-0.55', '0.83;-0.44', '0.82;-0.62', '0.67;-0.73', '0.72;-0.59', '0.89;-0.58', '0.7;-0.6', '0.54;-0.82', '0.5;-0.75', '0.48;-0.82', '0.49;-0.63', '0.5;-0.6', '0.59;-0.62']},
-    
-    'Norwich':{'ataque': 0.98, 'defensa': -0.50, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': 0.52, 'PLUSVISITAdefensa': -0.07, 'History': ['0.58;-0.71', '0.7;-0.67', '0.72;-0.7', '0.8;-0.55', '0.64;-0.7', '0.65;-0.89', '0.71;-0.97', '0.54;-0.83', '0.47;-0.82', '0.43;-0.66', '0.3;-0.65', '0.27;-0.81', '0.1;-0.81', '0.16;-0.96', '0.1;-1.01', '0.23;-1.14', '0.3;-1.05', '0.36;-1.0', '0.54;-1.04', '0.55;-1.09', '0.55;-0.93', '0.39;-0.78', '0.41;-0.71', '0.36;-0.72', '0.5;-0.59', '0.48;-0.75', '0.4;-0.63', '0.4;-0.6', '0.55;-0.56', '0.44;-0.46', '0.46;-0.42', '0.63;-0.39', '0.69;-0.48', 
-    '0.75;-0.5', '0.72;-0.44', '0.83;-0.4', '0.83;-0.31', '0.7;-0.3', '0.72;-0.24', '0.44;-0.32', '0.6;-0.32', '0.57;-0.36', '0.88;-0.55', '0.98;-0.5']},
-    
-    'Millwall':{'ataque': 1.02, 'defensa': -0.45, 'PLUSLOCALataque': -0.12, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': 0.54, 'PLUSVISITAdefensa': 0.16, 'History': ['0.71;-0.58', '0.64;-0.57', '0.51;-0.44', '0.25;-0.56', '0.29;-0.59', '0.32;-0.57', '0.32;-0.65', '0.45;-0.85', '0.48;-0.69', '0.58;-0.77', '0.65;-0.65', '0.59;-0.5', '0.77;-0.42', '0.59;-0.49', '0.69;-0.41', '0.55;-0.51', '0.72;-0.53', '0.72;-0.43', '0.71;-0.29', '0.7;-0.34', '0.57;-0.46', '0.51;-0.64', '0.44;-0.59', '0.48;-0.55', '0.58;-0.4', '0.71;-0.46', '0.81;-0.31', '0.78;-0.49', '0.96;-0.42', '0.89;-0.46', '0.96;-0.25', '0.93;-0.43', '0.77;-0.62', '0.73;-0.48', '0.89;-0.4', '1.01;-0.31', '0.87;-0.19', '0.81;-0.46', '0.87;-0.44', '0.93;-0.41', '0.93;-0.57', '0.86;-0.58', '0.93;-0.45', '1.02;-0.45']},
-    
-    'Oxford Utd':{'ataque': 0.54, 'defensa': -0.62, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': 0.19, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.21, 'History': ['0.45;-0.57', '0.44;-0.68', '0.39;-0.72', '0.44;-0.64', '0.61;-0.59', '0.66;-0.49', '0.59;-0.49', '0.48;-0.42', '0.55;-0.6', '0.7;-0.55', '0.5;-0.49', '0.56;-0.53', '0.48;-0.7', '0.37;-0.93', '0.43;-1.01', '0.4;-0.95', '0.3;-1.02', '0.39;-0.88', '0.2;-0.93', '0.22;-0.88', '0.2;-0.94', '0.07;-0.86', '0.06;-0.77', '-0.03;-0.75', '0.19;-0.74', '0.32;-0.59', '0.31;-0.63', '0.48;-0.53', '0.36;-0.55', '0.42;-0.71', '0.32;-0.72', '0.3;-0.89', '0.37;-0.91', '0.33;-0.98', '0.49;-0.97', '0.59;-0.87', '0.56;-0.8', '0.52;-0.68', '0.48;-0.71', '0.68;-0.64', '0.68;-0.64', '0.71;-0.65', '0.59;-0.56', '0.54;-0.62']},
-    
-    'Portsmouth':{'ataque': 0.32, 'defensa': -0.70, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': 0.31, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.41, 'History': ['0.57;-0.45', '0.54;-0.57', '0.54;-0.5', '0.63;-0.47', '0.58;-0.44', '0.38;-0.57', '0.43;-0.66', '0.47;-0.73', '0.45;-0.66', '0.5;-0.69', '0.52;-0.57', '0.39;-0.58', '0.27;-0.72', '0.42;-0.63', '0.44;-0.74', '0.54;-0.6', '0.37;-0.65', '0.28;-0.61', '0.15;-0.57', '0.34;-0.51', '0.34;-0.44', '0.26;-0.44', '0.36;-0.51', '0.34;-0.96', '0.4;-0.8', '0.44;-0.64', '0.45;-0.65', '0.62;-0.55', '0.5;-0.51', '0.3;-0.49', '0.28;-0.42', '0.46;-0.26', '0.51;-0.35', '0.35;-0.31', '0.31;-0.38', '0.31;-0.54', '0.17;-0.54', '0.17;-1.16', '0.24;-0.88', '0.24;-0.89', '0.24;-0.76', '0.37;-0.72', '0.4;-0.59', '0.32;-0.7']},
-    
-    'QPR':{'ataque': 0.58, 'defensa': -0.65, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': -0.14, 'PLUSVISITAataque': -0.39, 'PLUSVISITAdefensa': 0.09, 'History': ['0.57;-0.55', '0.48;-0.68', '0.51;-1.35', '0.59;-1.25', '0.74;-1.02', '0.77;-0.95', '0.71;-0.88', '0.64;-0.77', '0.55;-0.63', '0.63;-0.73', '0.7;-0.6', '0.62;-0.67', '0.56;-1.03', '0.41;-1.06', '0.27;-0.99', '0.5;-0.84', '0.54;-0.74', '0.49;-0.8', '0.6;-0.83', '0.59;-0.69', '0.55;-0.65', '0.54;-0.57', '0.53;-0.49', '0.45;-0.49', '0.32;-0.64', '0.29;-0.54', '0.29;-0.51', '0.33;-0.5', '0.45;-0.79', '0.39;-0.65', '0.37;-0.66', '0.43;-0.73', '0.54;-0.82', '0.52;-0.81', '0.36;-0.86', '0.36;-1.04', '0.29;-0.91', '0.43;-0.79', '1.04;-0.78', '1.02;-0.6', '0.92;-0.56', '0.68;-0.49', '0.56;-0.56', '0.58;-0.65']},
-    
-    'Preston':{'ataque': 0.62, 'defensa': -0.88, 'PLUSLOCALataque': -0.00, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': -0.24, 'History': ['0.55;-0.57', '0.73;-0.52', '0.68;-0.4', '0.65;-0.49', '0.6;-0.57', '0.58;-0.49', '0.51;-0.57', '0.49;-0.61', '0.58;-0.57', '0.61;-0.72', '0.58;-0.7', '0.81;-0.84', '0.91;-0.62', '0.9;-0.61', '0.82;-0.71', '0.78;-0.75', '0.79;-0.71', '0.84;-0.85', '0.85;-0.84', '0.68;-0.81', '0.73;-0.79', '0.59;-0.64', '0.57;-0.61', '0.52;-0.66', '0.54;-0.54', 
-    '0.6;-0.3', '0.58;-0.46', '0.59;-0.5', '0.51;-0.7', '0.59;-0.66', '0.55;-0.54', '0.56;-0.56', '0.42;-0.59', '0.59;-0.57', '0.51;-0.73', '0.42;-0.83', '0.39;-0.91', '0.31;-0.92', '0.55;-0.84', '0.45;-0.96', '0.41;-0.86', '0.53;-0.8', '0.58;-0.85', '0.62;-0.88']},
-    
-    'Stoke':{'ataque': 0.47, 'defensa': -0.99, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.07, 'PLUSVISITAataque': -0.39, 'PLUSVISITAdefensa': -0.33, 'History': ['0.59;-0.5', '0.68;-0.56', '0.75;-0.45', '0.57;-0.42', '0.58;-0.34', '0.52;-0.37', '0.6;-0.43', '0.69;-0.38', '0.56;-0.54', '0.47;-0.44', '0.34;-0.5', '0.35;-0.37', '0.6;-0.35', '0.83;-0.24', '0.73;-0.17', '0.72;-0.27', '0.86;-0.24', '0.65;-0.31', '0.49;-0.37', '0.45;-0.29', '0.54;-0.38', '0.5;-0.36', '0.47;-0.33', '0.27;-0.44', '0.44;-0.49', '0.6;-0.47', '0.57;-0.46', '0.6;-0.57', '0.45;-0.53', '0.4;-0.63', '0.32;-0.53', '0.24;-0.77', '0.37;-0.86', '0.44;-0.83', '0.5;-0.74', '0.36;-0.79', '0.59;-0.76', '0.63;-0.8', '0.56;-1.04', '0.62;-1.07', '0.56;-1.12', '0.57;-0.94', '0.47;-0.9', '0.47;-0.99']},
-    
-    'Derby':{'ataque': 0.66, 'defensa': -0.52, 'PLUSLOCALataque': -0.16, 'PLUSLOCALdefensa': 0.35, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': -0.27, 'History': ['0.5;-0.59', '0.45;-0.74', '0.4;-0.57', '0.41;-0.7', '0.46;-0.53', '0.38;-0.51', '0.22;-0.5', '0.36;-0.49', '0.41;-0.49', '0.36;-0.64', '0.35;-0.51', '0.41;-0.42', '0.64;-0.42', '0.69;-0.38', '0.64;-0.23', '0.55;-0.25', '0.57;-0.3', '0.56;-0.37', 
-    '0.53;-0.48', '0.58;-0.47', '0.66;-0.36', '0.59;-0.36', '0.52;-0.58', '0.44;-0.5', '0.44;-0.46', '0.46;-0.49', '0.63;-0.47', '0.72;-0.48', '0.56;-0.56', '0.67;-0.4', '0.59;-0.44', '0.56;-0.4', '0.45;-0.46', '0.51;-0.81', '0.5;-0.78', '0.63;-0.78', '0.51;-0.64', '0.52;-0.51', '0.54;-0.48', '0.69;-0.56', '0.75;-0.5', '0.79;-0.55', '0.71;-0.43', '0.66;-0.52']},
-    
-    'West Brom':{'ataque': 0.84, 'defensa': -0.37, 'PLUSLOCALataque': 0.38, 'PLUSLOCALdefensa': 0.35, 'PLUSVISITAataque': -0.14, 'PLUSVISITAdefensa': -0.12, 'History': ['0.57;-0.45', '0.76;-0.57', '0.69;-0.57', '0.66;-0.39', '0.49;-0.45', '0.5;-0.58', '0.66;-0.56', '0.52;-0.39', '0.36;-0.41', '0.5;-0.44', '0.43;-0.41', '0.38;-0.5', '0.35;-0.43', '0.28;-0.44', '0.36;-0.51', '0.59;-0.58', '0.52;-0.58', '0.52;-0.48', '0.55;-0.59', '0.68;-0.65', '0.81;-0.59', '0.63;-0.48', '0.68;-0.63', '0.69;-0.55', '0.57;-0.51', '0.56;-0.64', '0.52;-0.7', '0.49;-0.7', '0.57;-0.53', '0.47;-0.71', '0.37;-0.62', '0.34;-0.48', '0.29;-0.5', '0.36;-0.43', '0.35;-0.59', '0.39;-0.51', '0.43;-0.45', '0.63;-0.34', '0.74;-0.28', '0.7;-0.47', '0.65;-0.43', '0.65;-0.37', '0.7;-0.41', '0.84;-0.37']},
-    
-    'Blackburn':{'ataque': 0.56, 'defensa': -0.70, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': -0.25, 'History': ['0.45;-0.57', '0.38;-0.58', '0.66;-0.49', '0.5;-0.57', '0.53;-0.55', '0.46;-0.67', '0.47;-0.76', '0.64;-0.64', '0.53;-0.47', '0.5;-0.55', '0.71;-0.58', '0.85;-0.6', '0.89;-0.51', '0.74;-0.46', '0.78;-0.42', '0.68;-0.47', '0.65;-0.58', '0.7;-0.37', '0.65;-0.39', '0.59;-0.58', '0.76;-0.52', '0.74;-0.45', '0.54;-0.41', '0.42;-0.37', '0.34;-0.36', '0.36;-0.55', '0.41;-0.78', '0.45;-0.84', '0.42;-0.81', '0.36;-0.76', '0.32;-0.78', '0.39;-0.84', '0.42;-0.69', '0.47;-0.87', '0.44;-0.86', '0.5;-0.82', '0.43;-0.78', '0.7;-0.72', '0.6;-0.73', '0.68;-0.66', '0.64;-0.61', '0.46;-0.62', '0.46;-0.66', '0.53;-0.71', '0.56;-0.7']},
-    
-    'Charlton':{'ataque': 0.21, 'defensa': -0.71, 'PLUSLOCALataque': -0.30, 'PLUSLOCALdefensa': -0.15, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': 0.04, 'History': ['0.59;-0.54', '0.57;-0.45', '0.39;-0.44', '0.28;-0.52', '0.31;-0.56', '0.27;-0.46', '0.39;-0.39', '0.39;-0.53', '0.35;-0.63', '0.46;-0.62', '0.55;-0.68', '0.65;-0.59', '0.53;-0.56', '0.55;-0.49', '0.51;-0.58', '0.38;-1.01', '0.34;-1.15', '0.37;-1.08', '0.45;-1.13', '0.48;-0.95', '0.4;-0.82', '0.32;-0.84', '0.4;-0.94', '0.55;-0.94', '0.54;-0.86', '0.45;-0.61', '0.46;-0.7', '0.39;-0.88', '0.41;-0.83', '0.42;-0.81', '0.66;-0.73', '0.59;-0.71', '0.63;-0.64', '0.56;-0.72', '0.41;-0.69', '0.36;-0.64', '0.44;-0.4', '0.31;-0.36', '0.26;-0.37', '0.29;-0.66', '0.46;-0.69', '0.41;-0.81', '0.32;-0.78', '0.21;-0.71']},
-    
-    'Watford':{'ataque': 0.31, 'defensa': -1.06, 'PLUSLOCALataque': -0.12, 'PLUSLOCALdefensa': -0.29, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.17, 'History': ['0.54;-0.59', '0.66;-0.51', '0.59;-0.48', '0.47;-0.57', '0.45;-0.6', '0.44;-0.63', '0.6;-0.51', '0.67;-0.56', '0.85;-0.62', '0.76;-0.81', '0.73;-0.74', '0.79;-0.71', '1.02;-0.61', '0.89;-0.53', '0.82;-0.47', '0.84;-0.38', '0.79;-0.38', '0.79;-0.4', '0.83;-0.58', '0.73;-0.52', '0.71;-0.52', '0.69;-0.48', '0.69;-0.36', '0.71;-0.31', '0.84;-0.26', '0.68;-0.36', '0.52;-0.4', '0.58;-0.45', '0.5;-0.65', '0.52;-0.5', '0.44;-0.49', '0.46;-0.5', '0.53;-0.39', '0.47;-0.39', '0.61;-0.43', '0.66;-0.59', '0.7;-0.64', '0.83;-0.53', '0.65;-0.63', '0.46;-0.6', '0.49;-0.78', '0.5;-0.81', '0.35;-0.92', '0.31;-1.06']},
-    
-    'Coventry':{'ataque': 1.09, 'defensa': -0.36, 'PLUSLOCALataque': 0.62, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.14, 'PLUSVISITAdefensa': 0.23, 'History': ['0.63;-0.5', '0.78;-0.46', '1.46;-0.49', 
-    '1.39;-0.53', '1.54;-0.37', '1.35;-0.35', '1.36;-0.28', '1.56;-0.42', '1.87;-0.46', '1.7;-0.35', '1.58;-0.36', '1.54;-0.42', '1.44;-0.48', '1.4;-0.53', '1.33;-0.43', '1.39;-0.66', '1.39;-0.6', '1.32;-0.63', '1.22;-0.56', '1.19;-0.39', '1.08;-0.26', '0.92;-0.21', '0.74;-0.13', '0.67;-0.2', '0.67;-0.36', '0.78;-0.55', '0.77;-0.62', '0.96;-0.59', '0.91;-0.74', '0.77;-0.68', '0.79;-0.58', '0.99;-0.58', '1.01;-0.52', '1.09;-0.42', '1.0;-0.47', '1.04;-0.34', '1.12;-0.31', '1.01;-0.43', '1.23;-0.27', '1.32;-0.42', '1.05;-0.37', '0.93;-0.37', '0.98;-0.44', '1.09;-0.36']},
-    
-    'Hull':{'ataque': 0.66, 'defensa': -0.87, 'PLUSLOCALataque': 0.14, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.08, 'PLUSVISITAdefensa': -0.29, 'History': ['0.5;-0.63', '0.61;-0.62', '0.51;-0.89', '0.73;-1.14', '0.8;-1.04', '0.9;-0.91', '0.79;-1.07', '0.83;-1.05', '0.72;-0.88', '0.94;-0.87', '0.97;-0.82', '0.87;-0.92', '0.87;-0.75', '0.83;-0.8', '0.94;-0.82', '0.79;-1.05', '0.68;-1.06', '0.75;-0.85', 
-    '0.64;-0.88', '0.83;-0.76', '0.95;-0.64', '0.85;-0.45', '0.64;-0.54', '0.61;-0.37', '0.65;-0.54', '0.73;-0.46', '0.76;-0.46', '0.83;-0.46', '0.8;-0.42', '0.66;-0.45', '0.68;-0.61', '0.77;-0.73', '1.12;-0.79', '1.07;-0.62', '0.96;-0.56', '0.87;-0.68', '0.97;-0.61', '0.87;-0.81', '0.85;-0.72', '0.79;-0.92', '0.73;-0.65', '0.67;-0.72', '0.61;-0.65', '0.66;-0.87']},
-    
-    'Southampton':{'ataque': 1.11, 'defensa': -0.32, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.45, 'PLUSVISITAataque': 0.40, 'PLUSVISITAdefensa': -0.17, 'History': ['0.97;-0.59', '0.87;-0.66', '0.76;-0.73', '0.85;-0.61', '0.83;-0.57', '0.7;-0.67', '0.65;-0.51', '0.71;-0.56', '0.71;-0.61', '0.89;-0.5', '0.87;-0.71', '0.9;-0.92', '0.68;-1.03', '0.71;-0.88', '0.85;-0.85', '1.28;-0.72', '1.28;-0.66', '1.18;-0.66', '1.3;-0.67', '1.36;-0.8', '1.2;-0.8', '1.14;-0.64', '1.05;-0.63', '1.01;-0.56', '0.86;-0.66', '0.84;-0.8', '0.75;-0.88', '0.63;-0.63', '0.64;-0.64', '0.74;-0.6', '0.73;-0.51', '0.78;-0.44', '0.71;-0.48', '0.7;-0.46', '0.83;-0.51', '0.77;-0.55', '0.88;-0.44', '0.86;-0.31', '0.89;-0.28', '1.01;-0.21', '1.06;-0.25', '1.09;-0.26', '1.06;-0.27', '1.11;-0.32']},
-    
-    'Wrexham':{'ataque': 0.74, 'defensa': -0.40, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': 0.07, 'History': ['0.59;-0.97', '0.71;-1.15', '0.64;-1.25', 
-    '0.76;-1.0', '0.53;-1.14', '0.72;-1.16', '0.7;-0.99', '0.68;-0.87', '0.74;-0.87', '0.64;-0.78', '0.58;-0.59', '0.52;-0.53', '0.58;-0.42', '0.49;-0.57', '0.58;-0.54', '0.48;-0.46', '0.53;-0.42', '0.64;-0.39', '0.63;-0.39', '0.51;-0.58', '0.51;-0.56', '0.42;-0.66', '0.87;-0.83', '0.92;-0.78', '0.88;-0.66', 
-    '0.91;-0.69', '0.79;-0.61', '0.64;-0.58', '0.93;-0.7', '0.75;-0.63', '0.55;-0.7', '0.56;-0.55', '0.74;-0.48', '0.84;-0.53', '0.81;-0.39', '0.73;-0.49', '0.75;-0.3', '0.65;-0.44', '0.75;-0.41', '0.94;-0.36', '0.87;-0.48', '0.72;-0.54', '0.68;-0.45', '0.74;-0.4']},
-    
-    'Birmingham':{'ataque': 0.49, 'defensa': -0.42, 'PLUSLOCALataque': 0.28, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': -0.38, 'PLUSVISITAdefensa': -0.08, 'History': ['0.59;-0.51', '0.6;-0.44', '0.63;-0.39', '0.5;-0.49', '0.41;-0.5', '0.64;-0.61', '0.57;-0.63', '0.56;-0.52', '0.57;-0.58', '0.56;-0.8', '0.55;-0.77', '0.48;-0.65', '0.62;-0.54', '0.69;-0.36', '0.71;-0.49', '0.84;-0.62', '0.84;-0.55', '0.86;-0.55', '0.87;-0.66', '0.73;-0.66', '0.54;-0.68', '0.54;-0.8', '0.76;-0.73', '0.69;-0.7', '0.64;-0.82', 
-    '0.83;-0.93', '0.89;-0.89', '1.01;-0.8', '0.98;-0.65', '0.99;-0.53', '0.92;-0.62', '0.78;-0.6', '0.87;-0.65', '0.73;-0.61', '0.58;-0.6', '0.53;-0.56', '0.4;-0.49', '0.45;-0.49', '0.42;-0.52', '0.34;-0.59', '0.47;-0.59', '0.53;-0.44', '0.47;-0.38', '0.49;-0.42']},
-    
-    'Ipswich':{'ataque': 0.82, 'defensa': -0.71, 'PLUSLOCALataque': 0.45, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.17, 'History': ['0.51;-0.59', '0.58;-0.49', '0.46;-0.44', '0.59;-0.45', '0.67;-0.41', '0.76;-0.47', '0.66;-0.46', '0.65;-0.39', '0.73;-0.58', '0.79;-0.67', '0.88;-0.61', '1.24;-0.56', '1.16;-0.43', '1.4;-0.45', '1.31;-0.36', '1.33;-0.25', '1.19;-0.34', '0.97;-0.4', '0.9;-0.3', '0.82;-0.25', '0.75;-0.2', '0.81;-0.33', '0.76;-0.26', '0.83;-0.19', '0.83;-0.4', '1.02;-0.43', '1.05;-0.3', '1.01;-0.35', '0.98;-0.43', '1.01;-0.35', '0.95;-0.53', '0.94;-0.47', '1.06;-0.32', '0.99;-0.21', '0.94;-0.22', '0.9;-0.45', '0.85;-0.37', '0.83;-0.43', '0.83;-0.56', '0.88;-0.53', '0.84;-0.66', '0.88;-0.83', '0.82;-0.71']},
+  'Sheffield Wed':{'ataque': 0.32, 'defensa': -1.18, 'PLUSLOCALataque': -0.11, 'PLUSLOCALdefensa': -0.24, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.34, 'History': []},
 
+  'Sheffield Utd':{'ataque': 0.57, 'defensa': -0.91, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': -0.35, 'PLUSVISITAataque': -0.22, 'PLUSVISITAdefensa': 0.04, 'History': []},
+
+  'Bristol City':{'ataque': 0.59, 'defensa': -0.90, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': -0.28, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.02, 'History': []},
+
+  'Middlesbrough':{'ataque': 1.09, 'defensa': -0.45, 'PLUSLOCALataque': 0.05, 'PLUSLOCALdefensa': 0.03, 
+  'PLUSVISITAataque': 0.45, 'PLUSVISITAdefensa': 0.12, 'History': []},
+
+  'Swansea':{'ataque': 0.52, 'defensa': -0.51, 'PLUSLOCALataque': 0.05, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': 0.08, 'History': []},
+
+  'Norwich':{'ataque': 0.81, 'defensa': -0.43, 'PLUSLOCALataque': -0.29, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': 0.50, 'PLUSVISITAdefensa': 0.11, 'History': []},
+
+  'Millwall':{'ataque': 0.97, 'defensa': -0.48, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.28, 'PLUSVISITAdefensa': -0.01, 'History': []},
+
+  'Oxford Utd':{'ataque': 0.72, 'defensa': -0.61, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': -0.12, 'History': []},
+
+  'Portsmouth':{'ataque': 0.62, 'defensa': -0.54, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.34, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.28, 'History': []},
+
+  'QPR':{'ataque': 0.60, 'defensa': -0.79, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': -0.17, 'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.02, 'History': []},
+
+  'Preston':{'ataque': 0.78, 'defensa': -0.97, 'PLUSLOCALataque': -0.13, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': 0.31, 'PLUSVISITAdefensa': -0.25, 'History': []},
+
+  'Stoke':{'ataque': 0.36, 'defensa': -1.02, 'PLUSLOCALataque': 0.21, 'PLUSLOCALdefensa': -0.14, 'PLUSVISITAataque': -0.45, 'PLUSVISITAdefensa': -0.28, 'History': []},
+
+  'Derby':{'ataque': 0.72, 'defensa': -0.57, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': 0.31, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': -0.27, 'History': []},
+
+  'West Brom':{'ataque': 0.63, 'defensa': -0.38, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': 0.07, 'History': []},
+
+  'Blackburn':{'ataque': 0.63, 'defensa': -0.63, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': -0.15, 'History': []},
+
+  'Charlton':{'ataque': 0.34, 'defensa': -0.70, 'PLUSLOCALataque': -0.13, 'PLUSLOCALdefensa': -0.13, 'PLUSVISITAataque': -0.14, 'PLUSVISITAdefensa': 0.03, 'History': []},
+
+  'Watford':{'ataque': 0.41, 'defensa': -1.10, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': -0.14, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.37, 'History': []},
+
+  'Coventry':{'ataque': 1.16, 'defensa': -0.48, 'PLUSLOCALataque': 0.69, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': -0.14, 'PLUSVISITAdefensa': 0.09, 'History': []},
+
+  'Hull':{'ataque': 0.55, 'defensa': -0.93, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': -0.26, 'History': []},
+
+  'Southampton':{'ataque': 1.06, 'defensa': -0.51, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': 0.39, 'PLUSVISITAdefensa': -0.19, 'History': []},
+
+  'Wrexham':{'ataque': 0.69, 'defensa': -0.55, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': 0.03, 'History': []},
+
+  'Birmingham':{'ataque': 0.46, 'defensa': -0.48, 'PLUSLOCALataque': 0.28, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': -0.42, 'PLUSVISITAdefensa': -0.08, 'History': []},
+
+  'Ipswich':{'ataque': 1.00, 'defensa': -0.47, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': 0.09, 'PLUSVISITAdefensa': 0.02, 'History': []},
   },
   _2Bundesliga: {
-    'Greuther Fürth':{'ataque': 0.50, 'defensa': -0.97, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': -0.20, 'PLUSVISITAataque': -0.41, 'PLUSVISITAdefensa': -0.17, 'History': ['0.7;-0.58', '0.73;-0.68', '0.63;-1.03', '1.08;-1.31', '0.87;-1.34', '0.78;-1.21', '0.64;-1.25', '0.78;-1.06', '0.72;-1.16', '0.69;-1.15', '0.6;-0.96', '0.48;-0.75', '0.63;-1.02', '0.59;-1.04', '0.58;-0.94', '0.95;-1.03', '0.83;-1.04', '0.62;-0.93', '0.53;-0.91', '0.53;-0.76', '0.86;-1.13', '0.73;-1.17', '0.79;-1.03', '0.62;-0.95', '0.67;-0.78', '0.64;-0.7', '0.58;-0.87', '0.56;-0.87', '0.37;-0.86', '0.5;-0.97']},
+    'Greuther Fürth':{'ataque': 0.45, 'defensa': -0.83, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.13, 'History': []},
 
-    'Dynamo Dresden':{'ataque': 0.61, 'defensa': -0.37, 'PLUSLOCALataque': 0.19, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': 0.12, 'History': ['0.58;-0.7', '0.56;-0.81', '0.67;-0.67', '0.66;-0.69', '0.76;-0.84', '0.73;-0.93', '0.55;-0.94', '0.6;-0.98', '0.55;-0.96', '0.53;-0.87', '0.49;-0.83', '0.48;-0.81', '0.6;-0.69', '0.72;-0.7', '0.61;-0.64', '0.69;-0.8', '0.64;-0.9', '0.53;-0.68', '0.54;-0.66', '0.5;-0.74', '0.55;-0.79', '0.52;-0.74', '0.45;-0.47', '0.49;-0.37', '0.48;-0.5', '0.63;-0.48', '0.66;-0.59', '0.65;-0.59', '0.59;-0.49', '0.61;-0.37']},
+  'Dynamo Dresden':{'ataque': 0.60, 'defensa': -0.49, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': -0.07, 'History': []},
 
-    'Hannover':{'ataque': 0.73, 'defensa': -0.21, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': 0.30, 'History': ['0.66;-0.5', '0.78;-0.42', '0.99;-0.59', 
-    '1.02;-0.58', '0.99;-0.59', '1.08;-0.56', '1.27;-0.54', '1.08;-0.67', '1.06;-0.82', '1.16;-0.79', '1.12;-0.69', '1.09;-0.89', '1.08;-0.73', '1.08;-0.6', '1.09;-0.74', '1.15;-0.62', '1.12;-0.63', '1.08;-0.81', '1.26;-0.74', '1.2;-0.56', '1.27;-0.48', '1.35;-0.56', '1.08;-0.49', '1.06;-0.36', '0.9;-0.41', '0.99;-0.4', '0.9;-0.29', '0.84;-0.21', '0.88;-0.09', '0.73;-0.21']},
+  'Hannover':{'ataque': 0.67, 'defensa': -0.35, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': 0.13, 'PLUSVISITAdefensa': 0.21, 'History': []},
 
-    'Kaiserslautern':{'ataque': 0.81, 'defensa': -0.82, 'PLUSLOCALataque': 0.34, 'PLUSLOCALdefensa': 0.15, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.37, 'History': ['0.5;-0.66', '0.55;-0.56', '0.59;-0.7', '0.66;-0.69', '0.7;-0.47', '0.79;-0.53', '0.73;-0.85', '0.85;-0.78', '1.11;-0.83', '0.99;-0.97', '0.82;-0.87', '0.63;-0.79', '0.93;-0.84', '0.76;-0.9', '0.7;-0.79', '0.58;-0.68', '0.56;-0.77', '0.75;-0.74', '0.81;-0.68', '0.6;-0.83', '0.5;-1.03', '0.54;-0.9', '0.87;-0.83', '0.72;-0.92', '0.84;-1.0', '0.86;-0.91', '0.7;-0.86', '0.89;-0.74', '0.96;-0.74', '0.81;-0.82']},
+  'Kaiserslautern':{'ataque': 0.50, 'defensa': -0.91, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.30, 'PLUSVISITAdefensa': -0.40, 'History': []},
 
-    'Magdeburgo':{'ataque': 1.00, 'defensa': -0.86, 'PLUSLOCALataque': -0.24, 'PLUSLOCALdefensa': 0.14, 'PLUSVISITAataque': 0.65, 'PLUSVISITAdefensa': -0.40, 'History': ['0.45;-0.57', '0.56;-0.56', '0.73;-0.76', '1.02;-1.21', '0.83;-1.17', '0.75;-1.1', '0.59;-0.97', '0.63;-1.09', '0.63;-0.95', '0.52;-0.81', '0.56;-1.06', '0.43;-0.87', '0.53;-1.02', '0.83;-0.8', '0.95;-0.84', '0.94;-0.96', '1.04;-0.95', '1.11;-0.73', '1.09;-0.75', '0.91;-0.69', '1.28;-1.02', '1.04;-1.08', '0.97;-1.21', '0.79;-1.37', '0.59;-1.13', '0.62;-0.93', '0.68;-0.86', '0.84;-0.87', '0.97;-1.03', '1.0;-0.86']},
+  'Magdeburgo':{'ataque': 0.75, 'defensa': -0.73, 'PLUSLOCALataque': -0.04, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': -0.24, 'History': []},
 
-    'Braunschweig':{'ataque': 0.42, 'defensa': -0.48, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': 0.02, 'History': ['0.57;-0.45', '0.68;-0.48', '0.6;-0.46', '0.63;-0.45', '0.57;-0.45', '0.5;-0.52', '0.46;-0.6', '0.48;-0.61', '0.57;-0.62', '0.54;-0.71', '0.55;-0.78', '0.3;-0.82', '0.24;-0.75', '0.3;-0.57', '0.4;-0.5', '0.57;-0.58', '0.65;-0.62', '0.43;-0.69', '0.42;-0.6', '0.45;-0.56', '0.47;-0.69', '0.57;-0.58', '0.53;-0.68', '0.44;-0.64', '0.37;-0.55', '0.53;-0.45', '0.43;-0.36', '0.48;-0.42', '0.42;-0.46', '0.42;-0.48']},
+  'Braunschweig':{'ataque': 0.62, 'defensa': -0.38, 'PLUSLOCALataque': 0.06, 'PLUSLOCALdefensa': 0.18, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': 0.04, 'History': []},
 
-    'Arminia Bielefeld':{'ataque': 0.53, 'defensa': -0.84, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.43, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.67, 'History': ['0.78;-0.58', '0.85;-0.44', '0.72;-0.55', '0.71;-0.58', '0.67;-0.4', '0.54;-0.31', '0.51;-0.51', '0.55;-0.57', '0.81;-0.8', '0.75;-0.66', '0.65;-0.73', '0.82;-0.65', '0.73;-0.58', '0.72;-0.75', '0.68;-0.75', '0.56;-0.63', '0.48;-0.49', '0.36;-0.53', '0.38;-0.51', '0.46;-0.47', '0.59;-0.49', '0.64;-0.25', '0.51;-0.31', '0.38;-0.29', '0.47;-0.43', '0.73;-0.42', '0.72;-0.73', '0.72;-0.66', '0.61;-0.88', '0.53;-0.84']},
+  'Arminia Bielefeld':{'ataque': 0.65, 'defensa': -0.78, 'PLUSLOCALataque': 0.20, 'PLUSLOCALdefensa': 0.35, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.53, 'History': []},
 
-    'Fortuna Düsseldorf':{'ataque': 0.25, 'defensa': -0.94, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': 
-    -0.19, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.15, 'History': ['0.58;-0.78', '0.49;-0.9', '0.6;-0.88', '0.61;-0.72', '0.7;-0.66', '0.63;-0.78', '0.54;-0.59', '0.55;-0.74', '0.56;-0.84', '0.35;-0.72', '0.25;-0.55', '0.14;-0.55', '0.3;-0.65', '0.31;-0.77', '0.36;-0.86', '0.35;-0.76', '0.35;-0.64', '0.4;-0.52', '0.32;-0.7', '0.35;-0.59', '0.45;-0.53', '0.39;-0.47', '0.45;-0.46', '0.51;-0.49', '0.72;-0.35', '0.61;-0.51', '0.59;-0.75', '0.48;-0.93', '0.41;-0.91', '0.25;-0.94']},
+  'Fortuna Düsseldorf':{'ataque': 0.51, 'defensa': -0.83, 'PLUSLOCALataque': 0.18, 'PLUSLOCALdefensa': -0.21, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': -0.02, 'History': []},
 
-    'Darmstadt':{'ataque': 0.60, 'defensa': -1.05, 'PLUSLOCALataque': 0.21, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.61, 'History': ['0.82;-0.63', '0.8;-0.58', '0.7;-0.62', '0.69;-0.69', '0.69;-0.63', '0.8;-0.57', '0.81;-0.38', '0.68;-0.56', '0.54;-0.56', '0.54;-0.61', '0.6;-0.5', '0.8;-0.47', '1.07;-0.63', '0.97;-0.49', '1.02;-0.68', '1.01;-0.61', '0.96;-0.71', '0.93;-0.86', '0.91;-0.66', '1.1;-0.69', '1.29;-0.58', '1.19;-0.68', '1.17;-0.74', '1.06;-0.78', '0.92;-0.68', '0.72;-0.71', '0.67;-0.88', '0.6;-0.88', '0.48;-0.92', '0.6;-1.05']},
+  'Darmstadt':{'ataque': 0.69, 'defensa': -1.03, 'PLUSLOCALataque': 0.21, 'PLUSLOCALdefensa': 0.08, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': -0.51, 'History': []},
 
-    'Bochum':{'ataque': 0.51, 'defensa': -0.87, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': -0.31, 'PLUSVISITAdefensa': -0.24, 'History': ['0.63;-0.82', '0.76;-0.67', '0.73;-0.75', '0.66;-0.87', '0.62;-0.97', '0.59;-0.99', '0.39;-0.89', '0.33;-1.01', '0.47;-1.04', '0.52;-0.95', '0.76;-0.98', '0.81;-0.73', '0.69;-0.84', '0.71;-0.8', '0.71;-0.76', '0.6;-0.82', '0.5;-0.89', '0.64;-0.87', '0.62;-0.77', '0.68;-0.6', '0.73;-0.58', '0.86;-0.49', '0.79;-0.5', '0.83;-0.56', '0.91;-0.67', '0.79;-0.59', '0.59;-0.75', '0.59;-0.91', '0.63;-0.85', '0.51;-0.87']},
+  'Bochum':{'ataque': 0.71, 'defensa': -0.90, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.24, 'History': []},
 
-    'Elversberg':{'ataque': 0.72, 'defensa': -0.27, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': 0.38, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': -0.06, 'History': ['0.58;-0.55', '0.44;-0.69', '0.58;-0.72', '0.68;-0.62', '0.84;-0.72', '0.91;-0.64', '0.96;-0.53', '1.07;-0.57', '1.18;-0.52', '1.05;-0.46', 
-    '0.95;-0.42', '0.87;-0.37', '1.07;-0.41', '0.93;-0.31', '0.85;-0.2', '0.75;-0.19', '0.81;-0.45', '0.93;-0.74', '0.84;-0.71', '0.99;-0.5', '1.0;-0.53', '0.96;-0.5', '1.06;-0.46', '0.85;-0.47', '0.62;-0.26', '0.53;-0.23', '0.84;-0.22', '0.76;-0.16', '0.71;-0.31', '0.72;-0.27']},
+  'Elversberg':{'ataque': 0.81, 'defensa': -0.42, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': 0.29, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.11, 'History': []},
 
-    'Núremberg':{'ataque': 0.82, 'defensa': -0.56, 'PLUSLOCALataque': 0.24, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': -0.09, 'History': ['0.55;-0.58', '0.51;-0.56', '0.51;-0.59', '0.52;-0.59', '0.55;-0.7', '0.57;-0.67', '0.49;-0.69', '0.64;-0.7', '0.72;-0.64', '0.87;-0.52', '0.93;-0.54', '0.91;-0.54', '0.84;-0.45', '0.62;-0.75', '0.52;-0.74', '0.46;-0.62', '0.47;-0.58', '0.76;-0.71', '0.56;-0.68', '0.52;-0.64', '0.55;-0.64', '0.96;-0.65', '0.97;-0.58', '0.85;-0.49', '0.7;-0.7', '0.95;-0.83', '0.89;-0.67', '0.95;-0.71', '0.85;-0.64', '0.82;-0.56']},
+  'Núremberg':{'ataque': 0.64, 'defensa': -0.41, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.32, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': -0.13, 'History': []},
 
-    'Karlsruher':{'ataque': 0.98, 'defensa': -0.93, 'PLUSLOCALataque': 0.54, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': -0.24, 'History': ['0.66;-0.53', '0.68;-0.48', '0.66;-0.4', '0.49;-0.41', '0.6;-0.45', '0.62;-0.54', '0.49;-0.38', '0.53;-0.43', '0.58;-0.69', '0.56;-0.65', '0.62;-0.65', '0.54;-0.82', '0.57;-1.02', '0.44;-1.02', '0.63;-1.08', '0.5;-1.21', '0.58;-1.11', '0.56;-0.92', '0.58;-0.91', '0.54;-0.94', '0.48;-1.04', '0.5;-1.45', '0.52;-1.32', '0.69;-1.14', '0.81;-1.12', '0.73;-1.15', '0.91;-1.09', '0.79;-1.03', '1.02;-0.92', '0.98;-0.93']},
+  'Karlsruher':{'ataque': 0.69, 'defensa': -0.95, 'PLUSLOCALataque': 0.44, 'PLUSLOCALdefensa': -0.16, 'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.19, 'History': []},
 
-    'Preussen Münster':{'ataque': 0.39, 'defensa': -1.08, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': -0.38, 'History': ['0.53;-0.66', '0.45;-0.65', '0.48;-0.66', '0.6;-0.58', '0.55;-0.68', '0.61;-0.77', '0.69;-0.73', '0.68;-1.2', '0.67;-1.15', '0.53;-1.05', '0.63;-1.03', '0.42;-0.91', '0.38;-0.84', '0.55;-0.84', '0.69;-0.84', '0.62;-0.83', '0.87;-0.89', '0.69;-0.87', '0.75;-0.98', '0.7;-0.94', '0.68;-0.99', '0.63;-0.93', '0.56;-1.27', '0.52;-1.17', '0.38;-1.04', '0.36;-1.19', '0.28;-1.25', '0.28;-1.06', '0.27;-0.87', '0.39;-1.08']},
+  'Preussen Münster':{'ataque': 0.44, 'defensa': -1.07, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': -0.35, 'History': []},
 
-    'Paderborn':{'ataque': 1.27, 'defensa': -0.63, 'PLUSLOCALataque': 0.77, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': 0.07, 'History': ['0.61;-0.5', '0.6;-0.43', '0.59;-0.53', '0.59;-0.53', '0.69;-0.5', '0.81;-0.48', '1.13;-0.42', '1.14;-0.44', '1.36;-0.7', '1.27;-0.68', '1.09;-0.58', '0.9;-0.45', '0.74;-0.45', '0.76;-0.54', '0.66;-0.46', '0.79;-0.33', '0.89;-0.28', '0.8;-0.37', '0.91;-0.43', '0.8;-0.45', '0.8;-0.48', '0.71;-0.61', '0.9;-0.58', '0.98;-0.44', '0.89;-0.37', '0.88;-0.63', '0.99;-0.66', '0.99;-0.65', '1.15;-0.77', '1.27;-0.63']},
+  'Paderborn':{'ataque': 1.10, 'defensa': -0.64, 'PLUSLOCALataque': 0.54, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': -0.05, 'PLUSVISITAdefensa': 0.05, 'History': []},
 
-    'Kiel':{'ataque': 0.48, 'defensa': -0.66, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.17, 'History': ['0.5;-0.61', '0.37;-0.69', '0.71;-0.59', '0.7;-0.62', '0.65;-0.55', '0.75;-0.56', '0.63;-0.61', '0.81;-0.49', '0.75;-0.57', '0.66;-0.61', '0.64;-0.71', '0.64;-0.61', '0.69;-0.91', '0.59;-0.86', '0.52;-0.97', '0.64;-0.95', '0.73;-0.9', '0.81;-0.81', '0.79;-0.83', '0.64;-0.82', '0.56;-0.89', '0.55;-1.16', '0.42;-1.18', '0.43;-0.98', '0.33;-0.83', '0.45;-1.08', '0.62;-0.88', '0.42;-0.88', '0.4;-0.81', '0.48;-0.66']},
+  'Kiel':{'ataque': 0.59, 'defensa': -0.62, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.25, 'History': []},
 
-    'Schalke':{'ataque': 1.33, 'defensa': -0.43, 'PLUSLOCALataque': 0.40, 'PLUSLOCALdefensa': 0.19, 'PLUSVISITAataque': 0.32, 'PLUSVISITAdefensa': -0.03, 'History': ['0.61;-0.52', '0.5;-0.57', '0.58;-0.54', '0.59;-0.53', '0.52;-0.48', '0.44;-0.4', '0.48;-0.26', '0.54;-0.3', '0.69;-0.28', '0.74;-0.28', '0.74;-0.34', '0.69;-0.26', '0.62;-0.23', '0.72;-0.24', '0.81;-0.3', '0.68;-0.24', '0.72;-0.32', '0.62;-0.41', '0.56;-0.47', '0.39;-0.53', '0.43;-0.59', '0.7;-0.58', '0.82;-0.51', '0.74;-0.34', '0.88;-0.43', '0.87;-0.52', '1.04;-0.47', '0.98;-0.36', '1.12;-0.31', '1.33;-0.43']},
+  'Schalke':{'ataque': 1.26, 'defensa': -0.45, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': 0.40, 'PLUSVISITAdefensa': -0.02, 'History': []},
 
-    'Hertha BSC':{'ataque': 0.67, 'defensa': -0.64, 'PLUSLOCALataque': -0.01, 'PLUSLOCALdefensa': 0.05, 'PLUSVISITAataque': 0.09, 'PLUSVISITAdefensa': -0.09, 'History': ['0.52;-0.61', '0.47;-0.63', '0.51;-0.53', '0.4;-0.63', '0.41;-0.6', '0.4;-0.72', '0.42;-0.64', '0.88;-0.64', '0.92;-0.78', '0.8;-0.58', '0.76;-0.53', '0.67;-0.34', '0.6;-0.27', '0.55;-0.18', '0.6;-0.3', '0.69;-0.67', '0.55;-0.59', '0.64;-0.49', '0.63;-0.51', '0.65;-0.69', '0.68;-0.7', '0.76;-0.78', '0.73;-0.97', '0.64;-0.85', '0.51;-0.7', '0.42;-0.58', '0.66;-0.56', '0.66;-0.56', '0.65;-0.63', '0.67;-0.64']},
-
+  'Hertha BSC':{'ataque': 0.63, 'defensa': -0.51, 'PLUSLOCALataque': -0.27, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': 0.29, 'PLUSVISITAdefensa': -0.01, 'History': []},
   },
   FACup: {
 
@@ -1216,48 +1174,42 @@ const bases = {
   },
   LigaMX: {
 
-    'Querétaro':{'ataque': 0.70, 'defensa': -0.56, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.11, 'PLUSVISITAataque': -0.16, 'PLUSVISITAdefensa': 0.15, 'History': ['0.47;-0.56', '0.56;-0.61', '0.47;-0.68', '0.73;-0.83', '0.62;-0.86', '0.59;-0.92', '0.49;-0.71', '0.44;-0.63', '0.72;-0.55', '0.62;-0.43', '0.64;-0.4', '0.63;-0.38', '0.5;-0.5', '0.7;-0.56']},
+    'Querétaro':{'ataque': 0.65, 'defensa': -0.56, 'PLUSLOCALataque': 0.29, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': 0.04, 'History': []},
 
-    'Pachuca':{'ataque': 0.69, 'defensa': -0.61, 'PLUSLOCALataque': 0.17, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.11, 'History': ['0.56;-0.47', '0.64;-0.32', '0.86;-0.35', '0.91;-0.33', '0.93;-0.47', '0.89;-0.52', '0.85;-0.46', '0.76;-0.45', '0.67;-0.27', '0.71;-0.23', '0.91;-0.39', '1.09;-0.41', '0.86;-0.54', '0.69;-0.61']},
-    
-    'León':{'ataque': 0.72, 'defensa': -1.22, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': -0.08, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': -0.54, 'History': ['0.57;-0.7', '0.63;-0.79', '0.52;-0.83', '0.5;-0.79', '0.63;-0.65', '0.61;-0.74', '0.51;-0.81', '0.47;-1.25', '0.53;-1.02', '0.53;-0.87', '0.53;-0.73', '0.53;-0.71', '0.7;-0.97', '0.72;-1.22']},
-    
-    'Tigres UANL':{'ataque': 0.58, 'defensa': -0.25, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.27, 'PLUSVISITAataque': -0.12, 'PLUSVISITAdefensa': 0.08, 'History': ['0.7;-0.57', '0.88;-0.65', '0.7;-0.72', '0.69;-0.77', '0.83;-0.68', '0.83;-0.78', '0.85;-0.64', '0.65;-0.55', '0.57;-0.51', '0.49;-0.49', '0.6;-0.34', '0.61;-0.29', '0.57;-0.26', '0.58;-0.25']},
-    
-    'Monterrey':{'ataque': 0.29, 'defensa': -1.08, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': -0.11, 'PLUSVISITAataque': -0.44, 'PLUSVISITAdefensa': -0.37, 'History': ['0.65;-0.66', '0.53;-0.64', '0.57;-0.53', '0.47;-0.55', '0.43;-0.59', '0.46;-0.48', '0.33;-0.5', '0.36;-0.81', '0.56;-0.9', '0.37;-0.88', '0.39;-0.74', '0.41;-0.92', '0.42;-0.91', '0.29;-1.08']},
-    
-    'Tijuana':{'ataque': 0.54, 'defensa': -0.61, 'PLUSLOCALataque': -0.21, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': 0.14, 'PLUSVISITAdefensa': -0.02, 'History': ['0.66;-0.65', '0.54;-0.64', '0.47;-0.69', '0.44;-0.8', '0.45;-0.79', '0.42;-0.81', '0.24;-0.99', '0.31;-0.9', '0.2;-1.12', '0.18;-1.04', '0.27;-0.96', '0.35;-0.9', '0.49;-0.68', '0.54;-0.61']},
-    
-    'Atlas':{'ataque': 0.20, 'defensa': -0.54, 'PLUSLOCALataque': -0.13, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.27, 'PLUSVISITAdefensa': -0.04, 'History': ['0.57;-0.53', '0.62;-0.51', '0.64;-0.73', 
-    '0.86;-0.7', '0.73;-0.88', '0.75;-0.86', '0.61;-0.98', '0.66;-0.88', '0.58;-0.83', '0.43;-0.83', '0.3;-0.84', '0.22;-0.75', '0.19;-0.72', '0.2;-0.54']},
-    
-    'Mazatlán':{'ataque': 0.57, 'defensa': -0.87, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': -0.30, 'History': ['0.53;-0.57', '0.42;-0.66', '0.49;-0.64', '0.6;-0.61', '0.74;-0.63', '0.56;-0.65', '0.65;-0.62', '0.6;-0.8', '0.68;-0.73', '0.58;-0.8', '0.64;-0.91', '0.61;-0.9', '0.58;-0.86', '0.57;-0.87']},
-    
-    'Atlético de San Luis':{'ataque': 0.28, 'defensa': -0.53, 'PLUSLOCALataque': -0.23, 'PLUSLOCALdefensa': 0.25, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.19, 'History': ['0.62;-0.76', '0.6;-0.83', 
-    '0.67;-0.74', '0.64;-0.96', '0.57;-0.94', '0.59;-0.76', '0.6;-0.96', '0.59;-0.87', '0.37;-0.93', '0.34;-0.74', '0.33;-0.62', '0.28;-0.69', '0.3;-0.53', '0.28;-0.53']},
-    
-    'Guadalajara':{'ataque': 1.31, 'defensa': -0.35, 'PLUSLOCALataque': 0.70, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.01, 'PLUSVISITAdefensa': -0.00, 'History': ['0.76;-0.62', '0.85;-0.51', '0.92;-0.4', '0.85;-0.34', '0.81;-0.43', '0.93;-0.29', '0.91;-0.2', '1.35;-0.16', '1.44;-0.36', '1.39;-0.33', '1.23;-0.44', '1.56;-0.4', '1.38;-0.29', '1.31;-0.35']},
-    
-    'Club América':{'ataque': 0.57, 'defensa': -0.49, 'PLUSLOCALataque': -0.20, 'PLUSLOCALdefensa': 0.08, 
-    'PLUSVISITAataque': 0.17, 'PLUSVISITAdefensa': 0.03, 'History': ['0.68;-0.47', '0.65;-0.36', '0.55;-0.43', '0.72;-0.41', '0.64;-0.55', '0.62;-0.73', '0.67;-0.7', '0.85;-0.65', '0.71;-0.56', '0.64;-0.44', 
-    '0.54;-0.38', '0.49;-0.31', '0.75;-0.48', '0.57;-0.49']},
-    
-    'Necaxa':{'ataque': 0.46, 'defensa': -0.78, 'PLUSLOCALataque': 0.06, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': -0.38, 'History': ['0.47;-0.68', '0.54;-0.66', '0.61;-0.6', '0.57;-0.79', '0.44;-0.93', '0.49;-0.89', '0.39;-0.89', '0.26;-0.81', '0.49;-0.7', '0.56;-0.6', '0.52;-0.62', '0.47;-0.63', '0.37;-0.45', '0.46;-0.78']},
-    
-    'Juárez':{'ataque': 0.77, 'defensa': -0.75, 'PLUSLOCALataque': 0.48, 'PLUSLOCALdefensa': -0.13, 'PLUSVISITAataque': -0.31, 'PLUSVISITAdefensa': -0.02, 'History': ['0.76;-0.77', '0.6;-0.85', '0.54;-0.92', 
-    '0.72;-0.79', '0.9;-0.77', '0.79;-0.76', '1.1;-0.79', '1.07;-0.71', '0.99;-0.75', '0.88;-0.66', '0.8;-0.75', '0.77;-0.76', '0.76;-0.77', '0.77;-0.75']},
-    
-    'Cruz Azul':{'ataque': 1.08, 'defensa': -0.38, 'PLUSLOCALataque': 0.44, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': 0.04, 'PLUSVISITAdefensa': 0.20, 'History': ['0.77;-0.76', '0.69;-0.83', '0.75;-0.66', '0.69;-0.59', '0.73;-0.55', '0.64;-0.45', '0.84;-0.46', '0.86;-0.32', '0.79;-0.4', '0.75;-0.43', '0.69;-0.33', '0.63;-0.41', '0.75;-0.28', '1.08;-0.38']},
-    
-    'Pumas UNAM':{'ataque': 1.13, 'defensa': -0.17, 'PLUSLOCALataque': 0.41, 'PLUSLOCALdefensa': 0.11, 'PLUSVISITAataque': 0.12, 'PLUSVISITAdefensa': 0.33, 'History': ['0.95;-0.45', '0.93;-0.49', '0.98;-0.49', '1.0;-0.39', '0.99;-0.4', '1.14;-0.62', '1.14;-0.52', '1.0;-0.54', '0.91;-0.4', '0.88;-0.35', '0.98;-0.4', '1.06;-0.35', '1.07;-0.34', '1.13;-0.17']},
-    
-    'Santos Laguna':{'ataque': 0.79, 'defensa': -1.02, 'PLUSLOCALataque': 0.07, 'PLUSLOCALdefensa': 0.36, 
-    'PLUSVISITAataque': 0.12, 'PLUSVISITAdefensa': -0.78, 'History': ['0.45;-0.95', '0.53;-1.12', '0.51;-1.19', '0.46;-1.16', '0.62;-1.42', '0.52;-1.32', '0.7;-1.14', '0.61;-1.13', '0.83;-1.07', '0.71;-1.0', 
-    '0.87;-1.2', '0.78;-1.13', '0.62;-1.15', '0.79;-1.02']},
-    
-    'Puebla':{'ataque': 0.29, 'defensa': -1.27, 'PLUSLOCALataque': -0.11, 'PLUSLOCALdefensa': -0.33, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': -0.34, 'History': ['0.52;-0.72', '0.51;-0.6', '0.51;-0.65', '0.49;-0.82', '0.47;-0.76', '0.57;-0.75', '0.51;-0.71', '0.43;-0.58', '0.37;-0.81', '0.42;-0.73', '0.28;-0.74', '0.24;-1.06', '0.23;-1.07', '0.29;-1.27']},
-    
-    'Toluca':{'ataque': 0.98, 'defensa': -0.48, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.14, 'History': ['0.72;-0.52', '0.79;-0.43', '0.83;-0.35', '1.02;-0.31', '1.1;-0.27', '1.32;-0.42', '1.31;-0.31', '1.21;-0.35', '1.03;-0.27', '0.94;-0.55', '0.82;-0.54', '0.75;-0.49', '0.72;-0.46', '0.98;-0.48']},
+    'Pachuca':{'ataque': 0.66, 'defensa': -0.56, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': -0.12, 'History': []},
+
+    'León':{'ataque': 0.75, 'defensa': -0.88, 'PLUSLOCALataque': 0.22, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': -0.07, 'PLUSVISITAdefensa': -0.31, 'History': []},
+
+    'Tigres UANL':{'ataque': 0.78, 'defensa': -0.28, 'PLUSLOCALataque': 0.37, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': 0.04, 'History': []},
+
+    'Monterrey':{'ataque': 0.36, 'defensa': -0.92, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': -0.05, 'PLUSVISITAataque': -0.38, 'PLUSVISITAdefensa': -0.27, 'History': []},
+
+    'Tijuana':{'ataque': 0.69, 'defensa': -0.56, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': 0.02, 'History': []},
+
+    'Atlas':{'ataque': 0.24, 'defensa': -0.48, 'PLUSLOCALataque': -0.19, 'PLUSLOCALdefensa': -0.00, 'PLUSVISITAataque': -0.18, 'PLUSVISITAdefensa': 0.12, 'History': []},
+
+    'Mazatlán':{'ataque': 0.81, 'defensa': -1.14, 'PLUSLOCALataque': 0.36, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.50, 'History': []},
+
+    'Atlético de San Luis':{'ataque': 0.37, 'defensa': -0.50, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': 0.24, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.15, 'History': []},
+
+    'Guadalajara':{'ataque': 1.28, 'defensa': -0.44, 'PLUSLOCALataque': 0.73, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.21, 'History': []},
+
+    'Club América':{'ataque': 0.50, 'defensa': -0.44, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': 0.01, 
+    'PLUSVISITAataque': 0.04, 'PLUSVISITAdefensa': 0.15, 'History': []},
+
+    'Necaxa':{'ataque': 0.38, 'defensa': -0.64, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': -0.24, 'PLUSVISITAdefensa': -0.26, 'History': []},
+
+    'Juárez':{'ataque': 0.73, 'defensa': -0.89, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': -0.02, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.27, 'History': []},
+
+    'Cruz Azul':{'ataque': 0.93, 'defensa': -0.35, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': 0.19, 'History': []},
+
+    'Pumas UNAM':{'ataque': 1.00, 'defensa': -0.41, 'PLUSLOCALataque': 0.38, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': 0.18, 'History': []},
+
+    'Santos Laguna':{'ataque': 0.55, 'defensa': -0.96, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.62, 'History': []},
+
+    'Puebla':{'ataque': 0.28, 'defensa': -1.17, 'PLUSLOCALataque': -0.12, 'PLUSLOCALdefensa': -0.29, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': -0.29, 'History': []},
+
+    'Toluca':{'ataque': 0.87, 'defensa': -0.61, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': 0.18, 'PLUSVISITAdefensa': -0.29, 'History': []},
 
   },
   Liga1: {
@@ -1355,98 +1307,83 @@ const bases = {
     
   },
   SaudiProLeague: {
+    'Al Okhdood':{'ataque': 0.26, 'defensa': -1.17, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.50, 'PLUSVISITAataque': -0.25, 'PLUSVISITAdefensa': -0.07, 'History': []},
 
-    'Al Okhdood':{'ataque': 0.03, 'defensa': -1.05, 'PLUSLOCALataque': -0.22, 'PLUSLOCALdefensa': -0.25, 'PLUSVISITAataque': -0.35, 'PLUSVISITAdefensa': -0.20, 'History': ['0.54;-0.82', '0.64;-1.0', '0.48;-0.93', '0.53;-1.1', '0.46;-1.09', '0.41;-0.9', '0.41;-0.79', '0.4;-0.82', '0.43;-0.82', '0.4;-0.81', '0.3;-0.72', '0.25;-0.71', '0.24;-0.58', '0.19;-0.48', '0.16;-0.58', '0.07;-0.68', '0.17;-0.72', '0.11;-0.67', '0.13;-0.7', '0.24;-1.1', '0.13;-1.16', '0.21;-1.28', '0.17;-1.37', '0.26;-1.28', '0.1;-1.26', '0.0;-1.31', '-0.01;-1.17', '-0.01;-0.98', '0.03;-1.05']},
-
-    'Al-Ittihad FC':{'ataque': 0.85, 'defensa': -1.19, 'PLUSLOCALataque': 0.29, 'PLUSLOCALdefensa': -0.20, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': -0.39, 'History': ['0.82;-0.54', '1.13;-0.65', '0.98;-0.52', '0.94;-0.62', '0.94;-0.59', '0.73;-0.52', '0.85;-0.84', '0.77;-0.8', '0.76;-0.8', '0.91;-0.77', '0.92;-0.74', '1.15;-0.63', '1.44;-0.49', '1.21;-0.6', '0.94;-0.54', '0.87;-0.53', '0.91;-0.63', '0.82;-0.61', '0.69;-0.56', '0.58;-0.56', '0.64;-0.6', '0.65;-0.63', '0.5;-0.64', '0.43;-0.55', '0.52;-0.6', '0.55;-0.89', '0.57;-0.89', '0.85;-1.19']},
+    'Al-Ittihad FC':{'ataque': 0.77, 'defensa': -0.83, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': 0.00, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': -0.24, 'History': []},
     
-    'Al Qadsiah':{'ataque': 1.48, 'defensa': -0.60, 'PLUSLOCALataque': 0.47, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.42, 'PLUSVISITAdefensa': -0.03, 'History': ['0.76;-0.5', '0.68;-0.67', '0.64;-0.62', '0.57;-0.44', '0.75;-0.47', '0.56;-0.42', '0.41;-0.46', '0.48;-0.39', '0.52;-0.49', '0.56;-0.51', '0.8;-0.65', '1.0;-0.59', '1.07;-0.45', '1.1;-0.42', '1.12;-0.37', '1.11;-0.3', '1.19;-0.33', '1.07;-0.4', '1.06;-0.29', '1.03;-0.31', '0.97;-0.22', '1.08;-0.29', '1.35;-0.25', '1.21;-0.23', '1.36;-0.26', '1.55;-0.41', '1.51;-0.39', '1.39;-0.29', '1.48;-0.6']},
+    'Al Qadsiah':{'ataque': 1.58, 'defensa': -0.56, 'PLUSLOCALataque': 0.42, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': 0.56, 'PLUSVISITAdefensa': 0.07, 'History': []},
     
-    'Al Najma':{'ataque': 0.39, 'defensa': -1.28, 'PLUSLOCALataque': -0.16, 'PLUSLOCALdefensa': -0.14, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': -0.54, 'History': ['0.5;-0.76', '0.49;-0.83', '0.36;-0.68', '0.31;-0.71', '0.36;-1.01', '0.29;-0.9', '0.18;-0.9', '0.44;-1.14', '0.39;-1.11', '0.42;-1.05', '0.37;-0.87', '0.34;-0.92', '0.32;-1.01', '0.28;-1.05', '0.39;-0.99', '0.26;-0.92', '0.3;-1.0', '0.24;-0.86', '0.18;-0.73', '0.18;-0.8', '0.3;-0.78', '0.5;-0.91', '0.45;-0.9', '0.35;-0.99', '0.32;-1.08', '0.17;-1.16', '0.45;-1.31', '0.38;-1.24', '0.39;-1.28']},
+    'Al Najma':{'ataque': 0.36, 'defensa': -1.29, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.19, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.50, 'History': []},
     
-    'Al Fateh':{'ataque': 0.31, 'defensa': -0.51, 'PLUSLOCALataque': -0.16, 'PLUSLOCALdefensa': 0.33, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.24, 'History': ['0.52;-0.71', '0.64;-1.02', '0.73;-0.86', '0.55;-0.8', '0.55;-1.13', '0.65;-1.0', '0.6;-0.9', '0.67;-1.0', '0.67;-0.86', '0.72;-0.9', '0.62;-0.71', '0.79;-0.64', '0.72;-0.47', '0.76;-0.54', '0.69;-0.66', '0.55;-0.84', '0.45;-0.82', '0.44;-0.73', '0.45;-0.7', '0.47;-0.67', '0.4;-0.7', '0.54;-0.85', '0.63;-0.81', '0.62;-0.74', '0.65;-0.88', '0.48;-0.58', '0.34;-0.57', '0.31;-0.51']},
+    'Al Fateh':{'ataque': 0.26, 'defensa': -0.63, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.22, 'PLUSVISITAataque': -0.31, 'PLUSVISITAdefensa': -0.24, 'History': []},
     
-    'Al Fayha':{'ataque': 0.54, 'defensa': -0.70, 'PLUSLOCALataque': -0.17, 'PLUSLOCALdefensa': 0.23, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.34, 'History': ['0.71;-0.52', '0.58;-0.57', '0.55;-0.5', '0.58;-0.45', '0.55;-0.45', '0.54;-0.52', '0.57;-0.47', '0.6;-0.47', '0.67;-0.74', '0.62;-0.69', '0.53;-0.71', '0.48;-0.77', '0.39;-0.74', '0.35;-0.77', '0.3;-0.83', '0.41;-1.0', '0.4;-0.91', '0.31;-0.81', '0.2;-0.7', '0.27;-0.69', '0.31;-0.75', '0.58;-0.82', '0.6;-0.79', '0.59;-0.88', '0.57;-0.71', '0.51;-0.59', '0.49;-0.66', '0.6;-0.65', '0.54;-0.7']},
+    'Al Fayha':{'ataque': 0.42, 'defensa': -0.67, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': 0.22, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': -0.29, 'History': []},
     
-    'Al Shabab':{'ataque': 1.39, 'defensa': -0.83, 'PLUSLOCALataque': 0.43, 'PLUSLOCALdefensa': -0.39, 'PLUSVISITAataque': 0.36, 'PLUSVISITAdefensa': 0.17, 'History': ['0.56;-0.64', '0.57;-0.51', '0.51;-0.48', '0.46;-0.53', '0.49;-0.62', '0.59;-0.56', '0.51;-0.39', '0.37;-0.46', '0.37;-0.49', '0.34;-0.64', '0.48;-0.88', '0.41;-1.05', '0.4;-1.18', '0.5;-1.14', '0.67;-1.11', '0.6;-0.98', '0.58;-0.65', '0.71;-0.53', '0.59;-0.42', '0.42;-0.43', '0.49;-0.7', '0.74;-0.75', '0.91;-0.76', '1.11;-1.03', '1.0;-0.87', '1.05;-0.77', '1.08;-0.74', '1.39;-0.83']},
+    'Al Shabab':{'ataque': 1.18, 'defensa': -0.69, 'PLUSLOCALataque': 0.31, 'PLUSLOCALdefensa': -0.24, 'PLUSVISITAataque': 0.26, 'PLUSVISITAdefensa': 0.14, 'History': []},
     
-    'Al Khaleej':{'ataque': 0.46, 'defensa': -0.83, 'PLUSLOCALataque': 0.27, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.41, 'PLUSVISITAdefensa': -0.13, 'History': ['0.64;-0.56', '0.69;-0.44', '0.64;-0.4', '0.51;-0.3', '0.71;-0.39', '0.66;-0.54', '0.97;-0.65', '1.26;-0.72', '1.17;-0.86', '1.11;-0.87', '0.92;-0.78', '0.97;-0.75', '1.37;-0.72', '1.34;-0.66', '1.44;-0.64', '1.29;-0.71', '0.95;-0.68', '0.86;-0.6', '0.75;-0.59', '0.82;-0.57', '0.76;-0.69', '0.61;-0.75', '0.6;-0.86', '0.51;-0.78', '0.59;-0.75', '0.65;-0.91', '0.52;-0.85', '0.46;-0.83']},
+    'Al Khaleej':{'ataque': 0.42, 'defensa': -0.79, 'PLUSLOCALataque': 0.13, 'PLUSLOCALdefensa': -0.02, 'PLUSVISITAataque': -0.31, 'PLUSVISITAdefensa': -0.18, 'History': []},
     
-    'Al-Taawon':{'ataque': 0.46, 'defensa': -0.72, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': 0.00, 'History': ['0.46;-0.72', '0.65;-0.82', '0.84;-0.79', '0.74;-0.66', '0.93;-0.57', '1.01;-0.57', '1.05;-0.42', '1.14;-0.49', '0.94;-0.5', '0.87;-0.33', '0.69;-0.28', '0.57;-0.51', '0.71;-0.5', '0.74;-0.48', '0.84;-0.53', '0.82;-0.68', '0.62;-0.56', '0.57;-0.49', '0.57;-0.51', '0.55;-0.58', '0.5;-0.62', '0.56;-0.89', '0.52;-0.6', '0.5;-0.47', '0.63;-0.5', 
-    '0.59;-0.57', '0.59;-0.56', '0.42;-0.7', '0.46;-0.72']},
+    'Al-Taawon':{'ataque': 0.39, 'defensa': -0.59, 'PLUSLOCALataque': -0.00, 'PLUSLOCALdefensa': 0.02, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.01, 'History': []},
     
-    'Al Nassr Riyadh':{'ataque': 1.19, 'defensa': -0.37, 'PLUSLOCALataque': 0.54, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': 0.05, 'PLUSVISITAdefensa': 0.21, 'History': ['0.72;-0.46', '0.86;-0.39', '1.0;-0.38', '1.1;-0.34', '1.44;-0.34', '1.38;-0.33', '1.32;-0.35', '1.44;-0.26', '1.58;-0.17', '1.58;-0.13', '1.5;-0.06', '1.37;-0.4', '1.24;-0.47', '1.17;-0.47', '1.14;-0.64', '1.13;-0.62', '1.01;-0.42', '1.14;-0.33', '0.99;-0.3', '0.99;-0.19', '1.03;-0.12', '1.2;-0.14', '1.19;-0.09', '1.28;-0.08', '1.39;-0.1', '1.55;-0.17', '1.7;-0.44', '1.5;-0.44', '1.19;-0.37']},
+    'Al Nassr Riyadh':{'ataque': 1.26, 'defensa': -0.16, 'PLUSLOCALataque': 0.26, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': 0.40, 'PLUSVISITAdefensa': 0.18, 'History': []},
     
-    'Al-Hilal':{'ataque': 1.85, 'defensa': -0.26, 'PLUSLOCALataque': 0.83, 'PLUSLOCALdefensa': 0.37, 'PLUSVISITAataque': 0.42, 'PLUSVISITAdefensa': -0.03, 'History': ['0.71;-0.47', '0.88;-0.4', '0.99;-0.48', 
-    '1.17;-0.53', '1.39;-0.43', '1.32;-0.23', '1.15;-0.15', '1.39;-0.42', '1.25;-0.42', '1.26;-0.36', '1.27;-0.37', '1.31;-0.36', '1.4;-0.34', '1.4;-0.27', '1.32;-0.32', '1.5;-0.43', '1.28;-0.38', '1.35;-0.27', '1.17;-0.24', '1.57;-0.34', '1.63;-0.34', '1.66;-0.36', '1.38;-0.32', '1.65;-0.51', '1.74;-0.48', '1.45;-0.31', '1.44;-0.31', '1.85;-0.26']},
+    'Al-Hilal':{'ataque': 1.20, 'defensa': -0.20, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': 0.28, 'PLUSVISITAataque': 0.30, 'PLUSVISITAdefensa': 0.13, 'History': []},
     
-    'Al Riyadh':{'ataque': 0.55, 'defensa': -0.97, 'PLUSLOCALataque': 0.14, 'PLUSLOCALdefensa': 0.29, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.67, 'History': ['0.47;-0.71', '0.55;-0.7', '0.53;-0.85', '0.46;-0.87', '0.55;-1.07', '0.52;-0.98', '0.43;-0.91', '0.25;-0.93', '0.25;-0.92', '0.21;-0.99', '0.26;-1.13', '0.2;-1.34', '0.17;-1.24', '0.25;-1.28', '0.3;-1.39', '0.4;-1.3', '0.35;-1.07', '0.21;-1.02', '0.19;-0.86', '0.11;-0.72', '0.23;-0.66', '0.22;-0.6', '0.23;-0.77', '0.23;-0.69', '0.15;-0.92', '0.44;-0.95', '0.4;-0.98', '0.56;-0.99', '0.55;-0.97']},
+    'Al Riyadh':{'ataque': 0.63, 'defensa': -1.05, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': -0.07, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': -0.38, 'History': []},
     
-    'Al Ahli SC':{'ataque': 1.32, 'defensa': -0.50, 'PLUSLOCALataque': 0.82, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.00, 'History': ['0.58;-0.54', '0.61;-0.47', '0.69;-0.58', '0.76;-0.51', '0.85;-0.55', '0.75;-0.47', '0.67;-0.38', '0.63;-0.29', '0.74;-0.34', '0.77;-0.38', 
-    '0.8;-0.3', '1.15;-0.17', '1.02;-0.16', '1.0;-0.19', '0.8;-0.18', '0.88;-0.03', '1.02;-0.12', '1.22;-0.07', '1.19;0.12', '1.07;0.1', '1.35;0.03', '1.47;-0.16', '1.26;-0.16', '1.19;-0.16', '1.24;-0.25', '1.39;-0.44', '1.34;-0.39', '1.32;-0.5']},
+    'Al Ahli SC':{'ataque': 1.05, 'defensa': -0.30, 'PLUSLOCALataque': 0.62, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': -0.17, 'PLUSVISITAdefensa': 0.14, 'History': []},
     
-    'Neom SC':{'ataque': 0.94, 'defensa': -0.58, 'PLUSLOCALataque': 0.00, 'PLUSLOCALdefensa': 0.04, 'PLUSVISITAataque': 0.34, 'PLUSVISITAdefensa': -0.02, 'History': ['0.54;-0.58', '0.62;-0.6', '0.55;-0.44', '0.56;-0.37', '0.59;-0.54', '0.74;-0.49', '0.95;-0.57', '0.85;-0.68', '0.85;-0.48', '0.8;-0.51', '0.77;-0.52', '0.74;-0.59', '0.57;-0.52', '0.53;-0.62', '0.58;-0.54', '0.51;-0.44', '0.6;-0.59', '0.76;-0.52', '0.79;-0.55', '0.64;-0.47', '0.54;-0.41', '0.61;-0.26', '0.58;-0.27', '0.54;-0.32', '0.56;-0.43', '0.63;-0.39', '0.71;-0.37', '1.01;-0.65', '0.94;-0.58']},
+    'Neom SC':{'ataque': 0.74, 'defensa': -0.68, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': -0.07, 'PLUSVISITAataque': 0.17, 'PLUSVISITAdefensa': -0.01, 'History': []},
     
-    'Al-Ettifaq':{'ataque': 0.25, 'defensa': -0.57, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': -0.01, 'PLUSVISITAataque': -0.28, 'PLUSVISITAdefensa': 0.04, 'History': ['0.6;-0.53', '0.53;-0.56', '0.49;-0.74', '0.56;-0.67', '0.46;-0.89', '0.33;-0.98', '0.44;-0.86', '0.51;-0.72', '0.79;-0.79', '0.86;-0.75', 
-    '0.78;-0.67', '0.78;-0.61', '0.86;-0.59', '0.81;-0.56', '0.74;-0.29', '0.64;-0.22', '0.66;-0.31', '0.61;-0.51', '0.63;-0.51', '0.6;-0.49', '0.6;-0.55', '0.75;-0.69', '0.71;-0.95', '0.64;-0.94', '0.47;-0.82', '0.35;-0.76', '0.32;-0.73', '0.33;-0.89', '0.25;-0.57']},
+    'Al-Ettifaq':{'ataque': 0.66, 'defensa': -0.98, 'PLUSLOCALataque': 0.16, 'PLUSLOCALdefensa': -0.10, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': -0.28, 'History': []},
     
-    'Al Kholood':{'ataque': 0.52, 'defensa': -1.13, 'PLUSLOCALataque': -0.15, 'PLUSLOCALdefensa': -0.32, 'PLUSVISITAataque': 0.07, 'PLUSVISITAdefensa': -0.21, 'History': ['0.53;-0.6', '0.46;-0.73', '0.44;-0.64', '0.49;-0.59', '0.79;-0.64', '0.7;-0.62', '0.78;-0.82', '0.71;-0.89', '0.58;-1.04', '0.41;-0.97', '0.43;-0.97', '0.48;-0.92', '0.35;-1.21', '0.25;-1.16', '0.23;-0.97', '0.41;-0.82', '0.5;-0.84', '0.42;-0.97', '0.43;-1.01', '0.44;-0.83', '0.42;-0.96', '0.35;-0.95', '0.46;-0.94', '0.51;-0.89', '0.54;-1.04', '0.47;-1.02', '0.41;-0.9', '0.37;-1.3', '0.52;-1.13']},
+    'Al Kholood':{'ataque': 0.43, 'defensa': -0.88, 'PLUSLOCALataque': -0.31, 'PLUSLOCALdefensa': -0.12, 'PLUSVISITAataque': 0.14, 'PLUSVISITAdefensa': -0.16, 'History': []},
     
-    'Damac':{'ataque': 0.33, 'defensa': -0.58, 'PLUSLOCALataque': 0.15, 'PLUSLOCALdefensa': 0.40, 'PLUSVISITAataque': -0.42, 'PLUSVISITAdefensa': -0.38, 'History': ['0.55;-0.51', '0.57;-0.6', '0.48;-0.57', '0.41;-0.64', '0.32;-0.83', '0.26;-0.93', '0.17;-0.88', '0.18;-0.71', '0.15;-0.65', '0.16;-0.69', '0.07;-0.59', '0.06;-0.64', '0.03;-1.04', '0.14;-0.81', '0.19;-0.77', '0.17;-0.76', '0.16;-0.81', '0.09;-0.97', '0.13;-0.98', '0.11;-0.96', '0.14;-0.91', '0.18;-1.16', '0.18;-0.95', '0.12;-0.94', '0.34;-0.86', 
-    '0.42;-0.71', '0.36;-0.66', '0.26;-0.54', '0.33;-0.58']},
+    'Damac':{'ataque': 0.37, 'defensa': -0.32, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.34, 'PLUSVISITAataque': -0.32, 'PLUSVISITAdefensa': -0.06, 'History': []},
     
-    'Al Hazem':{'ataque': 0.49, 'defensa': -0.70, 'PLUSLOCALataque': -0.08, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': -0.11, 'History': ['0.51;-0.55', '0.38;-0.56', '0.23;-0.65', '0.16;-0.72', '0.14;-0.65', '0.13;-0.59', '0.0;-0.7', '0.07;-0.99', '0.22;-0.85', '0.16;-0.8', '0.3;-0.85', '0.37;-0.82', '0.35;-0.91', '0.39;-0.87', '0.35;-0.88', '0.49;-0.87', '0.55;-0.85', '0.44;-0.99', '0.4;-1.0', '0.41;-0.88', '0.48;-0.78', '0.5;-0.96', '0.5;-0.81', '0.49;-0.74', '0.46;-0.81', '0.45;-0.75', '0.45;-0.77', '0.5;-0.71', '0.49;-0.7']},
-
+    'Al Hazem':{'ataque': 0.53, 'defensa': -0.67, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.14, 'History': []},
   },
   J1League: {
-    'Verdy':{'ataque': 0.45, 'defensa': -0.61, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': 0.35, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.36, 'History': ['0.58;-0.49', '0.63;-0.45', '0.53;-0.44', 
-    '0.49;-0.56', '0.43;-0.57', '0.5;-0.57', '0.42;-0.54', '0.4;-0.47', '0.51;-0.69', '0.38;-0.73', '0.45;-0.61']},
+    'Verdy':{'ataque': 0.57, 'defensa': -0.62, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': 0.33, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': -0.35, 'History': []},
 
-    'Mito':{'ataque': 0.32, 'defensa': -0.34, 'PLUSLOCALataque': 0.06, 'PLUSLOCALdefensa': 0.13, 'PLUSVISITAataque': -0.34, 'PLUSVISITAdefensa': 0.13, 'History': ['0.49;-0.58', '0.51;-0.56', '0.44;-0.52', '0.44;-0.42', '0.33;-0.33', '0.4;-0.38', '0.41;-0.33', '0.32;-0.56', '0.32;-0.57', '0.27;-0.44', '0.32;-0.34']},
+  'Mito':{'ataque': 0.61, 'defensa': -0.56, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': -0.09, 'PLUSVISITAdefensa': -0.21, 'History': []},
 
-    'Kawasaki':{'ataque': 0.30, 'defensa': -0.74, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': -0.35, 'PLUSVISITAataque': -0.27, 'PLUSVISITAdefensa': 0.21, 'History': ['1.07;-0.82', '0.97;-0.82', '0.77;-0.86', '0.67;-0.86', '0.6;-0.78', '0.57;-0.71', '0.52;-0.98', '0.55;-1.03', '0.51;-0.95', '0.4;-0.85', '0.3;-0.74']},
+  'Kawasaki':{'ataque': 0.35, 'defensa': -0.75, 'PLUSLOCALataque': -0.05, 'PLUSLOCALdefensa': -0.36, 'PLUSVISITAataque': -0.20, 'PLUSVISITAdefensa': 0.21, 'History': []},
 
-    'Kashiwa':{'ataque': 0.44, 'defensa': -0.84, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.34, 'PLUSVISITAataque': -0.26, 'PLUSVISITAdefensa': -0.57, 'History': ['0.82;-1.07', '0.79;-1.12', '0.62;-1.11', '0.7;-1.04', '0.63;-1.05', '0.48;-0.9', '0.45;-0.83', '0.68;-0.74', '0.74;-0.6', '0.54;-0.78', '0.44;-0.84']},
+  'Kashiwa':{'ataque': 0.50, 'defensa': -0.73, 'PLUSLOCALataque': 0.10, 'PLUSLOCALdefensa': 0.26, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.39, 'History': []},
 
-    'Nagoya':{'ataque': 0.69, 'defensa': -0.76, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': 0.06, 'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.21, 'History': ['0.57;-0.52', '0.61;-0.52', '0.65;-0.59', 
-    '0.57;-0.6', '0.71;-0.65', '0.61;-0.79', '0.6;-0.66', '0.51;-0.61', '0.55;-0.56', '0.7;-0.77', '0.69;-0.76']},
+  'Nagoya':{'ataque': 0.71, 'defensa': -0.54, 'PLUSLOCALataque': -0.11, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': 0.22, 'PLUSVISITAdefensa': 0.10, 'History': []},
 
-    'Shimizu':{'ataque': 0.84, 'defensa': -0.70, 'PLUSLOCALataque': 0.35, 'PLUSLOCALdefensa': 0.12, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': -0.22, 'History': ['0.52;-0.57', '0.48;-0.48', '0.51;-0.39', '0.57;-0.48', '0.47;-0.56', '0.59;-0.64', '0.49;-0.61', '0.73;-0.59', '0.64;-0.52', '0.9;-0.41', '0.84;-0.7']},
+  'Shimizu':{'ataque': 0.44, 'defensa': -0.79, 'PLUSLOCALataque': -0.01, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': -0.15, 'PLUSVISITAdefensa': -0.13, 'History': []},
 
-    'Avispa Fukuoka':{'ataque': 0.51, 'defensa': -0.54, 'PLUSLOCALataque': -0.03, 'PLUSLOCALdefensa': 0.10, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': -0.04, 'History': ['0.53;-0.53', '0.44;-0.59', '0.37;-0.7', '0.36;-0.82', '0.4;-0.96', '0.27;-0.86', '0.24;-0.76', '0.35;-0.73', '0.35;-0.67', '0.36;-0.57', '0.35;-0.56', '0.51;-0.54']},
+  'Avispa Fukuoka':{'ataque': 0.24, 'defensa': -0.59, 'PLUSLOCALataque': -0.14, 'PLUSLOCALdefensa': 0.01, 'PLUSVISITAataque': -0.23, 'PLUSVISITAdefensa': -0.00, 'History': []},
 
-    'Okayama':{'ataque': 0.67, 'defensa': -0.72, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': -0.03, 'PLUSVISITAataque': 0.05, 'PLUSVISITAdefensa': -0.09, 'History': ['0.53;-0.53', '0.47;-0.48', '0.49;-0.58', '0.5;-0.51', '0.61;-0.42', '0.69;-0.53', '0.77;-0.49', '0.66;-0.55', '0.65;-0.58', '0.61;-0.72', '0.67;-0.72']},
+  'Okayama':{'ataque': 0.71, 'defensa': -0.45, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': 0.16, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.00, 'History': []},
 
-    'C-Osaka':{'ataque': 0.67, 'defensa': -0.47, 'PLUSLOCALataque': -0.10, 'PLUSLOCALdefensa': -0.00, 'PLUSVISITAataque': 0.17, 'PLUSVISITAdefensa': 0.13, 'History': ['0.47;-0.62', '0.53;-0.53', '0.54;-0.63', '0.53;-0.7', '0.61;-0.61', '0.84;-0.68', '0.8;-0.76', '0.71;-0.6', '0.66;-0.63', '0.6;-0.42', '0.67;-0.47']},
+  'C-Osaka':{'ataque': 0.60, 'defensa': -0.41, 'PLUSLOCALataque': 0.02, 'PLUSLOCALdefensa': 0.17, 'PLUSVISITAataque': -0.03, 'PLUSVISITAdefensa': 0.03, 'History': []},
 
-    'G-Osaka':{'ataque': 0.57, 'defensa': -0.85, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': -0.06, 'PLUSVISITAataque': 0.03, 'PLUSVISITAdefensa': -0.19, 'History': ['0.62;-0.47', '0.63;-0.5', '0.74;-0.52', '0.82;-0.58', '0.91;-0.49', '0.72;-0.61', '0.84;-0.68', '0.81;-0.79', '0.81;-0.68', '0.6;-0.62', '0.6;-0.68', '0.57;-0.85']},
+  'G-Osaka':{'ataque': 0.88, 'defensa': -0.55, 'PLUSLOCALataque': 0.47, 'PLUSLOCALdefensa': 0.09, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.04, 'History': []},
 
-    'Tokyo':{'ataque': 0.88, 'defensa': -0.32, 'PLUSLOCALataque': -0.07, 'PLUSLOCALdefensa': 0.08, 'PLUSVISITAataque': 0.35, 'PLUSVISITAdefensa': 0.19, 'History': ['0.66;-0.54', '0.57;-0.46', '0.61;-0.26', '0.54;-0.34', '0.69;-0.3', '0.73;-0.37', '0.8;-0.42', '0.72;-0.4', '0.88;-0.28', '0.76;-0.29', '0.88;-0.32']},
+  'Tokyo':{'ataque': 1.08, 'defensa': -0.36, 'PLUSLOCALataque': 0.28, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': 0.20, 'PLUSVISITAdefensa': 0.17, 'History': []},
 
-    'Kashima':{'ataque': 0.86, 'defensa': -0.10, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': 0.41, 'PLUSVISITAataque': 0.33, 'PLUSVISITAdefensa': 0.09, 'History': ['0.54;-0.66', '0.49;-0.49', '0.49;-0.32', 
-    '0.76;-0.44', '0.77;-0.37', '0.7;-0.31', '0.9;-0.14', '0.96;-0.25', '0.98;-0.26', '0.88;-0.15', '0.86;-0.1']},
+  'Kashima':{'ataque': 0.65, 'defensa': -0.38, 'PLUSLOCALataque': -0.06, 'PLUSLOCALdefensa': 0.29, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.07, 'History': []},
 
-    'Chiba':{'ataque': 0.62, 'defensa': -0.87, 'PLUSLOCALataque': 0.12, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': -0.10, 'PLUSVISITAdefensa': -0.18, 'History': ['0.59;-0.74', '0.58;-0.64', '0.54;-0.57', 
-    '0.54;-0.68', '0.54;-0.61', '0.49;-0.61', '0.54;-0.68', '0.65;-0.74', '0.87;-0.85', '0.74;-0.8', '0.62;-0.87']},
+  'Chiba':{'ataque': 0.32, 'defensa': -0.83, 'PLUSLOCALataque': 0.01, 'PLUSLOCALdefensa': -0.19, 'PLUSVISITAataque': -0.29, 'PLUSVISITAdefensa': -0.04, 'History': []},
 
-    'Urawa':{'ataque': 0.55, 'defensa': -0.46, 'PLUSLOCALataque': -0.02, 'PLUSLOCALdefensa': -0.08, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': 0.21, 'History': ['0.74;-0.59', '0.67;-0.5', '0.7;-0.37', '0.82;-0.65', '0.73;-0.54', '0.73;-0.61', '0.65;-0.58', '0.64;-0.66', '0.56;-0.61', '0.6;-0.48', '0.55;-0.46']},
+  'Urawa':{'ataque': 0.60, 'defensa': -0.48, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.08, 'PLUSVISITAataque': -0.11, 'PLUSVISITAdefensa': 0.04, 'History': []},
 
-    'Kyoto':{'ataque': 0.88, 'defensa': -0.74, 'PLUSLOCALataque': 0.29, 'PLUSLOCALdefensa': -0.09, 'PLUSVISITAataque': -0.01, 'PLUSVISITAdefensa': -0.06, 'History': ['0.63;-0.67', '0.53;-0.62', '0.64;-0.55', 
-    '0.76;-0.53', '0.67;-0.65', '0.74;-0.87', '0.85;-0.81', '0.8;-0.72', '0.69;-0.72', '0.82;-0.68', '0.88;-0.74']},
+  'Kyoto':{'ataque': 0.48, 'defensa': -0.75, 'PLUSLOCALataque': 0.09, 'PLUSLOCALdefensa': 0.03, 'PLUSVISITAataque': -0.21, 'PLUSVISITAdefensa': -0.19, 'History': []},
 
-    'Vissel Kobe':{'ataque': 0.90, 'defensa': -0.51, 'PLUSLOCALataque': 0.30, 'PLUSLOCALdefensa': -0.04, 'PLUSVISITAataque': -0.00, 'PLUSVISITAdefensa': 0.14, 'History': ['0.67;-0.63', '0.62;-0.51', '0.54;-0.55', '0.66;-0.54', '0.81;-0.44', '0.88;-0.55', '0.72;-0.46', '0.74;-0.45', '0.67;-0.36', '0.7;-0.36', 
-    '0.9;-0.51']},
+  'Vissel Kobe':{'ataque': 0.81, 'defensa': -0.72, 'PLUSLOCALataque': 0.11, 'PLUSLOCALdefensa': 0.07, 'PLUSVISITAataque': 0.11, 'PLUSVISITAdefensa': -0.20, 'History': []},
 
-    'V-Varen Nagasaki':{'ataque': 0.21, 'defensa': -0.88, 'PLUSLOCALataque': -0.21, 'PLUSLOCALdefensa': -0.26, 'PLUSVISITAataque': -0.19, 'PLUSVISITAdefensa': -0.02, 'History': ['0.59;-0.64', '0.47;-0.6', '0.54;-0.64', '0.61;-0.63', '0.52;-0.72', '0.43;-0.58', '0.36;-0.69', '0.42;-0.57', '0.31;-0.83', '0.21;-0.84', '0.21;-0.88']},
+  'V-Varen Nagasaki':{'ataque': 0.35, 'defensa': -0.71, 'PLUSLOCALataque': -0.19, 'PLUSLOCALdefensa': -0.15, 'PLUSVISITAataque': -0.06, 'PLUSVISITAdefensa': 0.04, 'History': []},
 
-    'Hiroshima':{'ataque': 0.90, 'defensa': -0.67, 'PLUSLOCALataque': 0.32, 'PLUSLOCALdefensa': 0.19, 'PLUSVISITAataque': -0.02, 'PLUSVISITAdefensa': -0.26, 'History': ['0.64;-0.59', '0.58;-0.53', '0.69;-0.54', '0.67;-0.66', '0.79;-0.48', '0.65;-0.47', '0.63;-0.71', '0.62;-0.74', '0.56;-0.74', '0.85;-0.68', '0.9;-0.67']},
+  'Hiroshima':{'ataque': 0.79, 'defensa': -0.48, 'PLUSLOCALataque': 0.23, 'PLUSLOCALdefensa': 0.20, 'PLUSVISITAataque': -0.04, 'PLUSVISITAdefensa': -0.08, 'History': []},
 
-    'Yokohama M.':{'ataque': 0.50, 'defensa': -0.90, 'PLUSLOCALataque': 0.03, 'PLUSLOCALdefensa': -0.18, 'PLUSVISITAataque': -0.13, 'PLUSVISITAdefensa': -0.12, 'History': ['0.7;-0.82', '0.53;-0.78', '0.4;-0.81', '0.52;-0.77', '0.49;-0.92', '0.49;-0.87', '0.44;-0.88', '0.71;-0.82', '0.57;-0.89', '0.6;-1.01', '0.5;-0.9']},
+  'Yokohama M.':{'ataque': 0.67, 'defensa': -0.98, 'PLUSLOCALataque': -0.09, 'PLUSLOCALdefensa': -0.18, 
+  'PLUSVISITAataque': 0.16, 'PLUSVISITAdefensa': -0.20, 'History': []},
 
-    'Machida':{'ataque': 0.79, 'defensa': -0.52, 'PLUSLOCALataque': 0.04, 'PLUSLOCALdefensa': -0.21, 'PLUSVISITAataque': 0.15, 'PLUSVISITAdefensa': 0.28, 'History': ['0.82;-0.7', '0.8;-0.72', '0.79;-0.63', '0.9;-0.63', '0.75;-0.47', '0.59;-0.67', '0.67;-0.66', '0.72;-0.69', '0.6;-0.85', '0.61;-0.73', '0.79;-0.52']},
-
-
-
+'Machida':{'ataque': 0.71, 'defensa': -0.35, 'PLUSLOCALataque': 0.08, 'PLUSLOCALdefensa': -0.02, 'PLUSVISITAataque': 0.02, 'PLUSVISITAdefensa': 0.26, 'History': []},
   },
   EgyptianPremierLeague: {
 
@@ -1775,32 +1712,31 @@ document.getElementById('swapBtn').addEventListener('click', function() {
   // calcularProbabilidades(); 
   calcular();
 });
-
+/* ═══════════════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════════════ */
 const navLinks = document.getElementById('navLinks');
-const overlay = document.getElementById('overlay');
-const btnOpen = document.getElementById('menuOpen');
+const overlay  = document.getElementById('overlay');
+const btnOpen  = document.getElementById('menuOpen');
 const btnClose = document.getElementById('menuClose');
 
-// Función para abrir/cerrar
-function toggleMenu() {
-  navLinks.classList.toggle('active');
-  overlay.classList.toggle('active');
-}
+function openMenu()  { navLinks.classList.add('open');    overlay.classList.add('open'); }
+function closeMenu() { navLinks.classList.remove('open'); overlay.classList.remove('open'); }
 
-btnOpen.addEventListener('click', toggleMenu);
-btnClose.addEventListener('click', toggleMenu);
-overlay.addEventListener('click', toggleMenu); // Cerrar al tocar fuera
+btnOpen.addEventListener('click', openMenu);
+btnClose.addEventListener('click', closeMenu);
+overlay.addEventListener('click', closeMenu);
 
-// Cerrar menú automáticamente al hacer clic en una opción (opcional)
 document.querySelectorAll('.nav-tab').forEach(tab => {
   tab.addEventListener('click', () => {
-    if(window.innerWidth <= 768) toggleMenu();
+    if (window.innerWidth <= 768) closeMenu();
   });
 });
 
+//// Calculadora de Montos MÓDULO 4
+
 function fmt(n) { return n.toFixed(2); }
 
-//// Calculadora de Montos
 function calc() {
   const qG = parseFloat(document.getElementById('q_gana').value);
   const qE = parseFloat(document.getElementById('q_empate').value);
@@ -1834,7 +1770,7 @@ function calc() {
   document.getElementById('bonus_badge').innerHTML     = 'Ganancia neta<br>S/ ' + fmt(bonusNet);
 }
 
-calc();
+document.addEventListener('DOMContentLoaded', calc);
 
 (function() {
   /* ── Stats patch ── */
@@ -1899,3 +1835,12 @@ calc();
   });
   
 })();
+
+
+
+
+
+
+
+
+

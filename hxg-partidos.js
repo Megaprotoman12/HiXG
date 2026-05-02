@@ -24,15 +24,12 @@
      ║                                                       ║
      ║  Busca cualquier liga en:                             ║
      ║  https://v3.football.api-sports.io/leagues            ║
-     ╚═══════════════════════════════════════════════════════╝ */
-
-  const API_KEY = '7657ca8f8011c6cbc615b2c74ccb75da';
-
-  const MY_LEAGUE_IDS = [
+     ╚═══════════════════════════════════════════════════════╝ 
+     const MY_LEAGUE_IDS = [
     2,    // UEFA Champions League
     3,    // UEFA Europa League
-    848,  // UEFA Europa Conference League
     39,   // Premier League
+    848,  // UEFA Europa Conference League
     78,   // Bundesliga
     135,  // Serie A
     140,  // La Liga
@@ -53,6 +50,63 @@
     98,   // J1 League
     120,  // Superliga
     103,  // Eliteserien
+  ];
+  */
+
+  const API_KEY = '7657ca8f8011c6cbc615b2c74ccb75da';
+
+  const MY_LEAGUE_IDS = [
+    // ── EUROPA ÉLITE ──────────────────────────────────
+    39,   // Premier League (Inglaterra) YALA
+    140,  // La Liga (España)
+    135,  // Serie A (Italia)
+    78,   // Bundesliga (Alemania)
+    61,   // Ligue 1 (Francia)
+  
+    // ── EUROPA SEGUNDA LÍNEA ──────────────────────────
+    40,   // Championship (Inglaterra)
+    94,   // Primeira Liga (Portugal)
+    203,  // Süper Lig (Turquía)
+    88,   // Eredivisie (Países Bajos)
+    235,  // Premier Liga (Rusia)
+    144,  // Jupiler Pro League (Bélgica) YALA
+    197,  // Super League 1 (Grecia)
+    136,  // Serie B (Italia)
+    79,   // 2. Bundesliga (Alemania)
+    141,  // LaLiga Hypermotion (España)
+    207,  // Super League (Suiza)
+  
+    // ── SUDAMÉRICA ────────────────────────────────────
+    128,  // Torneo Betano (Argentina) ⚠️ verificar — puede ser 130
+    71,   // Campeonato Brasileiro Série A (Brasil)
+    262,  // Liga MX (México)
+    253,  // Major League Soccer (MLS, USA)
+    268,  // Liga AUF (Uruguay) ⚠️ verificar
+    239,  // Liga Dimayor (Colombia) ⚠️ verificar
+    281,  // Liga 1 (Perú) ⚠️ verificar //253 XD
+    278,  // Primera División (Paraguay) ⚠️ verificar
+    72,   // Campeonato Brasileiro Série B (Brasil)
+    265,  // Primera División (Chile) ⚠️ verificar nombre exacto
+    258,  // LigaPro Serie A (Ecuador) ⚠️ verificar
+  
+    // ── ASIA / ORIENTE MEDIO ─────────────────────────
+    307,  // Saudi Pro League (Arabia Saudita)
+    98,   // Qatar Stars League (Catar) ⚠️ verificar
+    188,  // UAE Pro League (Emiratos) ⚠️ verificar
+    98,   // J1 League (Japón)
+  
+    // ── ÁFRICA ───────────────────────────────────────
+    233,  // Egyptian Premier League (Egipto)
+    288,  // Betway Premiership (Sudáfrica) ⚠️ verificar
+  
+    // ── OTROS EUROPA ─────────────────────────────────
+    119,  // Superliga (Dinamarca)
+    103,  // Eliteserien (Noruega)
+    113,  // Allsvenskan (Suecia)
+    383,  // Ligat ha'Al (Israel)
+    169,  // Chinese Super League (China)
+    333,  // Premier League (Ucrania) ⚠️ verificar
+    120,  // 1. División (Dinamarca) ⚠️ verificar
   ];
 
   /* ═══════════════════════════════════════════════════════
@@ -189,7 +243,7 @@
       .map((f, i) => ({
         id:        f.fixture.id || (9000 + i),
         league:    f.league.name,
-        leagueKey: HXG.LEAGUE_MAP[f.league.name] || null,
+        leagueKey: HXG.LEAGUE_MAP[f.league.id] || null,
         country:   f.league.country,
         home:      f.teams.home.name,
         away:      f.teams.away.name,

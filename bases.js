@@ -3,33 +3,51 @@
 /* Mapa: nombre de liga en partidos → clave de bases[] */
 //MAPA LEAGUES LIGAS KEYS LLAVES NOMBRES REALES Y EN BASE BD
 HXG.LEAGUE_MAP = {
-  'Premier League':   'PremierLeague',
-  'La Liga':          'LaLiga',
-  'Serie A':          'SerieA',
-  'Bundesliga':       'Bundesliga',
-  'Ligue 1':          'Ligue1',
-  'Championship':     'Championship',
-  '2. Bundesliga':    '_2Bundesliga',
-  'FA Cup':           'FACup',
-  'Liga 1':           'Liga1',
-  'J1 League':        'J1League',
-  'UEFA Europa League': 'EuropaLeague',
-  'UEFA Europa Conference League': 'ConferenceLeague',
-
-  'UEFA Champions League': 'ChampionsLeague',
-
-
-
-  'CONMEBOL Libertadores': 'CopaLibertadores',
-  'CONMEBOL Sudamericana': 'CopaSudamericana',
-  "Ligat Ha'al": 'LigathaAl',
-  'J1 League': 'J1League',
-  'Pro League': 'SaudiProLeague',
-  'Premier League': 'EgyptianPremierLeague',
-  'Primeira Liga': 'PrimeiraLiga',
-
-  'Superliga': 'Superliga',
-  'Eliteserien': 'Eliteserien',
+  // ── EUROPA ÉLITE ──────────────────────────────────
+  39:  'PremierLeague',
+  140: 'LaLiga',
+  135: 'SerieA',
+  78:  'Bundesliga',
+  61:  'Ligue1',
+  // ── EUROPA SEGUNDA LÍNEA ──────────────────────────
+  40:  'Championship',
+  94:  'PrimeiraLiga',
+  203: 'SuperLig',
+  88:  'Eredivisie',
+  235: 'RussiaPremierLiga',
+  144: 'JupilerProLeague',
+  197: 'SuperLeague1',
+  136: 'SerieB',
+  79:  '_2Bundesliga',//'Bundesliga2',
+  141: 'LaLiga2',
+  207: 'SwissSuperLeague',
+  // ── SUDAMÉRICA ────────────────────────────────────
+  128: 'LigaArgentina',      // ⚠️
+  71:  'BrasilSerieA',
+  262: 'LigaMX',
+  253: 'MLS',
+  268: 'LigaUruguay',        // ⚠️
+  239: 'LigaDimayor',        // ⚠️
+  283: 'Liga1Peru',          // ⚠️
+  278: 'LigaParaguay',       // ⚠️
+  72:  'BrasilSerieB',
+  265: 'LigaChile',          // ⚠️
+  258: 'LigaProEcuador',     // ⚠️
+  // ── ASIA / ORIENTE MEDIO ─────────────────────────
+  307: 'SaudiProLeague',
+  98:  'J1League', // J1 League (Japón) 98:  'QatarStarsLeague',   // ⚠️
+  188: 'UAEProLeague',       // ⚠️
+  // ── ÁFRICA ───────────────────────────────────────
+  233: 'EgyptianPremierLeague', // ⚠️
+  288: 'PSLSudafrica',       // ⚠️
+  // ── OTROS EUROPA ─────────────────────────────────
+  119: 'DanishSuperliga',
+  103: 'Eliteserien',
+  113: 'Allsvenskan',
+  383: 'LigatHaAl',          // ⚠️
+  169: 'ChineseSuperLeague',
+  333: 'UkrainePremierLeague', // ⚠️
+  120: 'DanishDivision1',    // ⚠️
 };
 
 HXG.TEAM_ALIASES = {
@@ -187,45 +205,12 @@ HXG.TEAM_ALIASES = {
   'Mito Hollyhock': 'Mito',
   'Machida Zelvia': 'Machida',
   
-  'Ironi Kiryat Shmona': 'Independiente',
-  'Maccabi Netanya': 'Independiente',
-  
-  'Maccabi Bnei Raina': 'Independiente',
-  'Hapoel Katamon': 'Independiente',
-  
-  //HERE
-  'Al Kholood': 'Independiente',
-  'Al-Fayha': 'Independiente',
-
-  'Carabobo FC': 'Blooming',
-  'Blooming': 'Independiente',
-  
-  'Vasco DA Gama': 'Independiente',
-  'Olimpia': 'Independiente',
-
-  'Al Kholood': 'Independiente',
-  'Al-Fayha': 'Independiente',
-
-  'Bolívar': 'Fluminense',
-  'Blooming': 'Independiente',
-  
-  'Independ. Rivadavia': 'Independiente',
-  'Deportivo La Guaira': 'Independiente',
-
-  'Tigre ': 'Independiente',
-  'Al-Fayha': 'Independiente',
-
-  'Corinthians ': 'America de Cali',
-  'Penarol': 'Independiente',
-  
-  'RB Bragantino': 'Independiente',
-  'River Plate': 'Independiente',
-
-  'Alianza Atletico': 'Independiente',
-  'Macara': 'Independiente',
-  
-  'Independiente Medellin': 'Independiente',
-  'Cusco': 'Independiente',
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
   
   'Al Kholood': 'Al Kholood',
   'Al-Fayha': 'Al Fayha',
@@ -256,6 +241,146 @@ HXG.TEAM_ALIASES = {
   
   'Independiente Medellin': 'Ind. Medellín (Col)',
   'Cusco': 'Cusco (Per)',
+
+  
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  
+  'Kyoto Sanga': 'Kyoto',
+  'Shimizu S-pulse': 'Shimizu',
+  
+  'Arminia Bielefeld': 'Arminia Bielefeld',
+  'VfL Bochum': 'Bochum',
+  
+  'Holstein Kiel': 'Kiel',
+  'Eintracht Braunschweig': 'Braunschweig',
+  
+  'Dynamo Dresden': 'Dynamo Dresden',
+  '1. FC Kaiserslautern': 'Kaiserslautern',
+  
+  'Hull City': 'Hull',
+  'Norwich': 'Norwich',
+  
+  'Sheffield Wednesday': 'Sheffield Wed',
+  'West Brom': 'West Brom',
+  
+  'Millwall ': 'Millwall',
+  'Oxford United': 'Oxford Utd',
+  
+  'Bristol City': 'Bristol City',
+  'Stoke City': 'Stoke',
+  
+  'Nantes': 'Nantes',
+  'Marseille': 'Marsella',
+  
+  'Bayern München': 'Bayern Múnich',
+  '1. FC Heidenheim': 'Heidenheim',
+  
+  'Eintracht Frankfurt': 'Eintracht Fráncfort',
+  'Hamburger SV': 'Hamburgo',
+  
+  '1899 Hoffenheim': 'Hoffenheim',
+  'VfB Stuttgart': 'Stuttgart',
+  
+  'Union Berlin': 'Union Berlin',
+  '1. FC Köln': 'Colonia',
+  
+  'Werder Bremen': 'Werder Bremen',
+  'FC Augsburg': 'Augsburgo',
+  
+  'Brentford': 'Brentford',
+  'West Ham': 'West Ham',
+  
+  'Newcastle ': 'Newcastle',
+  'Brighton': 'Brighton',
+  
+  'Wolves': 'Wolves',
+  'Sunderland': 'Sunderland',
+  
+  'Nacional': 'Nacional',
+  'AVS': 'AFS',
+  
+  'Como': 'Como',
+  'Napoli': 'Nápoles',
+  
+  'Arsenal': 'Arsenal',
+  'Fulham': 'Fulham',
+  
+  'Alaves': 'Alavés',
+  'Athletic Club': 'Athletic Club',
+  
+  'Metz': 'Metz',
+  'Monaco': 'Mónaco',
+  
+  'FC Schalke 04': 'Schalke',
+  'Fortuna Düsseldorf': 'Fortuna Düsseldorf',
+  
+  'Botafogo': 'Botafogo',
+  'Remo': 'Remo',
+  
+  'Nice': 'Niza',
+  'Lens': 'Lens',
+  
+  'FC Porto': 'Oporto',
+  'Alverca': 'Alverca',
+  
+  'Palmeiras': 'Palmeiras',
+  'Santos': 'Santos',
+  
+  'Vitoria': 'Vitória',
+  'Coritiba': 'Coritiba',
+  
+  'Atletico Paranaense': 'Athletico-PR',
+  'Gremio': 'Grêmio',
+  
+  'Cruzeiro': 'Cruzeiro',
+  'Atletico-MG': 'Atlético-MG',
+
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  //AQUIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII
+  'Oleksandria': 'Oleksandriya',
+  'Kolos Kovalivka': 'Kolos Kovalivka',
+  /*
+  'Dinamo Makhachkala': 'Independiente',
+  'FC Rostov': 'Independiente',*/
+  
+  'Veres Rivne': 'Veres-Rivne',
+  'Epitsentr Dunayivtsi': 'Epitsentr',
+  /*
+  'Baltika': 'Independiente',
+  'Rubin': 'Independiente',*/
+  
+  'Karpaty': 'Karpaty Lviv',
+  'LNZ Cherkasy': 'LNZ Cherkasy',
+  /*
+  'CSKA Moscow ': 'Independiente',
+  'Zenit': 'Independiente',*/
+  
+  'KVC Westerlo': 'Westerlo',
+  'OH Leuven': 'Leuven',
+  /*
+  'Lommel United': 'Independiente',
+  'Beerschot VA': 'Independiente',*/
+  
+  'St. Truiden': 'St. Truiden',
+  'Union St. Gilloise': 'Royale Union SG',
+  
+  'Tigres UANL': 'Tigres UANL',
+  'Guadalajara Chivas': 'Guadalajara',
+  
+  'Independiente': 'Charleroi',
+  'Independiente': 'Genk',
+  
+  'Independiente': 'Atlas',
+  'Independiente': 'Cruz Azul',
   
   'Independiente': 'Independiente',
   'Independiente': 'Independiente',
@@ -265,6 +390,256 @@ HXG.TEAM_ALIASES = {
   
   'Independiente': 'Independiente',
   'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+
+  'Independiente': 'Independiente',
+  'Independiente': 'Independiente',
+  
   // agrega los que necesites
   /* Para facilitarte mi querido YO del futuro
     'Independiente': 'Independiente',
