@@ -284,7 +284,7 @@
   function scheduleDaily() {
     const now  = new Date();
     const next = new Date(now);
-    next.setHours(3, 47, 0, 0);
+    next.setHours(7, 15, 0, 0);
     if (next <= now) next.setDate(next.getDate() + 1);
     const msUntil = next - now;
     const hh = Math.floor(msUntil / 3600000);
@@ -601,7 +601,7 @@
 
   /* ── INIT ── */
   async function init() {
-    const CACHE_VERSION = '3';
+    const CACHE_VERSION = '4';
     const versionKey    = 'hxg_cache_v';
     if (localStorage.getItem(versionKey) !== CACHE_VERSION) {
       Object.keys(localStorage)

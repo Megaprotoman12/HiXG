@@ -1874,25 +1874,48 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .pron-empty span { font-size: 36px; }
 
-/* Grid de picks */
+/* Grid de picks actualizado a 3 columnas */
 .pron-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  /* Forzamos 3 columnas de igual ancho */
+  grid-template-columns: repeat(3, 1fr); 
   gap: 1rem;
+  /* Aseguramos que el grid use el 100% del contenedor */
+  width: 100%;
+  max-width: 1200px; /* O el ancho máximo de tu diseño */
+  margin: 0 auto;
   animation: fadeDown 0.5s 0.1s ease both;
+
+  animation: fadeDown 0.5s 0.1s ease both;
+}
+
+/* Responsividad: En tablets bajamos a 2 y en móviles a 1 */
+@media (max-width: 1024px) {
+  .pron-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .pron-list {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Card base */
 .pron-card {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   background: var(--bg-card);
   border: 1.5px solid var(--border-color);
   border-radius: 18px;
-  padding: 16px;
+  padding: 20px;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   position: relative;
   overflow: hidden;
+
+  width: 100%; 
+  box-sizing: border-box;
 }
 .pron-card::before {
   content: '';
@@ -1940,11 +1963,12 @@ select option { background: var(--bg-card); color: var(--text-main); }
 
 /* Card body */
 .pron-card-body {
-  flex: 1;
-  min-width: 0;
+  flex: 1;           /* Ocupa todo el ancho restante de la card */
+  min-width: 0;      /* Evita que textos largos (nombres de equipos) rompan el diseño */
   display: flex;
   flex-direction: column;
-  gap: 9px;
+  gap: 10px;         /* Un poco más de aire entre elementos */
+  justify-content: center; /* Centra el contenido verticalmente */
 }
 
 /* Match header */
