@@ -293,10 +293,6 @@
     box-shadow: 5px 0 15px rgba(0,0,0,0.5);
   }
 
-  .nav-links.active {
-    /*transform: translateX(0); /* Se desliza hacia adentro */
-  }
-
   .menu-close {
     display: block;
     position: absolute;
@@ -1879,13 +1875,14 @@ select option { background: var(--bg-card); color: var(--text-main); }
   display: grid;
   /* Forzamos 3 columnas de igual ancho */
   grid-template-columns: repeat(3, 1fr); 
-  gap: 1rem;
+  gap: 2rem 1.5rem;
   /* Aseguramos que el grid use el 100% del contenedor */
   width: 100%;
-  max-width: 1200px; /* O el ancho máximo de tu diseño */
+  max-width: 1400px; /* Dale espacio para que las 3 columnas respiren */
+  padding: 20px 0; /* Elimina paddings que empujen el grid hacia adentro */
+  /*max-width: all;/*1200px; /* O el ancho máximo de tu diseño */
   margin: 0 auto;
-  animation: fadeDown 0.5s 0.1s ease both;
-
+  justify-content: center;
   animation: fadeDown 0.5s 0.1s ease both;
 }
 
@@ -1902,6 +1899,12 @@ select option { background: var(--bg-card); color: var(--text-main); }
   }
 }
 
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .pron-list { grid-template-columns: 1fr; }
+  .pron-teams { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .pron-vs { display: none; }
+}
 /* Card base */
 .pron-card {
   display: flex;
@@ -1963,12 +1966,13 @@ select option { background: var(--bg-card); color: var(--text-main); }
 
 /* Card body */
 .pron-card-body {
-  flex: 1;           /* Ocupa todo el ancho restante de la card */
-  min-width: 0;      /* Evita que textos largos (nombres de equipos) rompan el diseño */
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;         /* Un poco más de aire entre elementos */
-  justify-content: center; /* Centra el contenido verticalmente */
+  gap: 8px;
+  /* Eliminamos cualquier margen lateral interno extra */
+  margin: 0;
 }
 
 /* Match header */
@@ -2105,12 +2109,6 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .pron-dom strong { color: var(--reallyhot); }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  .pron-list { grid-template-columns: 1fr; }
-  .pron-teams { flex-direction: column; align-items: flex-start; gap: 2px; }
-  .pron-vs { display: none; }
-}
 
 
 
@@ -2133,14 +2131,19 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 
 #section-pronosticos .section-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
+  width: 100%;
+  max-width: 1600px; /* O el ancho máximo que desees para que no sea INFINITO */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 0px;
 }
 
-
+main, .section-inner { /* El padre directo */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra todo lo que esté adentro */
+  width: 100%;
+}
 
 /* ═══════════════════════════════════════════════════════════════
    CONTROLES — fila de selects

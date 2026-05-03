@@ -30,6 +30,8 @@
   };
 
   function getScore(pk) {
+    if (sortKey === 'unidades') return pk.dif;
+    /* Única Oportunidad: probabilidad del resultado más probable */
     if (sortKey === 'double') return pk.dominance;
     /* Única Oportunidad: probabilidad del resultado más probable */
     return pk.best.pct;
@@ -65,10 +67,11 @@
       const sorted = [...candidates].sort((a, b) => b.pct - a.pct);
       const best   = sorted[0];
       const second = sorted[1];
-      const dominance = Math.abs(xgH-xgA)//best.pct + second.pct;
+      const dominance = best.pct + second.pct;
+      const dif = Math.abs(xgH-xgA);//Math.abs(xgH-xgA)//best.pct + second.pct;
 
       picks.push({
-        m, p, xgH, xgA,
+        m, p, xgH, xgA, dif,
         best, second, dominance,
         win: p.win, draw: p.draw, loss: p.loss,
       });
@@ -84,7 +87,7 @@
   }
 
   function renderPickCard(pk, idx) {
-    const { m, win, draw, loss, best, dominance, xgH, xgA } = pk;
+    const { m, win, draw, loss, best, dominance, xgH, xgA} = pk;
     const rank = idx + 1;
     const medal = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : `#${rank}`;
 
@@ -98,7 +101,7 @@
 
           <!-- Match header -->
           <div class="pron-match-header">
-            <span class="pron-league">${m.league} <strong>Diferencia: ${dominance.toFixed(2)}</strong></span>
+            <span class="pron-league">${m.league} <strong>Diferencia: ${Math.abs(xgH-xgA).toFixed(2)}</strong></span>
             <span class="pron-status ${m.status === 'live' ? 'pron-live' : ''}">
               ${m.status === 'live' ? `<span class="live-pip"></span>${m.minute}'` : m.status === 'finished' ? 'FT' : ''}
             </span>
