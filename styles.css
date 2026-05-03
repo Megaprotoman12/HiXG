@@ -211,7 +211,7 @@
     z-index: 2000 !important; /* MUY ALTO para estar sobre el overlay */
     padding: 80px 20px 20px 20px;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: translateX(-110%); /* Aseguramos que esté fuera */
+    /*transform: translateX(+110%);*/ /* Aseguramos que esté fuera */
     box-shadow: 10px 0 20px rgba(255, 253, 253, 0.8);
     overflow-y: auto; /* Por si tienes muchas ligas, que se pueda hacer scroll */
   }
@@ -289,12 +289,12 @@
     z-index: 1000;
     padding: 60px 20px;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(-100%); /* Escondido a la izquierda */
+    /*transform: translateX(+100%);*/ /* Escondido a la izquierda */
     box-shadow: 5px 0 15px rgba(0,0,0,0.5);
   }
 
   .nav-links.active {
-    transform: translateX(0); /* Se desliza hacia adentro */
+    /*transform: translateX(0); /* Se desliza hacia adentro */
   }
 
   .menu-close {
@@ -2907,7 +2907,7 @@ nav {
     border-left: 1px solid var(--border-base);
     box-shadow: -8px 0 32px rgba(0, 0, 0, 0.35);
 
-    transform: translateX(110%);
+    transform: translateX(-110%);
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
                 background 0.3s;
   }

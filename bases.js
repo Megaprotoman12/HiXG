@@ -28,7 +28,7 @@ HXG.LEAGUE_MAP = {
   253: 'MLS',
   268: 'LigaUruguay',        // ⚠️
   239: 'LigaDimayor',        // ⚠️
-  283: 'Liga1Peru',          // ⚠️
+  281: 'Liga1',          // ⚠️
   278: 'LigaParaguay',       // ⚠️
   72:  'BrasilSerieB',
   265: 'LigaChile',          // ⚠️
@@ -382,14 +382,14 @@ HXG.TEAM_ALIASES = {
   'Independiente': 'Atlas',
   'Independiente': 'Cruz Azul',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'ADT': 'AD Tarma',
+  'Atletico Grau': 'Grau',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Cienciano': 'Cienciano',
+  'Comerciantes Unidos': 'Comerciantes Unidos',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Alianza Lima': 'Alianza Lima',
+  'UCV Moquegua': 'Moquegua',
   
   'Independiente': 'Independiente',
   'Independiente': 'Independiente',

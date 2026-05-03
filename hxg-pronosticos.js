@@ -65,7 +65,7 @@
       const sorted = [...candidates].sort((a, b) => b.pct - a.pct);
       const best   = sorted[0];
       const second = sorted[1];
-      const dominance = best.pct + second.pct;
+      const dominance = Math.abs(xgH-xgA)//best.pct + second.pct;
 
       picks.push({
         m, p, xgH, xgA,
@@ -98,7 +98,7 @@
 
           <!-- Match header -->
           <div class="pron-match-header">
-            <span class="pron-league">${m.league}</span>
+            <span class="pron-league">${m.league} <strong>Diferencia: ${dominance.toFixed(2)}</strong></span>
             <span class="pron-status ${m.status === 'live' ? 'pron-live' : ''}">
               ${m.status === 'live' ? `<span class="live-pip"></span>${m.minute}'` : m.status === 'finished' ? 'FT' : ''}
             </span>

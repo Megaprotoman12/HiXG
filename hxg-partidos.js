@@ -195,16 +195,63 @@
     updateLabel();
   }
 
-  /* ── Caché ── */
+  /* ── Caché con TTL (tiempo de vida) ──────────────────────────────
+     Cada entrada guarda { timestamp, data } en lugar de solo data.
+     Al leer, se verifica si el tiempo de vida ya expiró.
+
+     TTL según tipo de fecha:
+       • Pasado  → Infinity   (los resultados ya no cambian)
+       • Hoy     → 15 minutos (puede haber nuevos partidos agregados)
+       • Futuro  → 1 hora     (los horarios pueden cambiar)
+  ── */
+  function getTTL(dateStr) {
+    const today = getLimaDate();
+    if (dateStr < today) return Infinity; // pasado: nunca expira
+  
+      // Calculamos ms que faltan hasta medianoche en Lima
+      const ahora     = new Date();
+      const limaAhora = new Date(ahora.getTime() - 5 * 3600000);
+      const manana    = new Date(limaAhora);
+      manana.setUTCHours(24, 0, 0, 0);
+    if (dateStr === today) {
+ // próxima medianoche Lima (UTC-5 = UTC+0 del día siguiente)
+      return manana - limaAhora;        // ms hasta medianoche
+    }
+  
+    return manana - limaAhora;//6 * 60 * 60 * 1000; // mañana: 6 horas
+  }
+
   function readCache() {
     try {
       const raw = localStorage.getItem(todayKey());
-      return raw ? JSON.parse(raw) : null;
+      if (!raw) return null;
+
+      const entry = JSON.parse(raw);
+
+      // Formato viejo (sin timestamp) → descartamos para forzar refetch
+      if (!entry.timestamp || !entry.data) {
+        localStorage.removeItem(todayKey());
+        return null;
+      }
+
+      const ttl  = getTTL(selectedDate);
+      const edad = Date.now() - entry.timestamp;
+
+      if (edad > ttl) {
+        // Caché expirado → lo borramos para que se haga un nuevo request
+        localStorage.removeItem(todayKey());
+        console.log(`[HXG] Caché de ${selectedDate} expirado (${Math.round(edad/60000)}m). Refetch.`);
+        return null;
+      }
+
+      console.log(`[HXG] Caché válido de ${selectedDate} (${Math.round(edad/60000)}m de antigüedad).`);
+      return entry.data;
     } catch { return null; }
   }
 
   function writeCache(data) {
     try {
+      // Solo guardamos las últimas 7 fechas para no llenar el localStorage
       const keep = Array.from({ length: 7 }, (_, i) => {
         const d = new Date();
         d.setDate(d.getDate() - i);
@@ -213,7 +260,10 @@
       Object.keys(localStorage)
         .filter(k => k.startsWith('hxg_matches_') && !keep.includes(k))
         .forEach(k => localStorage.removeItem(k));
-      localStorage.setItem(todayKey(), JSON.stringify(data));
+
+      // Guardamos datos + timestamp para poder calcular el TTL al leer
+      const entry = { timestamp: Date.now(), data };
+      localStorage.setItem(todayKey(), JSON.stringify(entry));
     } catch { }
   }
 
