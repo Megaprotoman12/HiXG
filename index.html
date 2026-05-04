@@ -95,11 +95,11 @@
         <option value="Eredivise">🇳🇱 Eredivise</option>
         <option value="SüperLig">🇹🇷 Süper Lig</option>    
         <option value="JupilerProLeague">🇧🇪 Jupiler Pro League</option>
-        <!-- Aún NO
-        <option value="Superliga">🇩🇰 Superliga</option>
+
+        <option value="Superliga">🇩🇰 Superliga</option>        
         <option value="Eliteserien">🇳🇴 Eliteserien</option>
-        <option value="Allsvenskan">🇸🇪 Allsvenskan</option>-->
-        <option value="LigathaAl">🇮🇱 Ligat ha'Al</option><!--
+        <option value="Allsvenskan">🇸🇪 Allsvenskan</option><!-- Aún NO
+        <option value="LigathaAl">🇮🇱 Ligat ha'Al</option>
         <option value="_Premier League">🇺🇦 Premier League</option> --><!-- Ucrania xd-->
          
          
@@ -302,6 +302,10 @@
   <span class="date-label" id="date-label"></span>
   <button class="date-btn" id="date-next">›</button>
 </div>
+      <div class="matches-view-bar">
+        <button class="matches-view-btn active" data-view="league">🏆 Por liga</button>
+        <button class="matches-view-btn" data-view="chrono">🕐 Cronológico</button>
+      </div>
       <p class="matches-click-tip">👇🏻 Haz clic en cualquier partido para ver las probabilidades xG</p>
       <div class="matches-list" id="matches-list">
 
@@ -323,6 +327,11 @@
     <div class="pron-header">
       <h2 class="pron-title">🤑 Pronósticos Sugeridos</h2>
       <p class="pron-sub">Picks ordenados por la mayor diferencia de probabilidad entre un equipo y su rival</p>
+      <div class="pron-date-nav">
+        <button class="pron-date-btn" id="pron-date-prev">‹</button>
+        <span class="pron-date-label" id="pron-date-label">📅 Hoy</span>
+        <button class="pron-date-btn" id="pron-date-next">›</button>
+      </div>
     </div>
 
     <div class = "pron-controls">
@@ -339,6 +348,12 @@
         <select id="pron-sort-dir">
           <option value="desc">Mayor → menor</option>
           <option value="asc">Menor → mayor</option>
+        </select>
+      </div>
+      <div class="pron-ctrl-group">
+        <label class="pron-ctrl-label">Liga</label>
+        <select id="pron-filter-league">
+          <option value="">🌐 Todas las ligas</option>
         </select>
       </div>
     </div>

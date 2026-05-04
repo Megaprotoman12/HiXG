@@ -1246,7 +1246,24 @@ select option { background: var(--bg-card); color: var(--text-main); }
 .trend-down { color: var(--hot); font-size: 14px; }
 
 /* Cols alignment */
-.col-atk, .col-def, .col-index, .col-local, .col-visita, .col-trend { text-align: center; }
+.col-atk, .col-def, .col-index,
+.col-lAtk, .col-lDef, .col-vAtk, .col-vDef,
+.col-trend { text-align: center; }
+
+/* Mini stat colores pos/neg */
+.mini-pos { color: var(--lime); font-weight: 700; }
+.mini-neg { color: var(--hot);  font-weight: 700; }
+
+/* Encabezados ordenables */
+.th-sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.18s, background 0.18s;
+}
+.th-sortable:hover { color: var(--text-main); background: rgba(200,255,0,0.06); }
+.th-active { color: var(--lime) !important; background: rgba(200,255,0,0.09) !important; }
+.sort-arrow { font-size: 9px; opacity: 0.65; margin-left: 2px; }
+.th-active .sort-arrow { opacity: 1; }
 
 /* Nota al pie */
 .tabla-note {
@@ -1441,8 +1458,15 @@ select option { background: var(--bg-card); color: var(--text-main); }
    RESPONSIVE TABLA
    ═══════════════════════════════════════════════════ */
 @media (max-width: 680px) {
-  .col-local, .col-visita { display: none; }
-  .tabla-table td, .tabla-table th { padding: 10px 8px; }
+  .tabla-wrap { border-radius: 12px; }
+  .tabla-table { min-width: 580px; } /* fuerza scroll horizontal */
+  .tabla-table td, .tabla-table th { padding: 7px 5px; font-size: 11px; }
+  .col-team   { min-width: 100px; }
+  .index-bar-wrap { max-width: 60px; }
+  .team-name-text { font-size: 12px; }
+  .index-badge { font-size: 10px; padding: 2px 5px; }
+  .rank-badge  { width: 22px; height: 22px; font-size: 10px; }
+  .col-lAtk, .col-lDef, .col-vAtk, .col-vDef { min-width: 42px; }
 }
 
 /* ═══════════════════════════════════════════════════

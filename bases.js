@@ -391,26 +391,26 @@ HXG.TEAM_ALIASES = {
   'Alianza Lima': 'Alianza Lima',
   'UCV Moquegua': 'Moquegua',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Chelsea': 'Chelsea',
+  'Nottingham Forest': 'Nottingham Forest',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Djurgardens IF': 'Djurgarden',
+  'IFK Goteborg': 'Göteborg',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Halmstad': 'Halmstad',
+  'IF Brommapojkarna': 'Brommapojkarna',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Club Deportivo Los Chankas': 'Los Chankas',
+  'Deportivo Garcilaso': 'Deportivo Garcilaso',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'AS Roma': 'Roma',
+  'Fiorentina': 'Fiorentina',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Everton': 'Everton',
+  'Manchester City': 'Manchester City',
   
-  'Independiente': 'Independiente',
-  'Independiente': 'Independiente',
+  'Sporting CP': 'Sporting CP',
+  'Guimaraes': 'Vitória Guimaraes',
   
   'Independiente': 'Independiente',
   'Independiente': 'Independiente',

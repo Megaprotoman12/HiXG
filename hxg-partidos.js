@@ -148,51 +148,67 @@
   const todayKey   = () => 'hxg_matches_' + selectedDate;
 
   /* ── Navegación de fechas ── */
+  function getLimaDateOffset(offset) {
+    const d = new Date(limaToday + 'T12:00:00');
+    d.setDate(d.getDate() + offset);
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  }
+
+  const dateMin = getLimaDateOffset(-1); // ayer
+  const dateMax = getLimaDateOffset(+1); // mañana
+
+  function formatDateLabel(dateStr) {
+    if (dateStr === limaToday)            return '📅 Hoy';
+    if (dateStr === getLimaDateOffset(-1)) return '⬅️ Ayer';
+    if (dateStr === getLimaDateOffset(+1)) return '➡️ Mañana';
+    const d = new Date(dateStr + 'T12:00:00');
+    return d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
+  }
+
+  function syncDateLabels() {
+    const label1 = document.getElementById('date-label');
+    const label2 = document.getElementById('pron-date-label');
+    const txt = formatDateLabel(selectedDate);
+    if (label1) label1.textContent = txt;
+    if (label2) label2.textContent = txt;
+  }
+
+  async function changeDate(offset) {
+    const d = new Date(selectedDate + 'T12:00:00');
+    d.setDate(d.getDate() + offset);
+    const next = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (next < dateMin || next > dateMax) return;
+    selectedDate = next;
+    syncDateLabels();
+    closeXGPanel();
+    allMatchesRef.length = 0;
+    listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando…</span></div>';
+    /* Spinner también en pronósticos */
+    const pronList = document.getElementById('pron-list');
+    if (pronList) pronList.innerHTML = '<div class="pron-loading"><div class="spinner"></div><span>Cargando…</span></div>';
+    try {
+      const matches = await fetchTodayFromAPI();
+      allMatchesRef.push(...matches);
+    } catch (e) {
+      allMatchesRef.push(...FALLBACK_MATCHES);
+    }
+    renderMatches();
+    updateCounts();
+    notifyPronosticos();
+  }
+
+  /* Exponer para que pronósticos pueda llamar */
+  HXG.changeDate = changeDate;
+
   function initDateNav() {
-    const label   = document.getElementById('date-label');
-    const btnPrev = document.getElementById('date-prev');
-    const btnNext = document.getElementById('date-next');
-    const today   = getLimaDate();
+    syncDateLabels();
+    const btnPrev1 = document.getElementById('date-prev');
+    const btnNext1 = document.getElementById('date-next');
+    const btnPrev2 = document.getElementById('pron-date-prev');
+    const btnNext2 = document.getElementById('pron-date-next');
 
-    function updateLabel() {
-      const d = new Date(selectedDate + 'T12:00:00');
-      label.textContent = selectedDate === today
-        ? '📅 Hoy'
-        : d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
-    }
-
-    const maxFuture = new Date(limaToday + 'T12:00:00');
-    maxFuture.setDate(maxFuture.getDate() + 1);
-    const maxStr = `${maxFuture.getFullYear()}-${String(maxFuture.getMonth() + 1).padStart(2, '0')}-${String(maxFuture.getDate()).padStart(2, '0')}`;
-
-    const maxPast = new Date(limaToday + 'T12:00:00');
-    maxPast.setDate(maxPast.getDate() - 1);
-    const minStr = `${maxPast.getFullYear()}-${String(maxPast.getMonth() + 1).padStart(2, '0')}-${String(maxPast.getDate()).padStart(2, '0')}`;
-
-    btnNext.addEventListener('click', () => { if (selectedDate < maxStr) changeDate(+1); });
-    btnPrev.addEventListener('click', () => { if (selectedDate > minStr) changeDate(-1); });
-
-    async function changeDate(offset) {
-      const parts = selectedDate.split('-').map(Number);
-      const d = new Date(parts[0], parts[1] - 1, parts[2]);
-      d.setDate(d.getDate() + offset);
-      selectedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-      updateLabel();
-      closeXGPanel();
-      allMatchesRef.length = 0;
-      listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando…</span></div>';
-      try {
-        const matches = await fetchTodayFromAPI();
-        allMatchesRef.push(...matches);
-      } catch (e) {
-        allMatchesRef.push(...FALLBACK_MATCHES);
-      }
-      renderMatches();
-      updateCounts();
-      notifyPronosticos();
-    }
-
-    updateLabel();
+    [btnPrev1, btnPrev2].forEach(btn => btn && btn.addEventListener('click', () => changeDate(-1)));
+    [btnNext1, btnNext2].forEach(btn => btn && btn.addEventListener('click', () => changeDate(+1)));
   }
 
   /* ── Caché con TTL (tiempo de vida) ──────────────────────────────
@@ -651,7 +667,7 @@
 
   /* ── INIT ── */
   async function init() {
-    const CACHE_VERSION = '4';
+    const CACHE_VERSION = '5';
     const versionKey    = 'hxg_cache_v';
     if (localStorage.getItem(versionKey) !== CACHE_VERSION) {
       Object.keys(localStorage)

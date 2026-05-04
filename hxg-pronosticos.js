@@ -5,10 +5,11 @@
 (function PronosticosModule() {
   const pronList = document.getElementById('pron-list');
 
-  /* ── Controles de ordenación ── */
-  let sortKey    = 'double'; // 'double' | 'single'
-  let sortDir    = 'desc';   // 'desc'   | 'asc'
-  let cachedPicks = [];
+  /* ── Controles de ordenación y filtro ── */
+  let sortKey      = 'double'; // 'double' | 'single'
+  let sortDir      = 'desc';   // 'desc'   | 'asc'
+  let filterLeague = '';       // '' = todas
+  let cachedPicks  = [];
 
     /* Insertar controles encima de pron-list */
   const controls = document.querySelector('.pron-controls');
@@ -21,6 +22,10 @@
   });
   document.getElementById('pron-sort-dir').addEventListener('change', e => {
     sortDir = e.target.value;
+    applySort();
+  });
+  document.getElementById('pron-filter-league').addEventListener('change', e => {
+    filterLeague = e.target.value;
     applySort();
   });
 
@@ -39,7 +44,16 @@
 
   function applySort() {
     if (!cachedPicks.length) return;
-    const sorted = [...cachedPicks].sort((a, b) => {
+    const filtered = filterLeague
+      ? cachedPicks.filter(pk => pk.m.league === filterLeague)
+      : cachedPicks;
+
+    if (!filtered.length) {
+      pronList.innerHTML = '<div class="pron-empty"><span>🔍</span><p>No hay pronósticos para esta liga hoy.</p></div>';
+      return;
+    }
+
+    const sorted = [...filtered].sort((a, b) => {
       const diff = getScore(b) - getScore(a);
       return sortDir === 'desc' ? diff : -diff;
     });
@@ -83,6 +97,17 @@
     }
 
     cachedPicks = picks;
+
+    /* ── Poblar selector de ligas con las disponibles ── */
+    const leagueSel = document.getElementById('pron-filter-league');
+    const prevVal   = leagueSel.value;
+    const leagues   = [...new Set(picks.map(pk => pk.m.league))].sort();
+    leagueSel.innerHTML = '<option value="">🌐 Todas las ligas</option>' +
+      leagues.map(lg => `<option value="${lg}">${lg}</option>`).join('');
+    /* Mantener selección si la liga sigue disponible */
+    if (leagues.includes(prevVal)) leagueSel.value = prevVal;
+    else { leagueSel.value = ''; filterLeague = ''; }
+
     applySort();
   }
 
