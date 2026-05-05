@@ -1830,241 +1830,143 @@ const bases = {
 
   
   
-  /* ─────────────────────────────────────────────────────────
-     ESTADO DE HÁNDICAP
-     Guarda el delta (ajuste) de cada slider para local y visita.
-     Se aplica encima de los valores reales de bases[] al recalcular.
-  ───────────────────────────────────────────────────────── */
-  /* Solo 2 deltas por equipo: ataque y defensa manual */
-  const hc = {
-    local:  { atk: 0, def: 0 },
-    visita: { atk: 0, def: 0 },
-  };
-
-  /* Referencia a los datos actuales (se actualiza en calcular) */
-  let currentL = null;
-  let currentV = null;
-
-  /* ─────────────────────────────────────────────────────────
-     sign() → muestra +0.00 o -0.00 con signo siempre visible
-  ───────────────────────────────────────────────────────── */
-  function sign(v) { return (v >= 0 ? '+' : '') + v.toFixed(2); }
-
-  /* ─────────────────────────────────────────────────────────
-     showStats() — Rellena los 6 stats en gris de cada equipo.
-     Se llama una vez al seleccionar el equipo; los valores
-     reflejan los datos crudos de bases[], SIN hándicap.
-  ───────────────────────────────────────────────────────── */
-  function showStats(L, V) {
-    /* ── Bloque gris superior (stats-base, solo lectura) ── */
-    document.getElementById('sb-local-atk').textContent = sign(L.ataque);
-    document.getElementById('sb-local-def').textContent = sign(L.defensa);
-    document.getElementById('sb-local-pla').textContent = sign(L.PLUSLOCALataque);
-    document.getElementById('sb-local-pld').textContent = sign(L.PLUSLOCALdefensa);
-    document.getElementById('sb-local-pva').textContent = sign(L.PLUSVISITAataque);
-    document.getElementById('sb-local-pvd').textContent = sign(L.PLUSVISITAdefensa);
-
-    document.getElementById('sb-visita-atk').textContent = sign(V.ataque);
-    document.getElementById('sb-visita-def').textContent = sign(V.defensa);
-    document.getElementById('sb-visita-pva').textContent = sign(V.PLUSVISITAataque);
-    document.getElementById('sb-visita-pvd').textContent = sign(V.PLUSVISITAdefensa);
-    document.getElementById('sb-visita-pla').textContent = sign(V.PLUSLOCALataque);
-    document.getElementById('sb-visita-pvd').textContent = sign(V.PLUSLOCALdefensa);
-
-    /* ── Panel resumen inferior: 6 stats estáticos ── */
-    document.getElementById('hd-local-atk').textContent = sign(L.ataque);
-    document.getElementById('hd-local-def').textContent = sign(L.defensa);
-    document.getElementById('hd-local-pla').textContent = sign(L.PLUSLOCALataque);
-    document.getElementById('hd-local-pld').textContent = sign(L.PLUSLOCALdefensa);
-    document.getElementById('hd-local-pva').textContent = sign(L.PLUSVISITAataque);
-    document.getElementById('hd-local-pvd').textContent = sign(L.PLUSVISITAdefensa);
-
-    document.getElementById('hd-visita-atk').textContent = sign(V.ataque);
-    document.getElementById('hd-visita-def').textContent = sign(V.defensa);
-    document.getElementById('hd-visita-pva').textContent = sign(V.PLUSVISITAataque);
-    document.getElementById('hd-visita-pvd').textContent = sign(V.PLUSVISITAdefensa);
-    document.getElementById('hd-visita-pla').textContent = sign(V.PLUSLOCALataque);
-    document.getElementById('hd-visita-pld').textContent = sign(V.PLUSLOCALdefensa);
-
-    /* Ataque/defensa manual empieza en 0 al seleccionar nuevo equipo */
-    document.getElementById('hd-local-matk').textContent  = '0';
-    document.getElementById('hd-local-mdef').textContent  = '0';
-    document.getElementById('hd-visita-matk').textContent = '0';
-    document.getElementById('hd-visita-mdef').textContent = '0';
-
-    /* Hacer visibles los paneles */
-    document.getElementById('sliders-local').style.display   = 'flex';
-    document.getElementById('sliders-visita').style.display  = 'flex';
-    document.getElementById('handicap-local').style.display  = 'flex';
-    document.getElementById('handicap-visita').style.display = 'flex';
-  }
-
-  /* ─────────────────────────────────────────────────────────
-     recalcular() — Calcula xG con los valores de bases[] MÁS
-     los deltas de hándicap, actualiza el display de hándicap
-     y vuelve a correr Poisson para actualizar las probabilidades.
-     Se llama tanto al seleccionar equipos como al mover sliders.
-  ───────────────────────────────────────────────────────── */
-  function recalcular() {
-    if (!currentL || !currentV) return;
-    const L = currentL, V = currentV;
-
-    /* xG Local: (ataque_L + hc.local.atk + PLUSLOCALataque_L + hc.local.pla)
-                 − (defensa_V + hc.visita.def + PLUSVISITAdefensa_V + hc.visita.pvd) */
-    /* xG Local: solo ataque y defensa reciben el ajuste manual */
-    let xgL = (L.ataque + hc.local.atk + L.PLUSLOCALataque)
-            - (V.defensa + hc.visita.def + V.PLUSVISITAdefensa);
-    if (xgL < 0) xgL = 0;
-
-    /* xG Visita: (ataque_V + hc.visita.atk + PLUSVISITAataque_V + hc.visita.pva)
-                  − (defensa_L + hc.local.def + PLUSLOCALdefensa_L + hc.local.pld) */
-    /* xG Visita: ídem */
-    let xgV = (V.ataque + hc.visita.atk + V.PLUSVISITAataque)
-            - (L.defensa + hc.local.def + L.PLUSLOCALdefensa);
-    if (xgV < 0) xgV = 0;
-
-    /* Actualizar los valores "manual" en vivo en el panel resumen */
-    document.getElementById('hd-local-matk').textContent  = sign(hc.local.atk);
-    document.getElementById('hd-local-mdef').textContent  = sign(hc.local.def);
-    document.getElementById('hd-visita-matk').textContent = sign(hc.visita.atk);
-    document.getElementById('hd-visita-mdef').textContent = sign(hc.visita.def);
-
-    /* Actualizar StatsLocal/StatsVisita para que el patchStats siga funcionando */
-    document.getElementById('StatsLocal').innerHTML  =
-      'Goles a Favor: ' + (L.ataque + L.PLUSLOCALataque).toFixed(2) +
-      '<br>Goles en Contra: ' + (L.defensa + L.PLUSLOCALdefensa).toFixed(2);
-    document.getElementById('StatsVisita').innerHTML =
-      'Goles a Favor: ' + (V.ataque + V.PLUSVISITAataque).toFixed(2) +
-      '<br>Goles en Contra: ' + (V.defensa + V.PLUSVISITAdefensa).toFixed(2);
-
-    /* ── Poisson (misma lógica que antes) ── */
-    const NLocal  = localSel.options[localSel.selectedIndex].text;
-    const NVisita = visitaSel.options[visitaSel.selectedIndex].text;
-
-    function poisson(k, lambda) {
-      let f = 1;
-      for (let i = 2; i <= k; i++) f *= i;
-      return (Math.pow(lambda, k) * Math.exp(-lambda)) / f;
-    }
-
-    function probMatch(xG_home, xG_away, NLocal, NVisita, maxGoals = 10) {
-      let probs = [];
-      for (let i = 0; i <= maxGoals; i++) {
-        probs[i] = [];
-        for (let j = 0; j <= maxGoals; j++) {
-          probs[i][j] = poisson(i, xG_home) * poisson(j, xG_away);
-        }
-      }
-      let pWin = 0, pDraw = 0, pLoss = 0;
-      for (let i = 0; i <= maxGoals; i++) {
-        for (let j = 0; j <= maxGoals; j++) {
-          if (i > j)       pWin  += probs[i][j];
-          else if (i === j) pDraw += probs[i][j];
-          else              pLoss += probs[i][j];
-        }
-      }
-      let pBTTSyes = 0;
-      for (let i = 1; i <= maxGoals; i++)
-        for (let j = 1; j <= maxGoals; j++)
-          pBTTSyes += probs[i][j];
-      const pBTTSno = 1 - pBTTSyes;
-      let overUnder = {};
-      [0.5, 1.5, 2.5, 3.5, 4.5].forEach(line => {
-        let pOver = 0;
-        for (let i = 0; i <= maxGoals; i++)
-          for (let j = 0; j <= maxGoals; j++)
-            if (i + j > line) pOver += probs[i][j];
-        overUnder[`Más de ${line} Goles`]   = +(pOver * 100).toFixed(1);
-        overUnder[`Menos de ${line} Goles`] = +((1 - pOver) * 100).toFixed(1);
-      });
-      let scores = [];
-      for (let i = 0; i <= maxGoals; i++)
-        for (let j = 0; j <= maxGoals; j++)
-          scores.push({ score: `${i}-${j}`, prob: probs[i][j] });
-      scores.sort((a, b) => b.prob - a.prob);
-      const topScores = scores.slice(0, 5).map(s => ({
-        marcador: s.score, probabilidad: +(s.prob * 100).toFixed(2)
-      }));
-      return {
-        [`Victoria ${NLocal}`]:  +(pWin  * 100).toFixed(1) + '%',
-        'Empate':                +(pDraw * 100).toFixed(1) + '%',
-        [`Victoria ${NVisita}`]: +(pLoss * 100).toFixed(1) + '%',
-        'Ambos Anotan (Sí)':     +(pBTTSyes * 100).toFixed(1) + '%',
-        'Ambos Anotan (No)':     +(pBTTSno  * 100).toFixed(1) + '%',
-        'Más/Menos': overUnder,
-        'Marcadores más probables': topScores,
-      };
-    }
-
-    const res = probMatch(xgL, xgV, NLocal, NVisita);
-    const formatValue = val => {
-      if (Array.isArray(val)) return val.map(o => `\n  ${o.marcador} (${o.probabilidad}%)`).join('');
-      if (typeof val === 'object' && val !== null)
-        return Object.entries(val).map(([k, v]) => `\n  ${k}: ${v}`).join('%');
-      return val;
-    };
-    const textoLegible = Object.entries(res)
-      .map(([key, value]) => `\n ${key}: ${formatValue(value)}`).join('\n');
-
-    document.getElementById('xgLocal').textContent  = xgL.toFixed(3) + ' vs ' + xgV.toFixed(3);
-    document.getElementById('xgVisita').textContent = textoLegible;
-  }
-
-  /* ─────────────────────────────────────────────────────────
-     calcular() — Se llama al cambiar los selects de equipo.
-     Resetea hándicaps, muestra stats base y lanza recalcular().
-  ───────────────────────────────────────────────────────── */
   function calcular() {
     const data = bases[competition.value];
     if (!localSel.value || !visitaSel.value) return;
+  
+    const L = data[localSel.value];
+    const V = data[visitaSel.value];
+    const NLocal = localSel.options[localSel.selectedIndex].text;
+    const NVisita = visitaSel.options[visitaSel.selectedIndex].text;  
+    
+    let xgL = L.ataque + L.PLUSLOCALataque - (V.defensa + V.PLUSVISITAdefensa);
+    if (xgL < 0){
+      xgL = 0;
+    } 
+    //xgL += .15; 
 
-    currentL = data[localSel.value];
-    currentV = data[visitaSel.value];
+    let xgV = V.ataque + V.PLUSVISITAataque - (L.defensa + L.PLUSLOCALdefensa);
+    if (xgV < 0){
+      xgV = 0;
+    } 
+    //xgV += .15;
 
-    /* Resetear sliders y deltas al cambiar de equipo */
-    resetSliders('local');
-    resetSliders('visita');
+/**/ 
+function poisson(k, lambda) {
+  return (Math.pow(lambda, k) * Math.exp(-lambda)) / factorial(k);
+}
 
-    showStats(currentL, currentV);
-    recalcular();
+function factorial(n) {
+  if (n === 0 || n === 1) return 1;
+  let res = 1;
+  for (let i = 2; i <= n; i++) res *= i;
+  return res;
+}
+
+function probMatch(xG_home, xG_away, NLocal, NVisita, maxGoals = 10) {
+
+  // Matriz de probabilidades
+  let probs = [];
+  for (let i = 0; i <= maxGoals; i++) {
+    probs[i] = [];
+    for (let j = 0; j <= maxGoals; j++) {
+      probs[i][j] = poisson(i, xG_home) * poisson(j, xG_away);
+    }
   }
 
-  /* ─────────────────────────────────────────────────────────
-     resetSliders(team) — Pone todos los sliders a 0 y limpia
-     los deltas de hándicap del equipo indicado.
-  ───────────────────────────────────────────────────────── */
-  function resetSliders(team) {
-    ['atk','def'].forEach(k => {
-      const slider = document.getElementById(`hc-${team}-${k}`);
-      const label  = document.getElementById(`hc-${team}-${k}-val`);
-      if (slider) slider.value = 0;
-      if (label)  label.textContent = '+0.00';
-      hc[team][k] = 0;
-    });
+  let pWin = 0, pDraw = 0, pLoss = 0;
+
+  for (let i = 0; i <= maxGoals; i++) {
+    for (let j = 0; j <= maxGoals; j++) {
+      if (i > j) pWin += probs[i][j];
+      else if (i === j) pDraw += probs[i][j];
+      else pLoss += probs[i][j];
+    }
   }
 
-  /* Listeners: solo atk y def para local y visita */
-  ['local','visita'].forEach(team => {
-    ['atk','def'].forEach(k => {
-      const slider = document.getElementById(`hc-${team}-${k}`);
-      if (!slider) return;
-      slider.addEventListener('input', () => {
-        hc[team][k] = parseFloat(slider.value);
-        document.getElementById(`hc-${team}-${k}-val`).textContent = sign(hc[team][k]);
-        recalcular();
+  // Ambos anotan
+  let pBTTSyes = 0;
+  for (let i = 1; i <= maxGoals; i++) {
+    for (let j = 1; j <= maxGoals; j++) {
+      pBTTSyes += probs[i][j];
+    }
+  }
+  let pBTTSno = 1 - pBTTSyes;
+
+  // Over / Under
+  let overUnder = {};
+  [0.5, 1.5, 2.5, 3.5, 4.5].forEach(line => {
+    let pOver = 0;
+    for (let i = 0; i <= maxGoals; i++) {
+      for (let j = 0; j <= maxGoals; j++) {
+        if (i + j > line) pOver += probs[i][j];
+      }
+    }
+    overUnder[`Más de ${line} Goles`] = +(pOver * 100).toFixed(1);
+    overUnder[`Menos de ${line} Goles`] = +((1 - pOver) * 100).toFixed(1);
+  });
+
+  // Marcadores más probables
+  let scores = [];
+  for (let i = 0; i <= maxGoals; i++) {
+    for (let j = 0; j <= maxGoals; j++) {
+      scores.push({
+        score: `${i}-${j}`,
+        prob: probs[i][j]
       });
-    });
-  });
+    }
+  }
 
-  /* Botones de resetear */
-  document.querySelectorAll('.hc-reset-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      resetSliders(btn.dataset.team);
-      recalcular();
-    });
-  });
+  scores.sort((a, b) => b.prob - a.prob);
+  let topScores = scores.slice(0, 5).map(s => ({
+    marcador: s.score,
+    probabilidad: +(s.prob * 100).toFixed(2)
+  }));
 
-    competition.addEventListener('change', loadTeams);
+  return {
+    [`Victoria ${NLocal}`]:  +(pWin * 100).toFixed(1) + "%",
+    "Empate":  + (pDraw * 100).toFixed(1) + "%",
+    [`Victoria ${NVisita}`]: +(pLoss * 100).toFixed(1) + "%",
+    "Ambos Anotan (Sí)": +(pBTTSyes * 100).toFixed(1) + "%",
+    "Ambos Anotan (No)": +(pBTTSno * 100).toFixed(1) + ('%') ,
+    "Más/Menos": overUnder,
+    "Marcadores más probables": topScores
+  };
+}
+
+
+/**/
+const res = probMatch(xgL, xgV, NLocal, NVisita);
+
+const formatValue = (val) => {
+  if (Array.isArray(val)) {
+      // Para "Marcadores más probables", une cada marcador con una coma
+      return val.map(obj => `\n ${obj.marcador} (${obj.probabilidad}%)`).join('');
+  } else if (typeof val === 'object' && val !== null) {
+      // Para "Over/Under", une sus propiedades
+      return Object.entries(val).map(([k, v]) => `\n ${k}: ${v}`).join('%');
+  }
+  return val;
+};
+
+// Creamos una lista de líneas "Propiedad: Valor"
+const textoLegible = Object.entries(res)
+    .map(([key, value]) => `\n ${key}: ${formatValue(value)}`)
+    .join('\n');
+
+
+
+
+  
+    document.getElementById('StatsLocal').innerHTML = 'Goles a Favor: ' + (L.ataque + L.PLUSLOCALataque).toFixed(2) + "<br>Goles en Contra: " + (L.defensa + L.PLUSLOCALdefensa).toFixed(2);
+
+    document.getElementById('StatsVisita').innerHTML = 'Goles a Favor: ' + (V.ataque + V.PLUSVISITAataque).toFixed(2) + "<br>Goles en Contra: " + (V.defensa + V.PLUSVISITAdefensa).toFixed(2);
+    
+    document.getElementById('xgLocal').textContent = xgL.toFixed(3) + ' vs ' + xgV.toFixed(3);
+    document.getElementById('xgVisita').textContent = textoLegible;
+  }
+  
+  competition.addEventListener('change', loadTeams);
   localSel.addEventListener('change', calcular);
   visitaSel.addEventListener('change', calcular);
   
