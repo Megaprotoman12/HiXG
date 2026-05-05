@@ -148,67 +148,51 @@
   const todayKey   = () => 'hxg_matches_' + selectedDate;
 
   /* ── Navegación de fechas ── */
-  function getLimaDateOffset(offset) {
-    const d = new Date(limaToday + 'T12:00:00');
-    d.setDate(d.getDate() + offset);
-    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-  }
-
-  const dateMin = getLimaDateOffset(-1); // ayer
-  const dateMax = getLimaDateOffset(+1); // mañana
-
-  function formatDateLabel(dateStr) {
-    if (dateStr === limaToday)            return '📅 Hoy';
-    if (dateStr === getLimaDateOffset(-1)) return '⬅️ Ayer';
-    if (dateStr === getLimaDateOffset(+1)) return '➡️ Mañana';
-    const d = new Date(dateStr + 'T12:00:00');
-    return d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
-  }
-
-  function syncDateLabels() {
-    const label1 = document.getElementById('date-label');
-    const label2 = document.getElementById('pron-date-label');
-    const txt = formatDateLabel(selectedDate);
-    if (label1) label1.textContent = txt;
-    if (label2) label2.textContent = txt;
-  }
-
-  async function changeDate(offset) {
-    const d = new Date(selectedDate + 'T12:00:00');
-    d.setDate(d.getDate() + offset);
-    const next = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
-    if (next < dateMin || next > dateMax) return;
-    selectedDate = next;
-    syncDateLabels();
-    closeXGPanel();
-    allMatchesRef.length = 0;
-    listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando…</span></div>';
-    /* Spinner también en pronósticos */
-    const pronList = document.getElementById('pron-list');
-    if (pronList) pronList.innerHTML = '<div class="pron-loading"><div class="spinner"></div><span>Cargando…</span></div>';
-    try {
-      const matches = await fetchTodayFromAPI();
-      allMatchesRef.push(...matches);
-    } catch (e) {
-      allMatchesRef.push(...FALLBACK_MATCHES);
-    }
-    renderMatches();
-    updateCounts();
-    notifyPronosticos();
-  }
-
-  /* Exponer para que pronósticos pueda llamar */
-  HXG.changeDate = changeDate;
-
   function initDateNav() {
-    syncDateLabels();
-    const btnPrev1 = document.getElementById('date-prev');
-    const btnNext1 = document.getElementById('date-next');
-    const btnPrev2 = document.getElementById('pron-date-prev');
-    const btnNext2 = document.getElementById('pron-date-next');
+    const label   = document.getElementById('date-label');
+    const btnPrev = document.getElementById('date-prev');
+    const btnNext = document.getElementById('date-next');
+    const today   = getLimaDate();
 
-    [btnPrev1, btnPrev2].forEach(btn => btn && btn.addEventListener('click', () => changeDate(-1)));
-    [btnNext1, btnNext2].forEach(btn => btn && btn.addEventListener('click', () => changeDate(+1)));
+    function updateLabel() {
+      const d = new Date(selectedDate + 'T12:00:00');
+      label.textContent = selectedDate === today
+        ? '📅 Hoy'
+        : d.toLocaleDateString('es-PE', { weekday: 'short', day: 'numeric', month: 'short' });
+    }
+
+    const maxFuture = new Date(limaToday + 'T12:00:00');
+    maxFuture.setDate(maxFuture.getDate() + 1);
+    const maxStr = `${maxFuture.getFullYear()}-${String(maxFuture.getMonth() + 1).padStart(2, '0')}-${String(maxFuture.getDate()).padStart(2, '0')}`;
+
+    const maxPast = new Date(limaToday + 'T12:00:00');
+    maxPast.setDate(maxPast.getDate() - 1);
+    const minStr = `${maxPast.getFullYear()}-${String(maxPast.getMonth() + 1).padStart(2, '0')}-${String(maxPast.getDate()).padStart(2, '0')}`;
+
+    btnNext.addEventListener('click', () => { if (selectedDate < maxStr) changeDate(+1); });
+    btnPrev.addEventListener('click', () => { if (selectedDate > minStr) changeDate(-1); });
+
+    async function changeDate(offset) {
+      const parts = selectedDate.split('-').map(Number);
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      d.setDate(d.getDate() + offset);
+      selectedDate = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+      updateLabel();
+      closeXGPanel();
+      allMatchesRef.length = 0;
+      listEl.innerHTML = '<div class="matches-loading"><div class="spinner"></div><span>Cargando…</span></div>';
+      try {
+        const matches = await fetchTodayFromAPI();
+        allMatchesRef.push(...matches);
+      } catch (e) {
+        allMatchesRef.push(...FALLBACK_MATCHES);
+      }
+      renderMatches();
+      updateCounts();
+      notifyPronosticos();
+    }
+
+    updateLabel();
   }
 
   /* ── Caché con TTL (tiempo de vida) ──────────────────────────────
@@ -292,16 +276,48 @@
     }
 
     console.log(`[HXG] Consultando API para ${selectedDate}…`);
+
+    /*
+     * MODIFICACIÓN 5 — Limpiamos el flag de suspensión antes de cada intento:
+     * Si el usuario hace clic en "cambiar fecha" o recarga, damos otra oportunidad.
+     * Si la cuenta sigue suspendida, se volverá a setear en el catch.
+     */
+    localStorage.removeItem('hxg_api_suspended');
+
     const res = await fetch(
       `https://v3.football.api-sports.io/fixtures?date=${selectedDate}&timezone=America/Lima`,
       { headers: { 'x-apisports-key': API_KEY } }
     );
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    /*
+     * Error HTTP (ej. 403, 429, 500): la API ni siquiera respondió con JSON.
+     * Lo distinguimos del error de JSON para dar un mensaje más preciso.
+     */
+    if (!res.ok) {
+      const httpErr = new Error(`HTTP ${res.status}`);
+      httpErr.apiType = res.status === 429 ? 'ratelimit' : 'other';
+      throw httpErr;
+    }
     const json = await res.json();
 
     if (json.errors && Object.keys(json.errors).length) {
-      const msg = Object.values(json.errors)[0];
-      throw new Error(typeof msg === 'string' ? msg : JSON.stringify(msg));
+      const msg  = Object.values(json.errors)[0];
+      const text = typeof msg === 'string' ? msg : JSON.stringify(msg);
+
+      /*
+       * MODIFICACIÓN 1 — Clasificamos el tipo de error de la API:
+       *   'suspended' → cuenta bloqueada por la plataforma (este es tu caso actual)
+       *   'ratelimit' → se agotaron las requests del plan gratuito (100/día)
+       *   'other'     → error genérico (clave inválida, etc.)
+       * Adjuntamos err.apiType al objeto Error para que el catch decida qué hacer.
+       */
+      const lower   = text.toLowerCase();
+      let errorType = 'other';
+      if (lower.includes('suspended') || lower.includes('account'))   errorType = 'suspended';
+      else if (lower.includes('limit') || lower.includes('requests')) errorType = 'ratelimit';
+
+      const err   = new Error(text);
+      err.apiType = errorType;
+      throw err;
     }
 
     const raw = (json.response || [])
@@ -357,6 +373,21 @@
     const mm = Math.floor((msUntil % 3600000) / 60000);
     console.log(`[HXG] Próxima actualización automática en ${hh}h ${mm}m`);
     setTimeout(async () => {
+      /*
+       * MODIFICACIÓN 4 — scheduleDaily() respeta el flag de suspensión:
+       * Si en MODIFICACIÓN 3 detectamos que la cuenta está suspendida,
+       * no tiene sentido gastar un request automático cada día.
+       * Revisamos el flag 'hxg_api_suspended' antes de intentar el fetch.
+       * Cuando el usuario resuelva la suspensión y recargue la página,
+       * el flag se limpiará porque solo se setea en runtime (no persiste
+       * entre inicializaciones exitosas).
+       */
+      if (localStorage.getItem('hxg_api_suspended') === 'true') {
+        console.warn('[HXG] Cuenta suspendida → omitiendo fetch automático. Recarga la página cuando la cuenta esté activa.');
+        scheduleDaily(); /* seguimos programando por si el usuario recarga */
+        return;
+      }
+
       localStorage.removeItem(todayKey());
       try {
         const matches = await fetchTodayFromAPI();
@@ -366,7 +397,13 @@
         updateCounts();
         notifyPronosticos();
       } catch (e) {
-        console.warn('[HXG] Fetch automático de 00:01 falló:', e.message);
+        const apiType = e.apiType || 'other';
+        console.warn('[HXG] Fetch automático falló:', e.message, '(tipo:', apiType, ')');
+        /* Mostramos el banner también en el fetch automático */
+        showApiError(apiType, e.message);
+        if (apiType === 'suspended') {
+          localStorage.setItem('hxg_api_suspended', 'true');
+        }
       }
       scheduleDaily();
     }, msUntil);
@@ -665,9 +702,81 @@
     }
   }
 
+  /*
+   * MODIFICACIÓN 2 — showApiError(type, message):
+   * Muestra un banner visible EN PANTALLA cuando la API falla,
+   * en lugar de solo loguear en consola (que el usuario nunca ve).
+   *
+   * El banner se inserta encima de la lista de partidos y se puede cerrar.
+   * Según el tipo de error muestra un mensaje y sugerencia distintos.
+   */
+  function showApiError(type, rawMessage) {
+    /* Si ya existe un banner de error API, no duplicamos */
+    if (document.getElementById('hxg-api-error-banner')) return;
+
+    /* Textos según el tipo de error detectado */
+    const configs = {
+      suspended: {
+        icon:  '🚫',
+        title: 'Cuenta API suspendida',
+        body:  'Mi cuenta en api-football.com está suspendida :(',
+        color: '#ff2d6b', /* rojo */
+      },
+      ratelimit: {
+        icon:  '⏳',
+        title: 'Límite de requests alcanzado',
+        body:  'Agotaste las peticiones del plan gratuito (100/día). Se reactivará mañana automáticamente.',
+        color: '#f59e0b', /* naranja */
+      },
+      other: {
+        icon:  '⚠️',
+        title: 'Error de API',
+        body:  `La API respondió con un error: <em>${rawMessage}</em>. Verifica tu clave en bases.js.`,
+        color: '#f59e0b',
+      },
+    };
+    const cfg = configs[type] || configs.other;
+
+    const banner = document.createElement('div');
+    banner.id = 'hxg-api-error-banner';
+    banner.style.cssText = [
+      'background:rgba(0,0,0,0.55)',
+      'border:1.5px solid ' + cfg.color,
+      'border-radius:12px',
+      'padding:12px 16px',
+      'margin-bottom:14px',
+      'font-family:Barlow Condensed,sans-serif',
+      'font-size:14px',
+      'color:#ccc',
+      'display:flex',
+      'align-items:flex-start',
+      'gap:10px',
+      'position:relative',
+    ].join(';');
+
+    banner.innerHTML = `
+      <span style="font-size:22px;line-height:1;flex-shrink:0">${cfg.icon}</span>
+      <div>
+        <strong style="color:${cfg.color};font-size:15px;display:block;margin-bottom:3px">${cfg.title}</strong>
+        <span>${cfg.body}</span>
+        <br><small style="opacity:.6;margin-top:4px;display:block">
+          Mostrando partidos de ejemplo.  <br>
+          Los pronósticos siguen funcionando con la Base de Datos, en las demás secciones.
+        </small>
+      </div>
+      <button onclick="this.parentElement.remove()" style="
+        position:absolute;top:8px;right:10px;
+        background:none;border:none;cursor:pointer;
+        color:#888;font-size:16px;line-height:1;padding:0
+      " title="Cerrar">✕</button>`;
+
+    /* Insertamos el banner justo antes de la lista de partidos */
+    listEl.parentNode.insertBefore(banner, listEl);
+  }
+
   /* ── INIT ── */
   async function init() {
-    const CACHE_VERSION = '5';
+    const CACHE_VERSION = '4';
     const versionKey    = 'hxg_cache_v';
     if (localStorage.getItem(versionKey) !== CACHE_VERSION) {
       Object.keys(localStorage)
@@ -682,8 +791,25 @@
       allMatchesRef.push(...(matches.length ? matches : FALLBACK_MATCHES.map(m => ({ ...m }))));
       if (!matches.length) console.log('[HXG] Sin partidos de API hoy → mostrando fallback');
     } catch (err) {
-      console.warn('[HXG] Error API:', err.message, '→ usando fallback');
+      /*
+       * MODIFICACIÓN 3 — catch mejorado en init():
+       * Antes: solo logueaba en consola (invisible para el usuario).
+       * Ahora: también llama a showApiError() con el tipo clasificado
+       * en MODIFICACIÓN 1 para mostrar el banner visible en pantalla.
+       *
+       * Además, si el error es 'suspended', marcamos en localStorage
+       * para que scheduleDaily() NO intente más requests automáticos
+       * hasta que el usuario recargue manualmente (evita requests inútiles).
+       */
+      const apiType = err.apiType || 'other';
+      console.warn('[HXG] Error API:', err.message, '(tipo:', apiType, ') → usando fallback');
+      showApiError(apiType, err.message);
       allMatchesRef.push(...FALLBACK_MATCHES.map(m => ({ ...m })));
+
+      /* Si la cuenta está suspendida, guardamos el flag para no reintentar */
+      if (apiType === 'suspended') {
+        localStorage.setItem('hxg_api_suspended', 'true');
+      }
     }
 
     renderMatches();

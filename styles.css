@@ -726,6 +726,175 @@ select option { background: var(--bg-card); color: var(--text-main); }
 }
 .stat-lbl { color: var(--text-muted); font-family: 'Barlow Condensed', sans-serif; font-weight: 600; letter-spacing: .5px; }
 .stat-val { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; font-weight: 700; color: var(--lime); }
+/* Valores grises de stats base (solo lectura) */
+.stat-val.muted { color: var(--text-muted) !important; font-size: 13px; font-weight: 600; }
+
+/* Título del bloque de stats base */
+.stats-base-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2px;
+  opacity: 0.7;
+}
+
+/* ── SLIDERS DE HÁNDICAP ── */
+.handicap-sliders {
+  display: none; /* oculto hasta que se seleccione un equipo */
+  margin-top: 0.75rem;
+  background: var(--bg-card2);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  gap: 10px;
+  flex-direction: column;
+}
+.handicap-sliders[style*="display: flex"],
+.handicap-sliders[style=""] {
+  display: flex !important;
+}
+.hc-slider-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border-color);
+}
+.hc-row {
+  display: grid;
+  grid-template-columns: 90px 1fr 46px;
+  align-items: center;
+  gap: 8px;
+}
+.hc-lbl {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.hc-range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background: var(--border-color);
+  outline: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.hc-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--lime);
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(200,255,0,0.4);
+  transition: transform 0.15s;
+}
+.hc-range::-webkit-slider-thumb:hover { transform: scale(1.25); }
+.hc-range::-moz-range-thumb {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--lime);
+  cursor: pointer;
+  border: none;
+}
+.hc-val {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--cyan);
+  text-align: right;
+  min-width: 42px;
+}
+.hc-reset-btn {
+  margin-top: 4px;
+  align-self: flex-end;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.18s;
+}
+.hc-reset-btn:hover {
+  border-color: var(--hot);
+  color: var(--hot);
+  background: rgba(255,45,107,0.08);
+}
+
+/* ── DISPLAY DE HÁNDICAP RESULTANTE ── */
+.handicap-display {
+  display: none; /* oculto hasta seleccionar equipo */
+  margin-top: 0.5rem;
+  background: linear-gradient(135deg, rgba(200,255,0,0.06), rgba(0,240,255,0.04));
+  border: 1.5px solid rgba(200,255,0,0.25);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  flex-direction: column;
+  gap: 8px;
+}
+.hc-display-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--lime);
+  opacity: 0.8;
+  margin-bottom: 2px;
+}
+.hc-display-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+/* Filas estáticas (6 stats de bases[]) */
+.hc-display-row.static { opacity: 0.75; }
+.hc-display-val.static {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+/* Divisor entre estáticos y manuales */
+.hc-divider {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 4px 0;
+}
+/* Filas en vivo (ataque/defensa manual) */
+.hc-display-row.live { }
+.hc-display-val.live {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--cyan);
+}
+/* Valor general (sin clase específica, fallback) */
+.hc-display-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lime);
+}
 
 /* Hide raw script.js text in stats panels */
 #StatsLocal, #StatsVisita { display: none !important; }
